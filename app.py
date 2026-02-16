@@ -2,10 +2,14 @@
 # MMA BRIDGE - FLASK BACKEND (WITH DATABASE)
 # ==============================================
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import json
 import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Import database functions
 from database import (
@@ -15,11 +19,15 @@ from database import (
     get_upcoming_events
 )
 
+# Import chatbot
+from chatbot import chat_with_lucas
+
 # Create Flask app
 app = Flask(__name__)
 
-# Enable CORS so your frontend can connect
-CORS(app)
+# Enable CORS with environment-based origins
+allowed_origins = os.getenv('ALLOWED_ORIGINS', '*').split(',')
+CORS(app, origins=allowed_origins)
 
 # Path to your data files (for fallback)
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
@@ -156,6 +164,34 @@ def get_pfp_rankings():
     
     return jsonify(rankings)
 
+@app.route('/api/chat', methods=['POST'])
+def chat():
+    """Chat with Lucas Bot"""
+    try:
+        data = request.get_json()
+        
+        if not data or 'message' not in data:
+            return jsonify({'error': 'No message provided'}), 400
+        
+        user_message = data['message']
+        conversation_history = data.get('history', [])
+        page_context = data.get('page', 'general')  # Get page context
+        
+        # Get response from Lucas Bot with page context
+        response = chat_with_lucas(user_message, conversation_history, page_context)
+        
+        return jsonify({
+            'response': response,
+            'success': True
+        })
+        
+    except Exception as e:
+        print(f"Chat error: {e}")
+        return jsonify({
+            'error': 'Failed to get response from Lucas Bot',
+            'success': False
+        }), 500
+
 # ==============================================
 # ERROR HANDLERS
 # ==============================================
@@ -173,17 +209,21 @@ def server_error(error):
 # ==============================================
 
 if __name__ == '__main__':
-    print('=' * 50)
-    print('🥊 MMA BRIDGE API SERVER')
-    print('=' * 50)
-    print('Server running at: http://localhost:5001')
-    print('API endpoints at: http://localhost:5001/api/')
-    print('Press CTRL+C to stop')
-    print('=' * 50)
+    port = int(os.getenv('PORT', 5001))
+    debug = os.getenv('FLASK_ENV', 'development') == 'development'
+    
+    if debug:
+        print('=' * 50)
+        print('🥊 MMA BRIDGE API SERVER')
+        print('=' * 50)
+        print(f'Server running at: http://localhost:{port}')
+        print(f'API endpoints at: http://localhost:{port}/api/')
+        print('Press CTRL+C to stop')
+        print('=' * 50)
     
     # Run the server
     app.run(
-        host='0.0.0.0',  # Makes it accessible from your frontend
-        port=5001,        # Port number
-        debug=True        # Shows helpful errors
+        host='0.0.0.0',
+        port=port,
+        debug=debug
     )
