@@ -1,0 +1,221 @@
+{
+  "islam-makhachev": {
+    "name": "Islam Makhachev",
+    "nickname": "",
+    "country": "Russia",
+    "flag": "🇷🇺",
+    "record": "28-1",
+    "division": "Welterweight / Lightweight",
+    "stance": "Southpaw",
+    "height": "5'10\"",
+    "reach": "70.5\"",
+    "age": "34",
+    "last5": [
+      { "opponent": "Jack Della Maddalena", "result": "W", "method": "UD", "round": "5", "date": "2025-11-16" },
+      { "opponent": "Renato Moicano", "result": "W", "method": "SUB", "round": "1", "date": "2025-01-18" },
+      { "opponent": "Dustin Poirier", "result": "W", "method": "SUB", "round": "5", "date": "2024-06-01" },
+      { "opponent": "Alexander Volkanovski", "result": "W", "method": "KO/TKO", "round": "1", "date": "2023-10-21" },
+      { "opponent": "Alexander Volkanovski", "result": "W", "method": "UD", "round": "5", "date": "2023-02-11" }
+    ]
+  },
+
+  "ilia-topuria": {
+    "name": "Ilia Topuria",
+    "nickname": "El Matador",
+    "country": "Georgia/Spain",
+    "flag": "🇬🇪",
+    "record": "17-0",
+    "division": "Lightweight",
+    "stance": "Orthodox",
+    "height": "5'7\"",
+    "reach": "69\"",
+    "age": "28",
+    "last5": [
+      { "opponent": "Charles Oliveira", "result": "W", "method": "KO/TKO", "round": "1", "date": "2025-05-28" },
+      { "opponent": "Alexander Volkanovski", "result": "W", "method": "KO/TKO", "round": "2", "date": "2024-02-17" },
+      { "opponent": "Josh Emmett", "result": "W", "method": "UD", "round": "5", "date": "2023-06-24" },
+      { "opponent": "Bryce Mitchell", "result": "W", "method": "SUB", "round": "2", "date": "2022-12-10" },
+      { "opponent": "Jai Herbert", "result": "W", "method": "KO/TKO", "round": "2", "date": "2022-03-19" }
+    ]
+  },
+
+  "khamzat-chimaev": {
+    "name": "Khamzat Chimaev",
+    "nickname": "",
+    "country": "Sweden",
+    "flag": "🇸🇪",
+    "record": "13-0",
+    "division": "Middleweight / Welterweight",
+    "stance": "Orthodox",
+    "height": "6'2\"",
+    "reach": "78\"",
+    "age": "31",
+    "last5": [
+      { "opponent": "Kamaru Usman", "result": "W", "method": "MD", "round": "3", "date": "2023-10-21" },
+      { "opponent": "Kevin Holland", "result": "W", "method": "SUB", "round": "1", "date": "2022-09-10" },
+      { "opponent": "Gilbert Burns", "result": "W", "method": "UD", "round": "3", "date": "2022-04-09" },
+      { "opponent": "Li Jingliang", "result": "W", "method": "SUB", "round": "1", "date": "2021-10-30" },
+      { "opponent": "Gerald Meerschaert", "result": "W", "method": "SUB", "round": "1", "date": "2020-09-19" }
+    ]
+  },
+
+  "alex-pereira": {
+    "name": "Alex Pereira",
+    "nickname": "",
+    "country": "Brazil",
+    "flag": "🇧🇷",
+    "record": "11-2",
+    "division": "Light Heavyweight",
+    "stance": "Orthodox",
+    "height": "6'4\"",
+    "reach": "79\"",
+    "age": "37",
+    "last5": [
+      { "opponent": "Magomed Ankalaev", "result": "W", "method": "KO/TKO", "round": "1", "date": "2025-10-04" },
+      { "opponent": "Magomed Ankalaev", "result": "L", "method": "UD", "round": "5", "date": "2025-03-13" },
+      { "opponent": "Jiri Prochazka", "result": "W", "method": "TKO", "round": "2", "date": "2024-06-29" },
+      { "opponent": "Jamahal Hill", "result": "W", "method": "KO/TKO", "round": "1", "date": "2024-04-13" },
+      { "opponent": "Jan Blachowicz", "result": "W", "method": "UD", "round": "3", "date": "2023-07-29" }
+    ]
+  },
+
+  "alexander-volkanovski": {
+    "name": "Alexander Volkanovski",
+    "nickname": "",
+    "country": "Australia",
+    "flag": "🇦🇺",
+    "record": "27-4",
+    "division": "Featherweight",
+    "stance": "Orthodox",
+    "height": "5'6\"",
+    "reach": "71\"",
+    "age": "35",
+    "last5": [
+      { "opponent": "Diego Lopes", "result": "W", "method": "UD", "round": "5", "date": "2025-04-12" },
+      { "opponent": "Ilia Topuria", "result": "L", "method": "KO/TKO", "round": "2", "date": "2024-02-17" },
+      { "opponent": "Islam Makhachev", "result": "L", "method": "KO/TKO", "round": "1", "date": "2023-10-21" },
+      { "opponent": "Islam Makhachev", "result": "L", "method": "UD", "round": "5", "date": "2023-02-11" },
+      { "opponent": "Max Holloway", "result": "W", "method": "UD", "round": "5", "date": "2022-07-02" }
+    ]
+  },
+
+  "petr-yan": {
+    "name": "Petr Yan",
+    "nickname": "",
+    "country": "Russia",
+    "flag": "🇷🇺",
+    "record": "17-5",
+    "division": "Bantamweight",
+    "last5": []
+  },
+
+  "merab-dvalishvili": {
+    "name": "Merab Dvalishvili",
+    "nickname": "",
+    "country": "Georgia",
+    "flag": "🇬🇪",
+    "record": "17-4",
+    "division": "Bantamweight",
+    "last5": []
+  },
+
+  "tom-aspinall": {
+    "name": "Tom Aspinall",
+    "nickname": "",
+    "country": "United Kingdom",
+    "flag": "🇬🇧",
+    "record": "14-3",
+    "division": "Heavyweight",
+    "last5": []
+  },
+
+  "alexandre-pantoja": {
+    "name": "Alexandre Pantoja",
+    "nickname": "",
+    "country": "Brazil",
+    "flag": "🇧🇷",
+    "record": "28-5",
+    "division": "Flyweight",
+    "last5": []
+  },
+
+  "max-holloway": {
+    "name": "Max Holloway",
+    "nickname": "",
+    "country": "United States",
+    "flag": "🇺🇸",
+    "record": "26-8",
+    "division": "Featherweight",
+    "last5": []
+  },
+
+  "dricus-du-plessis": {
+    "name": "Dricus Du Plessis",
+    "nickname": "",
+    "country": "South Africa",
+    "flag": "🇿🇦",
+    "record": "21-2",
+    "division": "Middleweight",
+    "last5": []
+  },
+
+  "joshua-van": {
+    "name": "Joshua Van",
+    "nickname": "",
+    "country": "Myanmar",
+    "flag": "🇲🇲",
+    "record": "11-1",
+    "division": "Flyweight",
+    "last5": []
+  },
+
+  "magomed-ankalaev": {
+    "name": "Magomed Ankalaev",
+    "nickname": "",
+    "country": "Russia",
+    "flag": "🇷🇺",
+    "record": "19-1-1",
+    "division": "Light Heavyweight",
+    "last5": []
+  },
+
+  "jack-della-maddalena": {
+    "name": "Jack Della Maddalena",
+    "nickname": "",
+    "country": "Australia",
+    "flag": "🇦🇺",
+    "record": "18-3",
+    "division": "Welterweight",
+    "last5": []
+  },
+
+  "arman-tsarukyan": {
+    "name": "Arman Tsarukyan",
+    "nickname": "",
+    "country": "Armenia",
+    "flag": "🇦🇲",
+    "record": "22-3",
+    "division": "Lightweight",
+    "last5": []
+  },
+
+  "paddy-pimblett": {
+    "name": "Paddy Pimblett",
+    "nickname": "The Baddy",
+    "country": "England",
+    "flag": "🇬🇧",
+    "record": "23-3",
+    "division": "Lightweight",
+    "stance": "Orthodox",
+    "height": "5'10\"",
+    "reach": "73\"",
+    "age": "30",
+    "last5": [
+      { "opponent": "Michael Chandler", "result": "W", "method": "TKO", "round": "3", "date": "2025-04-12" },
+      { "opponent": "Bobby Green", "result": "W", "method": "SUB", "round": "1", "date": "2024-07-27" },
+      { "opponent": "Tony Ferguson", "result": "W", "method": "DEC", "round": "3", "date": "2023-12-16" },
+      { "opponent": "Jared Gordon", "result": "W", "method": "DEC", "round": "3", "date": "2022-12-10" },
+      { "opponent": "Jordan Leavitt", "result": "W", "method": "SUB", "round": "2", "date": "2022-07-23" }
+    ]
+  }
+}

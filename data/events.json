@@ -1,0 +1,106 @@
+[
+  {
+    "id": "ufc-311",
+    "name": "UFC 311: Gaethje vs Pimblett",
+    "type": "PPV",
+    "date": "Sat, Jan 24, 2026 • 7:00 PM",
+    "location": "Las Vegas, NV",
+    "venue": "T-Mobile Arena",
+    "poster": "images/UFC-311.jpeg",
+    "mainCard": [
+      { "a": "Justin Gaethje", "b": "Paddy Pimblett", "weight": "Lightweight", "rounds": "5 Rds", "ranked": true, "titleFight": true, "slot": "main" },
+      { "a": "Sean O'Malley", "b": "Song Yadong", "weight": "Bantamweight", "rounds": "5 Rds", "ranked": true, "titleFight": false, "slot": "comain" },
+      { "a": "Derrick Lewis", "b": "Waldo Cortes-Acosta", "weight": "Heavyweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
+      { "a": "Arnold Allen", "b": "Jean Silva", "weight": "Featherweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
+      { "a": "Michael Johnson", "b": "Alexander Hernandez", "weight": "Lightweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+    ],
+    "prelims": [
+      { "a": "Umar Nurmagomedov", "b": "Deiveson Figueiredo", "weight": "Bantamweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
+      { "a": "Alex Perez", "b": "Charles Johnson", "weight": "Flyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
+      { "a": "Nikita Krylov", "b": "Modestas Bukauskas", "weight": "Light Heavyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
+      { "a": "Ricky Turcios", "b": "Cameron Smotherman", "weight": "Bantamweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+    ],
+    "earlyPrelims": [
+      { "a": "Atiba Gautier", "b": "Andrey Pulyaev", "weight": "Middleweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
+      { "a": "Josh Hokit", "b": "Denzel Freeman", "weight": "Heavyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+    ]
+  },
+
+  {
+    "id": "fn-paris",
+    "name": "UFC Fight Night: Paris",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Feb 14, 2026 • 1:00 PM",
+    "location": "Paris, France",
+    "venue": "Accor Arena",
+    "poster": "images/UFC-311.jpeg",
+    "mainCard": [
+      { "a": "Ciryl Gane", "b": "Jailton Almeida", "weight": "Heavyweight", "rounds": "5 Rds", "ranked": true, "titleFight": false, "slot": "main" },
+      { "a": "Benoît Saint Denis", "b": "Mateusz Gamrot", "weight": "Lightweight", "rounds": "3 Rds", "ranked": true, "titleFight": false, "slot": "comain" },
+      { "a": "Manon Fiorot", "b": "Natalia Silva", "weight": "Flyweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
+      { "a": "Nassourdine Imavov", "b": "Roman Dolidze", "weight": "Middleweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
+      { "a": "William Gomis", "b": "Josh Culibao", "weight": "Featherweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+    ],
+    "prelims": [
+      { "a": "Morgan Charrière", "b": "Dan Ige", "weight": "Featherweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
+      { "a": "Fares Ziam", "b": "Diego Ferreira", "weight": "Lightweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
+      { "a": "Farid Basharat", "b": "Adrian Yanez", "weight": "Bantamweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+    ],
+    "earlyPrelims": [
+      { "a": "Example Fighter A", "b": "Example Fighter B", "weight": "Welterweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
+      { "a": "Example Fighter C", "b": "Example Fighter D", "weight": "Flyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+    ]
+  },
+
+  {
+    "id": "ufc-312",
+    "name": "UFC 312: Makhachev vs Tsarukyan 2",
+    "type": "PPV",
+    "date": "Sat, Mar 7, 2026 • 7:00 PM",
+    "location": "Abu Dhabi, UAE",
+    "venue": "Etihad Arena",
+    "poster": "images/UFC-311.jpeg",
+    "mainCard": [
+      { "a": "Islam Makhachev", "b": "Arman Tsarukyan", "weight": "Lightweight", "rounds": "5 Rds", "ranked": true, "titleFight": true, "slot": "main" },
+      { "a": "Leon Edwards", "b": "Belal Muhammad", "weight": "Welterweight", "rounds": "5 Rds", "ranked": true, "titleFight": true, "slot": "comain" },
+      { "a": "Ilia Topuria", "b": "Max Holloway", "weight": "Featherweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
+      { "a": "Khamzat Chimaev", "b": "Robert Whittaker", "weight": "Middleweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
+      { "a": "Alex Pereira", "b": "Jiří Procházka", "weight": "Light Heavyweight", "rounds": "3 Rds", "ranked": true, "titleFight": false }
+    ],
+    "prelims": [
+      { "a": "Dustin Poirier", "b": "Michael Chandler", "weight": "Lightweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
+      { "a": "Sean Brady", "b": "Gilbert Burns", "weight": "Welterweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
+      { "a": "Movsar Evloev", "b": "Arnold Allen", "weight": "Featherweight", "rounds": "3 Rds", "ranked": true, "titleFight": false }
+    ],
+    "earlyPrelims": [
+      { "a": "Example Fighter E", "b": "Example Fighter F", "weight": "Bantamweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
+      { "a": "Example Fighter G", "b": "Example Fighter H", "weight": "Strawweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+    ]
+  },
+
+  {
+    "id": "fn-texas",
+    "name": "UFC Fight Night: Texas",
+    "type": "FIGHT NIGHT",
+   "date": "2026-04-04",
+   "location": "Austin, TX",
+    "venue": "Moody Center",
+    "poster": "images/UFC-311.jpeg",
+    "mainCard": [
+      { "a": "Cory Sandhagen", "b": "Petr Yan", "weight": "Bantamweight", "rounds": "5 Rds", "ranked": true, "titleFight": false, "slot": "main" },
+      { "a": "Justin Gaethje", "b": "Rafael Fiziev", "weight": "Lightweight", "rounds": "3 Rds", "ranked": true, "titleFight": false, "slot": "comain" },
+      { "a": "Jared Cannonier", "b": "Paulo Costa", "weight": "Middleweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
+      { "a": "Merab Dvalishvili", "b": "Marlon Vera", "weight": "Bantamweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
+      { "a": "Kevin Holland", "b": "Stephen Thompson", "weight": "Welterweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+    ],
+    "prelims": [
+      { "a": "Example Fighter I", "b": "Example Fighter J", "weight": "Flyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
+      { "a": "Example Fighter K", "b": "Example Fighter L", "weight": "Light Heavyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
+      { "a": "Example Fighter M", "b": "Example Fighter N", "weight": "Featherweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+    ],
+    "earlyPrelims": [
+      { "a": "Example Fighter O", "b": "Example Fighter P", "weight": "Lightweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
+      { "a": "Example Fighter Q", "b": "Example Fighter R", "weight": "Women’s Flyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+    ]
+  }
+]
