@@ -180,6 +180,16 @@ def chat():
         # Get response from Lucas Bot with page context
         response = chat_with_lucas(user_message, conversation_history, page_context)
         
+        @app.route('/api/news')
+def get_all_news():
+    """Get all news"""
+    news = load_json('news.json')
+    
+    if news is None:
+        return jsonify({'error': 'News data not found'}), 404
+    
+    return jsonify(news)
+        
         return jsonify({
             'response': response,
             'success': True
