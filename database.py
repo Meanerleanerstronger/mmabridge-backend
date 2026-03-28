@@ -93,6 +93,19 @@ def create_tables():
         )
     ''')
     
+    # EVENT RATINGS TABLE
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS event_ratings (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            event_id TEXT NOT NULL,
+            event_name TEXT NOT NULL,
+            hype_rating INTEGER NOT NULL CHECK(hype_rating BETWEEN 1 AND 5),
+            fotn_prediction TEXT,
+            review_text TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+
     conn.commit()
     conn.close()
     print("✅ Database tables created successfully!")
@@ -308,6 +321,73 @@ def init_database():
     print("=" * 50)
     print("✅ DATABASE READY!")
     print("=" * 50)
+
+def save_event_rating(event_id, event_name, hype_rating, fotn_prediction=None, review_text=None):
+    """Save an event rating to the database"""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    # Add column if missing (migration)
+    try:
+        cursor.execute('ALTER TABLE event_ratings ADD COLUMN review_text TEXT')
+    except sqlite3.OperationalError:
+        pass
+    cursor.execute('''
+        INSERT INTO event_ratings (event_id, event_name, hype_rating, fotn_prediction, review_text)
+        VALUES (?, ?, ?, ?, ?)
+    ''', (event_id, event_name, hype_rating, fotn_prediction, review_text))
+    conn.commit()
+    rating_id = cursor.lastrowid
+    conn.close()
+    return rating_id
+
+def get_event_ratings(event_id):
+    """Get all ratings for a specific event"""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute('''
+        SELECT * FROM event_ratings WHERE event_id = ? ORDER BY created_at DESC
+    ''', (event_id,))
+    rows = cursor.fetchall()
+    conn.close()
+    ratings = []
+    for row in rows:
+        ratings.append({
+            'id': row['id'],
+            'event_id': row['event_id'],
+            'event_name': row['event_name'],
+            'hype_rating': row['hype_rating'],
+            'fotn_prediction': row['fotn_prediction'],
+            'created_at': row['created_at']
+        })
+    return ratings
+
+def get_event_avg_rating(event_id):
+    """Get the average hype rating and FOTN predictions for an event"""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute('''
+        SELECT 
+            COUNT(*) as total_ratings,
+            AVG(hype_rating) as avg_hype,
+            fotn_prediction,
+            COUNT(fotn_prediction) as fotn_votes
+        FROM event_ratings
+        WHERE event_id = ?
+        GROUP BY fotn_prediction
+        ORDER BY fotn_votes DESC
+    ''', (event_id,))
+    rows = cursor.fetchall()
+    conn.close()
+    if not rows:
+        return {'total_ratings': 0, 'avg_hype': None, 'top_fotn': None}
+    # First row has the top FOTN pick
+    return {
+        'total_ratings': rows[0]['total_ratings'],
+        'avg_hype': round(rows[0]['avg_hype'], 1) if rows[0]['avg_hype'] else None,
+        'top_fotn': rows[0]['fotn_prediction']
+    }
 
 # Run this when script is executed directly
 if __name__ == '__main__':

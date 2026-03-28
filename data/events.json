@@ -1,106 +1,7629 @@
 [
   {
-    "id": "ufc-311",
-    "name": "UFC 311: Gaethje vs Pimblett",
-    "type": "PPV",
-    "date": "Sat, Jan 24, 2026 • 7:00 PM",
-    "location": "Las Vegas, NV",
-    "venue": "T-Mobile Arena",
-    "poster": "images/UFC-311.jpeg",
-    "mainCard": [
-      { "a": "Justin Gaethje", "b": "Paddy Pimblett", "weight": "Lightweight", "rounds": "5 Rds", "ranked": true, "titleFight": true, "slot": "main" },
-      { "a": "Sean O'Malley", "b": "Song Yadong", "weight": "Bantamweight", "rounds": "5 Rds", "ranked": true, "titleFight": false, "slot": "comain" },
-      { "a": "Derrick Lewis", "b": "Waldo Cortes-Acosta", "weight": "Heavyweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
-      { "a": "Arnold Allen", "b": "Jean Silva", "weight": "Featherweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
-      { "a": "Michael Johnson", "b": "Alexander Hernandez", "weight": "Lightweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
-    ],
-    "prelims": [
-      { "a": "Umar Nurmagomedov", "b": "Deiveson Figueiredo", "weight": "Bantamweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
-      { "a": "Alex Perez", "b": "Charles Johnson", "weight": "Flyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
-      { "a": "Nikita Krylov", "b": "Modestas Bukauskas", "weight": "Light Heavyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
-      { "a": "Ricky Turcios", "b": "Cameron Smotherman", "weight": "Bantamweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
-    ],
-    "earlyPrelims": [
-      { "a": "Atiba Gautier", "b": "Andrey Pulyaev", "weight": "Middleweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
-      { "a": "Josh Hokit", "b": "Denzel Freeman", "weight": "Heavyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
-    ]
-  },
-
-  {
-    "id": "fn-paris",
-    "name": "UFC Fight Night: Paris",
+    "id": "ufc-fight-night-usman-vs-buckley",
+    "name": "UFC Fight Night: Usman vs. Buckley",
     "type": "FIGHT NIGHT",
-    "date": "Sat, Feb 14, 2026 • 1:00 PM",
+    "date": "2025-04-26",
+    "isoDate": "2025-04-26",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - The fighters are",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
+  },
+  {
+    "id": "ufc-fight-night-lopes-vs-silva",
+    "name": "UFC Fight Night: Lopes vs. Silva",
+    "type": "FIGHT NIGHT",
+    "date": "2025-05-03",
+    "isoDate": "2025-05-03",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - The fighters are",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
+  },
+  {
+    "id": "ufc-fight-night-taira-vs-park",
+    "name": "UFC Fight Night: Taira vs. Park",
+    "type": "FIGHT NIGHT",
+    "date": "2025-06-14",
+    "isoDate": "2025-06-14",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - The fighters are",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
+  },
+  {
+    "id": "ufc-fight-night-hill-vs-rountree",
+    "name": "UFC Fight Night: Hill vs. Rountree",
+    "type": "FIGHT NIGHT",
+    "date": "2025-06-21",
+    "isoDate": "2025-06-21",
+    "location": "Baku, Azerbaijan",
+    "venue": "Baku Crystal Hall",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - The fighters are",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
+  },
+  {
+    "id": "ufc-fight-night-dolidze-vs-hernandez",
+    "name": "UFC Fight Night: Dolidze vs. Hernandez",
+    "type": "FIGHT NIGHT",
+    "date": "2025-08-09",
+    "isoDate": "2025-08-09",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - The fighters are",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
+  },
+  {
+    "id": "ufc-fight-night-imavov-vs-borralho",
+    "name": "UFC Fight Night: Imavov vs. Borralho",
+    "type": "FIGHT NIGHT",
+    "date": "2025-09-06",
+    "isoDate": "2025-09-06",
     "location": "Paris, France",
     "venue": "Accor Arena",
-    "poster": "images/UFC-311.jpeg",
+    "poster": "",
     "mainCard": [
-      { "a": "Ciryl Gane", "b": "Jailton Almeida", "weight": "Heavyweight", "rounds": "5 Rds", "ranked": true, "titleFight": false, "slot": "main" },
-      { "a": "Benoît Saint Denis", "b": "Mateusz Gamrot", "weight": "Lightweight", "rounds": "3 Rds", "ranked": true, "titleFight": false, "slot": "comain" },
-      { "a": "Manon Fiorot", "b": "Natalia Silva", "weight": "Flyweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
-      { "a": "Nassourdine Imavov", "b": "Roman Dolidze", "weight": "Middleweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
-      { "a": "William Gomis", "b": "Josh Culibao", "weight": "Featherweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - The fighters are",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
     ],
-    "prelims": [
-      { "a": "Morgan Charrière", "b": "Dan Ige", "weight": "Featherweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
-      { "a": "Fares Ziam", "b": "Diego Ferreira", "weight": "Lightweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
-      { "a": "Farid Basharat", "b": "Adrian Yanez", "weight": "Bantamweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
-    ],
-    "earlyPrelims": [
-      { "a": "Example Fighter A", "b": "Example Fighter B", "weight": "Welterweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
-      { "a": "Example Fighter C", "b": "Example Fighter D", "weight": "Flyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
-    ]
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
   },
-
   {
-    "id": "ufc-312",
-    "name": "UFC 312: Makhachev vs Tsarukyan 2",
-    "type": "PPV",
-    "date": "Sat, Mar 7, 2026 • 7:00 PM",
-    "location": "Abu Dhabi, UAE",
-    "venue": "Etihad Arena",
-    "poster": "images/UFC-311.jpeg",
-    "mainCard": [
-      { "a": "Islam Makhachev", "b": "Arman Tsarukyan", "weight": "Lightweight", "rounds": "5 Rds", "ranked": true, "titleFight": true, "slot": "main" },
-      { "a": "Leon Edwards", "b": "Belal Muhammad", "weight": "Welterweight", "rounds": "5 Rds", "ranked": true, "titleFight": true, "slot": "comain" },
-      { "a": "Ilia Topuria", "b": "Max Holloway", "weight": "Featherweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
-      { "a": "Khamzat Chimaev", "b": "Robert Whittaker", "weight": "Middleweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
-      { "a": "Alex Pereira", "b": "Jiří Procházka", "weight": "Light Heavyweight", "rounds": "3 Rds", "ranked": true, "titleFight": false }
-    ],
-    "prelims": [
-      { "a": "Dustin Poirier", "b": "Michael Chandler", "weight": "Lightweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
-      { "a": "Sean Brady", "b": "Gilbert Burns", "weight": "Welterweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
-      { "a": "Movsar Evloev", "b": "Arnold Allen", "weight": "Featherweight", "rounds": "3 Rds", "ranked": true, "titleFight": false }
-    ],
-    "earlyPrelims": [
-      { "a": "Example Fighter E", "b": "Example Fighter F", "weight": "Bantamweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
-      { "a": "Example Fighter G", "b": "Example Fighter H", "weight": "Strawweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
-    ]
-  },
-
-  {
-    "id": "fn-texas",
-    "name": "UFC Fight Night: Texas",
+    "id": "ufc-fight-night-walker-vs-zhang",
+    "name": "UFC Fight Night: Walker vs. Zhang",
     "type": "FIGHT NIGHT",
-   "date": "2026-04-04",
-   "location": "Austin, TX",
-    "venue": "Moody Center",
-    "poster": "images/UFC-311.jpeg",
+    "date": "2025-09-20",
+    "isoDate": "2025-09-20",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
     "mainCard": [
-      { "a": "Cory Sandhagen", "b": "Petr Yan", "weight": "Bantamweight", "rounds": "5 Rds", "ranked": true, "titleFight": false, "slot": "main" },
-      { "a": "Justin Gaethje", "b": "Rafael Fiziev", "weight": "Lightweight", "rounds": "3 Rds", "ranked": true, "titleFight": false, "slot": "comain" },
-      { "a": "Jared Cannonier", "b": "Paulo Costa", "weight": "Middleweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
-      { "a": "Merab Dvalishvili", "b": "Marlon Vera", "weight": "Bantamweight", "rounds": "3 Rds", "ranked": true, "titleFight": false },
-      { "a": "Kevin Holland", "b": "Stephen Thompson", "weight": "Welterweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - The fighters are",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
     ],
-    "prelims": [
-      { "a": "Example Fighter I", "b": "Example Fighter J", "weight": "Flyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
-      { "a": "Example Fighter K", "b": "Example Fighter L", "weight": "Light Heavyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
-      { "a": "Example Fighter M", "b": "Example Fighter N", "weight": "Featherweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
+  },
+  {
+    "id": "ufc-fight-night-garcia-vs-onama",
+    "name": "UFC Fight Night: Garcia vs. Onama",
+    "type": "FIGHT NIGHT",
+    "date": "2025-11-01",
+    "isoDate": "2025-11-01",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - Round",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
     ],
-    "earlyPrelims": [
-      { "a": "Example Fighter O", "b": "Example Fighter P", "weight": "Lightweight", "rounds": "3 Rds", "ranked": false, "titleFight": false },
-      { "a": "Example Fighter Q", "b": "Example Fighter R", "weight": "Women’s Flyweight", "rounds": "3 Rds", "ranked": false, "titleFight": false }
-    ]
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
+  },
+  {
+    "id": "ufc-fight-night-bonfim-vs-brown",
+    "name": "UFC Fight Night: Bonfim vs. Brown",
+    "type": "FIGHT NIGHT",
+    "date": "2025-11-08",
+    "isoDate": "2025-11-08",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - Round",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
+  },
+  {
+    "id": "ufc-324-gaethje-vs-pimblett",
+    "name": "UFC 324: Gaethje vs. Pimblett",
+    "type": "PPV",
+    "date": "2026-01-24",
+    "isoDate": "2026-01-24",
+    "location": "Las Vegas, NV",
+    "venue": "T-Mobile Arena",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - Round",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
+  },
+  {
+    "id": "ufc-fight-night-strickland-vs-hernandez",
+    "name": "UFC Fight Night: Strickland vs. Hernandez",
+    "type": "FIGHT NIGHT",
+    "date": "2026-02-21",
+    "isoDate": "2026-02-21",
+    "location": "Houston, TX",
+    "venue": "Toyota Center",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - Round",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
+  },
+  {
+    "id": "ufc-fight-night-emmett-vs-vallejos",
+    "name": "UFC Fight Night: Emmett vs. Vallejos",
+    "type": "FIGHT NIGHT",
+    "date": "2026-03-14",
+    "isoDate": "2026-03-14",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "https://images.tapology.com/poster_images/136874/profile/G-jxF1cWcAAtteF.jpg",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - Round",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
+  },
+  {
+    "id": "ufc-fight-night-evloev-vs-murphy",
+    "name": "UFC Fight Night: Evloev vs. Murphy",
+    "type": "FIGHT NIGHT",
+    "date": "2026-03-21",
+    "isoDate": "2026-03-21",
+    "location": "London, England",
+    "venue": "The O2",
+    "poster": "https://images.tapology.com/poster_images/136856/profile/UFC_Fight_Night_Evloev_Murphy_poster.jpeg",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - Round",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "completed"
+  },
+  {
+    "id": "ufc-fight-night-adesanya-vs-pyfer",
+    "name": "UFC Fight Night: Adesanya vs. Pyfer",
+    "type": "FIGHT NIGHT",
+    "date": "2026-03-28",
+    "isoDate": "2026-03-28",
+    "location": "Seattle, WA",
+    "venue": "Climate Pledge Arena",
+    "poster": "https://images.tapology.com/poster_images/136873/profile/G-jxF1cWcAAtteF.jpg",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - Round",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "upcoming"
+  },
+  {
+    "id": "ufc-fight-night-moicano-vs-duncan",
+    "name": "UFC Fight Night: Moicano vs. Duncan",
+    "type": "FIGHT NIGHT",
+    "date": "2026-04-04",
+    "isoDate": "2026-04-04",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - Round",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "upcoming"
+  },
+  {
+    "id": "ufc-327-proch-zka-vs-ulberg",
+    "name": "UFC 327: Proch\u00e1zka vs. Ulberg",
+    "type": "PPV",
+    "date": "2026-04-11",
+    "isoDate": "2026-04-11",
+    "location": "Miami, FL",
+    "venue": "Kaseya Center",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - Round",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "upcoming"
+  },
+  {
+    "id": "ufc-fight-night-allen-vs-costa",
+    "name": "UFC Fight Night: Allen vs. Costa",
+    "type": "FIGHT NIGHT",
+    "date": "2026-05-16",
+    "isoDate": "2026-05-16",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - Round",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Josh Fremd",
+        "b": "Jarrah Hussein Al-Silawi - The fight",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "upcoming"
+  },
+  {
+    "id": "ufc-250-topuria-vs-gaethje",
+    "name": "UFC 250: Topuria vs. Gaethje",
+    "type": "PPV",
+    "date": "2026-06-14",
+    "isoDate": "2026-06-14",
+    "location": "Washington, D.C.",
+    "venue": "White House South Lawn",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - Round",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Josh Fremd",
+        "b": "Jarrah Hussein Al-Silawi - The fight",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "upcoming"
+  },
+  {
+    "id": "ufc-fight-night-baku",
+    "name": "UFC Fight Night: Baku",
+    "type": "FIGHT NIGHT",
+    "date": "2026-06-27",
+    "isoDate": "2026-06-27",
+    "location": "Baku, Azerbaijan",
+    "venue": "Baku Crystal Hall",
+    "poster": "",
+    "mainCard": [
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain"
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Eblen",
+        "b": "Battle",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Adesanya",
+        "b": "Pyfer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Islam Mezhidov",
+        "b": "Ljubo Jalovi",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Katharina Rychkova",
+        "b": "Dominika Steczkowska",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Taulant Bektashi",
+        "b": "Lars Wohlschlager",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Berat Uyar",
+        "b": "Romeo Ilzer",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Kaipo Gallegos defeats Julia",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Moses Itauma defeats Jermai",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Cristian Cangelosi vs. Migue",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Fundora",
+        "b": "Thurman Robert Guerrero Jr. defeats",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Rafael Gemaque",
+        "b": "Azamat Khadzhakayev",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Gerome Warburton defeats Na",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Nguyen",
+        "b": "Mathis Orsini",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "James Clarke",
+        "b": "Ram\u00f3n Cardozo",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anton Potocki",
+        "b": "Gino Ghalehpardaz",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Bilal Nasari",
+        "b": "Luis Guerrero",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Liam Davies defeats Frances",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Willy Hutchinson defeats Ez",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Michael Gomez Jnr defeats J",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Itauma",
+        "b": "Franklin Josh Holmes defeats Alex Mu",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr. - Round",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Josh Fremd",
+        "b": "Jarrah Hussein Al-Silawi - The fight",
+        "weight": "",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "status": "upcoming"
   }
 ]

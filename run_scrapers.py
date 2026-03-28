@@ -1,45 +1,38 @@
 # ==============================================
-# MMA BRIDGE - MASTER SCRAPER
+# MMA BRIDGE — MASTER SCRAPER
+# Run daily via Render Cron Job:
+#   Command: python3 run_scrapers.py
+#   Schedule: 0 6 * * *  (6am UTC daily)
 # ==============================================
 
-"""
-This script runs all scrapers to update the database
-Run this manually or set up a cron job to run daily
-"""
-
-from scrape_events import scrape_and_update_events
-from scrape_fighters import scrape_and_update_fighters
+from scrape_tapology import run as scrape_events
+from news_scraper import fetch_mma_news
 import time
 
-def run_all_scrapers():
-    """Run all scrapers"""
-    print("\n")
-    print("=" * 60)
-    print("🕷️  MMA BRIDGE - MASTER SCRAPER")
-    print("=" * 60)
-    print("\n")
-    
-    # Scrape events
+def run_all():
+    print('\n' + '='*56)
+    print('🕷  MMA BRIDGE — DAILY SCRAPER')
+    print('='*56 + '\n')
+
+    # 1. Events + fight cards from Tapology
     try:
-        scrape_and_update_events()
-        print("\n")
+        print('--- STEP 1: Events ---')
+        scrape_events()
     except Exception as e:
-        print(f"❌ Events scraper failed: {e}\n")
-    
-    # Wait a bit to avoid rate limiting
-    time.sleep(2)
-    
-    # Scrape fighters
+        print(f'❌ Events scraper failed: {e}')
+
+    time.sleep(3)
+
+    # 2. MMA news from NewsAPI
     try:
-        scrape_and_update_fighters()
-        print("\n")
+        print('\n--- STEP 2: News ---')
+        fetch_mma_news()
     except Exception as e:
-        print(f"❌ Fighter scraper failed: {e}\n")
-    
-    print("=" * 60)
-    print("✅ ALL SCRAPERS COMPLETE!")
-    print("=" * 60)
-    print("\n")
+        print(f'❌ News scraper failed: {e}')
+
+    print('\n' + '='*56)
+    print('✅ Daily scrape complete')
+    print('='*56 + '\n')
 
 if __name__ == '__main__':
-    run_all_scrapers()
+    run_all()

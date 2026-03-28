@@ -1,0 +1,921 @@
+[
+  {
+    "id": "ufc-fight-night-usman-vs-buckley",
+    "name": "UFC Fight Night: Usman vs. Buckley",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Apr 26, 2025",
+    "isoDate": "2025-04-26",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Kamaru Usman",
+        "b": "Joaquin Buckley",
+        "weight": "Welterweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Rose Namajunas",
+        "b": "Mackenzie Dern",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain"
+      },
+      {
+        "a": "Edmen Shahbazyan",
+        "b": "Andre Petroski",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Anthony Menifield",
+        "b": "Oumar Sy",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Ricky Simon",
+        "b": "Cameron Smotherman",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Cody Brundage",
+        "b": "Mansur Abdul-Malik",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Paul Craig",
+        "b": "Roberto Bellato",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Mark Wellmaker",
+        "b": "Kris Moutinho",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Jessica Horth",
+        "b": "Valeriu Mircea Demopoulos",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "earlyPrelims": []
+  },
+  {
+    "id": "ufc-fight-night-imavov-vs-borralho",
+    "name": "UFC Fight Night: Imavov vs. Borralho",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Sep 6, 2025",
+    "isoDate": "2025-09-06",
+    "location": "Paris, France",
+    "venue": "Accor Arena",
+    "poster": "",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Nasssourdine Imavov",
+        "b": "Caio Borralho",
+        "weight": "Middleweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Beno\u00eet Saint Denis",
+        "b": "Mauricio Ruffy",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain"
+      },
+      {
+        "a": "Modestas Bukauskas",
+        "b": "Paul Craig",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Oumar Sy",
+        "b": "Bogdan Ribeiro",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Raulian Paiva",
+        "b": "Alessandro Fakhretdinov",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Bolaji Oki",
+        "b": "Mason Jones",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "William Gomis",
+        "b": "Gabriel Santos",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Brad Tavares",
+        "b": "Kevin Jousset",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "earlyPrelims": []
+  },
+  {
+    "id": "ufc-324-gaethje-vs-pimblett",
+    "name": "UFC 324: Gaethje vs. Pimblett",
+    "type": "PPV",
+    "date": "Sat, Jan 24, 2026",
+    "isoDate": "2026-01-24",
+    "location": "Las Vegas, NV",
+    "venue": "T-Mobile Arena",
+    "poster": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8f/UFC_324_event_poster.jpg/220px-UFC_324_event_poster.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Justin Gaethje",
+        "b": "Paddy Pimblett",
+        "weight": "Lightweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Sean O'Malley",
+        "b": "Song Yadong",
+        "weight": "Bantamweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain"
+      },
+      {
+        "a": "Waldo Cortes-Acosta",
+        "b": "Derrick Lewis",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Jean Silva",
+        "b": "Arnold Allen",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Nat\u00e1lia Silva",
+        "b": "Rose Namajunas",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Umar Nurmagomedov",
+        "b": "Deiveson Figueiredo",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Nikita Krylov",
+        "b": "Modestas Bukauskas",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Alex Perez",
+        "b": "Charles Johnson",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Ricky Turcios",
+        "b": "Cameron Smotherman",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Ateba Gautier",
+        "b": "Andrey Pulyaev",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Josh Hokit",
+        "b": "Denzel Freeman",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ]
+  },
+  {
+    "id": "ufc-fight-night-strickland-vs-hernandez",
+    "name": "UFC Fight Night: Strickland vs. Hernandez",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Feb 21, 2026",
+    "isoDate": "2026-02-21",
+    "location": "Houston, TX",
+    "venue": "Toyota Center",
+    "poster": "",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Sean Strickland",
+        "b": "Caio Borralho",
+        "weight": "Middleweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Renato Moicano",
+        "b": "Drew Dober",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain"
+      },
+      {
+        "a": "Aleksandr Hernandez",
+        "b": "Diego Lopes",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Kelvin Gastelum",
+        "b": "Dustin Stoltzfus",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Santiago Luna",
+        "b": "Quang Le",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Dusko Todorovic",
+        "b": "Jose Medina",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Tatiana Suarez",
+        "b": "Amanda Lemos",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Zach Reese",
+        "b": "Sedriques Dumas",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Jesus Aguilar",
+        "b": "Luis Gurule",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Alden Coria",
+        "b": "Alessandro Costa",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ]
+  },
+  {
+    "id": "ufc-fight-night-emmett-vs-vallejos",
+    "name": "UFC Fight Night: Emmett vs. Vallejos",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Mar 14, 2026",
+    "isoDate": "2026-03-14",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Josh Emmett",
+        "b": "Kevin Vallejos",
+        "weight": "Featherweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Aljamain Sterling",
+        "b": "Youssef Zalal",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain"
+      },
+      {
+        "a": "Johnny Walker",
+        "b": "Mingyang Zhang",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Sergei Pavlovich",
+        "b": "Waldo Cortes-Acosta",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Lone'er Kavanagh",
+        "b": "Charles Johnson",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Michel Pereira",
+        "b": "Kyle Daukaus",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Talita Alencar",
+        "b": "Ariane Carnelossi",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Donte Johnson",
+        "b": "Sedriques Dumas",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Billy Elekana",
+        "b": "Khaos Williams",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Alice Ardelean",
+        "b": "Maria Conejo",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ]
+  },
+  {
+    "id": "ufc-fight-night-evloev-vs-murphy",
+    "name": "UFC Fight Night: Evloev vs. Murphy",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Mar 21, 2026",
+    "isoDate": "2026-03-21",
+    "location": "London, England",
+    "venue": "The O2",
+    "poster": "",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Movsar Evloev",
+        "b": "Lerone Murphy",
+        "weight": "Featherweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Paddy Pimblett",
+        "b": "Renato Moicano",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain"
+      },
+      {
+        "a": "Tom Aspinall",
+        "b": "Ciryl Gane",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Arnold Allen",
+        "b": "Edson Barboza",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Marc Diakiese",
+        "b": "Damir Ismagulov",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Luke Riley",
+        "b": "Mike Aswell Jr.",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chris Duncan",
+        "b": "Roman Dolidze",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Danny Silva",
+        "b": "Kyle Campbell",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Shanelle Dyer",
+        "b": "Rossana Oliveira",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Manel Kape",
+        "b": "Tatsuro Taira",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Brando Pericic",
+        "b": "Liam Sutherland",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ]
+  },
+  {
+    "id": "ufc-fight-night-adesanya-vs-pyfer",
+    "name": "UFC Fight Night: Adesanya vs. Pyfer",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Mar 28, 2026",
+    "isoDate": "2026-03-28",
+    "location": "Seattle, WA",
+    "venue": "Climate Pledge Arena",
+    "poster": "",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Israel Adesanya",
+        "b": "Joe Pyfer",
+        "weight": "Middleweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Alexa Grasso",
+        "b": "Maycee Barber",
+        "weight": "Women's Flyweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain"
+      },
+      {
+        "a": "Michael Chiesa",
+        "b": "Niko Price",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Julian Erosa",
+        "b": "Lerryan Douglas",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Mansur Abdul-Malik",
+        "b": "Yousri Belgaroui",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Terrance McKinney",
+        "b": "Kyle Nelson",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Ignacio Bahamondes",
+        "b": "Tofiq Musayev",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr.",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Marcin Tybura",
+        "b": "Tyrell Fortune",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Casey O'Neill",
+        "b": "Gabriella Fernandes",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Navajo Stirling",
+        "b": "Bruno Lopes",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ]
+  },
+  {
+    "id": "ufc-fight-night-moicano-vs-duncan",
+    "name": "UFC Fight Night: Moicano vs. Duncan",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Apr 4, 2026",
+    "isoDate": "2026-04-04",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
+    "status": "upcoming",
+    "mainCard": [
+      {
+        "a": "Renato Moicano",
+        "b": "Chris Duncan",
+        "weight": "Lightweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main"
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": []
+  },
+  {
+    "id": "ufc-327-proch-zka-vs-ulberg",
+    "name": "UFC 327: Proch\u00e1zka vs. Ulberg",
+    "type": "PPV",
+    "date": "Sat, Apr 11, 2026",
+    "isoDate": "2026-04-11",
+    "location": "Miami, FL",
+    "venue": "Kaseya Center",
+    "poster": "https://upload.wikimedia.org/wikipedia/en/thumb/7/74/UFC_327_event_poster.jpg/220px-UFC_327_event_poster.jpg",
+    "status": "upcoming",
+    "mainCard": [
+      {
+        "a": "Ji\u0159\u00ed Proch\u00e1zka",
+        "b": "Carlos Ulberg",
+        "weight": "Light Heavyweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Joshua Van",
+        "b": "Tatsuro Taira",
+        "weight": "Flyweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "comain"
+      },
+      {
+        "a": "Curtis Blaydes",
+        "b": "Josh Hokit",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Beneil Dariush",
+        "b": "Manuel Torres",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Dominick Reyes",
+        "b": "Johnny Walker",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Paulo Costa",
+        "b": "Azamat Murzakanov",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Patricio Pitbull",
+        "b": "Aaron Pico",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Mateusz Gamrot",
+        "b": "Esteban Ribovics",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Tatiana Suarez",
+        "b": "Lupita Godinez",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Cub Swanson",
+        "b": "Nate Landwehr",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Kevin Holland",
+        "b": "Randy Brown",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Kelvin Gastelum",
+        "b": "Vicente Luque",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Nazim Sadykhov",
+        "b": "MarQuel Mederos",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ]
+  },
+  {
+    "id": "ufc-fight-night-allen-vs-costa",
+    "name": "UFC Fight Night: Allen vs. Costa",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, May 16, 2026",
+    "isoDate": "2026-05-16",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "",
+    "status": "upcoming",
+    "mainCard": [
+      {
+        "a": "Arnold Allen",
+        "b": "Paulo Costa",
+        "weight": "Featherweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Aljamain Sterling",
+        "b": "Youssef Zalal",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain"
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": []
+  },
+  {
+    "id": "ufc-250-topuria-vs-gaethje",
+    "name": "UFC Freedom 250: Topuria vs. Gaethje",
+    "type": "PPV",
+    "date": "Sun, Jun 14, 2026",
+    "isoDate": "2026-06-14",
+    "location": "Washington, D.C.",
+    "venue": "White House South Lawn",
+    "poster": "",
+    "status": "upcoming",
+    "mainCard": [
+      {
+        "a": "Ilia Topuria",
+        "b": "Justin Gaethje",
+        "weight": "Lightweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main"
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": []
+  },
+  {
+    "id": "ufc-fight-night-baku",
+    "name": "UFC Fight Night: Baku",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Jun 27, 2026",
+    "isoDate": "2026-06-27",
+    "location": "Baku, Azerbaijan",
+    "venue": "Baku Crystal Hall",
+    "poster": "",
+    "status": "upcoming",
+    "mainCard": [
+      {
+        "a": "Brunno Ferreira",
+        "b": "TBA",
+        "weight": "Middleweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main"
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": []
+  }
+]
