@@ -1,49 +1,65 @@
+# ==============================================
+# MMA BRIDGE — NEWS SCRAPER
+# Fetches real MMA news from NewsAPI
+# Runs daily via run_scrapers.py
+# ==============================================
+
 import requests
 import json
+import os
 from datetime import datetime
 
-# ==============================================
-# MMA BRIDGE - NEWS API SCRAPER
-# ==============================================
-
-NEWS_API_KEY = "f01a690184c04eb0bc8a5a779981e461"  # Replace with your actual key
+NEWS_API_KEY = "f01a690184c04eb0bc8a5a779981e461"
+DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 
 def fetch_mma_news():
-    """Fetch latest MMA news from NewsAPI"""
-    
-    url = f"https://newsapi.org/v2/everything?q=UFC OR MMA&sortBy=publishedAt&apiKey={NEWS_API_KEY}&pageSize=20"
-    
+    """Fetch latest MMA/UFC news from NewsAPI"""
+    print("📰 Fetching MMA news from NewsAPI...")
+
+    url = (
+        f"https://newsapi.org/v2/everything"
+        f"?q=UFC+OR+MMA+OR+%22mixed+martial+arts%22"
+        f"&language=en"
+        f"&sortBy=publishedAt"
+        f"&pageSize=20"
+        f"&apiKey={NEWS_API_KEY}"
+    )
+
     try:
-        print("🔄 Fetching MMA news from NewsAPI...")
-        response = requests.get(url)
-        data = response.json()
-        
-        if response.status_code != 200:
-            print(f"❌ Error: {data.get('message', 'Unknown error')}")
+        r = requests.get(url, timeout=10)
+        data = r.json()
+
+        if r.status_code != 200:
+            print(f"❌ NewsAPI error: {data.get('message')}")
             return []
-        
-        news_articles = []
-        for article in data.get('articles', [])[:10]:
-            news_articles.append({
-                'title': article.get('title'),
-                'description': article.get('description'),
-                'url': article.get('url'),
-                'imageUrl': article.get('urlToImage'),
-                'source': article.get('source', {}).get('name'),
-                'publishedAt': article.get('publishedAt')
+
+        articles = []
+        for a in data.get('articles', [])[:15]:
+            # Skip removed/null articles
+            if not a.get('title') or a['title'] == '[Removed]':
+                continue
+            articles.append({
+                'title':       a.get('title', ''),
+                'description': a.get('description', ''),
+                'url':         a.get('url', ''),
+                'imageUrl':    a.get('urlToImage', ''),
+                'source':      a.get('source', {}).get('name', ''),
+                'publishedAt': a.get('publishedAt', ''),
             })
-        
-        # Save to JSON
-        with open('data/news.json', 'w') as f:
-            json.dump({'trending': news_articles}, f, indent=2)
-        
-        print(f"✅ Fetched {len(news_articles)} news articles!")
-        print(f"📝 Saved to data/news.json")
-        
-        return news_articles
-        
+
+        os.makedirs(DATA_DIR, exist_ok=True)
+        path = os.path.join(DATA_DIR, 'news.json')
+        with open(path, 'w') as f:
+            json.dump({
+                'trending':    articles,
+                'updatedAt':   datetime.utcnow().isoformat(),
+            }, f, indent=2)
+
+        print(f"✅ Saved {len(articles)} articles → data/news.json")
+        return articles
+
     except Exception as e:
-        print(f"❌ Error fetching news: {e}")
+        print(f"❌ News fetch error: {e}")
         return []
 
 if __name__ == '__main__':

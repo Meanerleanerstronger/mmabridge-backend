@@ -182,21 +182,67 @@ def trigger_scrape():
 
 @app.route('/api/news')
 def get_news():
-    """Get news data"""
+    """Get news — auto-fetch from NewsAPI if file missing or older than 6 hours"""
+    import time
+    news_path = os.path.join(DATA_DIR, 'news.json')
+
+    # Auto-refresh if missing or stale (>6 hours)
+    try:
+        age = time.time() - os.path.getmtime(news_path)
+        needs_refresh = age > 21600  # 6 hours
+    except:
+        needs_refresh = True
+
+    if needs_refresh:
+        try:
+            from news_scraper import fetch_mma_news
+            fetch_mma_news()
+        except Exception as e:
+            print(f"Auto news refresh failed: {e}")
+
     news = load_json('news.json')
     if news is None:
-        return jsonify({'error': 'News data not found'}), 404
+        return jsonify({'trending': [], 'error': 'News temporarily unavailable'}), 200
     return jsonify(news)
 
 @app.route('/api/news/trending')
 def get_trending_news():
-    """Get trending news"""
+    """Get trending news articles"""
     news = load_json('news.json')
     if news is None:
-        return jsonify({'error': 'News data not found'}), 404
+        return jsonify([])
     return jsonify(news.get('trending', []))
 
-@app.route('/api/rankings/pfp')
+@app.route('/api/news/search')
+def search_news():
+    """Search news for a specific query (e.g. fighter or event name)"""
+    query = request.args.get('q', '')
+    if not query:
+        return jsonify([])
+    try:
+        import requests as req
+        NEWS_API_KEY = os.getenv('NEWS_API_KEY', 'f01a690184c04eb0bc8a5a779981e461')
+        url = (f"https://newsapi.org/v2/everything"
+               f"?q={req.utils.quote(query)}&language=en&sortBy=publishedAt"
+               f"&pageSize=5&apiKey={NEWS_API_KEY}")
+        r = req.get(url, timeout=8)
+        data = r.json()
+        articles = [
+            {
+                'title':       a.get('title',''),
+                'description': a.get('description',''),
+                'url':         a.get('url',''),
+                'imageUrl':    a.get('urlToImage',''),
+                'source':      a.get('source',{}).get('name',''),
+                'publishedAt': a.get('publishedAt',''),
+            }
+            for a in data.get('articles',[])[:3]
+            if a.get('title') and a['title'] != '[Removed]'
+        ]
+        return jsonify(articles)
+    except Exception as e:
+        print(f"News search error: {e}")
+        return jsonify([])
 def get_pfp_rankings():
     """Get pound-for-pound rankings"""
     rankings = load_json('top_fighters.json')
