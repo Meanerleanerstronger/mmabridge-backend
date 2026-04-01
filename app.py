@@ -186,24 +186,21 @@ def health():
 
 @app.route('/api/news')
 def get_news():
-    """Get news — fetch fresh from GNews API, fallback to cached file"""
-    import time
-    GNEWS_KEY = os.getenv('GNEWS_API_KEY', '962d74e7eeb020eda44c20b170b4e82d')
+    """Get news — always fetch fresh from GNews, fallback key if first runs out"""
+    GNEWS_KEYS = [
+        os.getenv('GNEWS_API_KEY', '962d74e7eeb020eda44c20b170b4e82d'),
+        '77ee2ae117e135e8bd15d69a52c15ccf'  # backup key
+    ]
     news_path = os.path.join(DATA_DIR, 'news.json')
 
-    # Always fetch fresh from GNews (cache disabled until stable)
-    cache_fresh = False
-
-    if not cache_fresh:
+    for key in GNEWS_KEYS:
         try:
             import requests as req
             url = (
                 f"https://gnews.io/api/v4/search"
                 f"?q=%22UFC%22+OR+%22MMA%22+OR+%22Bellator%22"
-                f"&lang=en"
-                f"&country=us"
-                f"&max=10&sortby=publishedAt"
-                f"&apikey={GNEWS_KEY}"
+                f"&lang=en&country=us&max=10&sortby=publishedAt"
+                f"&apikey={key}"
             )
             r = req.get(url, timeout=8)
             if r.status_code == 200:
@@ -219,18 +216,23 @@ def get_news():
                     }
                     for a in data.get('articles', [])
                     if a.get('title')
-                    and not any(c in (a.get('title','') + a.get('description','')) 
+                    and not any(c in (a.get('title','') + a.get('description',''))
                                for c in ['«','»','¿','¡','ó','é','á','í','ú','ñ'])
                 ]
-                news_data = {'trending': articles, 'updatedAt': 'fresh'}
-                os.makedirs(DATA_DIR, exist_ok=True)
-                with open(news_path, 'w') as f:
-                    json.dump(news_data, f)
-                return jsonify(news_data)
+                if articles:
+                    news_data = {'trending': articles, 'updatedAt': 'fresh'}
+                    os.makedirs(DATA_DIR, exist_ok=True)
+                    with open(news_path, 'w') as f:
+                        json.dump(news_data, f)
+                    return jsonify(news_data)
+            elif r.status_code == 429 or r.status_code == 403:
+                print(f"GNews key exhausted, trying backup...")
+                continue
         except Exception as e:
-            print(f"GNews fetch failed: {e}")
+            print(f"GNews error: {e}")
+            continue
 
-    # Fallback to cached file
+    # Both keys failed — return cached file
     news = load_json('news.json')
     if news is None:
         return jsonify({'trending': []})
