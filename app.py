@@ -180,6 +180,10 @@ def trigger_scrape():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/health')
+def health():
+    return jsonify({'status': 'ok'})
+
 @app.route('/api/news')
 def get_news():
     """Get news — fetch fresh from GNews API, fallback to cached file"""
