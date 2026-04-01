@@ -199,7 +199,10 @@ def get_news():
             import requests as req
             url = (
                 f"https://gnews.io/api/v4/search"
-                f"?q=UFC+OR+MMA&lang=en&max=10&sortby=publishedAt"
+                f"?q=%22UFC%22+OR+%22MMA%22+OR+%22Bellator%22"
+                f"&lang=en"
+                f"&country=us"
+                f"&max=10&sortby=publishedAt"
                 f"&apikey={GNEWS_KEY}"
             )
             r = req.get(url, timeout=8)
@@ -210,12 +213,14 @@ def get_news():
                         'title':       a.get('title', ''),
                         'description': a.get('description', ''),
                         'url':         a.get('url', ''),
-                        'imageUrl':    a.get('image', ''),
+                        'imageUrl':    a.get('image') or '',
                         'source':      a.get('source', {}).get('name', ''),
                         'publishedAt': a.get('publishedAt', ''),
                     }
                     for a in data.get('articles', [])
                     if a.get('title')
+                    and not any(c in (a.get('title','') + a.get('description','')) 
+                               for c in ['«','»','¿','¡','ó','é','á','í','ú','ñ'])
                 ]
                 news_data = {'trending': articles, 'updatedAt': 'fresh'}
                 os.makedirs(DATA_DIR, exist_ok=True)
