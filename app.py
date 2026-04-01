@@ -187,12 +187,8 @@ def get_news():
     GNEWS_KEY = os.getenv('GNEWS_API_KEY', '962d74e7eeb020eda44c20b170b4e82d')
     news_path = os.path.join(DATA_DIR, 'news.json')
 
-    # Check if cache is fresh (< 3 hours)
-    try:
-        age = time.time() - os.path.getmtime(news_path)
-        cache_fresh = age < 10800
-    except:
-        cache_fresh = False
+    # Always fetch fresh from GNews (cache disabled until stable)
+    cache_fresh = False
 
     if not cache_fresh:
         try:
