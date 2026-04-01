@@ -182,32 +182,57 @@ def trigger_scrape():
 
 @app.route('/api/news')
 def get_news():
-    """Get news — auto-fetch from NewsAPI if file missing or older than 6 hours"""
+    """Get news — fetch fresh from GNews API, fallback to cached file"""
     import time
+    GNEWS_KEY = os.getenv('GNEWS_API_KEY', '962d74e7eeb020eda44c20b170b4e82d')
     news_path = os.path.join(DATA_DIR, 'news.json')
 
-    # Auto-refresh if missing or stale (>6 hours)
+    # Check if cache is fresh (< 3 hours)
     try:
         age = time.time() - os.path.getmtime(news_path)
-        needs_refresh = age > 21600  # 6 hours
+        cache_fresh = age < 10800
     except:
-        needs_refresh = True
+        cache_fresh = False
 
-    if needs_refresh:
+    if not cache_fresh:
         try:
-            from news_scraper import fetch_mma_news
-            fetch_mma_news()
+            import requests as req
+            url = (
+                f"https://gnews.io/api/v4/search"
+                f"?q=UFC+OR+MMA&lang=en&max=10&sortby=publishedAt"
+                f"&apikey={GNEWS_KEY}"
+            )
+            r = req.get(url, timeout=8)
+            if r.status_code == 200:
+                data = r.json()
+                articles = [
+                    {
+                        'title':       a.get('title', ''),
+                        'description': a.get('description', ''),
+                        'url':         a.get('url', ''),
+                        'imageUrl':    a.get('image', ''),
+                        'source':      a.get('source', {}).get('name', ''),
+                        'publishedAt': a.get('publishedAt', ''),
+                    }
+                    for a in data.get('articles', [])
+                    if a.get('title')
+                ]
+                news_data = {'trending': articles, 'updatedAt': 'fresh'}
+                os.makedirs(DATA_DIR, exist_ok=True)
+                with open(news_path, 'w') as f:
+                    json.dump(news_data, f)
+                return jsonify(news_data)
         except Exception as e:
-            print(f"Auto news refresh failed: {e}")
+            print(f"GNews fetch failed: {e}")
 
+    # Fallback to cached file
     news = load_json('news.json')
     if news is None:
-        return jsonify({'trending': [], 'error': 'News temporarily unavailable'}), 200
+        return jsonify({'trending': []})
     return jsonify(news)
 
 @app.route('/api/news/trending')
 def get_trending_news():
-    """Get trending news articles"""
     news = load_json('news.json')
     if news is None:
         return jsonify([])

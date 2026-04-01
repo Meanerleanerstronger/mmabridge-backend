@@ -1,7 +1,7 @@
 # ==============================================
-# MMA BRIDGE — NEWS SCRAPER
-# Fetches real MMA news from NewsAPI
-# Runs daily via run_scrapers.py
+# MMA BRIDGE — NEWS SCRAPER (GNews API)
+# Real MMA/UFC news with images
+# Free tier: 100 requests/day
 # ==============================================
 
 import requests
@@ -9,20 +9,19 @@ import json
 import os
 from datetime import datetime
 
-NEWS_API_KEY = "f01a690184c04eb0bc8a5a779981e461"
+GNEWS_API_KEY = "962d74e7eeb020eda44c20b170b4e82d"
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 
 def fetch_mma_news():
-    """Fetch latest MMA/UFC news from NewsAPI"""
-    print("📰 Fetching MMA news from NewsAPI...")
+    print("📰 Fetching MMA news from GNews...")
 
     url = (
-        f"https://newsapi.org/v2/everything"
+        f"https://gnews.io/api/v4/search"
         f"?q=UFC+OR+MMA+OR+%22mixed+martial+arts%22"
-        f"&language=en"
-        f"&sortBy=publishedAt"
-        f"&pageSize=20"
-        f"&apiKey={NEWS_API_KEY}"
+        f"&lang=en"
+        f"&max=10"
+        f"&sortby=publishedAt"
+        f"&apikey={GNEWS_API_KEY}"
     )
 
     try:
@@ -30,19 +29,18 @@ def fetch_mma_news():
         data = r.json()
 
         if r.status_code != 200:
-            print(f"❌ NewsAPI error: {data.get('message')}")
+            print(f"❌ GNews error: {data}")
             return []
 
         articles = []
-        for a in data.get('articles', [])[:15]:
-            # Skip removed/null articles
-            if not a.get('title') or a['title'] == '[Removed]':
+        for a in data.get('articles', []):
+            if not a.get('title'):
                 continue
             articles.append({
                 'title':       a.get('title', ''),
                 'description': a.get('description', ''),
                 'url':         a.get('url', ''),
-                'imageUrl':    a.get('urlToImage', ''),
+                'imageUrl':    a.get('image', ''),
                 'source':      a.get('source', {}).get('name', ''),
                 'publishedAt': a.get('publishedAt', ''),
             })
@@ -51,8 +49,8 @@ def fetch_mma_news():
         path = os.path.join(DATA_DIR, 'news.json')
         with open(path, 'w') as f:
             json.dump({
-                'trending':    articles,
-                'updatedAt':   datetime.utcnow().isoformat(),
+                'trending':  articles,
+                'updatedAt': datetime.utcnow().isoformat(),
             }, f, indent=2)
 
         print(f"✅ Saved {len(articles)} articles → data/news.json")
@@ -63,8 +61,4 @@ def fetch_mma_news():
         return []
 
 if __name__ == '__main__':
-    print("=" * 50)
-    print("📰 MMA NEWS SCRAPER")
-    print("=" * 50)
     fetch_mma_news()
-    print("=" * 50)
