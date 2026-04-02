@@ -189,7 +189,8 @@ def get_news():
     """Get news — always fetch fresh from GNews, fallback key if first runs out"""
     GNEWS_KEYS = [
         os.getenv('GNEWS_API_KEY', '962d74e7eeb020eda44c20b170b4e82d'),
-        '77ee2ae117e135e8bd15d69a52c15ccf'  # backup key
+        '77ee2ae117e135e8bd15d69a52c15ccf',  # backup 1
+        '2fb357ce1705d322109dc121c3997d65',  # backup 2
     ]
     news_path = os.path.join(DATA_DIR, 'news.json')
 
