@@ -1,0 +1,3022 @@
+[
+  {
+    "id": "ufc-fight-night-usman-vs-buckley",
+    "name": "UFC Fight Night: Usman vs. Buckley",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Apr 26, 2025",
+    "isoDate": "2025-04-26",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "images/fn-usman.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Kamaru Usman",
+        "b": "Joaquin Buckley",
+        "weight": "Welterweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Kamaru Usman",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Rose Namajunas",
+        "b": "Mackenzie Dern",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Rose Namajunas",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Edmen Shahbazyan",
+        "b": "Andre Petroski",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Edmen Shahbazyan",
+        "method": "KO",
+        "round": 1,
+        "time": "4:18"
+      },
+      {
+        "a": "Anthony Menifield",
+        "b": "Oumar Sy",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Anthony Menifield",
+        "method": "TKO",
+        "round": 2,
+        "time": "2:45"
+      },
+      {
+        "a": "Ricky Simon",
+        "b": "Cameron Smotherman",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Ricky Simon",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Cody Brundage",
+        "b": "Mansur Abdul-Malik",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Draw",
+        "method": "Draw",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Paul Craig",
+        "b": "Roberto Bellato",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "NC",
+        "method": "NC",
+        "round": 2,
+        "time": "2:30"
+      },
+      {
+        "a": "Mark Wellmaker",
+        "b": "Kris Moutinho",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Mark Wellmaker",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "earlyPrelims": []
+  },
+  {
+    "id": "ufc-317-topuria-vs-oliveira",
+    "name": "UFC 317: Topuria vs. Oliveira",
+    "type": "PPV",
+    "date": "Sat, Jun 28, 2025",
+    "isoDate": "2025-06-28",
+    "location": "Las Vegas, NV",
+    "venue": "T-Mobile Arena",
+    "poster": "images/ufc-317.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Ilia Topuria",
+        "b": "Charles Oliveira",
+        "weight": "Lightweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Ilia Topuria",
+        "method": "KO",
+        "round": 1,
+        "time": "2:27"
+      },
+      {
+        "a": "Alexandre Pantoja",
+        "b": "Kai Kara-France",
+        "weight": "Flyweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Alexandre Pantoja",
+        "method": "SUB",
+        "round": 3,
+        "time": "1:55"
+      },
+      {
+        "a": "Joshua Van",
+        "b": "Brandon Royval",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Joshua Van",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Beneil Dariush",
+        "b": "Renato Moicano",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Beneil Dariush",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Payton Talbott",
+        "b": "Felipe Lima",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Payton Talbott",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Gregory Rodrigues",
+        "b": "Jack Hermansson",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Gregory Rodrigues",
+        "method": "KO",
+        "round": 1,
+        "time": "4:21"
+      },
+      {
+        "a": "Jose Delgado",
+        "b": "Hyder Amil",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Jose Delgado",
+        "method": "KO",
+        "round": 1,
+        "time": "0:26"
+      },
+      {
+        "a": "Tracy Cortez",
+        "b": "Viviane Araujo",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Tracy Cortez",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Terrance McKinney",
+        "b": "Viacheslav Borshchev",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Terrance McKinney",
+        "method": "SUB",
+        "round": 1,
+        "time": "0:55"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Jacobe Smith",
+        "b": "Niko Price",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Jacobe Smith",
+        "method": "SUB",
+        "round": 2,
+        "time": "4:03"
+      },
+      {
+        "a": "Jhonata Diniz",
+        "b": "Alvin Hines",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Jhonata Diniz",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ]
+  },
+  {
+    "id": "ufc-318-holloway-vs-poirier-3",
+    "name": "UFC 318: Holloway vs. Poirier 3",
+    "type": "PPV",
+    "date": "Sat, Jul 19, 2025",
+    "isoDate": "2025-07-19",
+    "location": "New Orleans, LA",
+    "venue": "Smoothie King Center",
+    "poster": "images/ufc-318.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Max Holloway",
+        "b": "Dustin Poirier",
+        "weight": "Lightweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Max Holloway",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Paulo Costa",
+        "b": "Roman Kopylov",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Paulo Costa",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Daniel Rodriguez",
+        "b": "Kevin Holland",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Daniel Rodriguez",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Patricio Pitbull",
+        "b": "Dan Ige",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Patricio Pitbull",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Michael Johnson",
+        "b": "Daniel Zellhuber",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Michael Johnson",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Vinicius Oliveira",
+        "b": "Kyler Phillips",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Vinicius Oliveira",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Brendan Allen",
+        "b": "Marvin Vettori",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Brendan Allen",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Nikolay Veretennikov",
+        "b": "Francisco Prado",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Nikolay Veretennikov",
+        "method": "SD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Ateba Gautier",
+        "b": "Robert Valentin",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Ateba Gautier",
+        "method": "TKO",
+        "round": 1,
+        "time": "1:10"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Islam Dulatov",
+        "b": "Adam Fugitt",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Islam Dulatov",
+        "method": "KO",
+        "round": 1,
+        "time": "0:55"
+      },
+      {
+        "a": "Jimmy Crute",
+        "b": "Marcin Prachnio",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Jimmy Crute",
+        "method": "SUB",
+        "round": 1,
+        "time": "2:44"
+      },
+      {
+        "a": "Ryan Spann",
+        "b": "\u0141ukasz Brzeski",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Ryan Spann",
+        "method": "SUB",
+        "round": 2,
+        "time": "3:10"
+      },
+      {
+        "a": "Carli Judice",
+        "b": "Nicolle Caliari",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Carli Judice",
+        "method": "TKO",
+        "round": 3,
+        "time": "4:20"
+      }
+    ]
+  },
+  {
+    "id": "ufc-319-du-plessis-vs-chimaev",
+    "name": "UFC 319: Du Plessis vs. Chimaev",
+    "type": "PPV",
+    "date": "Sat, Aug 16, 2025",
+    "isoDate": "2025-08-16",
+    "location": "Chicago, IL",
+    "venue": "United Center",
+    "poster": "images/ufc-319.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Khamzat Chimaev",
+        "b": "Dricus Du Plessis",
+        "weight": "Middleweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Khamzat Chimaev",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Lerone Murphy",
+        "b": "Aaron Pico",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Lerone Murphy",
+        "method": "KO",
+        "round": 1,
+        "time": "3:21"
+      },
+      {
+        "a": "Carlos Prates",
+        "b": "Geoff Neal",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Carlos Prates",
+        "method": "KO",
+        "round": 1,
+        "time": "4:59"
+      },
+      {
+        "a": "Michael Page",
+        "b": "Jared Cannonier",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Michael Page",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Tim Elliott",
+        "b": "Kai Asakura",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Tim Elliott",
+        "method": "SUB",
+        "round": 2,
+        "time": "4:39"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Baisangur Susurkaev",
+        "b": "Eric Nolan",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Baisangur Susurkaev",
+        "method": "SUB",
+        "round": 2,
+        "time": "2:01"
+      },
+      {
+        "a": "Micha\u0142 Oleksiejczuk",
+        "b": "Gerald Meerschaert",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Micha\u0142 Oleksiejczuk",
+        "method": "TKO",
+        "round": 1,
+        "time": "2:15"
+      },
+      {
+        "a": "Lupita Godinez",
+        "b": "Jessica Andrade",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Lupita Godinez",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Alexander Hernandez",
+        "b": "Chase Hooper",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Alexander Hernandez",
+        "method": "KO",
+        "round": 1,
+        "time": "1:33"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Drakkar Klose",
+        "b": "Edson Barboza",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Drakkar Klose",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Joseph Morales",
+        "b": "Alibi Idiris",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Joseph Morales",
+        "method": "SUB",
+        "round": 2,
+        "time": "3:04"
+      }
+    ]
+  },
+  {
+    "id": "ufc-fight-night-imavov-vs-borralho",
+    "name": "UFC Fight Night: Imavov vs. Borralho",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Sep 6, 2025",
+    "isoDate": "2025-09-06",
+    "location": "Paris, France",
+    "venue": "Accor Arena",
+    "poster": "images/fn-paris.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Nassourdine Imavov",
+        "b": "Caio Borralho",
+        "weight": "Middleweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Nassourdine Imavov",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Beno\u00eet Saint-Denis",
+        "b": "Mauricio Ruffy",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Beno\u00eet Saint-Denis",
+        "method": "KO",
+        "round": 1,
+        "time": "2:15"
+      },
+      {
+        "a": "Modestas Bukauskas",
+        "b": "Paul Craig",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Modestas Bukauskas",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Oumar Sy",
+        "b": "Bogdan Ribeiro",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Oumar Sy",
+        "method": "TKO",
+        "round": 2,
+        "time": "3:10"
+      },
+      {
+        "a": "Raulian Paiva",
+        "b": "Alessandro Fakhretdinov",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Raulian Paiva",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Bolaji Oki",
+        "b": "Mason Jones",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Mason Jones",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "William Gomis",
+        "b": "Gabriel Santos",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "William Gomis",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Brad Tavares",
+        "b": "Kevin Jousset",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Brad Tavares",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "earlyPrelims": []
+  },
+  {
+    "id": "ufc-fight-night-walker-vs-zhang",
+    "name": "UFC Fight Night: Walker vs. Zhang",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Sep 20, 2025",
+    "isoDate": "2025-09-20",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "images/fn-walker.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Johnny Walker",
+        "b": "Mingyang Zhang",
+        "weight": "Light Heavyweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Johnny Walker",
+        "method": "KO",
+        "round": 1,
+        "time": "0:35"
+      },
+      {
+        "a": "Aljamain Sterling",
+        "b": "Brian Ortega",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Aljamain Sterling",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Sergei Pavlovich",
+        "b": "Waldo Cortes-Acosta",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Sergei Pavlovich",
+        "method": "TKO",
+        "round": 2,
+        "time": "1:22"
+      },
+      {
+        "a": "Lone'er Kavanagh",
+        "b": "Charles Johnson",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Charles Johnson",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Michel Pereira",
+        "b": "Kyle Daukaus",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Kyle Daukaus",
+        "method": "KO",
+        "round": 1,
+        "time": "4:58"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Uros Medic",
+        "b": "Muslim Salikhov",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Uros Medic",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Denise Gomes",
+        "b": "Tecia Torres",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Denise Gomes",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Javid Basharat",
+        "b": "Cody Stamann",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Javid Basharat",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "earlyPrelims": []
+  },
+  {
+    "id": "ufc-320-ankalaev-vs-pereira-2",
+    "name": "UFC 320: Ankalaev vs. Pereira 2",
+    "type": "PPV",
+    "date": "Sat, Oct 4, 2025",
+    "isoDate": "2025-10-04",
+    "location": "Las Vegas, NV",
+    "venue": "T-Mobile Arena",
+    "poster": "images/ufc-320.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Alex Pereira",
+        "b": "Magomed Ankalaev",
+        "weight": "Light Heavyweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Alex Pereira",
+        "method": "TKO",
+        "round": 1,
+        "time": "1:20"
+      },
+      {
+        "a": "Merab Dvalishvili",
+        "b": "Cory Sandhagen",
+        "weight": "Bantamweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Merab Dvalishvili",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Ji\u0159\u00ed Proch\u00e1zka",
+        "b": "Khalil Rountree Jr.",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Ji\u0159\u00ed Proch\u00e1zka",
+        "method": "KO",
+        "round": 3,
+        "time": "3:04"
+      },
+      {
+        "a": "Youssef Zalal",
+        "b": "Josh Emmett",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Youssef Zalal",
+        "method": "SUB",
+        "round": 1,
+        "time": "1:38"
+      },
+      {
+        "a": "Joe Pyfer",
+        "b": "Abus Magomedov",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Joe Pyfer",
+        "method": "SUB",
+        "round": 2,
+        "time": "1:44"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Edmen Shahbazyan",
+        "b": "Andre Muniz",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Edmen Shahbazyan",
+        "method": "KO",
+        "round": 1,
+        "time": "4:58"
+      },
+      {
+        "a": "Punahele Soriano",
+        "b": "Nikolay Veretennikov",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Punahele Soriano",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Farid Basharat",
+        "b": "Chris Gutierrez",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Farid Basharat",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Jakub Wiklacz",
+        "b": "Patchy Mix",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Jakub Wiklacz",
+        "method": "SD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Ateba Gautier",
+        "b": "Treston Vines",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Ateba Gautier",
+        "method": "TKO",
+        "round": 1,
+        "time": "1:41"
+      },
+      {
+        "a": "Daniel Santos",
+        "b": "Yoo Joo-sang",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Daniel Santos",
+        "method": "TKO",
+        "round": 2,
+        "time": "0:21"
+      }
+    ]
+  },
+  {
+    "id": "ufc-321-aspinall-vs-gane",
+    "name": "UFC 321: Aspinall vs. Gane",
+    "type": "PPV",
+    "date": "Sat, Oct 25, 2025",
+    "isoDate": "2025-10-25",
+    "location": "Abu Dhabi, UAE",
+    "venue": "Etihad Arena",
+    "poster": "images/ufc-321.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Tom Aspinall",
+        "b": "Ciryl Gane",
+        "weight": "Heavyweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main",
+        "winner": "NC",
+        "method": "NC",
+        "round": 1,
+        "time": "4:35"
+      },
+      {
+        "a": "Mackenzie Dern",
+        "b": "Virna Jandiroba",
+        "weight": "Women's Strawweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Mackenzie Dern",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Umar Nurmagomedov",
+        "b": "Mario Bautista",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Umar Nurmagomedov",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Alexander Volkov",
+        "b": "Jailton Almeida",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Alexander Volkov",
+        "method": "SD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Azamat Murzakanov",
+        "b": "Aleksandar Raki\u0107",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Azamat Murzakanov",
+        "method": "TKO",
+        "round": 1,
+        "time": "3:11"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Quillan Salkilld",
+        "b": "Nasrat Haqparast",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Quillan Salkilld",
+        "method": "KO",
+        "round": 1,
+        "time": "2:22"
+      },
+      {
+        "a": "Ikram Aliskerov",
+        "b": "Jun Yong Park",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Ikram Aliskerov",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "\u013dudov\u00edt Klein",
+        "b": "Mateusz R\u0119becki",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "\u013dudov\u00edt Klein",
+        "method": "MD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Valter Walker",
+        "b": "Louie Sutherland",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Valter Walker",
+        "method": "SUB",
+        "round": 1,
+        "time": "3:44"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Nathaniel Wood",
+        "b": "Jose Delgado",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Nathaniel Wood",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Hamdy Abdelwahab",
+        "b": "Chris Barnett",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Hamdy Abdelwahab",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Mitch Raposo",
+        "b": "Azat Maksum",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Mitch Raposo",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ]
+  },
+  {
+    "id": "ufc-fight-night-bonfim-vs-brown",
+    "name": "UFC Fight Night: Bonfim vs. Brown",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Nov 8, 2025",
+    "isoDate": "2025-11-08",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "images/fn-bonfim.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Renato Moicano",
+        "b": "Drew Dober",
+        "weight": "Lightweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Renato Moicano",
+        "method": "SUB",
+        "round": 1,
+        "time": "4:22"
+      },
+      {
+        "a": "Uros Medic",
+        "b": "Marco Tulio",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain",
+        "winner": "Uros Medic",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Jailton Almeida",
+        "b": "Marcelo Bueno Silva",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Jailton Almeida",
+        "method": "SUB",
+        "round": 1,
+        "time": "2:10"
+      },
+      {
+        "a": "Denise Gomes",
+        "b": "Tecia Pennington",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Denise Gomes",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Chris Duncan",
+        "b": "Marco Tulio",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Chris Duncan",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Westin Wilson",
+        "b": "Cody Brundage",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Westin Wilson",
+        "method": "KO",
+        "round": 2,
+        "time": "3:44"
+      },
+      {
+        "a": "Josh Quinlan",
+        "b": "Thibault Gouti",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Josh Quinlan",
+        "method": "TKO",
+        "round": 1,
+        "time": "1:55"
+      },
+      {
+        "a": "Vinicius Salvador",
+        "b": "Ode Osbourne",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Vinicius Salvador",
+        "method": "KO",
+        "round": 2,
+        "time": "4:11"
+      }
+    ],
+    "earlyPrelims": []
+  },
+  {
+    "id": "ufc-322-della-maddalena-vs-makhachev",
+    "name": "UFC 322: Della Maddalena vs. Makhachev",
+    "type": "PPV",
+    "date": "Sat, Nov 15, 2025",
+    "isoDate": "2025-11-15",
+    "location": "New York, NY",
+    "venue": "Madison Square Garden",
+    "poster": "images/ufc-322.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Islam Makhachev",
+        "b": "Jack Della Maddalena",
+        "weight": "Welterweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Islam Makhachev",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Valentina Shevchenko",
+        "b": "Zhang Weili",
+        "weight": "Women's Flyweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Valentina Shevchenko",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Mario Morales",
+        "b": "Sean Brady",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Mario Morales",
+        "method": "TKO",
+        "round": 3,
+        "time": "3:44"
+      },
+      {
+        "a": "Benoit Saint-Denis",
+        "b": "Beneil Dariush",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Beno\u00eet Saint-Denis",
+        "method": "KO",
+        "round": 2,
+        "time": "2:10"
+      },
+      {
+        "a": "Gregory Rodrigues",
+        "b": "Roman Kopylov",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Gregory Rodrigues",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Erin Blanchfield",
+        "b": "Tracy Cortez",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Erin Blanchfield",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Ethyn Ewing",
+        "b": "Mark Wellmaker",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Ethyn Ewing",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Kyle Daukaus",
+        "b": "Gerald Meerschaert",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Kyle Daukaus",
+        "method": "SUB",
+        "round": 2,
+        "time": "3:15"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Bekzod Nurmagomedov",
+        "b": "Eric McConico",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Bekzod Nurmagomedov",
+        "method": "SUB",
+        "round": 1,
+        "time": "1:45"
+      },
+      {
+        "a": "Matheus Camilo",
+        "b": "Viacheslav Borshchev",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Matheus Camilo",
+        "method": "KO",
+        "round": 1,
+        "time": "0:55"
+      }
+    ]
+  },
+  {
+    "id": "ufc-323-dvalishvili-vs-yan-2",
+    "name": "UFC 323: Dvalishvili vs. Yan 2",
+    "type": "PPV",
+    "date": "Sat, Dec 6, 2025",
+    "isoDate": "2025-12-06",
+    "location": "Las Vegas, NV",
+    "venue": "T-Mobile Arena",
+    "poster": "images/ufc-323.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Petr Yan",
+        "b": "Merab Dvalishvili",
+        "weight": "Bantamweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Petr Yan",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Joshua Van",
+        "b": "Alexandre Pantoja",
+        "weight": "Flyweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Joshua Van",
+        "method": "SUB",
+        "round": 4,
+        "time": "3:22"
+      },
+      {
+        "a": "Tatsuro Taira",
+        "b": "Brandon Moreno",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Tatsuro Taira",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Payton Talbott",
+        "b": "Henry Cejudo",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Payton Talbott",
+        "method": "TKO",
+        "round": 2,
+        "time": "4:55"
+      },
+      {
+        "a": "Jan B\u0142achowicz",
+        "b": "Bogdan Guskov",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Jan B\u0142achowicz",
+        "method": "Draw",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Manuel Torres",
+        "b": "Grant Dawson",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Manuel Torres",
+        "method": "KO",
+        "round": 1,
+        "time": "0:44"
+      },
+      {
+        "a": "Chris Duncan",
+        "b": "Terrance McKinney",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Chris Duncan",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Maycee Barber",
+        "b": "Karine Silva",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Maycee Barber",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Fares Ziam",
+        "b": "Esteban Ribovics",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Fares Ziam",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Mickey Gall",
+        "b": "Jared Gooden",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Mickey Gall",
+        "method": "SUB",
+        "round": 1,
+        "time": "2:11"
+      },
+      {
+        "a": "Rinat Fakhretdinov",
+        "b": "Alex Morono",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Rinat Fakhretdinov",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ]
+  },
+  {
+    "id": "ufc-324-gaethje-vs-pimblett",
+    "name": "UFC 324: Gaethje vs. Pimblett",
+    "type": "PPV",
+    "date": "Sat, Jan 24, 2026",
+    "isoDate": "2026-01-24",
+    "location": "Las Vegas, NV",
+    "venue": "T-Mobile Arena",
+    "poster": "images/ufc-324.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Justin Gaethje",
+        "b": "Paddy Pimblett",
+        "weight": "Lightweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Justin Gaethje",
+        "method": "TKO",
+        "round": 3,
+        "time": "2:14"
+      },
+      {
+        "a": "Sean O'Malley",
+        "b": "Song Yadong",
+        "weight": "Bantamweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Song Yadong",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Waldo Cortes-Acosta",
+        "b": "Derrick Lewis",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Waldo Cortes-Acosta",
+        "method": "TKO",
+        "round": 2,
+        "time": "3:33"
+      },
+      {
+        "a": "Jean Silva",
+        "b": "Arnold Allen",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Jean Silva",
+        "method": "KO",
+        "round": 1,
+        "time": "1:44"
+      },
+      {
+        "a": "Nat\u00e1lia Silva",
+        "b": "Rose Namajunas",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Nat\u00e1lia Silva",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Umar Nurmagomedov",
+        "b": "Deiveson Figueiredo",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Umar Nurmagomedov",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Nikita Krylov",
+        "b": "Modestas Bukauskas",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Nikita Krylov",
+        "method": "KO",
+        "round": 1,
+        "time": "2:10"
+      },
+      {
+        "a": "Alex Perez",
+        "b": "Charles Johnson",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Alex Perez",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Ricky Turcios",
+        "b": "Cameron Smotherman",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Ricky Turcios",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Ateba Gautier",
+        "b": "Andrey Pulyaev",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Ateba Gautier",
+        "method": "TKO",
+        "round": 1,
+        "time": "1:41"
+      },
+      {
+        "a": "Josh Hokit",
+        "b": "Denzel Freeman",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Josh Hokit",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ]
+  },
+  {
+    "id": "ufc-325-volkanovski-vs-lopes-2",
+    "name": "UFC 325: Volkanovski vs. Lopes 2",
+    "type": "PPV",
+    "date": "Sat, Jan 31, 2026",
+    "isoDate": "2026-01-31",
+    "location": "Sydney, Australia",
+    "venue": "Qudos Bank Arena",
+    "poster": "images/ufc-325.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Alexander Volkanovski",
+        "b": "Diego Lopes",
+        "weight": "Featherweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Alexander Volkanovski",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Beno\u00eet Saint-Denis",
+        "b": "Dan Hooker",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Beno\u00eet Saint-Denis",
+        "method": "TKO",
+        "round": 2,
+        "time": "3:45"
+      },
+      {
+        "a": "Mauricio Ruffy",
+        "b": "Rafael Fiziev",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Mauricio Ruffy",
+        "method": "KO",
+        "round": 1,
+        "time": "2:10"
+      },
+      {
+        "a": "Tallison Teixeira",
+        "b": "Tai Tuivasa",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Tallison Teixeira",
+        "method": "TKO",
+        "round": 2,
+        "time": "4:22"
+      },
+      {
+        "a": "Quillan Salkilld",
+        "b": "Jamie Mullarkey",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Quillan Salkilld",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Billy Elekana",
+        "b": "Junior Tafa",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Billy Elekana",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Cam Rowston",
+        "b": "Cody Brundage",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Cam Rowston",
+        "method": "SUB",
+        "round": 2,
+        "time": "2:33"
+      },
+      {
+        "a": "Jacob Malkoun",
+        "b": "Torrez Finney",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Jacob Malkoun",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Kiefer Crosbie",
+        "b": "Carlos Candelario",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Kiefer Crosbie",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Mingyang Zhang",
+        "b": "Josh Parisian",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Mingyang Zhang",
+        "method": "KO",
+        "round": 1,
+        "time": "1:05"
+      }
+    ]
+  },
+  {
+    "id": "ufc-fight-night-strickland-vs-hernandez",
+    "name": "UFC Fight Night: Strickland vs. Hernandez",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Feb 21, 2026",
+    "isoDate": "2026-02-21",
+    "location": "Houston, TX",
+    "venue": "Toyota Center",
+    "poster": "images/fn-strickland.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Sean Strickland",
+        "b": "Caio Borralho",
+        "weight": "Middleweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Sean Strickland",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Renato Moicano",
+        "b": "Drew Dober",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Renato Moicano",
+        "method": "SUB",
+        "round": 2,
+        "time": "3:10"
+      },
+      {
+        "a": "Aleksandr Hernandez",
+        "b": "Diego Lopes",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Diego Lopes",
+        "method": "KO",
+        "round": 1,
+        "time": "2:45"
+      },
+      {
+        "a": "Kelvin Gastelum",
+        "b": "Dustin Stoltzfus",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Kelvin Gastelum",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Santiago Luna",
+        "b": "Quang Le",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Santiago Luna",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Dusko Todorovic",
+        "b": "Jose Medina",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Dusko Todorovic",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Tatiana Suarez",
+        "b": "Amanda Lemos",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Tatiana Suarez",
+        "method": "TKO",
+        "round": 2,
+        "time": "4:10"
+      },
+      {
+        "a": "Zach Reese",
+        "b": "Sedriques Dumas",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Zach Reese",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Jesus Aguilar",
+        "b": "Luis Gurule",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Jesus Aguilar",
+        "method": "KO",
+        "round": 1,
+        "time": "1:23"
+      },
+      {
+        "a": "Alden Coria",
+        "b": "Alessandro Costa",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Alden Coria",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ]
+  },
+  {
+    "id": "ufc-326-holloway-vs-oliveira-2",
+    "name": "UFC 326: Holloway vs. Oliveira 2",
+    "type": "PPV",
+    "date": "Sat, Mar 7, 2026",
+    "isoDate": "2026-03-07",
+    "location": "Las Vegas, NV",
+    "venue": "T-Mobile Arena",
+    "poster": "images/ufc-326.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Charles Oliveira",
+        "b": "Max Holloway",
+        "weight": "Lightweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Charles Oliveira",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Caio Borralho",
+        "b": "Reinier de Ridder",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Caio Borralho",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Raul Rosas Jr.",
+        "b": "Rob Font",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Raul Rosas Jr.",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Drew Dober",
+        "b": "Michael Johnson",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Drew Dober",
+        "method": "KO",
+        "round": 2,
+        "time": "1:53"
+      },
+      {
+        "a": "Gregory Rodrigues",
+        "b": "Brunno Ferreira",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Gregory Rodrigues",
+        "method": "KO",
+        "round": 1,
+        "time": "1:47"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Cody Garbrandt",
+        "b": "Long Xiao",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Cody Garbrandt",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Donte Johnson",
+        "b": "Cody Brundage",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Donte Johnson",
+        "method": "SD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Alberto Montes",
+        "b": "Ricky Turcios",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Alberto Montes",
+        "method": "SUB",
+        "round": 2,
+        "time": "0:40"
+      },
+      {
+        "a": "Niko Price",
+        "b": "Themba Gorimbo",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Nyamjargal Tumendemberel",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Nikita Krylov",
+        "b": "Bogdan Guskov",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Rodolfo Bellato",
+        "method": "TKO",
+        "round": 1,
+        "time": "2:42"
+      },
+      {
+        "a": "Nurullo Aliev",
+        "b": "Cody Durden",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Diyar Nurgozhay",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ]
+  },
+  {
+    "id": "ufc-fight-night-evloev-vs-murphy",
+    "name": "UFC Fight Night: Evloev vs. Murphy",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Mar 21, 2026",
+    "isoDate": "2026-03-21",
+    "location": "London, England",
+    "venue": "The O2",
+    "poster": "images/fn-london.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Movsar Evloev",
+        "b": "Lerone Murphy",
+        "weight": "Featherweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Movsar Evloev",
+        "method": "MD",
+        "round": 5,
+        "time": "5:00"
+      },
+      {
+        "a": "Tom Aspinall",
+        "b": "Ciryl Gane",
+        "weight": "Heavyweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Tom Aspinall",
+        "method": "TKO",
+        "round": 1,
+        "time": "3:02"
+      },
+      {
+        "a": "Arnold Allen",
+        "b": "Edson Barboza",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Arnold Allen",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Marc Diakiese",
+        "b": "Damir Ismagulov",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Marc Diakiese",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Paddy Pimblett",
+        "b": "Jordan Leavitt",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Paddy Pimblett",
+        "method": "SUB",
+        "round": 2,
+        "time": "3:14"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Luke Riley",
+        "b": "Mike Aswell Jr.",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Luke Riley",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Chris Duncan",
+        "b": "Roman Dolidze",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Chris Duncan",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Danny Silva",
+        "b": "Kyle Campbell",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Danny Silva",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Shanelle Dyer",
+        "b": "Rossana Oliveira",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Shanelle Dyer",
+        "method": "TKO",
+        "round": 2,
+        "time": "1:17"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Manel Kape",
+        "b": "Tatsuro Taira",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "winner": "Tatsuro Taira",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Brando Pericic",
+        "b": "Liam Sutherland",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Brando Pericic",
+        "method": "TKO",
+        "round": 1,
+        "time": "1:48"
+      }
+    ]
+  },
+  {
+    "id": "ufc-fight-night-adesanya-vs-pyfer",
+    "name": "UFC Fight Night: Adesanya vs. Pyfer",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Mar 28, 2026",
+    "isoDate": "2026-03-28",
+    "location": "Seattle, WA",
+    "venue": "Climate Pledge Arena",
+    "poster": "images/fn-seattle.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Israel Adesanya",
+        "b": "Joe Pyfer",
+        "weight": "Middleweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Joe Pyfer",
+        "method": "TKO",
+        "round": 2,
+        "time": "4:18"
+      },
+      {
+        "a": "Alexa Grasso",
+        "b": "Maycee Barber",
+        "weight": "Women's Flyweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Alexa Grasso",
+        "method": "KO",
+        "round": 1,
+        "time": "2:42"
+      },
+      {
+        "a": "Michael Chiesa",
+        "b": "Niko Price",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Michael Chiesa",
+        "method": "SUB",
+        "round": 1,
+        "time": "1:03"
+      },
+      {
+        "a": "Julian Erosa",
+        "b": "Lerryan Douglas",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Lerryan Douglas",
+        "method": "KO",
+        "round": 1,
+        "time": "3:33"
+      },
+      {
+        "a": "Mansur Abdul-Malik",
+        "b": "Yousri Belgaroui",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Yousri Belgaroui",
+        "method": "TKO",
+        "round": 3,
+        "time": "3:39"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Terrance McKinney",
+        "b": "Kyle Nelson",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Terrance McKinney",
+        "method": "TKO",
+        "round": 1,
+        "time": "0:24"
+      },
+      {
+        "a": "Ignacio Bahamondes",
+        "b": "Tofiq Musayev",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Tofiq Musayev",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Chase Hooper",
+        "b": "Lance Gibson Jr.",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Lance Gibson Jr.",
+        "method": "TKO",
+        "round": 1,
+        "time": "2:56"
+      },
+      {
+        "a": "Marcin Tybura",
+        "b": "Tyrell Fortune",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Tyrell Fortune",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Casey O'Neill",
+        "b": "Gabriella Fernandes",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Casey O'Neill",
+        "method": "KO",
+        "round": 1,
+        "time": "3:11"
+      },
+      {
+        "a": "Navajo Stirling",
+        "b": "Bruno Lopes",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Navajo Stirling",
+        "method": "TKO",
+        "round": 2,
+        "time": "4:05"
+      }
+    ]
+  },
+  {
+    "id": "ufc-fight-night-moicano-vs-duncan",
+    "name": "UFC Fight Night: Moicano vs. Duncan",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Apr 4, 2026",
+    "isoDate": "2026-04-04",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "images/fn-texas.jpg",
+    "status": "completed",
+    "mainCard": [
+      {
+        "a": "Renato Moicano",
+        "b": "Chris Duncan",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main",
+        "winner": "Renato Moicano",
+        "method": "SUB",
+        "round": 2,
+        "time": "1:47",
+        "detail": "Rear Naked Choke"
+      },
+      {
+        "a": "Virna Jandiroba",
+        "b": "Tabatha Ricci",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "winner": "Virna Jandiroba",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Abdul Rakhman Yakhyaev",
+        "b": "Brendson Ribeiro",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main3",
+        "winner": "Abdul Rakhman Yakhyaev",
+        "method": "SUB",
+        "round": 1,
+        "time": "3:00",
+        "detail": "Guillotine Choke"
+      },
+      {
+        "a": "Ethyn Ewing",
+        "b": "Rafael Estevam",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main4",
+        "winner": "Ethyn Ewing",
+        "method": "KO",
+        "round": 3,
+        "time": "1:44"
+      },
+      {
+        "a": "Tommy McMillen",
+        "b": "Manolo Zecchini",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main5",
+        "winner": "Tommy McMillen",
+        "method": "TKO",
+        "round": 1,
+        "time": "5:00"
+      },
+      {
+        "a": "Jose Delano",
+        "b": "Robert Ruchala",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "main6",
+        "winner": "Jose Delano",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Guilherme Pat",
+        "b": "Thomas Petersen",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Jose Delano",
+        "b": "Robert Ruchala",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Alessandro Costa",
+        "b": "Stewart Nicoll",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Lando Vannata",
+        "b": "Darrius Flowers",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Alice Pereira",
+        "b": "Hailey Cowan",
+        "weight": "Women's Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Azamat Bekoev",
+        "b": "Tresean Gore",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Dione Barbosa",
+        "b": "Melissa Gatto",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Kai Kamaka III",
+        "b": "Dakota Hope",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "startTime": "22:00",
+    "prelimCard": [
+      {
+        "a": "Tresean Gore",
+        "b": "Azamat Bekoev",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Tresean Gore",
+        "method": "SUB",
+        "round": 3,
+        "time": "3:27",
+        "detail": "Guillotine Choke"
+      },
+      {
+        "a": "Alice Pereira",
+        "b": "Hailey Cowan",
+        "weight": "Women's Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Alice Pereira",
+        "method": "KO",
+        "round": 2,
+        "time": "5:00",
+        "detail": "Knee"
+      },
+      {
+        "a": "Darrius Flowers",
+        "b": "Lando Vannata",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Darrius Flowers",
+        "method": "TKO",
+        "round": 2,
+        "time": "5:00"
+      },
+      {
+        "a": "Dione Barbosa",
+        "b": "Melissa Gatto",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Dione Barbosa",
+        "method": "MD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Kai Kamaka III",
+        "b": "Dakota Hope",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Kai Kamaka III",
+        "method": "SD",
+        "round": 3,
+        "time": "5:00"
+      },
+      {
+        "a": "Alessandro Costa",
+        "b": "Stewart Nicoll",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Alessandro Costa",
+        "method": "KO",
+        "round": 2,
+        "time": "5:00",
+        "detail": "Left Hook"
+      },
+      {
+        "a": "Thomas Petersen",
+        "b": "Guilherme Pat",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "winner": "Thomas Petersen",
+        "method": "MD",
+        "round": 3,
+        "time": "5:00"
+      }
+    ]
+  },
+  {
+    "id": "ufc-327-prochazka-vs-ulberg",
+    "name": "UFC 327: Proch\u00e1zka vs. Ulberg",
+    "type": "PPV",
+    "date": "Sat, Apr 11, 2026",
+    "isoDate": "2026-04-11",
+    "location": "Miami, FL",
+    "venue": "Kaseya Center",
+    "poster": "images/ufc-327.jpg",
+    "status": "upcoming",
+    "mainCard": [
+      {
+        "a": "Ji\u0159\u00ed Proch\u00e1zka",
+        "b": "Carlos Ulberg",
+        "weight": "Light Heavyweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Joshua Van",
+        "b": "Tatsuro Taira",
+        "weight": "Flyweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "comain"
+      },
+      {
+        "a": "Curtis Blaydes",
+        "b": "Josh Hokit",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Beneil Dariush",
+        "b": "Manuel Torres",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Dominick Reyes",
+        "b": "Johnny Walker",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Paulo Costa",
+        "b": "Azamat Murzakanov",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Patricio Pitbull",
+        "b": "Aaron Pico",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Mateusz Gamrot",
+        "b": "Esteban Ribovics",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Tatiana Suarez",
+        "b": "Lupita Godinez",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Cub Swanson",
+        "b": "Nate Landwehr",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Kevin Holland",
+        "b": "Randy Brown",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Kelvin Gastelum",
+        "b": "Vicente Luque",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Nazim Sadykhov",
+        "b": "MarQuel Mederos",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "startTime": "22:00"
+  },
+  {
+    "id": "ufc-328-chimaev-vs-strickland",
+    "name": "UFC 328: Chimaev vs. Strickland",
+    "type": "PPV",
+    "date": "Sat, May 9, 2026",
+    "isoDate": "2026-05-09",
+    "location": "Newark, NJ",
+    "venue": "Prudential Center",
+    "poster": "images/UFC 328.jpeg",
+    "status": "upcoming",
+    "mainCard": [
+      {
+        "a": "Khamzat Chimaev",
+        "b": "Sean Strickland",
+        "weight": "Middleweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Alexander Volkov",
+        "b": "Waldo Cortes-Acosta",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain"
+      },
+      {
+        "a": "Sean Brady",
+        "b": "Joaquin Buckley",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Jan Blachowicz",
+        "b": "Bogdan Guskov",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "King Green",
+        "b": "Jeremy Stephens",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Ateba Gautier",
+        "b": "Osman Diaz",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Clayton Carpenter",
+        "b": "Jose Ochoa",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Roman Kopylov",
+        "b": "Marco Tulio",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      },
+      {
+        "a": "Baisangur Susurkaev",
+        "b": "Djorden Santos",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "earlyPrelims": [
+      {
+        "a": "Joel Alvarez",
+        "b": "Yaroslav Amosov",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false
+      }
+    ],
+    "startTime": "22:00"
+  },
+  {
+    "id": "ufc-fight-night-allen-vs-costa",
+    "name": "UFC Fight Night: Allen vs. Costa",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, May 16, 2026",
+    "isoDate": "2026-05-16",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "images/fn-allen.jpg",
+    "status": "upcoming",
+    "mainCard": [
+      {
+        "a": "Arnold Allen",
+        "b": "Paulo Costa",
+        "weight": "Featherweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Aljamain Sterling",
+        "b": "Youssef Zalal",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain"
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "startTime": "19:00"
+  },
+  {
+    "id": "ufc-freedom-250-topuria-vs-gaethje",
+    "name": "UFC Freedom 250: Topuria vs. Gaethje",
+    "type": "PPV",
+    "date": "Sun, Jun 14, 2026",
+    "isoDate": "2026-06-14",
+    "location": "Washington, D.C.",
+    "venue": "White House South Lawn",
+    "poster": "images/ufc-freedom-250.jpg",
+    "status": "upcoming",
+    "mainCard": [
+      {
+        "a": "Ilia Topuria",
+        "b": "Justin Gaethje",
+        "weight": "Lightweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "main"
+      },
+      {
+        "a": "Alex Pereira",
+        "b": "Ciryl Gane",
+        "weight": "Heavyweight",
+        "rounds": "5 Rds",
+        "titleFight": true,
+        "ranked": true,
+        "slot": "comain"
+      },
+      {
+        "a": "Sean O'Malley",
+        "b": "Aiemann Zahabi",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Mauricio Ruffy",
+        "b": "Michael Chandler",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      },
+      {
+        "a": "Bo Nickal",
+        "b": "Kyle Daukaus",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      }
+    ],
+    "prelims": [
+      {
+        "a": "Diego Lopes",
+        "b": "Steve Garcia",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true
+      }
+    ],
+    "earlyPrelims": [],
+    "startTime": "22:00"
+  },
+  {
+    "id": "ufc-fight-night-baku",
+    "name": "UFC Fight Night: Baku",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Jun 27, 2026",
+    "isoDate": "2026-06-27",
+    "location": "Baku, Azerbaijan",
+    "venue": "Baku Crystal Hall",
+    "poster": "",
+    "status": "upcoming",
+    "mainCard": [
+      {
+        "a": "Brunno Ferreira",
+        "b": "TBA",
+        "weight": "Middleweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main"
+      }
+    ],
+    "prelims": [],
+    "earlyPrelims": [],
+    "startTime": "14:00"
+  }
+]
