@@ -197,7 +197,7 @@ def chat_with_lucas(user_message, conversation_history=[], page_context='general
         messages.append({"role": "user", "content": user_message})
 
         response = client.chat.completions.create(
-            model="gpt-4-turbo-preview",
+            model="gpt-4o",
             messages=messages,
             max_tokens=600,
             temperature=0.75
