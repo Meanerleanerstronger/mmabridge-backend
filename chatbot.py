@@ -77,14 +77,14 @@ Lightweight 155lb, Welterweight 170lb, Middleweight 185lb, Light Heavyweight 205
 
 CURRENT UFC CHAMPIONS (as of April 2026):
 - Strawweight: Zhang Weili
-- Flyweight: Joshua Van
-- Bantamweight: Merab Dvalishvili
-- Featherweight: Ilia Topuria (moved to LW, belt vacated)
-- Lightweight: Ilia Topuria
-- Welterweight: Jack Della Maddalena (won from Islam Makhachev Nov 2025)
-- Middleweight: Dricus Du Plessis
-- Light Heavyweight: Jiří Procházka (regained)
-- Heavyweight: Tom Aspinall
+- Flyweight: Joshua Van (youngest UFC champion ever, won via TKO vs Pantoja UFC 323 Dec 2025)
+- Bantamweight: Petr Yan (beat Merab Dvalishvili UD UFC 323 Dec 2025, 2x champ)
+- Featherweight: Alexander Volkanovski (2x champ, beat Diego Lopes UD UFC 325 Jan 2026)
+- Lightweight: Ilia Topuria (beat Charles Oliveira KO R1 UFC 317 Jun 2025)
+- Welterweight: Islam Makhachev (beat Jack Della Maddalena UD UFC 322 Nov 2025, 2x champ)
+- Middleweight: Khamzat Chimaev (beat Dricus Du Plessis UD UFC 319 Aug 2025, 15-0)
+- Light Heavyweight: Carlos Ulberg (NEW CHAMPION - shocked Jiří Procházka KO R1 3:45 UFC 327 Apr 11 2026)
+- Heavyweight: Tom Aspinall (NC vs Ciryl Gane eye poke UFC 321, still champ)
 
 GOAT DEBATE:
 Jon Jones widely considered GOAT — undefeated (1 NC), dominated LHW for a decade, moved to HW. 
@@ -126,16 +126,17 @@ UFC HISTORY HIGHLIGHTS:
 - GSP's two-weight-class reign considered greatest career
 
 UPCOMING BIG FIGHTS TO KNOW:
-- UFC 327: Procházka vs Ulberg (Apr 11, 2026, Miami, PPV)
-- UFC 328: Chimaev vs Strickland (May 9, 2026)
-- UFC Freedom 250: Topuria vs Gaethje (Jun 14, 2026) — massive PPV
+- UFC Fight Night: Burns vs Malott (Apr 18 2026, Winnipeg Canada) — Gilbert Burns vs Mike Malott main event
+- UFC 328: Chimaev vs Strickland (May 9, 2026) — MW title defense
+- UFC Freedom 250: Topuria vs Gaethje (Jun 14, 2026, White House South Lawn) — massive PPV, LW title unification + Pereira vs Gane interim HW title
 
 RECENT RESULTS YOU MUST KNOW:
-- Moicano def. Duncan via RNC R2 (UFC Vegas 115, Apr 4 2026)
-- Jandiroba def. Ricci UD (same card)
-- Adesanya def. Pyfer (Mar 28 2026)
-- Holloway def. Oliveira 2 (Mar 7 2026, UFC 326)
-- Della Maddalena def. Makhachev UD (UFC 322, Nov 2025) — massive upset, new WW champ
+- UFC 327 (Apr 11 2026): Carlos Ulberg KO'd Jiří Procházka R1 3:45 to win the LHW title in a MASSIVE upset. Paulo Costa TKO'd Murzakanov R3. Josh Hokit upset Curtis Blaydes UD. Dominick Reyes beat Johnny Walker SD. Cub Swanson retired with a TKO win over Landwehr R1.
+- UFC 325 (Jan 31 2026): Alexander Volkanovski beat Diego Lopes UD to retain FW title
+- UFC 322 (Nov 15 2025): Islam Makhachev beat Jack Della Maddalena UD to become 2x champ (WW)
+- UFC 323 (Dec 6 2025): Joshua Van beat Pantoja TKO R1 to become FLY champ. Petr Yan beat Merab UD to become 2x BW champ.
+- UFC 319 (Aug 16 2025): Khamzat Chimaev beat Dricus Du Plessis UD to win MW title
+- UFC 317 (Jun 28 2025): Ilia Topuria KO'd Charles Oliveira R1 to win vacant LW title
 
 MMA BRIDGE SITE INFO:
 - mmabridge.com — fan-built MMA news and events site

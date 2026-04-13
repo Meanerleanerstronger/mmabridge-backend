@@ -3,9 +3,9 @@
     "name": "Islam Makhachev",
     "nickname": "",
     "country": "Russia",
-    "flag": "\ud83c\uddf7\ud83c\uddfa",
+    "flag": "🇷🇺",
     "record": "28-1",
-    "division": "Welterweight / Lightweight",
+    "division": "Welterweight",
     "stance": "Southpaw",
     "height": "5'10\"",
     "reach": "70.5\"",
@@ -16,43 +16,49 @@
         "result": "W",
         "method": "UD",
         "round": "5",
-        "date": "2025-11-16"
+        "time": "5:00",
+        "event": "UFC 322"
       },
       {
         "opponent": "Renato Moicano",
         "result": "W",
-        "method": "SUB",
+        "method": "D'Arce Choke",
         "round": "1",
-        "date": "2025-01-18"
+        "time": "4:05",
+        "event": "UFC 311"
       },
       {
         "opponent": "Dustin Poirier",
         "result": "W",
-        "method": "SUB",
+        "method": "D'Arce Choke",
         "round": "5",
-        "date": "2024-06-01"
+        "time": "2:42",
+        "event": "UFC 302"
       },
       {
         "opponent": "Alexander Volkanovski",
         "result": "W",
-        "method": "KO/TKO",
+        "method": "KO",
         "round": "1",
-        "date": "2023-10-21"
+        "time": "3:06",
+        "event": "UFC 294"
       },
       {
         "opponent": "Alexander Volkanovski",
         "result": "W",
         "method": "UD",
         "round": "5",
-        "date": "2023-02-11"
+        "time": "5:00",
+        "event": "UFC 284"
       }
-    ]
+    ],
+    "champion": true
   },
   "ilia-topuria": {
     "name": "Ilia Topuria",
     "nickname": "El Matador",
     "country": "Georgia/Spain",
-    "flag": "\ud83c\uddec\ud83c\uddea",
+    "flag": "🇬🇪",
     "record": "17-0",
     "division": "Lightweight",
     "stance": "Orthodox",
@@ -63,90 +69,107 @@
       {
         "opponent": "Charles Oliveira",
         "result": "W",
-        "method": "KO/TKO",
+        "method": "KO",
         "round": "1",
-        "date": "2025-05-28"
+        "time": "2:27",
+        "event": "UFC 317"
+      },
+      {
+        "opponent": "Max Holloway",
+        "result": "W",
+        "method": "KO",
+        "round": "3",
+        "time": "1:34",
+        "event": "UFC 308"
       },
       {
         "opponent": "Alexander Volkanovski",
         "result": "W",
-        "method": "KO/TKO",
+        "method": "KO",
         "round": "2",
-        "date": "2024-02-17"
+        "time": "3:32",
+        "event": "UFC 298"
       },
       {
         "opponent": "Josh Emmett",
         "result": "W",
         "method": "UD",
         "round": "5",
-        "date": "2023-06-24"
+        "time": "5:00",
+        "event": "UFC on ABC"
       },
       {
         "opponent": "Bryce Mitchell",
         "result": "W",
-        "method": "SUB",
+        "method": "Sub (Arm Triangle)",
         "round": "2",
-        "date": "2022-12-10"
-      },
-      {
-        "opponent": "Jai Herbert",
-        "result": "W",
-        "method": "KO/TKO",
-        "round": "2",
-        "date": "2022-03-19"
+        "time": "3:10",
+        "event": "UFC 282"
       }
-    ]
+    ],
+    "champion": true
   },
   "khamzat-chimaev": {
     "name": "Khamzat Chimaev",
     "nickname": "",
     "country": "Sweden",
-    "flag": "\ud83c\uddf8\ud83c\uddea",
+    "flag": "🇸🇪",
     "record": "15-0",
-    "division": "Middleweight / Welterweight",
+    "division": "Middleweight",
     "stance": "Orthodox",
     "height": "6'2\"",
     "reach": "78\"",
     "age": "31",
     "last5": [
       {
-        "opponent": "Robert Whittaker",
-        "result": "W",
-        "method": "Sub",
-        "event": "UFC 328"
-      },
-      {
         "opponent": "Dricus Du Plessis",
         "result": "W",
         "method": "UD",
+        "round": "5",
+        "time": "5:00",
         "event": "UFC 319"
+      },
+      {
+        "opponent": "Robert Whittaker",
+        "result": "W",
+        "method": "Sub (Face Crank)",
+        "round": "1",
+        "time": "3:34",
+        "event": "UFC 308"
       },
       {
         "opponent": "Kamaru Usman",
         "result": "W",
-        "method": "MD",
+        "method": "UD",
+        "round": "5",
+        "time": "5:00",
         "event": "UFC 294"
       },
       {
         "opponent": "Kevin Holland",
         "result": "W",
-        "method": "Sub",
+        "method": "D'Arce Choke",
+        "round": "1",
+        "time": "2:13",
         "event": "UFC 279"
       },
       {
         "opponent": "Gilbert Burns",
         "result": "W",
         "method": "UD",
+        "round": "5",
+        "time": "5:00",
         "event": "UFC 273"
       }
-    ]
+    ],
+    "champion": true
   },
   "alex-pereira": {
     "name": "Alex Pereira",
     "nickname": "",
     "country": "Brazil",
-    "flag": "\ud83c\udde7\ud83c\uddf7",
-    "record": "11-2",
+    "flag": "🇧🇷",
+    "record": "13-3",
     "division": "Light Heavyweight",
     "stance": "Orthodox",
     "height": "6'4\"",
@@ -156,46 +179,52 @@
       {
         "opponent": "Magomed Ankalaev",
         "result": "W",
-        "method": "KO/TKO",
+        "method": "TKO",
         "round": "1",
-        "date": "2025-10-04"
+        "time": "1:20",
+        "event": "UFC 320"
       },
       {
         "opponent": "Magomed Ankalaev",
         "result": "L",
         "method": "UD",
         "round": "5",
-        "date": "2025-03-13"
+        "time": "5:00",
+        "event": "UFC 313"
       },
       {
-        "opponent": "Jiri Prochazka",
+        "opponent": "Khalil Rountree Jr.",
         "result": "W",
         "method": "TKO",
+        "round": "4",
+        "time": "4:32",
+        "event": "UFC 307"
+      },
+      {
+        "opponent": "Jiří Procházka",
+        "result": "W",
+        "method": "KO",
         "round": "2",
-        "date": "2024-06-29"
+        "time": "0:13",
+        "event": "UFC 303"
       },
       {
         "opponent": "Jamahal Hill",
         "result": "W",
-        "method": "KO/TKO",
+        "method": "KO",
         "round": "1",
-        "date": "2024-04-13"
-      },
-      {
-        "opponent": "Jan Blachowicz",
-        "result": "W",
-        "method": "UD",
-        "round": "3",
-        "date": "2023-07-29"
+        "time": "3:14",
+        "event": "UFC 300"
       }
-    ]
+    ],
+    "champion": true
   },
   "alexander-volkanovski": {
     "name": "Alexander Volkanovski",
     "nickname": "",
     "country": "Australia",
-    "flag": "\ud83c\udde6\ud83c\uddfa",
-    "record": "27-4",
+    "flag": "🇦🇺",
+    "record": "28-4",
     "division": "Featherweight",
     "stance": "Orthodox",
     "height": "5'6\"",
@@ -207,363 +236,457 @@
         "result": "W",
         "method": "UD",
         "round": "5",
-        "date": "2025-04-12"
+        "time": "5:00",
+        "event": "UFC 325"
+      },
+      {
+        "opponent": "Diego Lopes",
+        "result": "W",
+        "method": "UD",
+        "round": "5",
+        "time": "5:00",
+        "event": "UFC 314"
       },
       {
         "opponent": "Ilia Topuria",
         "result": "L",
-        "method": "KO/TKO",
+        "method": "KO",
         "round": "2",
-        "date": "2024-02-17"
+        "time": "3:32",
+        "event": "UFC 298"
       },
       {
         "opponent": "Islam Makhachev",
         "result": "L",
-        "method": "KO/TKO",
+        "method": "KO",
         "round": "1",
-        "date": "2023-10-21"
+        "time": "3:06",
+        "event": "UFC 294"
       },
       {
-        "opponent": "Islam Makhachev",
-        "result": "L",
-        "method": "UD",
-        "round": "5",
-        "date": "2023-02-11"
-      },
-      {
-        "opponent": "Max Holloway",
+        "opponent": "Yair Rodriguez",
         "result": "W",
-        "method": "UD",
-        "round": "5",
-        "date": "2022-07-02"
+        "method": "TKO",
+        "round": "3",
+        "time": "4:19",
+        "event": "UFC 290"
       }
-    ]
+    ],
+    "champion": true
   },
   "petr-yan": {
     "name": "Petr Yan",
     "nickname": "",
     "country": "Russia",
-    "flag": "\ud83c\uddf7\ud83c\uddfa",
-    "record": "17-5",
+    "flag": "🇷🇺",
+    "record": "20-5",
     "division": "Bantamweight",
     "last5": [
       {
         "opponent": "Merab Dvalishvili",
         "result": "W",
         "method": "UD",
+        "round": "5",
+        "time": "5:00",
         "event": "UFC 323"
       },
       {
-        "opponent": "Henry Cejudo",
-        "result": "L",
+        "opponent": "Marcus McGhee",
+        "result": "W",
         "method": "UD",
-        "event": "UFC 310"
+        "round": "3",
+        "time": "5:00",
+        "event": "UFC Fight Night"
       },
       {
         "opponent": "Deiveson Figueiredo",
         "result": "W",
         "method": "UD",
-        "event": "UFC 306"
+        "round": "5",
+        "time": "5:00",
+        "event": "UFC Fight Night"
       },
       {
         "opponent": "Song Yadong",
-        "result": "L",
+        "result": "W",
         "method": "UD",
+        "round": "3",
+        "time": "5:00",
         "event": "UFC 299"
       },
       {
         "opponent": "Merab Dvalishvili",
         "result": "L",
         "method": "UD",
-        "event": "UFC 282"
+        "round": "5",
+        "time": "5:00",
+        "event": "UFC Fight Night"
       }
-    ]
+    ],
+    "champion": true
   },
   "merab-dvalishvili": {
     "name": "Merab Dvalishvili",
     "nickname": "",
     "country": "Georgia",
-    "flag": "\ud83c\uddec\ud83c\uddea",
-    "record": "17-4",
+    "flag": "🇬🇪",
+    "record": "21-5",
     "division": "Bantamweight",
     "last5": [
       {
         "opponent": "Petr Yan",
         "result": "L",
         "method": "UD",
+        "round": "5",
+        "time": "5:00",
         "event": "UFC 323"
+      },
+      {
+        "opponent": "Cory Sandhagen",
+        "result": "W",
+        "method": "UD",
+        "round": "5",
+        "time": "5:00",
+        "event": "UFC 320"
       },
       {
         "opponent": "Sean O'Malley",
         "result": "W",
-        "method": "UD",
+        "method": "Sub (N-S Choke)",
+        "round": "3",
+        "time": "4:42",
         "event": "UFC 316"
       },
       {
         "opponent": "Umar Nurmagomedov",
         "result": "W",
         "method": "UD",
+        "round": "5",
+        "time": "5:00",
         "event": "UFC 311"
       },
       {
-        "opponent": "Henry Cejudo",
+        "opponent": "Sean O'Malley",
         "result": "W",
         "method": "UD",
-        "event": "UFC 298"
-      },
-      {
-        "opponent": "Jose Aldo",
-        "result": "W",
-        "method": "UD",
-        "event": "UFC 278"
+        "round": "5",
+        "time": "5:00",
+        "event": "UFC 306"
       }
-    ]
+    ],
+    "champion": false
   },
   "tom-aspinall": {
     "name": "Tom Aspinall",
     "nickname": "",
     "country": "United Kingdom",
-    "flag": "\ud83c\uddec\ud83c\udde7",
-    "record": "14-3",
+    "flag": "🇬🇧",
+    "record": "15-3 (1 NC)",
     "division": "Heavyweight",
     "last5": [
       {
         "opponent": "Ciryl Gane",
         "result": "NC",
-        "method": "NC",
+        "method": "No Contest (Eye Poke)",
+        "round": "1",
+        "time": "4:35",
         "event": "UFC 321"
+      },
+      {
+        "opponent": "Curtis Blaydes",
+        "result": "W",
+        "method": "KO",
+        "round": "1",
+        "time": "1:00",
+        "event": "UFC 304"
       },
       {
         "opponent": "Sergei Pavlovich",
         "result": "W",
-        "method": "TKO",
+        "method": "KO",
+        "round": "1",
+        "time": "1:09",
         "event": "UFC 295"
       },
       {
         "opponent": "Marcin Tybura",
         "result": "W",
-        "method": "TKO",
-        "event": "UFC London"
-      },
-      {
-        "opponent": "Alexander Volkov",
-        "result": "W",
-        "method": "Sub",
-        "event": "UFC 301"
+        "method": "KO",
+        "round": "1",
+        "time": "1:13",
+        "event": "UFC Fight Night"
       },
       {
         "opponent": "Curtis Blaydes",
-        "result": "W",
-        "method": "TKO",
-        "event": "UFC 304"
+        "result": "L",
+        "method": "TKO (Injury)",
+        "round": "1",
+        "time": "0:15",
+        "event": "UFC Fight Night"
       }
-    ]
+    ],
+    "champion": true
   },
   "alexandre-pantoja": {
     "name": "Alexandre Pantoja",
     "nickname": "",
     "country": "Brazil",
-    "flag": "\ud83c\udde7\ud83c\uddf7",
-    "record": "28-5",
+    "flag": "🇧🇷",
+    "record": "30-6",
     "division": "Flyweight",
     "last5": [
       {
         "opponent": "Joshua Van",
         "result": "L",
-        "method": "Sub",
+        "method": "TKO (Injury)",
+        "round": "1",
+        "time": "0:26",
         "event": "UFC 323"
       },
       {
         "opponent": "Kai Kara-France",
         "result": "W",
-        "method": "Sub",
+        "method": "RNC",
+        "round": "3",
+        "time": "1:55",
         "event": "UFC 317"
+      },
+      {
+        "opponent": "Kai Asakura",
+        "result": "W",
+        "method": "RNC",
+        "round": "2",
+        "time": "2:05",
+        "event": "UFC 310"
       },
       {
         "opponent": "Steve Erceg",
         "result": "W",
         "method": "UD",
-        "event": "UFC 314"
-      },
-      {
-        "opponent": "Amir Albazi",
-        "result": "W",
-        "method": "UD",
-        "event": "UFC 307"
+        "round": "5",
+        "time": "5:00",
+        "event": "UFC 301"
       },
       {
         "opponent": "Brandon Royval",
         "result": "W",
-        "method": "Sub",
-        "event": "UFC 303"
+        "method": "UD",
+        "round": "5",
+        "time": "5:00",
+        "event": "UFC 296"
       }
-    ]
+    ],
+    "champion": false
   },
   "max-holloway": {
     "name": "Max Holloway",
     "nickname": "",
     "country": "United States",
-    "flag": "\ud83c\uddfa\ud83c\uddf8",
-    "record": "26-8",
-    "division": "Featherweight",
+    "flag": "🇺🇸",
+    "record": "27-8",
+    "division": "Lightweight",
     "last5": [
-      {
-        "opponent": "Charles Oliveira",
-        "result": "L",
-        "method": "UD",
-        "event": "UFC 326"
-      },
       {
         "opponent": "Dustin Poirier",
         "result": "W",
         "method": "UD",
+        "round": "3",
+        "time": "5:00",
         "event": "UFC 318"
+      },
+      {
+        "opponent": "Ilia Topuria",
+        "result": "L",
+        "method": "KO",
+        "round": "3",
+        "time": "1:34",
+        "event": "UFC 308"
       },
       {
         "opponent": "Justin Gaethje",
         "result": "W",
         "method": "KO",
+        "round": "5",
+        "time": "4:59",
         "event": "UFC 300"
       },
       {
-        "opponent": "Dustin Poirier",
+        "opponent": "Jung Chan-sung",
         "result": "W",
-        "method": "UD",
-        "event": "UFC 318"
+        "method": "KO",
+        "round": "3",
+        "time": "2:00",
+        "event": "UFC Fight Night"
       },
       {
         "opponent": "Arnold Allen",
         "result": "W",
         "method": "UD",
-        "event": "UFC Fight Night"
+        "round": "3",
+        "time": "5:00",
+        "event": "UFC on ESPN"
       }
-    ]
+    ],
+    "champion": false
   },
   "dricus-du-plessis": {
     "name": "Dricus Du Plessis",
     "nickname": "",
     "country": "South Africa",
-    "flag": "\ud83c\uddff\ud83c\udde6",
-    "record": "21-2",
+    "flag": "🇿🇦",
+    "record": "23-3",
     "division": "Middleweight",
     "last5": [
       {
         "opponent": "Khamzat Chimaev",
         "result": "L",
         "method": "UD",
+        "round": "5",
+        "time": "5:00",
         "event": "UFC 319"
       },
       {
         "opponent": "Sean Strickland",
         "result": "W",
-        "method": "SD",
+        "method": "UD",
+        "round": "5",
+        "time": "5:00",
         "event": "UFC 312"
       },
       {
         "opponent": "Israel Adesanya",
         "result": "W",
-        "method": "Sub",
+        "method": "Sub (Face Crank)",
+        "round": "4",
+        "time": "3:38",
         "event": "UFC 305"
       },
       {
         "opponent": "Sean Strickland",
         "result": "W",
         "method": "SD",
+        "round": "5",
+        "time": "5:00",
         "event": "UFC 297"
       },
       {
         "opponent": "Robert Whittaker",
         "result": "W",
-        "method": "KO",
+        "method": "TKO",
+        "round": "2",
+        "time": "4:59",
         "event": "UFC 290"
       }
-    ]
+    ],
+    "champion": false
   },
   "joshua-van": {
     "name": "Joshua Van",
     "nickname": "",
     "country": "Myanmar",
-    "flag": "\ud83c\uddf2\ud83c\uddf2",
-    "record": "11-1",
+    "flag": "🇲🇲",
+    "record": "16-2",
     "division": "Flyweight",
     "last5": [
       {
         "opponent": "Alexandre Pantoja",
         "result": "W",
-        "method": "Sub",
+        "method": "TKO (Injury)",
+        "round": "1",
+        "time": "0:26",
         "event": "UFC 323"
       },
       {
         "opponent": "Brandon Royval",
         "result": "W",
         "method": "UD",
+        "round": "3",
+        "time": "5:00",
         "event": "UFC 317"
       },
       {
-        "opponent": "Manel Kape",
+        "opponent": "Bruno Silva",
         "result": "W",
         "method": "UD",
-        "event": "UFC Fight Night"
+        "round": "3",
+        "time": "5:00",
+        "event": "UFC 316"
       },
       {
-        "opponent": "Tatsuro Taira",
+        "opponent": "Rei Tsuruya",
         "result": "W",
         "method": "UD",
-        "event": "UFC Fight Night"
+        "round": "3",
+        "time": "5:00",
+        "event": "UFC 313"
       },
       {
-        "opponent": "David Dvorak",
+        "opponent": "Cody Durden",
         "result": "W",
-        "method": "TKO",
-        "event": "UFC Fight Night"
+        "method": "UD",
+        "round": "3",
+        "time": "5:00",
+        "event": "UFC 310"
       }
-    ]
+    ],
+    "champion": true
   },
   "magomed-ankalaev": {
     "name": "Magomed Ankalaev",
     "nickname": "",
     "country": "Russia",
-    "flag": "\ud83c\uddf7\ud83c\uddfa",
-    "record": "19-1-1",
+    "flag": "🇷🇺",
+    "record": "21-2-1 (1 NC)",
     "division": "Light Heavyweight",
     "last5": [
       {
         "opponent": "Alex Pereira",
         "result": "L",
         "method": "TKO",
+        "round": "1",
+        "time": "1:20",
         "event": "UFC 320"
+      },
+      {
+        "opponent": "Alex Pereira",
+        "result": "W",
+        "method": "UD",
+        "round": "5",
+        "time": "5:00",
+        "event": "UFC 313"
       },
       {
         "opponent": "Aleksandar Rakic",
         "result": "W",
         "method": "UD",
-        "event": "UFC Fight Night"
+        "round": "3",
+        "time": "5:00",
+        "event": "UFC 308"
       },
       {
         "opponent": "Johnny Walker",
         "result": "W",
-        "method": "UD",
-        "event": "UFC 294"
+        "method": "KO",
+        "round": "2",
+        "time": "2:42",
+        "event": "UFC Fight Night"
       },
       {
-        "opponent": "Aleksandar Rakic",
-        "result": "W",
-        "method": "TKO",
-        "event": "UFC 282"
-      },
-      {
-        "opponent": "Jan Blachowicz",
+        "opponent": "Johnny Walker",
         "result": "NC",
-        "method": "NC",
-        "event": "UFC 282"
+        "method": "No Contest (Illegal Knee)",
+        "round": "1",
+        "time": "3:13",
+        "event": "UFC 294"
       }
-    ]
+    ],
+    "champion": false
   },
   "jack-della-maddalena": {
     "name": "Jack Della Maddalena",
     "nickname": "",
     "country": "Australia",
-    "flag": "\ud83c\udde6\ud83c\uddfa",
+    "flag": "🇦🇺",
     "record": "18-3",
     "division": "Welterweight",
     "last5": [
@@ -571,79 +694,101 @@
         "opponent": "Islam Makhachev",
         "result": "L",
         "method": "UD",
+        "round": "5",
+        "time": "5:00",
         "event": "UFC 322"
+      },
+      {
+        "opponent": "Belal Muhammad",
+        "result": "W",
+        "method": "UD",
+        "round": "5",
+        "time": "5:00",
+        "event": "UFC 315"
       },
       {
         "opponent": "Gilbert Burns",
         "result": "W",
         "method": "TKO",
-        "event": "UFC 315"
-      },
-      {
-        "opponent": "Sean Brady",
-        "result": "W",
-        "method": "KO",
+        "round": "3",
+        "time": "3:43",
         "event": "UFC 299"
       },
       {
         "opponent": "Kevin Holland",
         "result": "W",
-        "method": "TKO",
-        "event": "UFC 291"
+        "method": "SD",
+        "round": "3",
+        "time": "5:00",
+        "event": "UFC Fight Night"
       },
       {
-        "opponent": "Randy Brown",
+        "opponent": "Bassil Hafez",
         "result": "W",
-        "method": "TKO",
+        "method": "SD",
+        "round": "3",
+        "time": "5:00",
         "event": "UFC Fight Night"
       }
-    ]
+    ],
+    "champion": false
   },
   "arman-tsarukyan": {
     "name": "Arman Tsarukyan",
     "nickname": "",
     "country": "Armenia",
-    "flag": "\ud83c\udde6\ud83c\uddf2",
-    "record": "22-3",
+    "flag": "🇦🇲",
+    "record": "23-3",
     "division": "Lightweight",
     "last5": [
       {
-        "opponent": "Beneil Dariush",
+        "opponent": "Dan Hooker",
         "result": "W",
-        "method": "UD",
+        "method": "Sub (Arm Triangle)",
+        "round": "2",
+        "time": "3:34",
         "event": "UFC Fight Night"
-      },
-      {
-        "opponent": "Mateusz Gamrot",
-        "result": "W",
-        "method": "UD",
-        "event": "UFC 300"
       },
       {
         "opponent": "Charles Oliveira",
         "result": "W",
-        "method": "UD",
+        "method": "SD",
+        "round": "3",
+        "time": "5:00",
         "event": "UFC 300"
       },
       {
-        "opponent": "Conor McGregor",
+        "opponent": "Beneil Dariush",
         "result": "W",
-        "method": "TKO",
-        "event": "UFC 303"
+        "method": "KO",
+        "round": "1",
+        "time": "1:04",
+        "event": "UFC on ESPN"
       },
       {
-        "opponent": "Islam Makhachev",
-        "result": "L",
+        "opponent": "Joaquim Silva",
+        "result": "W",
+        "method": "TKO",
+        "round": "3",
+        "time": "3:25",
+        "event": "UFC Fight Night"
+      },
+      {
+        "opponent": "Damir Ismagulov",
+        "result": "W",
         "method": "UD",
-        "event": "UFC 311"
+        "round": "3",
+        "time": "5:00",
+        "event": "UFC Fight Night"
       }
-    ]
+    ],
+    "champion": false
   },
   "paddy-pimblett": {
     "name": "Paddy Pimblett",
     "nickname": "The Baddy",
     "country": "England",
-    "flag": "\ud83c\uddec\ud83c\udde7",
+    "flag": "🇬🇧",
     "record": "23-3",
     "division": "Lightweight",
     "stance": "Orthodox",
