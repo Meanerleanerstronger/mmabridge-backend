@@ -18,6 +18,7 @@ from database import (
     get_all_events,
     get_upcoming_events,
     save_event_rating,
+    update_event_rating,
     get_event_ratings,
     get_event_avg_rating,
     get_event_reviews,
@@ -363,6 +364,22 @@ def get_ratings(event_id):
     except Exception as e:
         print(f"Rating fetch error: {e}")
         return jsonify({'error': 'Failed to fetch ratings'}), 500
+
+
+@app.route('/api/ratings/<int:rating_id>', methods=['PUT'])
+def edit_rating(rating_id):
+    """Update an existing rating (edit flow)"""
+    try:
+        data = request.get_json()
+        hype_rating = data.get('hype_rating')
+        review_text = data.get('review_text')
+        if hype_rating is None or not isinstance(hype_rating, (int, float)) or not (1 <= hype_rating <= 5):
+            return jsonify({'error': 'hype_rating must be a number between 1 and 5'}), 400
+        update_event_rating(rating_id, hype_rating, review_text)
+        return jsonify({'success': True})
+    except Exception as e:
+        print(f"Rating update error: {e}")
+        return jsonify({'error': 'Failed to update rating', 'detail': str(e)}), 500
 
 
 @app.route('/api/reviews/<event_id>', methods=['GET'])

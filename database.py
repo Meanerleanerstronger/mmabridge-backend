@@ -339,6 +339,16 @@ def save_event_rating(event_id, event_name, hype_rating, fotn_prediction=None, r
     conn.close()
     return rating_id
 
+def update_event_rating(rating_id, hype_rating, review_text=None):
+    """Update an existing event rating"""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute('''
+        UPDATE event_ratings SET hype_rating = ?, review_text = ? WHERE id = ?
+    ''', (hype_rating, review_text, rating_id))
+    conn.commit()
+    conn.close()
+
 def get_event_ratings(event_id):
     """Get all ratings for a specific event"""
     conn = sqlite3.connect(DB_PATH)
