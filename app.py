@@ -30,7 +30,12 @@ from database import (
     create_tables,
     get_or_create_user,
     get_user_by_id,
-    get_user_rating_for_event
+    get_user_rating_for_event,
+    toggle_review_like,
+    get_review_likes,
+    add_review_reply,
+    get_review_replies,
+    toggle_reply_like
 )
 
 # Import scraper reader
@@ -554,13 +559,96 @@ def get_my_rating(event_id):
 
 @app.route('/api/reviews/<event_id>', methods=['GET'])
 def get_reviews(event_id):
-    """Get all fan reviews for an event"""
+    """Get all fan reviews for an event, with like counts and optional user-liked status"""
     try:
         reviews = get_event_reviews(event_id)
+        current_user_id = None
+        try:
+            verify_jwt_in_request(optional=True)
+            uid = get_jwt_identity()
+            if uid:
+                current_user_id = int(uid)
+        except Exception:
+            pass
+        review_ids = [r['id'] for r in reviews]
+        likes_map = get_review_likes(review_ids, current_user_id)
+        for r in reviews:
+            info = likes_map.get(r['id'], {})
+            r['like_count'] = info.get('count', 0)
+            r['user_liked'] = info.get('user_liked', False)
         return jsonify(reviews)
     except Exception as e:
         print(f"Reviews fetch error: {e}")
         return jsonify([]), 500
+
+
+@app.route('/api/reviews/<int:review_id>/like', methods=['POST', 'DELETE'])
+@jwt_required()
+def manage_review_like(review_id):
+    try:
+        user_id = int(get_jwt_identity())
+        liked, count = toggle_review_like(review_id, user_id)
+        return jsonify({'liked': liked, 'like_count': count})
+    except Exception as e:
+        print(f"Like error: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/reviews/<int:review_id>/reply', methods=['POST'])
+@jwt_required()
+def post_reply(review_id):
+    try:
+        user_id = int(get_jwt_identity())
+        user = get_user_by_id(user_id)
+        if not user:
+            return jsonify({'error': 'User not found'}), 404
+        data = request.get_json() or {}
+        reply_text = (data.get('reply_text') or '').strip()
+        if not reply_text:
+            return jsonify({'error': 'reply_text required'}), 400
+        if len(reply_text) > 1000:
+            return jsonify({'error': 'Reply too long'}), 400
+        reply_id = add_review_reply(review_id, user_id, user['display_name'], reply_text)
+        return jsonify({
+            'success': True,
+            'reply_id': reply_id,
+            'user_id': user_id,
+            'display_name': user['display_name'],
+            'created_at': __import__('datetime').datetime.utcnow().isoformat()
+        }), 201
+    except Exception as e:
+        print(f"Reply error: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/reviews/<int:review_id>/replies', methods=['GET'])
+def fetch_replies(review_id):
+    try:
+        current_user_id = None
+        try:
+            verify_jwt_in_request(optional=True)
+            uid = get_jwt_identity()
+            if uid:
+                current_user_id = int(uid)
+        except Exception:
+            pass
+        replies = get_review_replies(review_id, current_user_id)
+        return jsonify(replies)
+    except Exception as e:
+        print(f"Replies fetch error: {e}")
+        return jsonify([]), 500
+
+
+@app.route('/api/replies/<int:reply_id>/like', methods=['POST', 'DELETE'])
+@jwt_required()
+def manage_reply_like(reply_id):
+    try:
+        user_id = int(get_jwt_identity())
+        liked, count = toggle_reply_like(reply_id, user_id)
+        return jsonify({'liked': liked, 'like_count': count})
+    except Exception as e:
+        print(f"Reply like error: {e}")
+        return jsonify({'error': str(e)}), 500
 
 
 # ==============================================

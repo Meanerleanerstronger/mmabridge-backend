@@ -119,6 +119,40 @@ def create_tables():
         )
     ''')
 
+    # REVIEW LIKES TABLE
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS review_likes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            review_id INTEGER NOT NULL,
+            user_id INTEGER NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE(review_id, user_id)
+        )
+    ''')
+
+    # REVIEW REPLIES TABLE
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS review_replies (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            review_id INTEGER NOT NULL,
+            user_id INTEGER NOT NULL,
+            display_name TEXT NOT NULL,
+            reply_text TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+
+    # REPLY LIKES TABLE
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS reply_likes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            reply_id INTEGER NOT NULL,
+            user_id INTEGER NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE(reply_id, user_id)
+        )
+    ''')
+
     # Migrations for existing event_ratings rows missing new columns
     for col, definition in [('user_id', 'INTEGER'), ('display_name', 'TEXT')]:
         try:
@@ -443,10 +477,11 @@ def get_event_reviews(event_id):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
     cursor.execute('''
-        SELECT id, hype_rating, review_text, display_name, created_at
-        FROM event_ratings
-        WHERE event_id = ?
-        ORDER BY created_at DESC
+        SELECT er.id, er.hype_rating, er.review_text, er.display_name, er.created_at, er.user_id,
+               (SELECT COUNT(*) FROM review_replies rr WHERE rr.review_id = er.id) AS reply_count
+        FROM event_ratings er
+        WHERE er.event_id = ?
+        ORDER BY er.created_at DESC
     ''', (event_id,))
     rows = cursor.fetchall()
     conn.close()
@@ -455,7 +490,9 @@ def get_event_reviews(event_id):
         'hype_rating':  row['hype_rating'],
         'review_text':  row['review_text'],
         'display_name': row['display_name'] or 'Anonymous',
-        'created_at':   row['created_at']
+        'created_at':   row['created_at'],
+        'user_id':      row['user_id'],
+        'reply_count':  row['reply_count']
     } for row in rows]
 
 def get_event_avg_rating(event_id):
@@ -484,6 +521,108 @@ def get_event_avg_rating(event_id):
         'avg_hype': round(rows[0]['avg_hype'], 1) if rows[0]['avg_hype'] else None,
         'top_fotn': rows[0]['fotn_prediction']
     }
+
+# ==============================================
+# REVIEW SOCIAL: LIKES + REPLIES
+# ==============================================
+
+def toggle_review_like(review_id, user_id):
+    """Toggle like on a review. Returns (liked: bool, count: int)."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute('SELECT id FROM review_likes WHERE review_id=? AND user_id=?', (review_id, user_id))
+    if cursor.fetchone():
+        cursor.execute('DELETE FROM review_likes WHERE review_id=? AND user_id=?', (review_id, user_id))
+        liked = False
+    else:
+        cursor.execute('INSERT INTO review_likes (review_id, user_id) VALUES (?,?)', (review_id, user_id))
+        liked = True
+    conn.commit()
+    cursor.execute('SELECT COUNT(*) FROM review_likes WHERE review_id=?', (review_id,))
+    count = cursor.fetchone()[0]
+    conn.close()
+    return liked, count
+
+def get_review_likes(review_ids, user_id=None):
+    """Returns {review_id: {count, user_liked}} for a list of review IDs."""
+    if not review_ids:
+        return {}
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    ph = ','.join('?' * len(review_ids))
+    cursor.execute(f'SELECT review_id, COUNT(*) FROM review_likes WHERE review_id IN ({ph}) GROUP BY review_id', review_ids)
+    counts = {row[0]: row[1] for row in cursor.fetchall()}
+    liked_set = set()
+    if user_id:
+        cursor.execute(f'SELECT review_id FROM review_likes WHERE review_id IN ({ph}) AND user_id=?',
+                       list(review_ids) + [user_id])
+        liked_set = {row[0] for row in cursor.fetchall()}
+    conn.close()
+    return {rid: {'count': counts.get(rid, 0), 'user_liked': rid in liked_set} for rid in review_ids}
+
+def add_review_reply(review_id, user_id, display_name, reply_text):
+    """Insert a reply. Returns reply_id."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute(
+        'INSERT INTO review_replies (review_id, user_id, display_name, reply_text) VALUES (?,?,?,?)',
+        (review_id, user_id, display_name, reply_text)
+    )
+    conn.commit()
+    reply_id = cursor.lastrowid
+    conn.close()
+    return reply_id
+
+def get_review_replies(review_id, user_id=None):
+    """Get all replies for a review with like counts."""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute(
+        'SELECT id, user_id, display_name, reply_text, created_at FROM review_replies WHERE review_id=? ORDER BY created_at ASC',
+        (review_id,)
+    )
+    rows = cursor.fetchall()
+    reply_ids = [r['id'] for r in rows]
+    # Batch fetch like counts
+    liked_set = set()
+    counts = {}
+    if reply_ids:
+        ph = ','.join('?' * len(reply_ids))
+        cursor.execute(f'SELECT reply_id, COUNT(*) FROM reply_likes WHERE reply_id IN ({ph}) GROUP BY reply_id', reply_ids)
+        counts = {row[0]: row[1] for row in cursor.fetchall()}
+        if user_id:
+            cursor.execute(f'SELECT reply_id FROM reply_likes WHERE reply_id IN ({ph}) AND user_id=?',
+                           reply_ids + [user_id])
+            liked_set = {row[0] for row in cursor.fetchall()}
+    conn.close()
+    return [{
+        'id':           r['id'],
+        'user_id':      r['user_id'],
+        'display_name': r['display_name'],
+        'reply_text':   r['reply_text'],
+        'created_at':   r['created_at'],
+        'like_count':   counts.get(r['id'], 0),
+        'user_liked':   r['id'] in liked_set,
+    } for r in rows]
+
+def toggle_reply_like(reply_id, user_id):
+    """Toggle like on a reply. Returns (liked: bool, count: int)."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute('SELECT id FROM reply_likes WHERE reply_id=? AND user_id=?', (reply_id, user_id))
+    if cursor.fetchone():
+        cursor.execute('DELETE FROM reply_likes WHERE reply_id=? AND user_id=?', (reply_id, user_id))
+        liked = False
+    else:
+        cursor.execute('INSERT INTO reply_likes (reply_id, user_id) VALUES (?,?)', (reply_id, user_id))
+        liked = True
+    conn.commit()
+    cursor.execute('SELECT COUNT(*) FROM reply_likes WHERE reply_id=?', (reply_id,))
+    count = cursor.fetchone()[0]
+    conn.close()
+    return liked, count
+
 
 # Run this when script is executed directly
 if __name__ == '__main__':
