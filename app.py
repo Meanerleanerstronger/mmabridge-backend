@@ -188,6 +188,19 @@ def trigger_scrape():
 def health():
     return jsonify({'status': 'ok'})
 
+@app.route('/api/dbcheck')
+def dbcheck():
+    """Debug: show which tables exist in the live SQLite DB"""
+    import sqlite3 as _sq
+    from database import DB_PATH
+    try:
+        conn = _sq.connect(DB_PATH)
+        tables = conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
+        conn.close()
+        return jsonify({'db_path': DB_PATH, 'tables': [t[0] for t in tables]})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 @app.route('/api/news')
 def get_news():
     """Get news — always fetch fresh from GNews, fallback key if first runs out"""
@@ -338,7 +351,7 @@ def submit_rating():
 
     except Exception as e:
         print(f"Rating error: {e}")
-        return jsonify({'error': 'Failed to save rating'}), 500
+        return jsonify({'error': 'Failed to save rating', 'detail': str(e)}), 500
 
 
 @app.route('/api/ratings/<event_id>', methods=['GET'])
