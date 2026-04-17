@@ -108,7 +108,6 @@ def create_tables():
 
     conn.commit()
     conn.close()
-    print("✅ Database tables created successfully!")
 
 # ==============================================
 # IMPORT DATA FROM JSON FILES

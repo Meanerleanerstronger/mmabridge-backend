@@ -20,7 +20,8 @@ from database import (
     save_event_rating,
     get_event_ratings,
     get_event_avg_rating,
-    get_event_reviews
+    get_event_reviews,
+    create_tables
 )
 
 # Import scraper reader
@@ -38,6 +39,9 @@ app = Flask(__name__)
 
 # Enable CORS — allow all origins (frontend is a static GitHub Pages site)
 CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=False)
+
+# Ensure DB tables exist on every startup (Render has ephemeral filesystem)
+create_tables()
 
 # Path to your data files (for fallback)
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
