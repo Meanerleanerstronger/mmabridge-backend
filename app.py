@@ -29,7 +29,8 @@ from database import (
     get_event_reviews,
     create_tables,
     get_or_create_user,
-    get_user_by_id
+    get_user_by_id,
+    get_user_rating_for_event
 )
 
 # Import scraper reader
@@ -530,6 +531,25 @@ def edit_rating(rating_id):
     except Exception as e:
         print(f"Rating update error: {e}")
         return jsonify({'error': 'Failed to update rating', 'detail': str(e)}), 500
+
+
+@app.route('/api/ratings/my/<event_id>', methods=['GET'])
+@jwt_required()
+def get_my_rating(event_id):
+    """Get the current user's own rating for an event"""
+    try:
+        user_id = int(get_jwt_identity())
+        row = get_user_rating_for_event(user_id, event_id)
+        if not row:
+            return jsonify({'error': 'Not found'}), 404
+        return jsonify({
+            'rating_id':   row['id'],
+            'hype_rating': row['hype_rating'],
+            'review_text': row['review_text'] or ''
+        })
+    except Exception as e:
+        print(f"My-rating error: {e}")
+        return jsonify({'error': 'Failed to fetch rating'}), 500
 
 
 @app.route('/api/reviews/<event_id>', methods=['GET'])

@@ -400,6 +400,20 @@ def update_event_rating(rating_id, hype_rating, review_text=None):
     conn.commit()
     conn.close()
 
+def get_user_rating_for_event(user_id, event_id):
+    """Return the user's own rating for an event, or None."""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute('''
+        SELECT id, hype_rating, review_text FROM event_ratings
+        WHERE user_id = ? AND event_id = ?
+        ORDER BY created_at DESC LIMIT 1
+    ''', (user_id, event_id))
+    row = cursor.fetchone()
+    conn.close()
+    return dict(row) if row else None
+
 def get_event_ratings(event_id):
     """Get all ratings for a specific event"""
     conn = sqlite3.connect(DB_PATH)
