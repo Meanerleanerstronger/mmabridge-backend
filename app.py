@@ -56,6 +56,9 @@ oauth = OAuth(app)
 try:
     _g_client_id     = (os.getenv('GOOGLE_CLIENT_ID') or '').strip()
     _g_client_secret = (os.getenv('GOOGLE_CLIENT_SECRET') or '').strip()
+    # Debug: print first/last chars and length so we can spot newlines/spaces
+    print(f"[OAuth] CLIENT_ID loaded: len={len(_g_client_id)} first10={repr(_g_client_id[:10])} last10={repr(_g_client_id[-10:])}")
+    print(f"[OAuth] CLIENT_SECRET loaded: len={len(_g_client_secret)} last4={repr(_g_client_secret[-4:])}")
     google = oauth.register(
         name='google',
         client_id=_g_client_id or None,
@@ -63,8 +66,9 @@ try:
         server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
         client_kwargs={'scope': 'openid email profile'},
     )
+    print(f"[OAuth] Registration OK — client_id ends with: {repr(_g_client_id[-20:])}")
 except Exception as _oauth_err:
-    print(f"OAuth registration warning: {_oauth_err}")
+    print(f"[OAuth] Registration ERROR: {_oauth_err}")
     google = None
 
 # Enable CORS — allow all origins (frontend is a static GitHub Pages site)
