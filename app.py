@@ -280,7 +280,7 @@ def get_visitors():
 # AUTH ROUTES
 # ==============================================
 
-REDIRECT_URI  = os.getenv('GOOGLE_REDIRECT_URI',  'https://mmabridge.com/api/auth/google/callback')
+REDIRECT_URI  = os.getenv('GOOGLE_REDIRECT_URI',  'https://mmabridge-backend.onrender.com/api/auth/google/callback')
 FRONTEND_URL  = os.getenv('FRONTEND_URL',          'https://mmabridge.com')
 
 @app.route('/api/auth/google')
