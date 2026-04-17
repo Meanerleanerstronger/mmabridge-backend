@@ -158,18 +158,22 @@ YOUR PERSONALITY AS LUCAS BOT:
 """
 
 # ── Main system prompt builder ────────────────
-def build_system_prompt(page_context='general'):
-    fighters = load_json(FIGHTERS_PATH)
-    events   = load_json(EVENTS_PATH)
+def build_system_prompt(page_context='general', live_fighters=None, live_events=None):
+    # Use live data from frontend if provided, otherwise fall back to backend disk files
+    fighters = live_fighters if live_fighters is not None else load_json(FIGHTERS_PATH)
+    events   = live_events   if live_events   is not None else load_json(EVENTS_PATH)
+
+    data_source = "LIVE DATA (sent from frontend — treat as ground truth)" if live_fighters is not None or live_events is not None else "CACHED DATA (backend disk copy)"
 
     fighter_block = build_fighter_knowledge(fighters) if fighters else "Fighter data unavailable."
-    event_block   = build_event_knowledge(events) if events else "Event data unavailable."
+    event_block   = build_event_knowledge(events)     if events   else "Event data unavailable."
 
     page_hint = {
         'pfp':    "User is on the PFP Rankings page. They likely want to talk about rankings, who deserves top 5, etc.",
         'events': "User is on the Events page. Focus on upcoming fights, predictions, fight cards.",
         'home':   "User is on the homepage. General MMA chat, trending topics, recent results.",
         'lucas':  "User is on the Lucas Bot page specifically to chat with you.",
+        'widget': "User is using the floating chat widget. Be brief and punchy.",
     }.get(page_context, "General MMA chat.")
 
     return f"""You are Lucas Bot — the AI MMA expert for MMA Bridge (mmabridge.com).
@@ -178,11 +182,12 @@ You are an enthusiastic, knowledgeable MMA fan. Be casual, confident, conversati
 PAGE CONTEXT: {page_hint}
 
 CRITICAL INSTRUCTIONS:
-- The FIGHTER DATABASE and EVENT DATABASE below are your PRIMARY source of truth. Always use them first.
-- For fighter records, last 5 fights, PFP rankings, current champions, recent event results: use ONLY the databases below. Never use GPT training knowledge for these.
-- Only use your training knowledge as a BACKUP for things not in the databases (old historical fights, general rules, culture, memes, bios).
-- The databases are always correct. Do not contradict them with training knowledge.
-- NEVER invent fight results. If not in the data, say so.
+- The LIVE DATA sections below (fighter + event databases) are your PRIMARY source of truth. Always use them first.
+- For fighter records, last 5 fights, upcoming events, fight cards, event dates, locations, and recent results: use ONLY the LIVE DATA below. Never guess or use GPT training knowledge for these.
+- Only use your training knowledge as a BACKUP for things not in the LIVE DATA (old historical fights, general rules, culture, memes).
+- The LIVE DATA is always correct and up to date. Do not contradict it with training knowledge.
+- NEVER invent fight results, dates, or records. If it's not in the LIVE DATA, say you don't have it.
+- DATA SOURCE: {data_source}
 
 {HARDCODED_KNOWLEDGE}
 
@@ -190,13 +195,15 @@ CRITICAL INSTRUCTIONS:
 
 {event_block}
 
-REMINDER: Databases above = ground truth. Training knowledge = backup only for things not covered above.
+REMINDER: LIVE DATA above = absolute ground truth. Training knowledge = backup only for things not in the data above.
 """
 
 # ── Main chat function ────────────────────────
-def chat_with_lucas(user_message, conversation_history=[], page_context='general'):
+def chat_with_lucas(user_message, conversation_history=[], page_context='general', live_data=None):
     try:
-        system_prompt = build_system_prompt(page_context)
+        live_fighters = live_data.get('fighters') if live_data else None
+        live_events   = live_data.get('events')   if live_data else None
+        system_prompt = build_system_prompt(page_context, live_fighters, live_events)
 
         messages = [{"role": "system", "content": system_prompt}]
         messages += conversation_history[-10:]  # keep last 10 turns for context

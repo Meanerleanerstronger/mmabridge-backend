@@ -294,8 +294,9 @@ def chat():
         user_message = data['message']
         conversation_history = data.get('history', [])
         page_context = data.get('page', 'general')
+        live_data = data.get('live_data', None)
 
-        response = chat_with_lucas(user_message, conversation_history, page_context)
+        response = chat_with_lucas(user_message, conversation_history, page_context, live_data)
 
         return jsonify({
             'response': response,
