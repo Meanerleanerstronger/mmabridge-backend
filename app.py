@@ -51,21 +51,63 @@ app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET', 'dev-jwt-secret-change-me
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = False  # tokens don't expire (users can always edit)
 jwt = JWTManager(app)
 
-# Google OAuth via Authlib
+# Google OAuth via Authlib — safe even if credentials not yet configured
 oauth = OAuth(app)
-google = oauth.register(
-    name='google',
-    client_id=os.getenv('GOOGLE_CLIENT_ID'),
-    client_secret=os.getenv('GOOGLE_CLIENT_SECRET'),
-    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
-    client_kwargs={'scope': 'openid email profile'},
-)
+try:
+    google = oauth.register(
+        name='google',
+        client_id=os.getenv('GOOGLE_CLIENT_ID'),
+        client_secret=os.getenv('GOOGLE_CLIENT_SECRET'),
+        server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
+        client_kwargs={'scope': 'openid email profile'},
+    )
+except Exception as _oauth_err:
+    print(f"OAuth registration warning: {_oauth_err}")
+    google = None
 
 # Enable CORS — allow all origins (frontend is a static GitHub Pages site)
 CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=False)
 
 # Ensure DB tables exist on every startup (Render has ephemeral filesystem)
 create_tables()
+
+# ── In-memory visitor ring buffer (last 10) ──
+import threading, time as _time
+_visitors_lock = threading.Lock()
+_visitors = []   # list of dicts: {flag, city, country, ts}
+
+def _country_flag(code):
+    """ISO 3166-1 alpha-2 code → flag emoji."""
+    if not code or len(code) != 2:
+        return '🌍'
+    return ''.join(chr(0x1F1E6 + ord(c) - ord('A')) for c in code.upper())
+
+def _record_visitor(ip, fallback=False):
+    """Resolve IP → city/country via ip-api.com and append to ring buffer."""
+    try:
+        import requests as _req
+        r = _req.get(f'http://ip-api.com/json/{ip}?fields=status,city,country,countryCode',
+                     timeout=5)
+        data = r.json()
+        if data.get('status') == 'success':
+            city    = data.get('city', 'Unknown')
+            country = data.get('country', 'Unknown')
+            code    = data.get('countryCode', '')
+        else:
+            city, country, code = 'Unknown', 'Unknown', ''
+    except Exception:
+        city, country, code = 'Unknown', 'Unknown', ''
+
+    entry = {'flag': _country_flag(code), 'city': city, 'country': country,
+             'ts': int(_time.time())}
+    with _visitors_lock:
+        # Don't add duplicate if same IP resolved within last 60s
+        now = int(_time.time())
+        recent = [v for v in _visitors if now - v['ts'] < 60
+                  and v['city'] == city and v['country'] == country]
+        if not recent:
+            _visitors.insert(0, entry)
+            del _visitors[10:]
 
 # Path to your data files (for fallback)
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
@@ -212,6 +254,22 @@ def trigger_scrape():
 def health():
     return jsonify({'status': 'ok'})
 
+@app.route('/api/visitors/ping', methods=['POST'])
+def visitor_ping():
+    """Record a page visit — resolves IP synchronously then returns visitor list."""
+    ip = (request.headers.get('X-Forwarded-For', '') or '').split(',')[0].strip() \
+         or request.remote_addr or ''
+    if ip and ip not in ('127.0.0.1', '::1', 'localhost', ''):
+        _record_visitor(ip)
+    with _visitors_lock:
+        return jsonify(list(_visitors))
+
+@app.route('/api/visitors')
+def get_visitors():
+    """Return the last 10 resolved visitors."""
+    with _visitors_lock:
+        return jsonify(list(_visitors))
+
 # ==============================================
 # AUTH ROUTES
 # ==============================================
@@ -221,10 +279,14 @@ FRONTEND_URL  = os.getenv('FRONTEND_URL',          'https://mmabridge.com')
 
 @app.route('/api/auth/google')
 def google_login():
+    if not google or not os.getenv('GOOGLE_CLIENT_ID'):
+        return redirect(f"{FRONTEND_URL}/auth.html?error=not_configured")
     return google.authorize_redirect(REDIRECT_URI)
 
 @app.route('/api/auth/google/callback')
 def google_callback():
+    if not google:
+        return redirect(f"{FRONTEND_URL}/auth.html?error=not_configured")
     try:
         token     = google.authorize_access_token()
         userinfo  = token.get('userinfo') or google.userinfo()
