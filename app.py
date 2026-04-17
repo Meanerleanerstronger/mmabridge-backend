@@ -54,10 +54,12 @@ jwt = JWTManager(app)
 # Google OAuth via Authlib — safe even if credentials not yet configured
 oauth = OAuth(app)
 try:
+    _g_client_id     = (os.getenv('GOOGLE_CLIENT_ID') or '').strip()
+    _g_client_secret = (os.getenv('GOOGLE_CLIENT_SECRET') or '').strip()
     google = oauth.register(
         name='google',
-        client_id=os.getenv('GOOGLE_CLIENT_ID'),
-        client_secret=os.getenv('GOOGLE_CLIENT_SECRET'),
+        client_id=_g_client_id or None,
+        client_secret=_g_client_secret or None,
         server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
         client_kwargs={'scope': 'openid email profile'},
     )
