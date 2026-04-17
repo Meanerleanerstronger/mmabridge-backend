@@ -19,7 +19,8 @@ from database import (
     get_upcoming_events,
     save_event_rating,
     get_event_ratings,
-    get_event_avg_rating
+    get_event_avg_rating,
+    get_event_reviews
 )
 
 # Import scraper reader
@@ -346,6 +347,17 @@ def get_ratings(event_id):
     except Exception as e:
         print(f"Rating fetch error: {e}")
         return jsonify({'error': 'Failed to fetch ratings'}), 500
+
+
+@app.route('/api/reviews/<event_id>', methods=['GET'])
+def get_reviews(event_id):
+    """Get all fan reviews for an event"""
+    try:
+        reviews = get_event_reviews(event_id)
+        return jsonify(reviews)
+    except Exception as e:
+        print(f"Reviews fetch error: {e}")
+        return jsonify([]), 500
 
 
 # ==============================================

@@ -358,9 +358,39 @@ def get_event_ratings(event_id):
             'event_name': row['event_name'],
             'hype_rating': row['hype_rating'],
             'fotn_prediction': row['fotn_prediction'],
+            'review_text': row['review_text'] if 'review_text' in row.keys() else None,
             'created_at': row['created_at']
         })
     return ratings
+
+def get_event_reviews(event_id):
+    """Get all fan reviews (with text) for a specific event, newest first"""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    # Ensure review_text column exists
+    try:
+        cursor.execute('ALTER TABLE event_ratings ADD COLUMN review_text TEXT')
+        conn.commit()
+    except sqlite3.OperationalError:
+        pass
+    cursor.execute('''
+        SELECT id, hype_rating, review_text, created_at
+        FROM event_ratings
+        WHERE event_id = ?
+        ORDER BY created_at DESC
+    ''', (event_id,))
+    rows = cursor.fetchall()
+    conn.close()
+    reviews = []
+    for row in rows:
+        reviews.append({
+            'id': row['id'],
+            'hype_rating': row['hype_rating'],
+            'review_text': row['review_text'],
+            'created_at': row['created_at']
+        })
+    return reviews
 
 def get_event_avg_rating(event_id):
     """Get the average hype rating and FOTN predictions for an event"""
