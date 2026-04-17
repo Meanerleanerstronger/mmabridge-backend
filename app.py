@@ -36,9 +36,8 @@ from chatbot import chat_with_lucas
 # Create Flask app
 app = Flask(__name__)
 
-# Enable CORS with environment-based origins
-allowed_origins = os.getenv('ALLOWED_ORIGINS', '*').split(',')
-CORS(app, origins=allowed_origins)
+# Enable CORS — allow all origins (frontend is a static GitHub Pages site)
+CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=False)
 
 # Path to your data files (for fallback)
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
@@ -327,8 +326,8 @@ def submit_rating():
 
         if not event_id or not event_name:
             return jsonify({'error': 'event_id and event_name are required'}), 400
-        if hype_rating is None or not isinstance(hype_rating, int) or not (1 <= hype_rating <= 5):
-            return jsonify({'error': 'hype_rating must be an integer between 1 and 5'}), 400
+        if hype_rating is None or not isinstance(hype_rating, (int, float)) or not (1 <= hype_rating <= 5):
+            return jsonify({'error': 'hype_rating must be a number between 1 and 5'}), 400
 
         rating_id = save_event_rating(event_id, event_name, hype_rating, fotn_prediction, review_text)
         return jsonify({'success': True, 'rating_id': rating_id}), 201
