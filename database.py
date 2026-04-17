@@ -99,12 +99,32 @@ def create_tables():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             event_id TEXT NOT NULL,
             event_name TEXT NOT NULL,
-            hype_rating INTEGER NOT NULL CHECK(hype_rating BETWEEN 1 AND 5),
+            hype_rating REAL NOT NULL,
             fotn_prediction TEXT,
             review_text TEXT,
+            user_id INTEGER,
+            display_name TEXT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
+
+    # USERS TABLE
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            email TEXT UNIQUE NOT NULL,
+            display_name TEXT NOT NULL,
+            avatar_url TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+
+    # Migrations for existing event_ratings rows missing new columns
+    for col, definition in [('user_id', 'INTEGER'), ('display_name', 'TEXT')]:
+        try:
+            cursor.execute(f'ALTER TABLE event_ratings ADD COLUMN {col} {definition}')
+        except Exception:
+            pass
 
     conn.commit()
     conn.close()
@@ -321,19 +341,50 @@ def init_database():
     print("✅ DATABASE READY!")
     print("=" * 50)
 
-def save_event_rating(event_id, event_name, hype_rating, fotn_prediction=None, review_text=None):
+def get_or_create_user(email, display_name, avatar_url):
+    """Find existing user by email or create a new one. Returns user dict."""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM users WHERE email = ?', (email,))
+    row = cursor.fetchone()
+    if row:
+        # Update display_name/avatar in case they changed
+        cursor.execute(
+            'UPDATE users SET display_name=?, avatar_url=? WHERE email=?',
+            (display_name, avatar_url, email)
+        )
+        user_id = row['id']
+    else:
+        cursor.execute(
+            'INSERT INTO users (email, display_name, avatar_url) VALUES (?, ?, ?)',
+            (email, display_name, avatar_url)
+        )
+        user_id = cursor.lastrowid
+    conn.commit()
+    cursor.execute('SELECT * FROM users WHERE id = ?', (user_id,))
+    user = dict(cursor.fetchone())
+    conn.close()
+    return user
+
+def get_user_by_id(user_id):
+    """Return user dict by ID, or None."""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM users WHERE id = ?', (user_id,))
+    row = cursor.fetchone()
+    conn.close()
+    return dict(row) if row else None
+
+def save_event_rating(event_id, event_name, hype_rating, fotn_prediction=None, review_text=None, user_id=None, display_name=None):
     """Save an event rating to the database"""
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    # Add column if missing (migration)
-    try:
-        cursor.execute('ALTER TABLE event_ratings ADD COLUMN review_text TEXT')
-    except sqlite3.OperationalError:
-        pass
     cursor.execute('''
-        INSERT INTO event_ratings (event_id, event_name, hype_rating, fotn_prediction, review_text)
-        VALUES (?, ?, ?, ?, ?)
-    ''', (event_id, event_name, hype_rating, fotn_prediction, review_text))
+        INSERT INTO event_ratings (event_id, event_name, hype_rating, fotn_prediction, review_text, user_id, display_name)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    ''', (event_id, event_name, hype_rating, fotn_prediction, review_text, user_id, display_name))
     conn.commit()
     rating_id = cursor.lastrowid
     conn.close()
@@ -373,33 +424,25 @@ def get_event_ratings(event_id):
     return ratings
 
 def get_event_reviews(event_id):
-    """Get all fan reviews (with text) for a specific event, newest first"""
+    """Get all fan reviews for a specific event, newest first"""
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
-    # Ensure review_text column exists
-    try:
-        cursor.execute('ALTER TABLE event_ratings ADD COLUMN review_text TEXT')
-        conn.commit()
-    except sqlite3.OperationalError:
-        pass
     cursor.execute('''
-        SELECT id, hype_rating, review_text, created_at
+        SELECT id, hype_rating, review_text, display_name, created_at
         FROM event_ratings
         WHERE event_id = ?
         ORDER BY created_at DESC
     ''', (event_id,))
     rows = cursor.fetchall()
     conn.close()
-    reviews = []
-    for row in rows:
-        reviews.append({
-            'id': row['id'],
-            'hype_rating': row['hype_rating'],
-            'review_text': row['review_text'],
-            'created_at': row['created_at']
-        })
-    return reviews
+    return [{
+        'id':           row['id'],
+        'hype_rating':  row['hype_rating'],
+        'review_text':  row['review_text'],
+        'display_name': row['display_name'] or 'Anonymous',
+        'created_at':   row['created_at']
+    } for row in rows]
 
 def get_event_avg_rating(event_id):
     """Get the average hype rating and FOTN predictions for an event"""

@@ -2,8 +2,13 @@
 # MMA BRIDGE - FLASK BACKEND (WITH DATABASE)
 # ==============================================
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, redirect
 from flask_cors import CORS
+from flask_jwt_extended import (
+    JWTManager, create_access_token, jwt_required,
+    get_jwt_identity, verify_jwt_in_request
+)
+from authlib.integrations.flask_client import OAuth
 import json
 import os
 from dotenv import load_dotenv
@@ -22,7 +27,9 @@ from database import (
     get_event_ratings,
     get_event_avg_rating,
     get_event_reviews,
-    create_tables
+    create_tables,
+    get_or_create_user,
+    get_user_by_id
 )
 
 # Import scraper reader
@@ -37,6 +44,22 @@ from chatbot import chat_with_lucas
 
 # Create Flask app
 app = Flask(__name__)
+app.secret_key = os.getenv('SECRET_KEY', os.getenv('JWT_SECRET', 'dev-secret-change-me'))
+
+# JWT
+app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET', 'dev-jwt-secret-change-me')
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = False  # tokens don't expire (users can always edit)
+jwt = JWTManager(app)
+
+# Google OAuth via Authlib
+oauth = OAuth(app)
+google = oauth.register(
+    name='google',
+    client_id=os.getenv('GOOGLE_CLIENT_ID'),
+    client_secret=os.getenv('GOOGLE_CLIENT_SECRET'),
+    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
+    client_kwargs={'scope': 'openid email profile'},
+)
 
 # Enable CORS — allow all origins (frontend is a static GitHub Pages site)
 CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=False)
@@ -188,6 +211,52 @@ def trigger_scrape():
 @app.route('/api/health')
 def health():
     return jsonify({'status': 'ok'})
+
+# ==============================================
+# AUTH ROUTES
+# ==============================================
+
+REDIRECT_URI  = os.getenv('GOOGLE_REDIRECT_URI',  'https://mmabridge.com/api/auth/google/callback')
+FRONTEND_URL  = os.getenv('FRONTEND_URL',          'https://mmabridge.com')
+
+@app.route('/api/auth/google')
+def google_login():
+    return google.authorize_redirect(REDIRECT_URI)
+
+@app.route('/api/auth/google/callback')
+def google_callback():
+    try:
+        token     = google.authorize_access_token()
+        userinfo  = token.get('userinfo') or google.userinfo()
+        user      = get_or_create_user(
+            email        = userinfo['email'],
+            display_name = userinfo.get('name', userinfo['email'].split('@')[0]),
+            avatar_url   = userinfo.get('picture', '')
+        )
+        jwt_token = create_access_token(identity=str(user['id']))
+        return redirect(f"{FRONTEND_URL}/auth.html?token={jwt_token}")
+    except Exception as e:
+        print(f"OAuth callback error: {e}")
+        return redirect(f"{FRONTEND_URL}/auth.html?error=auth_failed")
+
+@app.route('/api/auth/me')
+@jwt_required()
+def auth_me():
+    user_id = int(get_jwt_identity())
+    user    = get_user_by_id(user_id)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+    return jsonify({
+        'id':           user['id'],
+        'email':        user['email'],
+        'display_name': user['display_name'],
+        'avatar_url':   user['avatar_url'] or '',
+    })
+
+@app.route('/api/auth/logout', methods=['POST'])
+def auth_logout():
+    # JWTs are stateless — client just deletes the token
+    return jsonify({'success': True})
 
 @app.route('/api/dbcheck')
 def dbcheck():
@@ -347,7 +416,20 @@ def submit_rating():
         if hype_rating is None or not isinstance(hype_rating, (int, float)) or not (1 <= hype_rating <= 5):
             return jsonify({'error': 'hype_rating must be a number between 1 and 5'}), 400
 
-        rating_id = save_event_rating(event_id, event_name, hype_rating, fotn_prediction, review_text)
+        # Attach user if JWT present (optional — anonymous allowed)
+        user_id, display_name = None, None
+        try:
+            verify_jwt_in_request(optional=True)
+            uid = get_jwt_identity()
+            if uid:
+                user = get_user_by_id(int(uid))
+                if user:
+                    user_id      = user['id']
+                    display_name = user['display_name']
+        except Exception:
+            pass
+
+        rating_id = save_event_rating(event_id, event_name, hype_rating, fotn_prediction, review_text, user_id, display_name)
         return jsonify({'success': True, 'rating_id': rating_id}), 201
 
     except Exception as e:
