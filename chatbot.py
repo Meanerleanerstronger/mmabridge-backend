@@ -1,5 +1,6 @@
 import os
 import json
+import time
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -11,213 +12,255 @@ client = OpenAI(
     max_retries=2
 )
 
-# ── Load JSON data files ──────────────────────
+# ── Event data paths ──────────────────────────
+# Try backend folder first (for Render), then fall back to frontend folder locally
+_BACKEND_DIR  = os.path.dirname(__file__)
+_FRONTEND_DIR = os.path.join(os.path.dirname(__file__), '..', 'MMA Bridge_FRONTEND')
+
+EVENTS_PATHS = [
+    os.path.join(_BACKEND_DIR,  'events.json'),
+    os.path.join(_FRONTEND_DIR, 'events.json'),
+    os.path.join(_FRONTEND_DIR, 'data', 'events.json'),
+]
+
+FIGHTERS_PATH = os.path.join(_BACKEND_DIR, 'fighters.json')
+
+# ── 6-hour event cache ────────────────────────
+_event_cache      = None
+_event_cache_time = 0
+CACHE_TTL         = 6 * 3600   # 6 hours
+
 def load_json(path):
     try:
         with open(path, 'r') as f:
             return json.load(f)
-    except:
+    except Exception:
         return None
 
-# Paths — adjust if your backend runs from a different directory
-FIGHTERS_PATH = os.path.join(os.path.dirname(__file__), 'fighters.json')
-EVENTS_PATH   = os.path.join(os.path.dirname(__file__), 'events.json')
+def get_events():
+    """Load events from disk, cache for 6 hours."""
+    global _event_cache, _event_cache_time
+    now = time.time()
+    if _event_cache is not None and (now - _event_cache_time) < CACHE_TTL:
+        return _event_cache
+    for path in EVENTS_PATHS:
+        data = load_json(path)
+        if data:
+            _event_cache      = data
+            _event_cache_time = now
+            return data
+    return []
 
-# ── Build fighter knowledge ───────────────────
-def build_fighter_knowledge(fighters: dict) -> str:
-    lines = ["=== MMA BRIDGE FIGHTER DATABASE ==="]
-    for fid, f in fighters.items():
-        last5 = f.get('last5', [])
-        last5_str = ', '.join(
-            f"{r['result']} vs {r['opponent']} ({r['method']} R{r['round']})"
-            for r in last5
-        )
-        lines.append(
-            f"• {f['name']} ({f.get('nickname','')}) | {f.get('record','')} | "
-            f"{f.get('division','')} | {f.get('country','')} | "
-            f"Last 5: [{last5_str}]"
-        )
+# ── Build concise event context for the prompt ─
+def build_event_context(events: list) -> str:
+    if not events:
+        return "No event data available."
+
+    from datetime import date
+    today = date.today().isoformat()
+
+    upcoming   = sorted([e for e in events if e.get('status') == 'upcoming'],
+                        key=lambda x: x.get('isoDate', ''))
+    completed  = sorted([e for e in events if e.get('status') == 'completed'],
+                        key=lambda x: x.get('isoDate', ''), reverse=True)[:10]
+
+    lines = []
+
+    # ── Upcoming events ──
+    lines.append("=== UPCOMING UFC EVENTS ===")
+    if upcoming:
+        for e in upcoming:
+            lines.append(f"\n▶ {e.get('name')} | {e.get('date')} | {e.get('location')} | {e.get('venue','')}")
+            for section, label in [('mainCard','MAIN CARD'), ('prelims','PRELIMS'), ('earlyPrelims','EARLY PRELIMS')]:
+                fights = e.get(section, [])
+                if fights:
+                    lines.append(f"  {label}:")
+                    for f in fights:
+                        slot = f"[{f.get('slot','').upper()}] " if f.get('slot') in ('main','comain') else "  "
+                        flags = ""
+                        if f.get('titleFight'): flags += " 🏆TITLE"
+                        if f.get('ranked'):     flags += " ⭐RANKED"
+                        lines.append(f"    {slot}{f.get('a')} vs {f.get('b')} | {f.get('weight','')} | {f.get('rounds','')}{flags}")
+    else:
+        lines.append("No upcoming events found.")
+
+    # ── Recent results ──
+    lines.append("\n\n=== RECENT UFC RESULTS (Last 10 Events) ===")
+    for e in completed:
+        lines.append(f"\n✅ {e.get('name')} | {e.get('date')} | {e.get('location')}")
+        for section in ['mainCard', 'prelims']:
+            for f in e.get(section, []):
+                winner = f.get('winner')
+                if winner and winner not in ('NC', 'Draw'):
+                    loser  = f.get('b') if winner == f.get('a') else f.get('a')
+                    method = f.get('method', '')
+                    rnd    = f.get('round', '')
+                    t      = f.get('time', '')
+                    slot   = f"[{f.get('slot','').upper()}] " if f.get('slot') in ('main','comain') else ""
+                    lines.append(f"  {slot}{winner} def. {loser} | {method} R{rnd} {t} | {f.get('weight','')}")
+                elif winner in ('NC', 'Draw'):
+                    lines.append(f"  {f.get('a')} vs {f.get('b')} | {winner} | {f.get('method','')}")
+                else:
+                    lines.append(f"  🔜 {f.get('a')} vs {f.get('b')} | {f.get('weight','')} (no result yet)")
+
     return '\n'.join(lines)
 
-# ── Build event knowledge ─────────────────────
-def build_event_knowledge(events: list) -> str:
-    lines = ["=== MMA BRIDGE EVENT DATABASE ==="]
-    for e in events:
-        status = e.get('status', '')
-        name   = e.get('name', '')
-        date   = e.get('date', '')
-        loc    = e.get('location', '')
-        main   = e.get('mainCard', [])
-
-        fight_lines = []
-        for f in main:
-            winner = f.get('winner')
-            if winner:
-                loser  = f['b'] if winner == f['a'] else f['a']
-                fight_lines.append(
-                    f"    ✅ {winner} def. {loser} | {f.get('method','')} R{f.get('round','')} {f.get('time','')} | {f.get('weight','')}"
-                )
-            else:
-                fight_lines.append(
-                    f"    🔜 {f['a']} vs {f['b']} | {f.get('weight','')} | {f.get('rounds','')}"
-                )
-
-        lines.append(f"\n[{status.upper()}] {name} | {date} | {loc}")
-        lines.extend(fight_lines)
-
-    return '\n'.join(lines)
-
-# ── Hardcoded MMA knowledge ───────────────────
-HARDCODED_KNOWLEDGE = """
-=== MMA GENERAL KNOWLEDGE ===
-
-WEIGHT CLASSES (UFC):
-Strawweight 115lb, Flyweight 125lb, Bantamweight 135lb, Featherweight 145lb,
-Lightweight 155lb, Welterweight 170lb, Middleweight 185lb, Light Heavyweight 205lb, Heavyweight 265lb+
-
-CURRENT UFC CHAMPIONS (as of April 2026):
-- Strawweight: Zhang Weili
-- Flyweight: Joshua Van (youngest UFC champion ever, won via TKO vs Pantoja UFC 323 Dec 2025)
-- Bantamweight: Petr Yan (beat Merab Dvalishvili UD UFC 323 Dec 2025, 2x champ)
-- Featherweight: Alexander Volkanovski (2x champ, beat Diego Lopes UD UFC 325 Jan 2026)
-- Lightweight: Ilia Topuria (beat Charles Oliveira KO R1 UFC 317 Jun 2025)
-- Welterweight: Islam Makhachev (beat Jack Della Maddalena UD UFC 322 Nov 2025, 2x champ)
-- Middleweight: Khamzat Chimaev (beat Dricus Du Plessis UD UFC 319 Aug 2025, 15-0)
-- Light Heavyweight: Carlos Ulberg (NEW CHAMPION - shocked Jiří Procházka KO R1 3:45 UFC 327 Apr 11 2026)
-- Heavyweight: Tom Aspinall (NC vs Ciryl Gane eye poke UFC 321, still champ)
-
-GOAT DEBATE:
-Jon Jones widely considered GOAT — undefeated (1 NC), dominated LHW for a decade, moved to HW. 
-Khabib Nurmagomedov retired 29-0, never lost a round some argue.
-Anderson Silva historic MW run 2006-2012, 16 consecutive wins.
-Georges St-Pierre dominated both WW and MW, two-division champ.
-
-POPULAR MMA MEMES / CULTURE:
-- "It is what it is" — Conor McGregor quote become meme
-- "That's a great right hand" — Joe Rogan commentary meme  
-- Khabib smashing bear as a child — famous story
-- Paddy Pimblett "scran" — British MMA slang lover
-- Islam Makhachev "same gym, same coach" — Khabib connection
-- "He's not gonna want to go to the ground" — classic prediction gone wrong meme
-- Leon Edwards sleeping Usman with a head kick — massive upset
-- Nate Diaz "I'm not surprised motherf***er" post fight speeches
-- Conor McGregor calling everyone "proper f***ing loopers"
-- "Joe Rogan experience" DMT jokes
-- Dana White "this is the baddest man on the planet" intro
-- Ronda Rousey "I would die first" quote
-- "Embedded" series hype before big PPVs
-- Adesanya anime references and poses
-- Poirier and McGregor beef trilogy
-- Colby Covington calling everyone "filthy animals" 
-- Chael Sonnen trash talk as an art form
-- Tony Ferguson "ey bro" and elbow slaps
-- Dustin Poirier Louisiana accent impressions
-
-UFC HISTORY HIGHLIGHTS:
-- UFC 1 was 1993, Royce Gracie won, no weight classes or rules
-- Zuffa bought UFC in 2001 for $2M, sold for $4B in 2016
-- TUF (The Ultimate Fighter) saved UFC from bankruptcy in 2005
-- Conor McGregor vs Khabib UFC 229 biggest PPV ever (~2.4M buys)
-- Ronda Rousey made women's MMA mainstream 2012-2015
-- Jon Jones tested positive for steroids multiple times
-- Brock Lesnar was WWE champion then UFC heavyweight champion
-- Chuck Liddell vs Tito Ortiz defined early 2000s UFC
-- Anderson Silva's 185lb reign 2006-2013 most dominant ever
-- GSP's two-weight-class reign considered greatest career
-
-UPCOMING BIG FIGHTS TO KNOW:
-- UFC Fight Night: Burns vs Malott (Apr 18 2026, Winnipeg Canada) — Gilbert Burns vs Mike Malott main event
-- UFC 328: Chimaev vs Strickland (May 9, 2026) — MW title defense
-- UFC Freedom 250: Topuria vs Gaethje (Jun 14, 2026, White House South Lawn) — massive PPV, LW title unification + Pereira vs Gane interim HW title
-
-RECENT RESULTS YOU MUST KNOW:
-- UFC 327 (Apr 11 2026): Carlos Ulberg KO'd Jiří Procházka R1 3:45 to win the LHW title in a MASSIVE upset. Paulo Costa TKO'd Murzakanov R3. Josh Hokit upset Curtis Blaydes UD. Dominick Reyes beat Johnny Walker SD. Cub Swanson retired with a TKO win over Landwehr R1.
-- UFC 325 (Jan 31 2026): Alexander Volkanovski beat Diego Lopes UD to retain FW title
-- UFC 322 (Nov 15 2025): Islam Makhachev beat Jack Della Maddalena UD to become 2x champ (WW)
-- UFC 323 (Dec 6 2025): Joshua Van beat Pantoja TKO R1 to become FLY champ. Petr Yan beat Merab UD to become 2x BW champ.
-- UFC 319 (Aug 16 2025): Khamzat Chimaev beat Dricus Du Plessis UD to win MW title
-- UFC 317 (Jun 28 2025): Ilia Topuria KO'd Charles Oliveira R1 to win vacant LW title
-
-MMA BRIDGE SITE INFO:
-- mmabridge.com — fan-built MMA news and events site
-- Features: live event tracker, PFP rankings, event reviews, Lucas Bot (you!)
-- Lucas Bot is named after the site's AI assistant character
-- Built by a college student who's a hardcore MMA fan
-- Reviews events with hype ratings and FOTN picks
-
-YOUR PERSONALITY AS LUCAS BOT:
-- You're an enthusiastic MMA nerd who knows everything
-- You're casual and conversational, not robotic
-- You use MMA slang naturally (finishing, grappling, cage control, octagon)
-- You have opinions and share them confidently
-- You make predictions and back them up with logic
-- You know the memes and culture — you can reference them naturally
-- You're a fan first, analyst second
-- Keep responses concise unless they ask for detail
-- Never say you don't know something — give your best take
+# ── MMA Bridge PFP Top 16 ─────────────────────
+PFP_RANKINGS = """=== MMA BRIDGE POUND-FOR-POUND TOP 16 ===
+1.  Islam Makhachev (Lightweight) — 25-1 — absolute best right now, undisputed
+2.  Justin Gaethje (Lightweight) — 25-4 — BANGER, fights everyone, no ducking
+3.  Ilia Topuria (Featherweight) — 15-0 — undefeated, KO'd Oliveira to win LW belt, 2-division threat
+4.  Khamzat Chimaev (Middleweight) — 15-0 — unbeaten, smashed DDP to win MW title
+5.  Alex Pereira (Light Heavyweight) — 12-2 — multiple champ, Poatan is a PROBLEM
+6.  Alexander Volkanovski (Featherweight) — 26-4 — 2x champ, king of FW
+7.  Petr Yan (Bantamweight) — 19-5 — 2x BW champ, one of the cleanest strikers alive
+8.  Merab Dvalishvili (Bantamweight) — 17-4 — wrestling machine, Khabib vibes
+9.  Tom Aspinall (Heavyweight) — 15-1 — interim/undisputed HW, fastest finishes in HW history
+10. Alexandre Pantoja (Flyweight) — 27-6 — FW champion, underrated killer
+11. Max Holloway (Featherweight) — 25-8 — BMF champ, never has a bad fight, certified legend
+12. Dricus du Plessis (Middleweight) — 22-3 — lost MW belt to Chimaev, still elite
+13. Joshua Van (Flyweight) — 12-1 — youngest UFC champion ever, TKO'd Pantoja at UFC 323
+14. Magomed Ankalaev (Light Heavyweight) — 20-1-1 — #1 LHW contender, should've been champ years ago
+15. Jack Della Maddalena (Welterweight) — 16-2 — Australian knockout machine, lost WW title challenge to Islam
+16. Arman Tsarukyan (Lightweight) — 23-4 — Islam's main rival, ranked #1 LW contender
 """
 
-# ── Main system prompt builder ────────────────
-def build_system_prompt(page_context='general', live_fighters=None, live_events=None):
-    # Use live data from frontend if provided, otherwise fall back to backend disk files
-    fighters = live_fighters if live_fighters is not None else load_json(FIGHTERS_PATH)
-    events   = live_events   if live_events   is not None else load_json(EVENTS_PATH)
+# ── Full hardcoded MMA knowledge ──────────────
+HARDCODED_KNOWLEDGE = """
+=== MMA & UFC CORE KNOWLEDGE ===
 
-    data_source = "LIVE DATA (sent from frontend — treat as ground truth)" if live_fighters is not None or live_events is not None else "CACHED DATA (backend disk copy)"
+WEIGHT CLASSES (UFC, lightest to heaviest):
+Strawweight 115lb | Flyweight 125lb | Bantamweight 135lb | Featherweight 145lb
+Lightweight 155lb | Welterweight 170lb | Middleweight 185lb | Light Heavyweight 205lb | Heavyweight 265lb+
 
-    fighter_block = build_fighter_knowledge(fighters) if fighters else "Fighter data unavailable."
-    event_block   = build_event_knowledge(events)     if events   else "Event data unavailable."
+CURRENT UFC CHAMPIONS (April 2026):
+• Strawweight: Zhang Weili
+• Flyweight: Joshua Van — youngest UFC champion ever, TKO'd Alexandre Pantoja R1 at UFC 323 (Dec 2025)
+• Bantamweight: Petr Yan — 2x champ, beat Merab Dvalishvili UD5 at UFC 323 (Dec 2025)
+• Featherweight: Alexander Volkanovski — 2x champ, beat Diego Lopes UD5 at UFC 325 (Jan 2026)
+• Lightweight: Ilia Topuria — KO'd Charles Oliveira R1 at UFC 317 (Jun 2025)
+• Welterweight: Islam Makhachev — 2x champ (WW & LW), beat Jack Della Maddalena UD5 at UFC 322 (Nov 2025)
+• Middleweight: Khamzat Chimaev — unbeaten 15-0, beat Dricus Du Plessis UD5 at UFC 319 (Aug 2025)
+• Light Heavyweight: Carlos Ulberg — NEW champ, MASSIVE upset KO'd Jiří Procházka R1 3:45 at UFC 327 (Apr 11 2026)
+• Heavyweight: Tom Aspinall — NC vs Ciryl Gane (eye poke stoppage, UFC 321), still recognized champ
+
+GOAT DEBATE:
+• Jon Jones — 29-1 (1 NC, 1 DQ), dominated LHW for a decade, moved to HW, widely considered GOAT
+• Khabib Nurmagomedov — retired 29-0, never lost a round most say, suffocated everyone
+• Anderson Silva — 16-fight MW streak 2006-2012, most dominant title reign in history
+• Georges St-Pierre — 2-division champion (WW, MW), never finished but rarely even hurt
+• Stipe Miocic — 3x HW champ, beat Ngannou twice, most successful HW ever statistically
+
+BIG UPCOMING FIGHTS (use the LIVE DATA above for exact cards):
+• UFC Freedom 250: Topuria vs. Gaethje (Jun 14 2026, White House South Lawn!) — LW title + Pereira vs Gane interim HW
+• UFC 328: Chimaev vs. Strickland (May 9 2026, Newark) — MW title, Khamzat defending
+• UFC Fight Night: Della Maddalena vs. Prates (May 2 2026, Perth, Australia)
+• UFC Fight Night: Sterling vs. Zalal (Apr 25 2026, Las Vegas)
+
+NOTABLE RECENT RESULTS YOU MUST KNOW:
+• UFC 327 (Apr 11 2026): Carlos Ulberg KO Procházka R1 — BIGGEST UPSET in LHW history. Everyone expected Jiri. Ulberg is now the man.
+• UFC Fight Night: Burns vs. Malott (Apr 18 2026): Mike Malott TKO'd Gilbert Burns R3 — huge win for the Canadian
+• UFC Fight Night: Adesanya vs. Pyfer (Mar 28 2026): Joe Pyfer TKO'd Israel Adesanya R2 — Izzy's era is truly over
+• UFC 326: Holloway vs Oliveira 2 (Mar 7 2026): Charles Oliveira beat Max Holloway UD5 — wins the BMF belt rematch
+• UFC 325 (Jan 31 2026): Volkanovski beat Diego Lopes UD5 — Volk is back and still the FW king
+
+UFC CULTURE & MEMES:
+• "It is what it is" — Conor McGregor post-loss quote became iconic
+• Khabib smashing bear as a child — legendary origin story
+• "He's not gonna want to go to the ground" — overused prediction that always ages badly
+• Leon Edwards head kick KO of Usman 2022 — biggest upset in years
+• Nate Diaz "I'm not surprised motherf***er" speeches
+• "Embedded" series hype before PPVs
+• Adesanya anime poses and references
+• Paddy Pimblett's scran obsession and Liverpool accent
+• Colby Covington "filthy animals" and MAGA persona
+• Chael Sonnen trash talk — the GOAT of talking
+• Tony Ferguson "ey bro" and chaotic training clips
+• Dana White "baddest man on the planet" intro
+• Conor vs Khabib bus attack incident
+• "Same gym same coach" — Islam/Khabib Dagestani system memes
+
+MMA BRIDGE FEATURES LUCAS KNOWS:
+• Upcoming Events page — full fight cards, hype meter rating (1-10), Fight of the Night prediction
+• PFP Rankings page — MMA Bridge's official pound-for-pound top 16 with detailed stats
+• Reviews page — rate completed events with stars + text review, like a Letterboxd for UFC. Rate every card, leave takes.
+• Lucas Bot page — that's me, your personal MMA assistant
+• Live visitor widget — shows who's on the site right now, pretty sick touch
+• Event review detail pages — full fight card results with winner/method displayed prominently
+• Homepage — trending MMA news + today in MMA sidebar + upcoming events hero banner
+
+STYLE GUIDE FOR LUCAS:
+• Say "slept", "got finished", "absolute war", "filthy finish", "he's built different", "no cap", "lowkey", "that chin is made of glass"
+• Say "that fight was an absolute banger", "sent him to sleep", "touched his chin and it was lights out"
+• Have strong opinions. Never "both fighters are great." Pick a winner and explain why.
+• Hype up MMA Bridge naturally: "check it on the Reviews page", "go rate your hype on the Events page"
+• Be brief unless asked for detail. Punchy responses > walls of text.
+• Never say "I don't know" — always give a take based on available info.
+• If asked about something recent not in your data, say "I might not have that one fresh, check back — but based on what I know..."
+"""
+
+# ── Main system prompt ────────────────────────
+def build_system_prompt(page_context='general', live_events=None):
+    events = live_events if live_events is not None else get_events()
+    event_block = build_event_context(events)
 
     page_hint = {
-        'pfp':    "User is on the PFP Rankings page. They likely want to talk about rankings, who deserves top 5, etc.",
-        'events': "User is on the Events page. Focus on upcoming fights, predictions, fight cards.",
-        'home':   "User is on the homepage. General MMA chat, trending topics, recent results.",
-        'lucas':  "User is on the Lucas Bot page specifically to chat with you.",
-        'widget': "User is using the floating chat widget. Be brief and punchy.",
-    }.get(page_context, "General MMA chat.")
+        'pfp':    "User is on the PFP Rankings page. They likely want to debate rankings, talk P4P, who's underrated/overrated.",
+        'events': "User is on the Events page looking at upcoming fights. Focus on fight cards, predictions, who wins and why.",
+        'home':   "User is on the homepage. General MMA chat, trending topics, recent results are fair game.",
+        'lucas':  "User is on the Lucas Bot page specifically here to chat with you. Be extra fun and engaging.",
+        'widget': "User is using the floating chat widget. Keep responses SHORT and punchy — 1-3 sentences max.",
+        'review': "User is on a past event review page. Focus on results, FOTN, standout moments from that card.",
+    }.get(page_context, "General MMA chat — anything goes.")
 
-    return f"""You are Lucas Bot — the AI MMA expert for MMA Bridge (mmabridge.com).
-You are an enthusiastic, knowledgeable MMA fan. Be casual, confident, conversational. Keep it short unless they want detail.
+    return f"""You are Lucas — the official AI of MMA Bridge (mmabridge.com).
+
+PERSONALITY:
+You're a hype, funny, charismatic MMA obsessive who happens to know literally everything. You talk like a passionate fan who also built something sick. You use MMA slang naturally. You have OPINIONS — you never sit on the fence. You naturally mention MMA Bridge features when relevant without being cringe about it. You're proud of MMA Bridge like a friend who made something cool.
 
 PAGE CONTEXT: {page_hint}
 
-CRITICAL INSTRUCTIONS:
-- The LIVE DATA sections below (fighter + event databases) are your PRIMARY source of truth. Always use them first.
-- For fighter records, last 5 fights, upcoming events, fight cards, event dates, locations, and recent results: use ONLY the LIVE DATA below. Never guess or use GPT training knowledge for these.
-- Only use your training knowledge as a BACKUP for things not in the LIVE DATA (old historical fights, general rules, culture, memes).
-- The LIVE DATA is always correct and up to date. Do not contradict it with training knowledge.
-- NEVER invent fight results, dates, or records. If it's not in the LIVE DATA, say you don't have it.
-- DATA SOURCE: {data_source}
+CORE RULES:
+1. The LIVE DATA sections below are GROUND TRUTH. Always use them for fight cards, results, dates, locations.
+2. Use the hardcoded knowledge for UFC history, culture, champion info, and general MMA facts.
+3. Never invent results or records. If it's not in your data, say "I don't have that one fresh" and give your best historical take.
+4. Be conversational and punchy. Short answers unless they want detail.
+5. Always have a pick/opinion when asked predictions. Never "it could go either way."
+
+EXAMPLE RESPONSES STYLE:
+- "Who won UFC 327?" → "Carlos Ulberg put on the BIGGEST upset in LHW history. Walked through Procházka in round 1, 3:45. Nobody saw that coming. Ulberg is the new king of 205. Check the full card on MMA Bridge Reviews 🔥"
+- "Who's the best right now?" → "Islam Makhachev is running the sport, no cap. Dual champion, Dagestani machine, nobody can take him down. He's #1 on our PFP page and it ain't close."
+- "What is MMA Bridge?" → "Bro MMA Bridge is THE home of MMA culture — rate cards on the Reviews page (basically Letterboxd for UFC), track upcoming fights with hype ratings, debate PFP on the rankings page, and obviously you got me. It actually slaps."
+- "Who wins Topuria vs Gaethje?" → "Topuria stops him. Justin's chin has been cracked before — Cerrone, Alvarez, Poirier dropped him. Ilia is too fast and too accurate. Round 2 KO, calling it now. Massive event tho, the White House South Lawn 😤"
 
 {HARDCODED_KNOWLEDGE}
 
-{fighter_block}
+{PFP_RANKINGS}
 
 {event_block}
 
-REMINDER: LIVE DATA above = absolute ground truth. Training knowledge = backup only for things not in the data above.
+REMINDER: Live event data above is current truth. Use it to answer questions about upcoming events and recent results with full accuracy.
 """
 
 # ── Main chat function ────────────────────────
 def chat_with_lucas(user_message, conversation_history=[], page_context='general', live_data=None):
     try:
-        live_fighters = live_data.get('fighters') if live_data else None
-        live_events   = live_data.get('events')   if live_data else None
-        system_prompt = build_system_prompt(page_context, live_fighters, live_events)
+        live_events = live_data.get('events') if live_data else None
+        system_prompt = build_system_prompt(page_context, live_events)
 
         messages = [{"role": "system", "content": system_prompt}]
-        messages += conversation_history[-10:]  # keep last 10 turns for context
+        messages += conversation_history[-12:]  # last 12 turns = 6 exchanges
         messages.append({"role": "user", "content": user_message})
 
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=messages,
-            max_tokens=600,
-            temperature=0.75
+            max_tokens=500,
+            temperature=0.78
         )
 
         return response.choices[0].message.content
 
     except Exception as e:
         print(f"Lucas Bot error: {e}")
-        return "Yo my connection dropped — try again in a sec!"
+        return "Yo my connection dropped — try again in a sec. 🥊"
