@@ -9424,26 +9424,80 @@
     "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2026-04/051626-ufc-fight-night-allen-vs-costa-EVENT-ART.jpg",
     "status": "upcoming",
     "mainCard": [
-      {
-        "a": "Arnold Allen",
-        "b": "Melquizael Costa",
-        "weight": "Featherweight",
-        "rounds": "5 Rds",
-        "titleFight": false,
-        "ranked": true,
-        "slot": "main"
-      },
-      {
-        "a": "Aljamain Sterling",
-        "b": "Youssef Zalal",
-        "weight": "Featherweight",
-        "rounds": "3 Rds",
-        "titleFight": false,
-        "ranked": true,
-        "slot": "comain"
-      }
+      { "a": "Arnold Allen", "b": "Melquizael Costa", "weight": "Featherweight", "rounds": "5 Rds", "titleFight": false, "ranked": true, "slot": "main" },
+      { "a": "Dooho Choi", "b": "Daniel Santos", "weight": "Featherweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "comain" },
+      { "a": "Malcolm Wellmaker", "b": "Juan Diaz", "weight": "Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Modestas Bukauskas", "b": "Rodolfo Bellato", "weight": "Light Heavyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Timmy Cuamba", "b": "Bernardo Sopaj", "weight": "Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" }
     ],
-    "prelims": [],
+    "prelims": [
+      { "a": "Jeremiah Wells", "b": "Nicolas Dalby", "weight": "Welterweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Tuco Tokkos", "b": "Ivan Erslan", "weight": "Light Heavyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Trey Ogden", "b": "Thomas Gantt", "weight": "Lightweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Ketlen Vieira", "b": "Jacqueline Cavalcanti", "weight": "Women's Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "" },
+      { "a": "Cody Brundage", "b": "Andre Petroski", "weight": "Middleweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Alice Ardelean", "b": "Polyana Viana", "weight": "Women's Strawweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Daniel Barez", "b": "Luis Gurule", "weight": "Flyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Shauna Bannon", "b": "Nicolle Caliari", "weight": "Women's Strawweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" }
+    ],
+    "earlyPrelims": [],
+    "startTime": "19:00"
+  },
+  {
+    "id": "ufc-fight-night-song-vs-figueiredo",
+    "name": "UFC Fight Night: Song vs. Figueiredo",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, May 30, 2026",
+    "isoDate": "2026-05-30",
+    "location": "Macau, China",
+    "venue": "Galaxy Arena",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2026-04/053026-ufc-fight-night-song-vs-figueiredo-EVENT-ART.jpg",
+    "status": "upcoming",
+    "mainCard": [
+      { "a": "Song Yadong", "b": "Deiveson Figueiredo", "weight": "Bantamweight", "rounds": "5 Rds", "titleFight": false, "ranked": true, "slot": "main" },
+      { "a": "Alonzo Menifield", "b": "Zhang Mingyang", "weight": "Light Heavyweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "comain" },
+      { "a": "Sergei Pavlovich", "b": "Tallison Teixeira", "weight": "Heavyweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "" },
+      { "a": "Kai Asakura", "b": "Cameron Smotherman", "weight": "Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Alex Perez", "b": "Sumudaerji", "weight": "Flyweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "" }
+    ],
+    "prelims": [
+      { "a": "Muslim Salikhov", "b": "Jake Matthews", "weight": "Welterweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Angela Hill", "b": "Xiong Jingnan", "weight": "Women's Strawweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "" },
+      { "a": "Luis Felipe Dias", "b": "Yi Sak Lee", "weight": "Middleweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Rei Tsuruya", "b": "Jesus Aguilar", "weight": "Flyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Loma Lookboonmee", "b": "Jaqueline Amorim", "weight": "Women's Strawweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Aoriqileng", "b": "Cody Haddon", "weight": "Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Meng Ding", "b": "Jose Henrique Souza", "weight": "Welterweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" }
+    ],
+    "earlyPrelims": [],
+    "startTime": "07:00"
+  },
+  {
+    "id": "ufc-fight-night-muhammad-vs-bonfim",
+    "name": "UFC Fight Night: Muhammad vs. Bonfim",
+    "type": "FIGHT NIGHT",
+    "date": "Sat, Jun 6, 2026",
+    "isoDate": "2026-06-06",
+    "location": "Las Vegas, NV",
+    "venue": "Meta APEX",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2026-04/060626-ufc-fight-night-muhammad-vs-bonfim-EVENT-ART.jpg",
+    "status": "upcoming",
+    "mainCard": [
+      { "a": "Belal Muhammad", "b": "Gabriel Bonfim", "weight": "Welterweight", "rounds": "5 Rds", "titleFight": false, "ranked": true, "slot": "main" },
+      { "a": "Brendan Allen", "b": "Edmen Shahbazyan", "weight": "Middleweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "comain" },
+      { "a": "Bryce Mitchell", "b": "Victor Henry", "weight": "Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Iwo Baraniewski", "b": "Billy Elekana", "weight": "Light Heavyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" }
+    ],
+    "prelims": [
+      { "a": "Imanol Rodriguez", "b": "Matt Schnell", "weight": "Flyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Marcus McGhee", "b": "Jakub Wiklacz", "weight": "Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Bruno Silva", "b": "Edgar Chairez", "weight": "Flyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Jordan Leavitt", "b": "Joanderson Brito", "weight": "Featherweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Fares Ziam", "b": "Tom Nolan", "weight": "Lightweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "" },
+      { "a": "Ketlen Souza", "b": "Ariane Carnelossi", "weight": "Women's Strawweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Priscila Cachoeira", "b": "Chelsea Chandler", "weight": "Women's Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
+      { "a": "Jeisla Chaves", "b": "Yuneisy Duben", "weight": "Women's Flyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" }
+    ],
     "earlyPrelims": [],
     "startTime": "19:00"
   },
