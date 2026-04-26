@@ -5,9 +5,9 @@
     "type": "FIGHT NIGHT",
     "date": "Sat, Nov 4, 2023",
     "isoDate": "2023-11-04",
-    "location": "São Paulo, Brazil",
+    "location": "S\u00e3o Paulo, Brazil",
     "venue": "Ibirapuera Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2023-10/110423-ufc-fight-night-almeida-vs-lewis-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2023-10/110423-ufc-fight-night-almeida-vs-lewis-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -121,7 +121,7 @@
     "isoDate": "2023-11-11",
     "location": "New York, NY",
     "venue": "Madison Square Garden",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2023-10/111123-ufc-295-prochazka-vs-pereira-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2023-10/111123-ufc-295-prochazka-vs-pereira-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -247,7 +247,7 @@
     "isoDate": "2023-12-02",
     "location": "Austin, TX",
     "venue": "Moody Center",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/image/2023-11/120223-ufc-fight-night-dariush-vs-tsarukyan-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/image/2023-11/120223-ufc-fight-night-dariush-vs-tsarukyan-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -373,7 +373,7 @@
     "isoDate": "2023-12-16",
     "location": "Las Vegas, NV",
     "venue": "T-Mobile Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/image/2023-12/121623-UFC-296-EDWARDS-VS-COVINGTON-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/image/2023-12/121623-UFC-296-EDWARDS-VS-COVINGTON-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -487,7 +487,7 @@
     "isoDate": "2024-01-20",
     "location": "Toronto, Ontario, Canada",
     "venue": "Scotiabank Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2023-12/012024-ufc-297-strickland-vs-du-plessis-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2023-12/012024-ufc-297-strickland-vs-du-plessis-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -601,7 +601,7 @@
     "isoDate": "2024-02-17",
     "location": "Anaheim, CA",
     "venue": "Honda Center",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-01/021824-ufc-298-volkanovski-vs-topuria-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-01/021824-ufc-298-volkanovski-vs-topuria-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -715,7 +715,7 @@
     "isoDate": "2024-03-09",
     "location": "Miami, FL",
     "venue": "Kaseya Center",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-01/030924-ufc-299-omalley-vs-vera-2-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-01/030924-ufc-299-omalley-vs-vera-2-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -829,7 +829,7 @@
     "isoDate": "2024-03-30",
     "location": "Atlantic City, NJ",
     "venue": "Boardwalk Hall",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/image/2024-03/033024-ufc-fight-night-blanchfield-vs-fiorot-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/image/2024-03/033024-ufc-fight-night-blanchfield-vs-fiorot-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -955,7 +955,7 @@
     "isoDate": "2024-04-13",
     "location": "Las Vegas, NV",
     "venue": "T-Mobile Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-02/041324-ufc-300-pereira-vs-hill-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-02/041324-ufc-300-pereira-vs-hill-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -1081,7 +1081,7 @@
     "isoDate": "2024-05-04",
     "location": "Rio de Janeiro, Brazil",
     "venue": "Jeunesse Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-04/050424-ufc-301-pantoja-vs-erceg-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-04/050424-ufc-301-pantoja-vs-erceg-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -1195,7 +1195,7 @@
     "isoDate": "2024-05-18",
     "location": "Las Vegas, NV",
     "venue": "UFC APEX",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-04/051824-ufc-fight-night-barboza-vs-murphy-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-04/051824-ufc-fight-night-barboza-vs-murphy-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -1321,7 +1321,7 @@
     "isoDate": "2024-06-01",
     "location": "Newark, NJ",
     "venue": "Prudential Center",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-05/060124-ufc-302-makhachev-vs-poirier-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-05/060124-ufc-302-makhachev-vs-poirier-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -1435,7 +1435,7 @@
     "isoDate": "2024-06-22",
     "location": "Riyadh, Saudi Arabia",
     "venue": "Kingdom Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-06/062224-ufc-fight-night-whittaker-vs-aliskerov-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-06/062224-ufc-fight-night-whittaker-vs-aliskerov-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -1549,7 +1549,7 @@
     "isoDate": "2024-06-29",
     "location": "Las Vegas, NV",
     "venue": "T-Mobile Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-06/062924-ufc-303-pereira-vs-prochazka-2-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-06/062924-ufc-303-pereira-vs-prochazka-2-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -1663,7 +1663,7 @@
     "isoDate": "2024-07-27",
     "location": "Manchester, England",
     "venue": "Co-op Live",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-06/072724-ufc-304-edwards-vs-muhammad-2-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-06/072724-ufc-304-edwards-vs-muhammad-2-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -1777,7 +1777,7 @@
     "isoDate": "2024-08-03",
     "location": "Abu Dhabi, UAE",
     "venue": "Etihad Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-06/080324-ufc-fight-night-sandhagen-vs-nurmagomedov-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-06/080324-ufc-fight-night-sandhagen-vs-nurmagomedov-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -1903,7 +1903,7 @@
     "isoDate": "2024-08-17",
     "location": "Perth, Australia",
     "venue": "RAC Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/image/2024-07/101724-ufc-305-du-plessis-vs-adesanya-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/image/2024-07/101724-ufc-305-du-plessis-vs-adesanya-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -2017,7 +2017,7 @@
     "isoDate": "2024-09-07",
     "location": "Las Vegas, NV",
     "venue": "UFC APEX",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-08/090724-ufc-fight-night-burns-vs-brady-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-08/090724-ufc-fight-night-burns-vs-brady-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -2131,7 +2131,7 @@
     "isoDate": "2024-09-14",
     "location": "Las Vegas, NV",
     "venue": "Sphere",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-08/091424-ufc-306-omalley-vs-dvalishvili-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-08/091424-ufc-306-omalley-vs-dvalishvili-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -2245,7 +2245,7 @@
     "isoDate": "2024-09-28",
     "location": "Paris, France",
     "venue": "Accor Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-08/092824-ufc-fight-night-moicano-vs-saint-denis-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-08/092824-ufc-fight-night-moicano-vs-saint-denis-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -2371,7 +2371,7 @@
     "isoDate": "2024-10-05",
     "location": "Salt Lake City, UT",
     "venue": "Delta Center",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-09/100524-ufc-307-pereira-vs-rountree-jr-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-09/100524-ufc-307-pereira-vs-rountree-jr-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -2389,7 +2389,7 @@
       },
       {
         "a": "Raquel Pennington",
-        "b": "Julianna Peña",
+        "b": "Julianna Pe\u00f1a",
         "weight": "Women's Bantamweight",
         "rounds": "5 Rds",
         "titleFight": true,
@@ -2485,7 +2485,7 @@
     "isoDate": "2024-10-12",
     "location": "Las Vegas, NV",
     "venue": "UFC APEX",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-09/101224-ufc-fight-night-royval-vs-taira-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-09/101224-ufc-fight-night-royval-vs-taira-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -2599,7 +2599,7 @@
     "isoDate": "2024-10-19",
     "location": "Las Vegas, NV",
     "venue": "UFC APEX",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-09/101924-hernandez-vs-pereira-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-09/101924-hernandez-vs-pereira-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -2953,7 +2953,7 @@
     "isoDate": "2024-11-23",
     "location": "Macao, China",
     "venue": "Galaxy Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-10/112324-ufc-fight-night-yan-vs-figueiredo-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-10/112324-ufc-fight-night-yan-vs-figueiredo-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -3079,7 +3079,7 @@
     "isoDate": "2024-12-07",
     "location": "Las Vegas, NV",
     "venue": "T-Mobile Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-11/120724-ufc-310-pantoja-vs-asakura-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-11/120724-ufc-310-pantoja-vs-asakura-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -3193,7 +3193,7 @@
     "isoDate": "2024-12-14",
     "location": "Tampa, FL",
     "venue": "Amalie Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-11/121424-ufc-fight-night-covington-vs-buckley-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-11/121424-ufc-fight-night-covington-vs-buckley-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -3331,7 +3331,7 @@
     "isoDate": "2025-01-11",
     "location": "Las Vegas, NV",
     "venue": "UFC APEX",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2024-12/011125-ufc-fight-night-dern-vs-ribas-2-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2024-12/011125-ufc-fight-night-dern-vs-ribas-2-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -3571,7 +3571,7 @@
     "isoDate": "2025-02-01",
     "location": "Riyadh, Saudi Arabia",
     "venue": "anb Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-01/020125-ufc-fight-night-adesanya-vs-imavov-EVENT-ART_0.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-01/020125-ufc-fight-night-adesanya-vs-imavov-EVENT-ART_0.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -3685,7 +3685,7 @@
     "isoDate": "2025-02-08",
     "location": "Perth, Australia",
     "venue": "RAC Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-01/020825-ufc-312-du-plessis-vs-strickland-2-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-01/020825-ufc-312-du-plessis-vs-strickland-2-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -3799,7 +3799,7 @@
     "isoDate": "2025-02-22",
     "location": "Seattle, WA",
     "venue": "Climate Pledge Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-02/022225-ufc-fight-night-cejudo-vs-song-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-02/022225-ufc-fight-night-cejudo-vs-song-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -3913,7 +3913,7 @@
     "isoDate": "2025-03-08",
     "location": "Las Vegas, NV",
     "venue": "T-Mobile Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/image/2025-02/030825-ufc-313-pereira-vs-ankalaev-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/image/2025-02/030825-ufc-313-pereira-vs-ankalaev-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -4027,7 +4027,7 @@
     "isoDate": "2025-03-22",
     "location": "London, England",
     "venue": "The O2",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-03/032225-ufc-fight-night-edwards-vs-brady-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-03/032225-ufc-fight-night-edwards-vs-brady-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -4153,7 +4153,7 @@
     "isoDate": "2025-04-12",
     "location": "Miami, FL",
     "venue": "Kaseya Center",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-03/041225-ufc-314-volkanovski-vs-lopes-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-03/041225-ufc-314-volkanovski-vs-lopes-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -4381,7 +4381,7 @@
     "isoDate": "2025-05-10",
     "location": "Montreal, Quebec, Canada",
     "venue": "Bell Centre",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-04/051025-ufc-315-muhammad-vs-della-maddalena-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-04/051025-ufc-315-muhammad-vs-della-maddalena-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -4507,7 +4507,7 @@
     "isoDate": "2025-06-07",
     "location": "Miami, FL",
     "venue": "Kaseya Center",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-05/060725-ufc-316-dvalishvili-vs-omalley-2-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-05/060725-ufc-316-dvalishvili-vs-omalley-2-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -4524,7 +4524,7 @@
         "time": "5:00"
       },
       {
-        "a": "Julianna Peña",
+        "a": "Julianna Pe\u00f1a",
         "b": "Kayla Harrison",
         "weight": "Women's Bantamweight",
         "rounds": "5 Rds",
@@ -4633,7 +4633,7 @@
     "isoDate": "2025-06-21",
     "location": "Baku, Azerbaijan",
     "venue": "Baku Crystal Hall",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-05/062125-ufc-fight-night-hill-vs-rountree-jr-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-05/062125-ufc-fight-night-hill-vs-rountree-jr-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -4910,7 +4910,7 @@
     "isoDate": "2025-07-12",
     "location": "Nashville, TN",
     "venue": "Bridgestone Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-06/071225-ufc-fight-night-lewis-vs-teixeira-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-06/071225-ufc-fight-night-lewis-vs-teixeira-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -5179,7 +5179,7 @@
       },
       {
         "a": "Ryan Spann",
-        "b": "Łukasz Brzeski",
+        "b": "\u0141ukasz Brzeski",
         "weight": "Light Heavyweight",
         "rounds": "3 Rds",
         "titleFight": false,
@@ -5211,7 +5211,7 @@
     "isoDate": "2025-07-26",
     "location": "Abu Dhabi, UAE",
     "venue": "Etihad Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-06/072625-ufc-fight-night-whittaker-vs-de-ridder-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-06/072625-ufc-fight-night-whittaker-vs-de-ridder-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -5325,7 +5325,7 @@
     "isoDate": "2025-08-09",
     "location": "Las Vegas, NV",
     "venue": "UFC APEX",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-07/080925-ufc-fight-night-dolidze-vs-hernandez-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-07/080925-ufc-fight-night-dolidze-vs-hernandez-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -5531,13 +5531,13 @@
         "time": "2:01"
       },
       {
-        "a": "Michał Oleksiejczuk",
+        "a": "Micha\u0142 Oleksiejczuk",
         "b": "Gerald Meerschaert",
         "weight": "Middleweight",
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "winner": "Michał Oleksiejczuk",
+        "winner": "Micha\u0142 Oleksiejczuk",
         "method": "TKO",
         "round": 1,
         "time": "2:15"
@@ -5619,14 +5619,14 @@
         "time": "5:00"
       },
       {
-        "a": "Benoît Saint-Denis",
+        "a": "Beno\u00eet Saint-Denis",
         "b": "Mauricio Ruffy",
         "weight": "Lightweight",
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
         "slot": "comain",
-        "winner": "Benoît Saint-Denis",
+        "winner": "Beno\u00eet Saint-Denis",
         "method": "KO",
         "round": 1,
         "time": "2:15"
@@ -5716,7 +5716,7 @@
     "isoDate": "2025-09-13",
     "location": "San Antonio, TX",
     "venue": "Frost Bank Center",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-08/091325-ufc-fight-night-lopes-vs-silva-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-08/091325-ufc-fight-night-lopes-vs-silva-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -5944,7 +5944,7 @@
     "isoDate": "2025-09-27",
     "location": "Perth, Australia",
     "venue": "RAC Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-08/092725-ufc-fight-night-ulberg-vs-reyes-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-08/092725-ufc-fight-night-ulberg-vs-reyes-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -6037,7 +6037,7 @@
       },
       {
         "a": "Blake Bilder",
-        "b": "Landon Quiñones",
+        "b": "Landon Qui\u00f1ones",
         "weight": "Featherweight",
         "rounds": "3 Rds",
         "titleFight": false,
@@ -6088,13 +6088,13 @@
         "time": "5:00"
       },
       {
-        "a": "Jiří Procházka",
+        "a": "Ji\u0159\u00ed Proch\u00e1zka",
         "b": "Khalil Rountree Jr.",
         "weight": "Light Heavyweight",
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "winner": "Jiří Procházka",
+        "winner": "Ji\u0159\u00ed Proch\u00e1zka",
         "method": "KO",
         "round": 3,
         "time": "3:04"
@@ -6209,7 +6209,7 @@
     "isoDate": "2025-10-11",
     "location": "Rio de Janeiro, Brazil",
     "venue": "Farmasi Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-09/101125-ufc-fight-night-oliveira-vs-gamrot-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-09/101125-ufc-fight-night-oliveira-vs-gamrot-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -6323,7 +6323,7 @@
     "isoDate": "2025-10-18",
     "location": "Vancouver, Canada",
     "venue": "Rogers Arena",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-09/101825-ufc-fight-night-de-ridder-vs-allen-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-09/101825-ufc-fight-night-de-ridder-vs-allen-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -6504,7 +6504,7 @@
       },
       {
         "a": "Azamat Murzakanov",
-        "b": "Aleksandar Rakić",
+        "b": "Aleksandar Raki\u0107",
         "weight": "Light Heavyweight",
         "rounds": "3 Rds",
         "titleFight": false,
@@ -6541,13 +6541,13 @@
         "time": "5:00"
       },
       {
-        "a": "Ľudovít Klein",
-        "b": "Mateusz Rębecki",
+        "a": "\u013dudov\u00edt Klein",
+        "b": "Mateusz R\u0119becki",
         "weight": "Lightweight",
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "winner": "Ľudovít Klein",
+        "winner": "\u013dudov\u00edt Klein",
         "method": "MD",
         "round": 3,
         "time": "5:00"
@@ -6612,7 +6612,7 @@
     "isoDate": "2025-11-01",
     "location": "Las Vegas, NV",
     "venue": "UFC APEX",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-10/110125-ufc-fight-night-garcia-vs-onana-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-10/110125-ufc-fight-night-garcia-vs-onana-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -6900,7 +6900,7 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "winner": "Benoît Saint-Denis",
+        "winner": "Beno\u00eet Saint-Denis",
         "method": "KO",
         "round": 2,
         "time": "2:10"
@@ -7171,13 +7171,13 @@
         "time": "4:55"
       },
       {
-        "a": "Jan Błachowicz",
+        "a": "Jan B\u0142achowicz",
         "b": "Bogdan Guskov",
         "weight": "Light Heavyweight",
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "winner": "Jan Błachowicz",
+        "winner": "Jan B\u0142achowicz",
         "method": "Draw",
         "round": 3,
         "time": "5:00"
@@ -7268,7 +7268,7 @@
     "isoDate": "2025-12-13",
     "location": "Las Vegas, NV",
     "venue": "UFC APEX",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2025-11/121325-ufc-fight-night-royval-vs-kape-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2025-11/121325-ufc-fight-night-royval-vs-kape-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -7448,13 +7448,13 @@
         "time": "1:44"
       },
       {
-        "a": "Natália Silva",
+        "a": "Nat\u00e1lia Silva",
         "b": "Rose Namajunas",
         "weight": "Women's Flyweight",
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "winner": "Natália Silva",
+        "winner": "Nat\u00e1lia Silva",
         "method": "UD",
         "round": 3,
         "time": "5:00"
@@ -7562,14 +7562,14 @@
         "time": "5:00"
       },
       {
-        "a": "Benoît Saint-Denis",
+        "a": "Beno\u00eet Saint-Denis",
         "b": "Dan Hooker",
         "weight": "Lightweight",
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
         "slot": "comain",
-        "winner": "Benoît Saint-Denis",
+        "winner": "Beno\u00eet Saint-Denis",
         "method": "TKO",
         "round": 2,
         "time": "3:45"
@@ -7684,7 +7684,7 @@
     "isoDate": "2026-02-07",
     "location": "Las Vegas, NV",
     "venue": "UFC APEX",
-    "poster": "https://ufc.com/images/styles/background_image_xl_2x/s3/2026-01/020726-ufc-fight-night-bautista-vs-oliveira-EVENT-ART.jpg",
+    "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2026-01/020726-ufc-fight-night-bautista-vs-oliveira-EVENT-ART.jpg",
     "status": "completed",
     "mainCard": [
       {
@@ -8665,7 +8665,7 @@
   },
   {
     "id": "ufc-327-prochazka-vs-ulberg",
-    "name": "UFC 327: Procházka vs. Ulberg",
+    "name": "UFC 327: Proch\u00e1zka vs. Ulberg",
     "type": "PPV",
     "date": "Sat, Apr 11, 2026",
     "isoDate": "2026-04-11",
@@ -8676,7 +8676,7 @@
     "mainCard": [
       {
         "a": "Carlos Ulberg",
-        "b": "Jiří Procházka",
+        "b": "Ji\u0159\u00ed Proch\u00e1zka",
         "weight": "Light Heavyweight",
         "rounds": "5 Rds",
         "titleFight": true,
@@ -8903,7 +8903,7 @@
       },
       {
         "a": "Gauge Young",
-        "b": "Thiago Moisés",
+        "b": "Thiago Mois\u00e9s",
         "weight": "Lightweight",
         "rounds": "3 Rds",
         "titleFight": false,
@@ -9037,7 +9037,9 @@
         "rounds": "5 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": "main"
+        "slot": "main",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/STERLING_ALJAMAIN_04-25.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/ZALAL_YOUSSEF_04-25.png"
       },
       {
         "a": "Norma Dumont",
@@ -9046,7 +9048,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": "comain"
+        "slot": "comain",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/DUMONT_NORMA_04-25.png",
+        "imgB": ""
       },
       {
         "a": "Rafa Garcia",
@@ -9055,7 +9059,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/GARCIA_RAFA_04-25.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/HERNANDEZ_ALEXANDER_04-25.png"
       },
       {
         "a": "Davey Grant",
@@ -9064,7 +9070,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/GRANT_DAVEY_04-25.png",
+        "imgB": ""
       },
       {
         "a": "Montel Jackson",
@@ -9073,7 +9081,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/JACKSON_MONTEL_04-25.png",
+        "imgB": ""
       },
       {
         "a": "Marcus Buchecha",
@@ -9082,7 +9092,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": "opener"
+        "slot": "opener",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/BUCHECHA_MARCUS_04-25.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/SPANN_RYAN_04-25.png"
       }
     ],
     "prelims": [
@@ -9093,7 +9105,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/VIEIRA_RODOLFO_04-25.png",
+        "imgB": ""
       },
       {
         "a": "Jackson McVey",
@@ -9102,7 +9116,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Mayra Bueno Silva",
@@ -9111,7 +9127,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Jafel Filho",
@@ -9120,7 +9138,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Francis Marshall",
@@ -9129,7 +9149,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Max Griffin",
@@ -9138,7 +9160,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Talita Alencar",
@@ -9147,7 +9171,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       }
     ],
     "earlyPrelims": []
@@ -9171,7 +9197,9 @@
         "rounds": "5 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": "main"
+        "slot": "main",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-05/DELLA_MADDALENA_JACK_05-10.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/PRATES_CARLOS_11-15.png"
       },
       {
         "a": "Beneil Dariush",
@@ -9180,7 +9208,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": "comain"
+        "slot": "comain",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/DARIUSH_BENEIL_11-15.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/SALKILLD_QUILLAN_01-31.png"
       },
       {
         "a": "Tim Elliott",
@@ -9189,7 +9219,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-08/ELLIOTT_TIM_08-16.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-08/ERCEG_STEVE_08-09.png"
       },
       {
         "a": "Shamil Gaziev",
@@ -9198,7 +9230,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/GAZIEV_SHAMIL_11-22.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/PERICIC_BRANDO_03-21.png"
       },
       {
         "a": "Tai Tuivasa",
@@ -9207,7 +9241,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": "opener"
+        "slot": "opener",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/TUIVASA_TAI_01-31.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/SUTHERLAND_LOUIE_03-21.png"
       }
     ],
     "prelims": [
@@ -9218,7 +9254,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Junior Tafa",
@@ -9227,7 +9265,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Jacob Malkoun",
@@ -9236,7 +9276,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Colby Thicknesse",
@@ -9245,7 +9287,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Ben Johnston",
@@ -9254,7 +9298,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Jonathan Micallef",
@@ -9263,7 +9309,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Dom Mar Fan",
@@ -9272,7 +9320,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       }
     ],
     "earlyPrelims": [
@@ -9283,7 +9333,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       }
     ]
   },
@@ -9305,7 +9357,9 @@
         "rounds": "5 Rds",
         "titleFight": true,
         "ranked": true,
-        "slot": "main"
+        "slot": "main",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-08/CHIMAEV_KHAMZAT_BELTMOCK.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/STRICKLAND_SEAN_02-21.png"
       },
       {
         "a": "Joshua Van",
@@ -9314,7 +9368,9 @@
         "rounds": "5 Rds",
         "titleFight": true,
         "ranked": true,
-        "slot": "comain"
+        "slot": "comain",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/VAN_JOSHUA_BELT.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/TAIRA_TATSURO_12-06.png"
       },
       {
         "a": "Alexander Volkov",
@@ -9323,7 +9379,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/VOLKOV_ALEXANDER_10-25.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/CORTES_ACOSTA_WALDO_01-24.png"
       },
       {
         "a": "Sean Brady",
@@ -9332,7 +9390,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/BRADY_SEAN_11-15.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-06/BUCKLEY_JOAQUIN_06-14.png"
       },
       {
         "a": "King Green",
@@ -9341,7 +9401,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": "opener"
+        "slot": "opener",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/GREEN_KING_02-28.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-05/STEPHENS_JEREMY_05-03.png"
       }
     ],
     "prelims": [
@@ -9352,7 +9414,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Grant Dawson",
@@ -9361,7 +9425,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/DAWSON_GRANT_12-06.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/REBECKI_MATEUSZ_10-25.png"
       },
       {
         "a": "Joel Alvarez",
@@ -9370,7 +9436,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/ALVAREZ_JOEL_10-11.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/AMOSOV_YAROSLAV_12-13.png"
       }
     ],
     "earlyPrelims": [
@@ -9381,7 +9449,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Pat Sabatini",
@@ -9390,7 +9460,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/SABATINI_PAT_11-15.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-09/GOMIS_WILLIAM_09-06.png"
       },
       {
         "a": "Baisangur Susurkaev",
@@ -9399,7 +9471,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       },
       {
         "a": "Clayton Carpenter",
@@ -9408,7 +9482,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": ""
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
       }
     ],
     "startTime": "22:00"
@@ -9424,21 +9500,151 @@
     "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2026-04/051626-ufc-fight-night-allen-vs-costa-EVENT-ART.jpg",
     "status": "upcoming",
     "mainCard": [
-      { "a": "Arnold Allen", "b": "Melquizael Costa", "weight": "Featherweight", "rounds": "5 Rds", "titleFight": false, "ranked": true, "slot": "main" },
-      { "a": "Dooho Choi", "b": "Daniel Santos", "weight": "Featherweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "comain" },
-      { "a": "Malcolm Wellmaker", "b": "Juan Diaz", "weight": "Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Modestas Bukauskas", "b": "Rodolfo Bellato", "weight": "Light Heavyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Timmy Cuamba", "b": "Bernardo Sopaj", "weight": "Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" }
+      {
+        "a": "Arnold Allen",
+        "b": "Melquizael Costa",
+        "weight": "Featherweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/ALLEN_ARNOLD_01-24.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/COSTA_MELQUIZAEL_02-21.png"
+      },
+      {
+        "a": "Dooho Choi",
+        "b": "Daniel Santos",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "comain",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-12/CHOI_DOOHO_12-07.png",
+        "imgB": ""
+      },
+      {
+        "a": "Malcolm Wellmaker",
+        "b": "Juan Diaz",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Modestas Bukauskas",
+        "b": "Rodolfo Bellato",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Timmy Cuamba",
+        "b": "Bernardo Sopaj",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      }
     ],
     "prelims": [
-      { "a": "Jeremiah Wells", "b": "Nicolas Dalby", "weight": "Welterweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Tuco Tokkos", "b": "Ivan Erslan", "weight": "Light Heavyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Trey Ogden", "b": "Thomas Gantt", "weight": "Lightweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Ketlen Vieira", "b": "Jacqueline Cavalcanti", "weight": "Women's Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "" },
-      { "a": "Cody Brundage", "b": "Andre Petroski", "weight": "Middleweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Alice Ardelean", "b": "Polyana Viana", "weight": "Women's Strawweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Daniel Barez", "b": "Luis Gurule", "weight": "Flyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Shauna Bannon", "b": "Nicolle Caliari", "weight": "Women's Strawweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" }
+      {
+        "a": "Jeremiah Wells",
+        "b": "Nicolas Dalby",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Tuco Tokkos",
+        "b": "Ivan Erslan",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Trey Ogden",
+        "b": "Thomas Gantt",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Ketlen Vieira",
+        "b": "Jacqueline Cavalcanti",
+        "weight": "Women's Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/VIEIRA_KETLEN_11-01.png",
+        "imgB": ""
+      },
+      {
+        "a": "Cody Brundage",
+        "b": "Andre Petroski",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Alice Ardelean",
+        "b": "Polyana Viana",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Daniel Barez",
+        "b": "Luis Gurule",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Shauna Bannon",
+        "b": "Nicolle Caliari",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      }
     ],
     "earlyPrelims": [],
     "startTime": "19:00"
@@ -9454,20 +9660,140 @@
     "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2026-04/053026-ufc-fight-night-song-vs-figueiredo-EVENT-ART.jpg",
     "status": "upcoming",
     "mainCard": [
-      { "a": "Song Yadong", "b": "Deiveson Figueiredo", "weight": "Bantamweight", "rounds": "5 Rds", "titleFight": false, "ranked": true, "slot": "main" },
-      { "a": "Alonzo Menifield", "b": "Zhang Mingyang", "weight": "Light Heavyweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "comain" },
-      { "a": "Sergei Pavlovich", "b": "Tallison Teixeira", "weight": "Heavyweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "" },
-      { "a": "Kai Asakura", "b": "Cameron Smotherman", "weight": "Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Alex Perez", "b": "Sumudaerji", "weight": "Flyweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "" }
+      {
+        "a": "Song Yadong",
+        "b": "Deiveson Figueiredo",
+        "weight": "Bantamweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/YADONG_SONG_01-24.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/FIGUEIREDO_DEIVESON_01-24.png"
+      },
+      {
+        "a": "Alonzo Menifield",
+        "b": "Zhang Mingyang",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Sergei Pavlovich",
+        "b": "Tallison Teixeira",
+        "weight": "Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-08/PAVLOVICH_SERGEI_08-23.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-07/TEIXEIRA_TALLISON_07-12.png"
+      },
+      {
+        "a": "Kai Asakura",
+        "b": "Cameron Smotherman",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-08/ASAKURA_KAI_08-16.png",
+        "imgB": ""
+      },
+      {
+        "a": "Alex Perez",
+        "b": "Sumudaerji",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "",
+        "imgA": "",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/SUMUDAERJI_03-07.png"
+      }
     ],
     "prelims": [
-      { "a": "Muslim Salikhov", "b": "Jake Matthews", "weight": "Welterweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Angela Hill", "b": "Xiong Jingnan", "weight": "Women's Strawweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "" },
-      { "a": "Luis Felipe Dias", "b": "Yi Sak Lee", "weight": "Middleweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Rei Tsuruya", "b": "Jesus Aguilar", "weight": "Flyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Loma Lookboonmee", "b": "Jaqueline Amorim", "weight": "Women's Strawweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Aoriqileng", "b": "Cody Haddon", "weight": "Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Meng Ding", "b": "Jose Henrique Souza", "weight": "Welterweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" }
+      {
+        "a": "Muslim Salikhov",
+        "b": "Jake Matthews",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Angela Hill",
+        "b": "Xiong Jingnan",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Luis Felipe Dias",
+        "b": "Yi Sak Lee",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Rei Tsuruya",
+        "b": "Jesus Aguilar",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Loma Lookboonmee",
+        "b": "Jaqueline Amorim",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Aoriqileng",
+        "b": "Cody Haddon",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Meng Ding",
+        "b": "Jose Henrique Souza",
+        "weight": "Welterweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      }
     ],
     "earlyPrelims": [],
     "startTime": "07:00"
@@ -9483,20 +9809,140 @@
     "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2026-04/060626-ufc-fight-night-muhammad-vs-bonfim-EVENT-ART.jpg",
     "status": "upcoming",
     "mainCard": [
-      { "a": "Belal Muhammad", "b": "Gabriel Bonfim", "weight": "Welterweight", "rounds": "5 Rds", "titleFight": false, "ranked": true, "slot": "main" },
-      { "a": "Brendan Allen", "b": "Edmen Shahbazyan", "weight": "Middleweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "comain" },
-      { "a": "Bryce Mitchell", "b": "Victor Henry", "weight": "Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Iwo Baraniewski", "b": "Billy Elekana", "weight": "Light Heavyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" }
+      {
+        "a": "Belal Muhammad",
+        "b": "Gabriel Bonfim",
+        "weight": "Welterweight",
+        "rounds": "5 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "main",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/MUHAMMAD_BELAL_11-22.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/BONFIM_GABRIEL_11-08.png"
+      },
+      {
+        "a": "Brendan Allen",
+        "b": "Edmen Shahbazyan",
+        "weight": "Middleweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "comain",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/ALLEN_BRENDAN_10-18.png",
+        "imgB": ""
+      },
+      {
+        "a": "Bryce Mitchell",
+        "b": "Victor Henry",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Iwo Baraniewski",
+        "b": "Billy Elekana",
+        "weight": "Light Heavyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      }
     ],
     "prelims": [
-      { "a": "Imanol Rodriguez", "b": "Matt Schnell", "weight": "Flyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Marcus McGhee", "b": "Jakub Wiklacz", "weight": "Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Bruno Silva", "b": "Edgar Chairez", "weight": "Flyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Jordan Leavitt", "b": "Joanderson Brito", "weight": "Featherweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Fares Ziam", "b": "Tom Nolan", "weight": "Lightweight", "rounds": "3 Rds", "titleFight": false, "ranked": true, "slot": "" },
-      { "a": "Ketlen Souza", "b": "Ariane Carnelossi", "weight": "Women's Strawweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Priscila Cachoeira", "b": "Chelsea Chandler", "weight": "Women's Bantamweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" },
-      { "a": "Jeisla Chaves", "b": "Yuneisy Duben", "weight": "Women's Flyweight", "rounds": "3 Rds", "titleFight": false, "ranked": false, "slot": "" }
+      {
+        "a": "Imanol Rodriguez",
+        "b": "Matt Schnell",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Marcus McGhee",
+        "b": "Jakub Wiklacz",
+        "weight": "Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Bruno Silva",
+        "b": "Edgar Chairez",
+        "weight": "Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Jordan Leavitt",
+        "b": "Joanderson Brito",
+        "weight": "Featherweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/BRITO_JOANDERSON_12-13.png"
+      },
+      {
+        "a": "Fares Ziam",
+        "b": "Tom Nolan",
+        "weight": "Lightweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": true,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Ketlen Souza",
+        "b": "Ariane Carnelossi",
+        "weight": "Women's Strawweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Priscila Cachoeira",
+        "b": "Chelsea Chandler",
+        "weight": "Women's Bantamweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      },
+      {
+        "a": "Jeisla Chaves",
+        "b": "Yuneisy Duben",
+        "weight": "Women's Flyweight",
+        "rounds": "3 Rds",
+        "titleFight": false,
+        "ranked": false,
+        "slot": "",
+        "imgA": "",
+        "imgB": ""
+      }
     ],
     "earlyPrelims": [],
     "startTime": "19:00"
@@ -9519,7 +9965,9 @@
         "rounds": "5 Rds",
         "titleFight": true,
         "ranked": true,
-        "slot": "main"
+        "slot": "main",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-06/TOPURIA_ILIA_BELT_10-26.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/GAETHJE_JUSTIN_BELT.png"
       },
       {
         "a": "Alex Pereira",
@@ -9528,7 +9976,9 @@
         "rounds": "5 Rds",
         "titleFight": true,
         "ranked": true,
-        "slot": "comain"
+        "slot": "comain",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/PEREIRA_ALEX_10-04.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/GANE_CIRYL_10-25.png"
       },
       {
         "a": "Sean O'Malley",
@@ -9537,7 +9987,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/OMALLEY_SEAN_01-24.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/ZAHABI_AIEMANN_10-18.png"
       },
       {
         "a": "Mauricio Ruffy",
@@ -9546,7 +9998,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/RUFFY_MAURICIO_01-31.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-04/CHANDLER_MICHAEL_04-12.png"
       },
       {
         "a": "Bo Nickal",
@@ -9555,7 +10009,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/NICKAL_BO_11-15.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/DAUKAUS_KYLE_11-15.png"
       },
       {
         "a": "Diego Lopes",
@@ -9564,7 +10020,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": true,
-        "slot": ""
+        "slot": "",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/LOPES_DIEGO_01-31.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/GARCIA_STEVE_11-01.png"
       },
       {
         "a": "Josh Hokit",
@@ -9573,7 +10031,9 @@
         "rounds": "3 Rds",
         "titleFight": false,
         "ranked": false,
-        "slot": "opener"
+        "slot": "opener",
+        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/HOKIT_JOSH_04-11.png",
+        "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/LEWIS_DERRICK_01-24.png"
       }
     ],
     "prelims": [],
