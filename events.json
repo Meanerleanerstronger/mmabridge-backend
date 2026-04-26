@@ -9027,8 +9027,7 @@
     "location": "Las Vegas, NV",
     "venue": "Meta APEX",
     "poster": "https://www.ufc.com/images/styles/background_image_xl_2x/s3/2026-04/042526-ufc-fight-night-sterling-vs-zalal-EVENT-ART.jpg",
-    "status": "upcoming",
-    "startTime": "22:00",
+    "status": "completed",
     "mainCard": [
       {
         "a": "Aljamain Sterling",
@@ -9038,6 +9037,10 @@
         "titleFight": false,
         "ranked": true,
         "slot": "main",
+        "winner": "Aljamain Sterling",
+        "method": "UD",
+        "round": 5,
+        "time": "5:00",
         "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/STERLING_ALJAMAIN_04-25.png",
         "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/ZALAL_YOUSSEF_04-25.png"
       },
@@ -9049,6 +9052,10 @@
         "titleFight": false,
         "ranked": true,
         "slot": "comain",
+        "winner": "Joselyne Edwards",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00",
         "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/DUMONT_NORMA_04-25.png",
         "imgB": ""
       },
@@ -9060,6 +9067,10 @@
         "titleFight": false,
         "ranked": false,
         "slot": "",
+        "winner": "Rafa Garcia",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00",
         "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/GARCIA_RAFA_04-25.png",
         "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/HERNANDEZ_ALEXANDER_04-25.png"
       },
@@ -9071,6 +9082,10 @@
         "titleFight": false,
         "ranked": false,
         "slot": "",
+        "winner": "Davey Grant",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00",
         "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/GRANT_DAVEY_04-25.png",
         "imgB": ""
       },
@@ -9082,6 +9097,10 @@
         "titleFight": false,
         "ranked": false,
         "slot": "",
+        "winner": "Raoni Barcelos",
+        "method": "SD",
+        "round": 3,
+        "time": "5:00",
         "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/JACKSON_MONTEL_04-25.png",
         "imgB": ""
       },
@@ -9093,6 +9112,10 @@
         "titleFight": false,
         "ranked": false,
         "slot": "opener",
+        "winner": "Ryan Spann",
+        "method": "KO",
+        "round": 2,
+        "time": "2:10",
         "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/BUCHECHA_MARCUS_04-25.png",
         "imgB": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/SPANN_RYAN_04-25.png"
       }
@@ -9106,8 +9129,10 @@
         "titleFight": false,
         "ranked": false,
         "slot": "",
-        "imgA": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/VIEIRA_RODOLFO_04-25.png",
-        "imgB": ""
+        "winner": "Eric McConico",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
       },
       {
         "a": "Jackson McVey",
@@ -9117,8 +9142,10 @@
         "titleFight": false,
         "ranked": false,
         "slot": "",
-        "imgA": "",
-        "imgB": ""
+        "winner": "Jackson McVey",
+        "method": "SUB",
+        "round": 1,
+        "time": "2:14"
       },
       {
         "a": "Mayra Bueno Silva",
@@ -9128,8 +9155,10 @@
         "titleFight": false,
         "ranked": true,
         "slot": "",
-        "imgA": "",
-        "imgB": ""
+        "winner": "Michelle Montague",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
       },
       {
         "a": "Jafel Filho",
@@ -9139,8 +9168,10 @@
         "titleFight": false,
         "ranked": false,
         "slot": "",
-        "imgA": "",
-        "imgB": ""
+        "winner": "Cody Durden",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
       },
       {
         "a": "Francis Marshall",
@@ -9150,8 +9181,10 @@
         "titleFight": false,
         "ranked": false,
         "slot": "",
-        "imgA": "",
-        "imgB": ""
+        "winner": "Francis Marshall",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
       },
       {
         "a": "Max Griffin",
@@ -9161,8 +9194,10 @@
         "titleFight": false,
         "ranked": false,
         "slot": "",
-        "imgA": "",
-        "imgB": ""
+        "winner": "Victor Valenzuela",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
       },
       {
         "a": "Talita Alencar",
@@ -9172,8 +9207,10 @@
         "titleFight": false,
         "ranked": false,
         "slot": "",
-        "imgA": "",
-        "imgB": ""
+        "winner": "Talita Alencar",
+        "method": "UD",
+        "round": 3,
+        "time": "5:00"
       }
     ],
     "earlyPrelims": []
