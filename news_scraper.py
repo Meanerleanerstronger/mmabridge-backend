@@ -9,7 +9,7 @@ import json
 import os
 from datetime import datetime
 
-GNEWS_API_KEY = "962d74e7eeb020eda44c20b170b4e82d"
+GNEWS_API_KEY = os.environ.get('GNEWS_API_KEY', '')
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 
 def fetch_mma_news():
