@@ -4,6 +4,8 @@
 
 from flask import Flask, jsonify, request, redirect
 from flask_cors import CORS
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from flask_jwt_extended import (
     JWTManager, create_access_token, jwt_required,
     get_jwt_identity, verify_jwt_in_request
@@ -11,6 +13,7 @@ from flask_jwt_extended import (
 from authlib.integrations.flask_client import OAuth
 import json
 import os
+import re
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -54,17 +57,57 @@ app.secret_key = os.getenv('SECRET_KEY', os.getenv('JWT_SECRET', 'dev-secret-cha
 
 # JWT
 app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET', 'dev-jwt-secret-change-me')
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] = False  # tokens don't expire (users can always edit)
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = False
 jwt = JWTManager(app)
 
-# Google OAuth via Authlib — safe even if credentials not yet configured
+# ==============================================
+# RATE LIMITING
+# ==============================================
+
+limiter = Limiter(
+    key_func=get_remote_address,
+    app=app,
+    default_limits=["200 per minute"],
+    storage_uri="memory://",
+)
+
+# ==============================================
+# CORS — only allow our own origins
+# ==============================================
+
+_ALLOWED_ORIGINS = [
+    "https://mmabridge.com",
+    "https://www.mmabridge.com",
+    "http://localhost:5001",
+    "http://localhost:3000",
+    "http://127.0.0.1:5001",
+    "http://127.0.0.1:3000",
+    # GitHub Pages (where the frontend is hosted)
+    "https://meanerleanerstronger.github.io",
+]
+
+CORS(app, resources={r"/api/*": {"origins": _ALLOWED_ORIGINS}}, supports_credentials=False)
+
+# ==============================================
+# SECURITY HEADERS
+# ==============================================
+
+@app.after_request
+def add_security_headers(response):
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['X-XSS-Protection'] = '1; mode=block'
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    return response
+
+# ==============================================
+# GOOGLE OAUTH
+# ==============================================
+
 oauth = OAuth(app)
 try:
     _g_client_id     = (os.getenv('GOOGLE_CLIENT_ID') or '').strip()
     _g_client_secret = (os.getenv('GOOGLE_CLIENT_SECRET') or '').strip()
-    # Debug: print first/last chars and length so we can spot newlines/spaces
-    print(f"[OAuth] CLIENT_ID loaded: len={len(_g_client_id)} first10={repr(_g_client_id[:10])} last10={repr(_g_client_id[-10:])}")
-    print(f"[OAuth] CLIENT_SECRET loaded: len={len(_g_client_secret)} last4={repr(_g_client_secret[-4:])}")
     google = oauth.register(
         name='google',
         client_id=_g_client_id or None,
@@ -72,30 +115,53 @@ try:
         server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
         client_kwargs={'scope': 'openid email profile'},
     )
-    print(f"[OAuth] Registration OK — client_id ends with: {repr(_g_client_id[-20:])}")
 except Exception as _oauth_err:
-    print(f"[OAuth] Registration ERROR: {_oauth_err}")
+    print(f"[OAuth] Registration error (credentials not configured)")
     google = None
 
-# Enable CORS — allow all origins (frontend is a static GitHub Pages site)
-CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=False)
-
-# Ensure DB tables exist on every startup (Render has ephemeral filesystem)
+# Ensure DB tables exist on every startup
 create_tables()
 
-# ── In-memory visitor ring buffer (last 10) ──
+# ==============================================
+# INPUT SANITIZATION HELPERS
+# ==============================================
+
+_HTML_RE = re.compile(r'<[^>]+>', re.IGNORECASE)
+_SCRIPT_RE = re.compile(r'javascript\s*:', re.IGNORECASE)
+
+def strip_html(s):
+    """Remove HTML tags and reject javascript: URIs."""
+    s = _HTML_RE.sub('', s)
+    s = _SCRIPT_RE.sub('', s)
+    return s.strip()
+
+def validate_str(val, name, max_len, required=True):
+    """Return (cleaned_value, error_string). error_string is None on success."""
+    if val is None or val == '':
+        if required:
+            return None, f"'{name}' is required"
+        return '', None
+    if not isinstance(val, str):
+        return None, f"'{name}' must be a string"
+    cleaned = strip_html(val)
+    if len(cleaned) > max_len:
+        return None, f"'{name}' exceeds maximum length of {max_len} characters"
+    return cleaned, None
+
+# ==============================================
+# IN-MEMORY VISITOR RING BUFFER (last 10)
+# ==============================================
+
 import threading, time as _time
 _visitors_lock = threading.Lock()
-_visitors = []   # list of dicts: {flag, city, country, ts}
+_visitors = []
 
 def _country_flag(code):
-    """ISO 3166-1 alpha-2 code → flag emoji."""
     if not code or len(code) != 2:
         return '🌍'
     return ''.join(chr(0x1F1E6 + ord(c) - ord('A')) for c in code.upper())
 
 def _record_visitor(ip, fallback=False):
-    """Resolve IP → city/country via ip-api.com and append to ring buffer."""
     try:
         import requests as _req
         r = _req.get(f'http://ip-api.com/json/{ip}?fields=status,city,country,countryCode',
@@ -113,7 +179,6 @@ def _record_visitor(ip, fallback=False):
     entry = {'flag': _country_flag(code), 'city': city, 'country': country,
              'ts': int(_time.time())}
     with _visitors_lock:
-        # Don't add duplicate if same IP resolved within last 60s
         now = int(_time.time())
         recent = [v for v in _visitors if now - v['ts'] < 60
                   and v['city'] == city and v['country'] == country]
@@ -121,7 +186,6 @@ def _record_visitor(ip, fallback=False):
             _visitors.insert(0, entry)
             del _visitors[10:]
 
-# Path to your data files (for fallback)
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 
 # ==============================================
@@ -129,14 +193,11 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 # ==============================================
 
 def load_json(filename):
-    """Load a JSON file from the data directory (FALLBACK ONLY)"""
     filepath = os.path.join(DATA_DIR, filename)
     try:
         with open(filepath, 'r') as f:
             return json.load(f)
-    except FileNotFoundError:
-        return None
-    except json.JSONDecodeError:
+    except (FileNotFoundError, json.JSONDecodeError):
         return None
 
 # ==============================================
@@ -145,22 +206,13 @@ def load_json(filename):
 
 @app.route('/')
 def home():
-    """Homepage - just to check server is running"""
     return jsonify({
         'message': 'MMA Bridge API is running!',
         'version': '1.0',
-        'endpoints': {
-            'fighters': '/api/fighters',
-            'events': '/api/events',
-            'upcoming_events': '/api/events/upcoming',
-            'news': '/api/news',
-            'pfp_rankings': '/api/rankings/pfp'
-        }
     })
 
 @app.route('/api/fighters')
 def get_fighters():
-    """Get all fighters from database"""
     try:
         fighters = get_all_fighters()
         return jsonify(fighters)
@@ -173,7 +225,8 @@ def get_fighters():
 
 @app.route('/api/fighters/<fighter_id>')
 def get_fighter(fighter_id):
-    """Get a single fighter by ID from database"""
+    if not isinstance(fighter_id, str) or len(fighter_id) > 100:
+        return jsonify({'error': 'Invalid fighter ID'}), 400
     try:
         fighter = get_fighter_by_id(fighter_id)
         if fighter is None:
@@ -191,7 +244,6 @@ def get_fighter(fighter_id):
 
 @app.route('/api/events')
 def get_events():
-    """Get all events — from Tapology scraper DB first, fallback to JSON"""
     try:
         if SCRAPER_AVAILABLE:
             events = get_events_for_api()
@@ -209,7 +261,6 @@ def get_events():
 
 @app.route('/api/events/upcoming')
 def get_upcoming_events_route():
-    """Get upcoming events only (date >= today)"""
     try:
         if SCRAPER_AVAILABLE:
             from datetime import date
@@ -230,7 +281,6 @@ def get_upcoming_events_route():
 
 @app.route('/api/events/past')
 def get_past_events_route():
-    """Get past events only (date < today)"""
     try:
         from datetime import date
         if SCRAPER_AVAILABLE:
@@ -246,10 +296,13 @@ def get_past_events_route():
 
 @app.route('/api/scrape', methods=['POST'])
 def trigger_scrape():
-    """Trigger Tapology scraper manually — protect with secret key"""
-    secret = request.headers.get('X-Scrape-Key') or request.json.get('key','') if request.is_json else ''
+    """Trigger Tapology scraper manually — protected with secret key."""
+    secret = request.headers.get('X-Scrape-Key', '')
+    if request.is_json:
+        body = request.get_json(silent=True) or {}
+        secret = secret or body.get('key', '')
     expected = os.getenv('SCRAPE_SECRET', 'mmabridge-scrape')
-    if secret != expected:
+    if not secret or secret != expected:
         return jsonify({'error': 'Unauthorized'}), 401
     if not SCRAPER_AVAILABLE:
         return jsonify({'error': 'Scraper not available'}), 500
@@ -260,15 +313,16 @@ def trigger_scrape():
         t.start()
         return jsonify({'success': True, 'message': 'Scraper started in background'})
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        print(f"Scraper error: {e}")
+        return jsonify({'error': 'Failed to start scraper'}), 500
 
 @app.route('/api/health')
 def health():
     return jsonify({'status': 'ok'})
 
 @app.route('/api/visitors/ping', methods=['POST'])
+@limiter.limit("60 per minute")
 def visitor_ping():
-    """Record a page visit — resolves IP synchronously then returns visitor list."""
     ip = (request.headers.get('X-Forwarded-For', '') or '').split(',')[0].strip() \
          or request.remote_addr or ''
     if ip and ip not in ('127.0.0.1', '::1', 'localhost', ''):
@@ -278,7 +332,6 @@ def visitor_ping():
 
 @app.route('/api/visitors')
 def get_visitors():
-    """Return the last 10 resolved visitors."""
     with _visitors_lock:
         return jsonify(list(_visitors))
 
@@ -329,29 +382,22 @@ def auth_me():
 
 @app.route('/api/auth/logout', methods=['POST'])
 def auth_logout():
-    # JWTs are stateless — client just deletes the token
     return jsonify({'success': True})
 
-@app.route('/api/dbcheck')
-def dbcheck():
-    """Debug: show which tables exist in the live SQLite DB"""
-    import sqlite3 as _sq
-    from database import DB_PATH
-    try:
-        conn = _sq.connect(DB_PATH)
-        tables = conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
-        conn.close()
-        return jsonify({'db_path': DB_PATH, 'tables': [t[0] for t in tables]})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+# ==============================================
+# NEWS ROUTES
+# ==============================================
 
 @app.route('/api/news')
+@limiter.limit("30 per minute")
 def get_news():
-    """Get news — always fetch fresh from GNews, fallback key if first runs out"""
+    """Get news — try GNews keys in order, fall back to cached file."""
     GNEWS_KEYS = [
-        os.getenv('GNEWS_API_KEY', '962d74e7eeb020eda44c20b170b4e82d'),
-        '77ee2ae117e135e8bd15d69a52c15ccf',  # backup 1
-        '2fb357ce1705d322109dc121c3997d65',  # backup 2
+        k for k in [
+            os.getenv('GNEWS_API_KEY'),
+            os.getenv('GNEWS_API_KEY_BACKUP_1'),
+            os.getenv('GNEWS_API_KEY_BACKUP_2'),
+        ] if k
     ]
     news_path = os.path.join(DATA_DIR, 'news.json')
 
@@ -387,20 +433,20 @@ def get_news():
                     with open(news_path, 'w') as f:
                         json.dump(news_data, f)
                     return jsonify(news_data)
-            elif r.status_code == 429 or r.status_code == 403:
-                print(f"GNews key exhausted, trying backup...")
+            elif r.status_code in (429, 403):
+                print("GNews key exhausted, trying backup...")
                 continue
         except Exception as e:
             print(f"GNews error: {e}")
             continue
 
-    # Both keys failed — return cached file
     news = load_json('news.json')
     if news is None:
         return jsonify({'trending': []})
     return jsonify(news)
 
 @app.route('/api/news/trending')
+@limiter.limit("30 per minute")
 def get_trending_news():
     news = load_json('news.json')
     if news is None:
@@ -408,14 +454,19 @@ def get_trending_news():
     return jsonify(news.get('trending', []))
 
 @app.route('/api/news/search')
+@limiter.limit("20 per minute")
 def search_news():
-    """Search news for a specific query (e.g. fighter or event name)"""
-    query = request.args.get('q', '')
+    """Search news for a specific query."""
+    query = request.args.get('q', '').strip()
     if not query:
+        return jsonify([])
+    if len(query) > 200:
+        return jsonify({'error': 'Query too long'}), 400
+    NEWS_API_KEY = os.getenv('NEWS_API_KEY')
+    if not NEWS_API_KEY:
         return jsonify([])
     try:
         import requests as req
-        NEWS_API_KEY = os.getenv('NEWS_API_KEY', 'f01a690184c04eb0bc8a5a779981e461')
         url = (f"https://newsapi.org/v2/everything"
                f"?q={req.utils.quote(query)}&language=en&sortBy=publishedAt"
                f"&pageSize=5&apiKey={NEWS_API_KEY}")
@@ -437,83 +488,125 @@ def search_news():
     except Exception as e:
         print(f"News search error: {e}")
         return jsonify([])
-def get_pfp_rankings():
-    """Get pound-for-pound rankings"""
-    rankings = load_json('top_fighters.json')
-    if rankings is None:
-        return jsonify({'error': 'Rankings data not found'}), 404
-    return jsonify(rankings)
+
+# ==============================================
+# CHAT ROUTE
+# ==============================================
+
+_ALLOWED_PAGE_CONTEXTS = {'general', 'pfp', 'events', 'home', 'lucas', 'widget', 'review'}
 
 @app.route('/api/chat', methods=['POST'])
+@limiter.limit("20 per minute")
 def chat():
-    """Chat with Lucas Bot"""
+    """Chat with Lucas Bot."""
+    if not request.is_json:
+        return jsonify({'error': 'Content-Type must be application/json'}), 400
+
+    data = request.get_json(silent=True)
+    if not data or not isinstance(data, dict):
+        return jsonify({'error': 'Invalid JSON body'}), 400
+
+    # Validate message
+    raw_message = data.get('message')
+    user_message, err = validate_str(raw_message, 'message', max_len=500, required=True)
+    if err:
+        return jsonify({'error': err}), 400
+
+    # Validate page context
+    page_context = data.get('page', 'general')
+    if not isinstance(page_context, str) or page_context not in _ALLOWED_PAGE_CONTEXTS:
+        page_context = 'general'
+
+    # Validate conversation history — accept up to 20 turns, each role+content string
+    raw_history = data.get('history', [])
+    if not isinstance(raw_history, list):
+        raw_history = []
+    conversation_history = []
+    for item in raw_history[:20]:
+        if not isinstance(item, dict):
+            continue
+        role = item.get('role', '')
+        content = item.get('content', '')
+        if role not in ('user', 'assistant') or not isinstance(content, str):
+            continue
+        conversation_history.append({'role': role, 'content': content[:500]})
+
+    # live_data: accept only if it's a dict with expected keys, ignore otherwise
+    raw_live = data.get('live_data')
+    live_data = None
+    if isinstance(raw_live, dict):
+        live_data = {}
+        if 'events' in raw_live and isinstance(raw_live['events'], list):
+            live_data['events'] = raw_live['events']
+        if 'fighters' in raw_live and isinstance(raw_live['fighters'], (list, dict)):
+            live_data['fighters'] = raw_live['fighters']
+
     try:
-        data = request.get_json()
-        if not data or 'message' not in data:
-            return jsonify({'error': 'No message provided'}), 400
-
-        user_message = data['message']
-        conversation_history = data.get('history', [])
-        page_context = data.get('page', 'general')
-        live_data = data.get('live_data', None)
-
         response = chat_with_lucas(user_message, conversation_history, page_context, live_data)
-
-        return jsonify({
-            'response': response,
-            'success': True
-        })
-
+        return jsonify({'response': response, 'success': True})
     except Exception as e:
         print(f"Chat error: {e}")
-        return jsonify({
-            'error': 'Failed to get response from Lucas Bot',
-            'success': False
-        }), 500
+        return jsonify({'error': 'Failed to get response from Lucas Bot', 'success': False}), 500
+
+# ==============================================
+# RATINGS / REVIEWS ROUTES
+# ==============================================
 
 @app.route('/api/ratings', methods=['POST'])
+@limiter.limit("30 per minute")
 def submit_rating():
-    """Submit a pre-event hype rating and FOTN prediction"""
+    """Submit a pre-event hype rating and FOTN prediction."""
+    if not request.is_json:
+        return jsonify({'error': 'Content-Type must be application/json'}), 400
+
+    data = request.get_json(silent=True)
+    if not data or not isinstance(data, dict):
+        return jsonify({'error': 'Invalid JSON body'}), 400
+
+    event_id, err = validate_str(data.get('event_id'), 'event_id', max_len=100)
+    if err:
+        return jsonify({'error': err}), 400
+
+    event_name, err = validate_str(data.get('event_name'), 'event_name', max_len=200)
+    if err:
+        return jsonify({'error': err}), 400
+
+    hype_rating = data.get('hype_rating')
+    if hype_rating is None or not isinstance(hype_rating, (int, float)) or not (1 <= hype_rating <= 5):
+        return jsonify({'error': 'hype_rating must be a number between 1 and 5'}), 400
+
+    fotn_prediction, err = validate_str(data.get('fotn_prediction'), 'fotn_prediction', max_len=200, required=False)
+    if err:
+        return jsonify({'error': err}), 400
+
+    review_text, err = validate_str(data.get('review_text'), 'review_text', max_len=2000, required=False)
+    if err:
+        return jsonify({'error': err}), 400
+
+    user_id, display_name = None, None
     try:
-        data = request.get_json()
-        if not data:
-            return jsonify({'error': 'No data provided'}), 400
+        verify_jwt_in_request(optional=True)
+        uid = get_jwt_identity()
+        if uid:
+            user = get_user_by_id(int(uid))
+            if user:
+                user_id      = user['id']
+                display_name = user['display_name']
+    except Exception:
+        pass
 
-        event_id = data.get('event_id')
-        event_name = data.get('event_name')
-        hype_rating = data.get('hype_rating')
-        fotn_prediction = data.get('fotn_prediction')
-        review_text = data.get('review_text')
-
-        if not event_id or not event_name:
-            return jsonify({'error': 'event_id and event_name are required'}), 400
-        if hype_rating is None or not isinstance(hype_rating, (int, float)) or not (1 <= hype_rating <= 5):
-            return jsonify({'error': 'hype_rating must be a number between 1 and 5'}), 400
-
-        # Attach user if JWT present (optional — anonymous allowed)
-        user_id, display_name = None, None
-        try:
-            verify_jwt_in_request(optional=True)
-            uid = get_jwt_identity()
-            if uid:
-                user = get_user_by_id(int(uid))
-                if user:
-                    user_id      = user['id']
-                    display_name = user['display_name']
-        except Exception:
-            pass
-
+    try:
         rating_id = save_event_rating(event_id, event_name, hype_rating, fotn_prediction, review_text, user_id, display_name)
         return jsonify({'success': True, 'rating_id': rating_id}), 201
-
     except Exception as e:
         print(f"Rating error: {e}")
-        return jsonify({'error': 'Failed to save rating', 'detail': str(e)}), 500
+        return jsonify({'error': 'Failed to save rating'}), 500
 
 
 @app.route('/api/ratings/<event_id>', methods=['GET'])
 def get_ratings(event_id):
-    """Get all ratings for an event"""
+    if not isinstance(event_id, str) or len(event_id) > 100:
+        return jsonify({'error': 'Invalid event ID'}), 400
     try:
         summary = get_event_avg_rating(event_id)
         return jsonify(summary)
@@ -524,24 +617,35 @@ def get_ratings(event_id):
 
 @app.route('/api/ratings/<int:rating_id>', methods=['PUT'])
 def edit_rating(rating_id):
-    """Update an existing rating (edit flow)"""
+    """Update an existing rating."""
+    if not request.is_json:
+        return jsonify({'error': 'Content-Type must be application/json'}), 400
+
+    data = request.get_json(silent=True)
+    if not data or not isinstance(data, dict):
+        return jsonify({'error': 'Invalid JSON body'}), 400
+
+    hype_rating = data.get('hype_rating')
+    if hype_rating is None or not isinstance(hype_rating, (int, float)) or not (1 <= hype_rating <= 5):
+        return jsonify({'error': 'hype_rating must be a number between 1 and 5'}), 400
+
+    review_text, err = validate_str(data.get('review_text'), 'review_text', max_len=2000, required=False)
+    if err:
+        return jsonify({'error': err}), 400
+
     try:
-        data = request.get_json()
-        hype_rating = data.get('hype_rating')
-        review_text = data.get('review_text')
-        if hype_rating is None or not isinstance(hype_rating, (int, float)) or not (1 <= hype_rating <= 5):
-            return jsonify({'error': 'hype_rating must be a number between 1 and 5'}), 400
         update_event_rating(rating_id, hype_rating, review_text)
         return jsonify({'success': True})
     except Exception as e:
         print(f"Rating update error: {e}")
-        return jsonify({'error': 'Failed to update rating', 'detail': str(e)}), 500
+        return jsonify({'error': 'Failed to update rating'}), 500
 
 
 @app.route('/api/ratings/my/<event_id>', methods=['GET'])
 @jwt_required()
 def get_my_rating(event_id):
-    """Get the current user's own rating for an event"""
+    if not isinstance(event_id, str) or len(event_id) > 100:
+        return jsonify({'error': 'Invalid event ID'}), 400
     try:
         user_id = int(get_jwt_identity())
         row = get_user_rating_for_event(user_id, event_id)
@@ -559,7 +663,8 @@ def get_my_rating(event_id):
 
 @app.route('/api/reviews/<event_id>', methods=['GET'])
 def get_reviews(event_id):
-    """Get all fan reviews for an event, with like counts and optional user-liked status"""
+    if not isinstance(event_id, str) or len(event_id) > 100:
+        return jsonify({'error': 'Invalid event ID'}), 400
     try:
         reviews = get_event_reviews(event_id)
         current_user_id = None
@@ -584,6 +689,7 @@ def get_reviews(event_id):
 
 @app.route('/api/reviews/<int:review_id>/like', methods=['POST', 'DELETE'])
 @jwt_required()
+@limiter.limit("60 per minute")
 def manage_review_like(review_id):
     try:
         user_id = int(get_jwt_identity())
@@ -591,23 +697,28 @@ def manage_review_like(review_id):
         return jsonify({'liked': liked, 'like_count': count})
     except Exception as e:
         print(f"Like error: {e}")
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': 'Failed to toggle like'}), 500
 
 
 @app.route('/api/reviews/<int:review_id>/reply', methods=['POST'])
 @jwt_required()
+@limiter.limit("20 per minute")
 def post_reply(review_id):
+    if not request.is_json:
+        return jsonify({'error': 'Content-Type must be application/json'}), 400
+
+    data = request.get_json(silent=True) or {}
+    reply_text, err = validate_str(data.get('reply_text'), 'reply_text', max_len=1000)
+    if err:
+        return jsonify({'error': err}), 400
+    if not reply_text:
+        return jsonify({'error': 'reply_text required'}), 400
+
     try:
         user_id = int(get_jwt_identity())
         user = get_user_by_id(user_id)
         if not user:
             return jsonify({'error': 'User not found'}), 404
-        data = request.get_json() or {}
-        reply_text = (data.get('reply_text') or '').strip()
-        if not reply_text:
-            return jsonify({'error': 'reply_text required'}), 400
-        if len(reply_text) > 1000:
-            return jsonify({'error': 'Reply too long'}), 400
         reply_id = add_review_reply(review_id, user_id, user['display_name'], reply_text)
         return jsonify({
             'success': True,
@@ -618,7 +729,7 @@ def post_reply(review_id):
         }), 201
     except Exception as e:
         print(f"Reply error: {e}")
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': 'Failed to post reply'}), 500
 
 
 @app.route('/api/reviews/<int:review_id>/replies', methods=['GET'])
@@ -641,6 +752,7 @@ def fetch_replies(review_id):
 
 @app.route('/api/replies/<int:reply_id>/like', methods=['POST', 'DELETE'])
 @jwt_required()
+@limiter.limit("60 per minute")
 def manage_reply_like(reply_id):
     try:
         user_id = int(get_jwt_identity())
@@ -648,7 +760,7 @@ def manage_reply_like(reply_id):
         return jsonify({'liked': liked, 'like_count': count})
     except Exception as e:
         print(f"Reply like error: {e}")
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': 'Failed to toggle like'}), 500
 
 
 # ==============================================
@@ -658,6 +770,10 @@ def manage_reply_like(reply_id):
 @app.errorhandler(404)
 def not_found(error):
     return jsonify({'error': 'Endpoint not found'}), 404
+
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    return jsonify({'error': 'Too many requests. Please slow down and try again shortly.'}), 429
 
 @app.errorhandler(500)
 def server_error(error):
@@ -673,10 +789,9 @@ if __name__ == '__main__':
 
     if debug:
         print('=' * 50)
-        print('🥊 MMA BRIDGE API SERVER')
+        print('MMA BRIDGE API SERVER')
         print('=' * 50)
-        print(f'Server running at: http://localhost:{port}')
-        print(f'API endpoints at: http://localhost:{port}/api/')
+        print(f'Running at: http://localhost:{port}')
         print('Press CTRL+C to stop')
         print('=' * 50)
 
