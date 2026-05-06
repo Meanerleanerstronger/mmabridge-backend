@@ -310,14 +310,17 @@ def build_system_prompt(page_context='general', live_events=None):
 
     return f"""You are Lucas — the official ambassador and AI of MMA Bridge (mmabridge.com).
 
-━━━ RULE 1 — FORMATTING (read this first, follow it always) ━━━
-NEVER use markdown formatting. No asterisks ** or *, no bold, no italic, no numbered lists (1. 2. 3.), no dash bullet points (- item), no horizontal rules (---), no headers (#). Plain sentences only.
-If you list fight picks, write each one on a new line with no symbols. Like this:
-Chimaev over Strickland — Decision
-Van over Taira — TKO R3
-Volkov over Cortes-Acosta — KO R2
-Never bold a name. Never put a number before a pick. Never use dashes as separators.
-Maximum one emoji per full response, at the very end only, never inside a sentence.
+━━━ RULE 1 — FORMATTING ━━━
+Plain text only. No markdown at all — no asterisks, no bold, no numbers, no bullet dashes, no headers, no horizontal lines.
+Keep responses SHORT. 3-5 lines max unless the user asks for a full breakdown. Say less, ask one follow-up question.
+When you need to list things, put each item on its own line separated by a blank line. Use — as a separator. Like:
+
+Events — full fight cards, hype ratings, FOTN picks
+
+P4P — top 16 ranked, debate who belongs
+
+End most responses with a short question to keep the conversation going.
+No emoji spam. One at the very end max.
 
 ━━━ RULE 2 — WIDGET GENERATION (read this second, follow it always) ━━━
 You can embed rich visual cards using <widget> JSON tags. These render as actual cards in the UI.
@@ -353,9 +356,10 @@ PAGE CONTEXT: {page_hint}
 
 CORE RULES:
 1. Live data sections below are GROUND TRUTH. Use exact fighter names — never invent matchups.
-2. Be conversational and punchy. Short answers unless they want detail.
+2. Short by default. 3-5 sentences max. End with a question. Let them pull more out of you.
 3. Always have a pick. Never "it could go either way."
 4. Islam Makhachev is YOUR guy on the GOAT debate. Argue passionately. One more defence and it's sealed.
+5. When showing around the site, list max 4-5 features, one line each. Ask what they want to explore.
 
 {HARDCODED_KNOWLEDGE}
 
@@ -385,8 +389,52 @@ def chat_with_lucas(user_message, conversation_history=[], page_context='general
             temperature=0.72
         )
 
-        return response.choices[0].message.content
+        raw = response.choices[0].message.content
+        return clean_response(raw)
 
     except Exception as e:
         print(f"Lucas Bot error: {e}")
-        return "Yo my connection dropped — try again in a sec. 🥊"
+        return "Yo my connection dropped — try again in a sec."
+
+
+def clean_response(text):
+    """Strip all markdown so the frontend always gets plain text."""
+    import re
+
+    # Protect <widget> blocks — extract them, clean the rest, reinsert
+    widgets = []
+    def stash_widget(m):
+        widgets.append(m.group(0))
+        return f'\x00WIDGET{len(widgets)-1}\x00'
+    text = re.sub(r'<widget>[\s\S]*?</widget>', stash_widget, text)
+
+    # Remove bold / italic
+    text = re.sub(r'\*\*\*(.+?)\*\*\*', r'\1', text, flags=re.DOTALL)
+    text = re.sub(r'\*\*(.+?)\*\*',     r'\1', text, flags=re.DOTALL)
+    text = re.sub(r'\*(.+?)\*',         r'\1', text, flags=re.DOTALL)
+    text = re.sub(r'__(.+?)__',         r'\1', text, flags=re.DOTALL)
+    text = re.sub(r'_(.+?)_',           r'\1', text, flags=re.DOTALL)
+
+    # Remove markdown headers
+    text = re.sub(r'^#{1,6}\s+', '', text, flags=re.MULTILINE)
+
+    # Remove horizontal rules
+    text = re.sub(r'^[-*_]{3,}\s*$', '', text, flags=re.MULTILINE)
+
+    # Convert numbered list items: "1. Text" → "Text" (keep on own line)
+    text = re.sub(r'^\d+\.\s+', '', text, flags=re.MULTILINE)
+
+    # Remove dash/star bullet points at line start
+    text = re.sub(r'^[-*•]\s+', '', text, flags=re.MULTILINE)
+
+    # Remove inline backticks
+    text = re.sub(r'`(.+?)`', r'\1', text)
+
+    # Collapse 3+ blank lines to 2
+    text = re.sub(r'\n{3,}', '\n\n', text)
+
+    # Restore widget blocks
+    for i, w in enumerate(widgets):
+        text = text.replace(f'\x00WIDGET{i}\x00', w)
+
+    return text.strip()
