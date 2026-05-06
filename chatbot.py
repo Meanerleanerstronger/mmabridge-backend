@@ -302,7 +302,7 @@ def build_system_prompt(page_context='general', live_events=None):
         'events':      "User is on the Upcoming Events page looking at the full UFC schedule and fight cards. Focus on upcoming fights, predictions, who to watch, hype levels. They can see the events on screen — reference specific cards and fights.",
         'home':        "User is on the MMA Bridge homepage seeing trending news and upcoming events. General MMA chat, trending topics, recent results, site features are all fair game.",
         'lucas':       "User is on the Lucas Bot page specifically here to chat with you. Be extra fun and engaging. This is your page — own it.",
-        'widget':      "User is using the floating chat widget on a page. Keep responses SHORT and punchy — 2-3 sentences max. No walls of text. Be sharp.",
+        'widget':      "User is using the floating chat widget on a page. Keep responses SHORT and punchy — 2-3 sentences max unless generating a widget. No walls of text. Be sharp. Widget generation still applies — if they ask for a parlay, prediction, or visual, generate the widget tag normally.",
         'leaderboard': "User is on the MMA Bridge Leaderboard page seeing community pick rankings. Talk about who's leading, pick accuracy, the points system (winner=10, method=5, round=5, FOTN=15), groups, head-to-head challenges. Encourage them to make picks and compete.",
         'picks':       "User is on the Picks page making or reviewing their fight predictions for a specific event. Focus on their picks, predictions, who they should pick, strategy for earning method and round bonus points.",
         'review':      "User is on an event review page seeing past results. Focus on the results, FOTN, standout moments, upsets, how the card played out. Reference what actually happened.",
@@ -379,6 +379,15 @@ def chat_with_lucas(user_message, conversation_history=[], page_context='general
         system_prompt = build_system_prompt(page_context, live_events)
 
         messages = [{"role": "system", "content": system_prompt}]
+
+        # Few-shot examples so GPT-4o knows exactly what widget output looks like
+        messages += [
+            {"role": "user",      "content": "generate me a UFC 328 parlay widget"},
+            {"role": "assistant", "content": 'Here are my locks for UFC 328.\n<widget>{"type":"parlay","data":{"title":"UFC 328 Parlay","picks":[{"fighter":"Khamzat Chimaev","event":"UFC 328","method":"Decision"},{"fighter":"Joshua Van","event":"UFC 328","method":"TKO R3"},{"fighter":"Alexander Volkov","event":"UFC 328","method":"KO R2"}]}}</widget>'},
+            {"role": "user",      "content": "show me a prediction card for Islam vs Arman"},
+            {"role": "assistant", "content": 'Islam by submission, no debate.\n<widget>{"type":"prediction","data":{"event":"UFC 311","fight":"Islam Makhachev vs Arman Tsarukyan","pick":"Islam Makhachev","method":"Submission","round":"3","confidence":85,"reasoning":"Arman has heart but nobody escapes Islam\'s cage control for 25 minutes. Round 3 guillotine or rear naked."}}</widget>'},
+        ]
+
         messages += conversation_history[-12:]  # last 12 turns = 6 exchanges
         messages.append({"role": "user", "content": user_message})
 
@@ -407,6 +416,10 @@ def clean_response(text):
         widgets.append(m.group(0))
         return f'\x00WIDGET{len(widgets)-1}\x00'
     text = re.sub(r'<widget>[\s\S]*?</widget>', stash_widget, text)
+
+    # Strip triple-backtick code fences (with or without language tag)
+    text = re.sub(r'```[a-zA-Z]*\n?', '', text)
+    text = re.sub(r'```', '', text)
 
     # Remove bold / italic
     text = re.sub(r'\*\*\*(.+?)\*\*\*', r'\1', text, flags=re.DOTALL)
