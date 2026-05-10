@@ -13,14 +13,23 @@ from datetime import datetime
 from supabase import create_client, Client
 
 # ── Supabase client (service role for server-side) ────────────────────────────
-SUPABASE_URL         = os.getenv('SUPABASE_URL', '')
-SUPABASE_SERVICE_KEY = os.getenv('SUPABASE_SERVICE_KEY', '')
+SUPABASE_URL         = os.getenv('SUPABASE_URL', '').strip()
+SUPABASE_SERVICE_KEY = os.getenv('SUPABASE_SERVICE_KEY', '').strip()
 
-sb: Client = create_client(SUPABASE_URL, SUPABASE_SERVICE_KEY) if SUPABASE_URL and SUPABASE_SERVICE_KEY else None
+sb: Client = None
+try:
+    if SUPABASE_URL and SUPABASE_SERVICE_KEY:
+        sb = create_client(SUPABASE_URL, SUPABASE_SERVICE_KEY)
+        print('Supabase connected OK')
+    else:
+        print('Supabase env vars missing — falling back to scraper/JSON')
+except Exception as _sb_err:
+    print(f'Supabase init failed: {_sb_err} — falling back to scraper/JSON')
+    sb = None
 
 def _sb():
     if sb is None:
-        raise RuntimeError('Supabase not configured — set SUPABASE_URL and SUPABASE_SERVICE_KEY in .env')
+        raise RuntimeError('Supabase not configured')
     return sb
 
 # ── SQLite (fighters only) ────────────────────────────────────────────────────
