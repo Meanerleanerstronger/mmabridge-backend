@@ -1,25 +1,35 @@
 # ==============================================
-# MMA BRIDGE - DATABASE SETUP
+# MMA BRIDGE - DATABASE (Supabase + SQLite)
+# Events, ratings, reviews, users → Supabase
+# Fighters → SQLite (scraped, website-only)
 # ==============================================
 
 import sqlite3
 import json
 import os
+import re
 from datetime import datetime
 
-# Database file path
+from supabase import create_client, Client
+
+# ── Supabase client (service role for server-side) ────────────────────────────
+SUPABASE_URL         = os.getenv('SUPABASE_URL', '')
+SUPABASE_SERVICE_KEY = os.getenv('SUPABASE_SERVICE_KEY', '')
+
+sb: Client = create_client(SUPABASE_URL, SUPABASE_SERVICE_KEY) if SUPABASE_URL and SUPABASE_SERVICE_KEY else None
+
+def _sb():
+    if sb is None:
+        raise RuntimeError('Supabase not configured — set SUPABASE_URL and SUPABASE_SERVICE_KEY in .env')
+    return sb
+
+# ── SQLite (fighters only) ────────────────────────────────────────────────────
 DB_PATH = os.path.join(os.path.dirname(__file__), 'mma_bridge.db')
 
-# ==============================================
-# CREATE DATABASE TABLES
-# ==============================================
-
 def create_tables():
-    """Create all database tables"""
+    """Create SQLite tables (fighters only). All other tables live in Supabase."""
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    
-    # FIGHTERS TABLE
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS fighters (
             id TEXT PRIMARY KEY,
@@ -43,123 +53,6 @@ def create_tables():
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
-    
-    # EVENTS TABLE
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS events (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            event_name TEXT NOT NULL,
-            event_date TEXT NOT NULL,
-            location TEXT,
-            venue TEXT,
-            main_card TEXT,
-            prelims TEXT,
-            early_prelims TEXT,
-            status TEXT DEFAULT 'upcoming',
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-    
-    # NEWS TABLE
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS news (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            title TEXT NOT NULL,
-            summary TEXT,
-            content TEXT,
-            image_url TEXT,
-            source TEXT,
-            author TEXT,
-            published_at TEXT,
-            url TEXT,
-            category TEXT DEFAULT 'general',
-            is_trending INTEGER DEFAULT 0,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-    
-    # RANKINGS TABLE
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS rankings (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            fighter_id TEXT NOT NULL,
-            rank INTEGER NOT NULL,
-            weight_class TEXT DEFAULT 'pound_for_pound',
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (fighter_id) REFERENCES fighters (id)
-        )
-    ''')
-    
-    # EVENT RATINGS TABLE
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS event_ratings (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            event_id TEXT NOT NULL,
-            event_name TEXT NOT NULL,
-            hype_rating REAL NOT NULL,
-            fotn_prediction TEXT,
-            review_text TEXT,
-            user_id INTEGER,
-            display_name TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-
-    # USERS TABLE
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            email TEXT UNIQUE NOT NULL,
-            display_name TEXT NOT NULL,
-            avatar_url TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-
-    # REVIEW LIKES TABLE
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS review_likes (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            review_id INTEGER NOT NULL,
-            user_id INTEGER NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            UNIQUE(review_id, user_id)
-        )
-    ''')
-
-    # REVIEW REPLIES TABLE
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS review_replies (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            review_id INTEGER NOT NULL,
-            user_id INTEGER NOT NULL,
-            display_name TEXT NOT NULL,
-            reply_text TEXT NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-
-    # REPLY LIKES TABLE
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS reply_likes (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            reply_id INTEGER NOT NULL,
-            user_id INTEGER NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            UNIQUE(reply_id, user_id)
-        )
-    ''')
-
-    # Migrations for existing event_ratings rows missing new columns
-    for col, definition in [('user_id', 'INTEGER'), ('display_name', 'TEXT')]:
-        try:
-            cursor.execute(f'ALTER TABLE event_ratings ADD COLUMN {col} {definition}')
-        except Exception:
-            pass
-
     conn.commit()
     conn.close()
 
@@ -168,25 +61,20 @@ def create_tables():
 # ==============================================
 
 def import_fighters_from_json():
-    """Import fighters from fighters.json"""
     json_path = os.path.join(os.path.dirname(__file__), 'data', 'fighters.json')
-    
     if not os.path.exists(json_path):
-        print("❌ fighters.json not found")
+        print('fighters.json not found')
         return
-    
     with open(json_path, 'r') as f:
         fighters_data = json.load(f)
-    
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    
     count = 0
     for fighter_id, fighter in fighters_data.items():
         cursor.execute('''
-            INSERT OR REPLACE INTO fighters 
-            (id, name, nickname, weight_class, record, wins, losses, draws, 
-             height, weight, reach, stance, dob, country, fighting_out_of, 
+            INSERT OR REPLACE INTO fighters
+            (id, name, nickname, weight_class, record, wins, losses, draws,
+             height, weight, reach, stance, dob, country, fighting_out_of,
              image_url, last_five)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
@@ -209,393 +97,375 @@ def import_fighters_from_json():
             json.dumps(fighter.get('lastFive', []))
         ))
         count += 1
-    
     conn.commit()
     conn.close()
-    print(f"✅ Imported {count} fighters")
+    print(f'Imported {count} fighters')
 
 def import_events_from_json():
-    """Import events from events.json"""
-    json_path = os.path.join(os.path.dirname(__file__), 'data', 'events.json')
-    
+    """Import events from events.json into Supabase."""
+    json_path = os.path.join(os.path.dirname(__file__), 'events.json')
     if not os.path.exists(json_path):
-        print("❌ events.json not found")
+        print('events.json not found')
         return
-    
     with open(json_path, 'r') as f:
-        events_data = json.load(f)
-    
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    
-    count = 0
-    for event in events_data:
-        cursor.execute('''
-            INSERT OR REPLACE INTO events 
-            (event_name, event_date, location, venue, main_card, prelims, early_prelims, status)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (
-            event.get('eventName', ''),
-            event.get('date', ''),
-            event.get('location', ''),
-            event.get('venue', ''),
-            json.dumps(event.get('mainCard', [])),
-            json.dumps(event.get('prelims', [])),
-            json.dumps(event.get('earlyPrelims', [])),
-            event.get('status', 'upcoming')
-        ))
-        count += 1
-    
-    conn.commit()
-    conn.close()
-    print(f"✅ Imported {count} events")
+        events = json.load(f)
+    client = _sb()
+    rows = [{
+        'id':           e.get('id'),
+        'name':         e.get('name'),
+        'type':         e.get('type', 'FIGHT NIGHT'),
+        'date':         e.get('date'),
+        'iso_date':     e.get('isoDate'),
+        'location':     e.get('location'),
+        'venue':        e.get('venue'),
+        'poster':       e.get('poster'),
+        'status':       e.get('status', 'upcoming'),
+        'main_card':    e.get('mainCard', []),
+        'prelims':      e.get('prelims', []),
+        'early_prelims': e.get('earlyPrelims', []),
+    } for e in events if e.get('id')]
+    client.from_('events').upsert(rows, on_conflict='id').execute()
+    print(f'Imported {len(rows)} events into Supabase')
 
 # ==============================================
-# DATABASE QUERY FUNCTIONS
+# FIGHTERS (SQLite)
 # ==============================================
 
 def get_all_fighters():
-    """Get all fighters from database"""
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
-    
     cursor.execute('SELECT * FROM fighters')
     rows = cursor.fetchall()
-    
     fighters = {}
     for row in rows:
-        fighter_id = row['id']
-        fighters[fighter_id] = {
-            'name': row['name'],
-            'nickname': row['nickname'],
-            'weightClass': row['weight_class'],
-            'record': row['record'],
-            'wins': row['wins'],
-            'losses': row['losses'],
-            'draws': row['draws'],
-            'height': row['height'],
-            'weight': row['weight'],
-            'reach': row['reach'],
-            'stance': row['stance'],
-            'dob': row['dob'],
-            'country': row['country'],
+        fighters[row['id']] = {
+            'name':          row['name'],
+            'nickname':      row['nickname'],
+            'weightClass':   row['weight_class'],
+            'record':        row['record'],
+            'wins':          row['wins'],
+            'losses':        row['losses'],
+            'draws':         row['draws'],
+            'height':        row['height'],
+            'weight':        row['weight'],
+            'reach':         row['reach'],
+            'stance':        row['stance'],
+            'dob':           row['dob'],
+            'country':       row['country'],
             'fightingOutOf': row['fighting_out_of'],
-            'imageUrl': row['image_url'],
-            'lastFive': json.loads(row['last_five']) if row['last_five'] else []
+            'imageUrl':      row['image_url'],
+            'lastFive':      json.loads(row['last_five']) if row['last_five'] else [],
         }
-    
     conn.close()
     return fighters
 
 def get_fighter_by_id(fighter_id):
-    """Get a single fighter by ID"""
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
-    
     cursor.execute('SELECT * FROM fighters WHERE id = ?', (fighter_id,))
     row = cursor.fetchone()
-    
-    if not row:
-        conn.close()
-        return None
-    
-    fighter = {
-        'name': row['name'],
-        'nickname': row['nickname'],
-        'weightClass': row['weight_class'],
-        'record': row['record'],
-        'wins': row['wins'],
-        'losses': row['losses'],
-        'draws': row['draws'],
-        'height': row['height'],
-        'weight': row['weight'],
-        'reach': row['reach'],
-        'stance': row['stance'],
-        'dob': row['dob'],
-        'country': row['country'],
-        'fightingOutOf': row['fighting_out_of'],
-        'imageUrl': row['image_url'],
-        'lastFive': json.loads(row['last_five']) if row['last_five'] else []
-    }
-    
     conn.close()
-    return fighter
+    if not row:
+        return None
+    return {
+        'name':          row['name'],
+        'nickname':      row['nickname'],
+        'weightClass':   row['weight_class'],
+        'record':        row['record'],
+        'wins':          row['wins'],
+        'losses':        row['losses'],
+        'draws':         row['draws'],
+        'height':        row['height'],
+        'weight':        row['weight'],
+        'reach':         row['reach'],
+        'stance':        row['stance'],
+        'dob':           row['dob'],
+        'country':       row['country'],
+        'fightingOutOf': row['fighting_out_of'],
+        'imageUrl':      row['image_url'],
+        'lastFive':      json.loads(row['last_five']) if row['last_five'] else [],
+    }
+
+# ==============================================
+# EVENTS (Supabase)
+# ==============================================
+
+def _row_to_event(e):
+    return {
+        'id':          e.get('id'),
+        'eventName':   e.get('name'),
+        'name':        e.get('name'),
+        'type':        e.get('type'),
+        'date':        e.get('date'),
+        'isoDate':     e.get('iso_date'),
+        'location':    e.get('location'),
+        'venue':       e.get('venue'),
+        'poster':      e.get('poster'),
+        'status':      e.get('status'),
+        'mainCard':    e.get('main_card') or [],
+        'prelims':     e.get('prelims') or [],
+        'earlyPrelims': e.get('early_prelims') or [],
+    }
 
 def get_all_events():
-    """Get all events from database"""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    
-    cursor.execute('SELECT * FROM events ORDER BY event_date ASC')
-    rows = cursor.fetchall()
-    
-    events = []
-    for row in rows:
-        events.append({
-            'eventName': row['event_name'],
-            'date': row['event_date'],
-            'location': row['location'],
-            'venue': row['venue'],
-            'mainCard': json.loads(row['main_card']) if row['main_card'] else [],
-            'prelims': json.loads(row['prelims']) if row['prelims'] else [],
-            'earlyPrelims': json.loads(row['early_prelims']) if row['early_prelims'] else [],
-            'status': row['status']
-        })
-    
-    conn.close()
-    return events
+    try:
+        res = _sb().from_('events').select('*').order('iso_date', desc=False).execute()
+        return [_row_to_event(e) for e in (res.data or [])]
+    except Exception as ex:
+        print(f'get_all_events error: {ex}')
+        return []
 
 def get_upcoming_events():
-    """Get upcoming events"""
-    # For now, just return all events
-    # Later you can filter by date
-    return get_all_events()
+    try:
+        today = datetime.utcnow().date().isoformat()
+        res = _sb().from_('events').select('*').gte('iso_date', today).order('iso_date', desc=False).execute()
+        return [_row_to_event(e) for e in (res.data or [])]
+    except Exception as ex:
+        print(f'get_upcoming_events error: {ex}')
+        return []
+
+def upsert_event(event_dict):
+    """Add or update a single event. event_dict uses camelCase keys (app format)."""
+    row = {
+        'id':           event_dict.get('id'),
+        'name':         event_dict.get('name'),
+        'type':         event_dict.get('type', 'FIGHT NIGHT'),
+        'date':         event_dict.get('date'),
+        'iso_date':     event_dict.get('isoDate'),
+        'location':     event_dict.get('location'),
+        'venue':        event_dict.get('venue'),
+        'poster':       event_dict.get('poster'),
+        'status':       event_dict.get('status', 'upcoming'),
+        'main_card':    event_dict.get('mainCard', []),
+        'prelims':      event_dict.get('prelims', []),
+        'early_prelims': event_dict.get('earlyPrelims', []),
+    }
+    _sb().from_('events').upsert(row, on_conflict='id').execute()
 
 # ==============================================
-# INITIALIZE DATABASE
+# USERS (Supabase auth + user_profiles)
 # ==============================================
-
-def init_database():
-    """Initialize database with tables and data"""
-    print("=" * 50)
-    print("🗄️  INITIALIZING DATABASE")
-    print("=" * 50)
-    
-    # Create tables
-    create_tables()
-    
-    # Import data from JSON files
-    import_fighters_from_json()
-    import_events_from_json()
-    
-    print("=" * 50)
-    print("✅ DATABASE READY!")
-    print("=" * 50)
 
 def get_or_create_user(email, display_name, avatar_url):
-    """Find existing user by email or create a new one. Returns user dict."""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM users WHERE email = ?', (email,))
-    row = cursor.fetchone()
-    if row:
-        # Update display_name/avatar in case they changed
-        cursor.execute(
-            'UPDATE users SET display_name=?, avatar_url=? WHERE email=?',
-            (display_name, avatar_url, email)
-        )
-        user_id = row['id']
-    else:
-        cursor.execute(
-            'INSERT INTO users (email, display_name, avatar_url) VALUES (?, ?, ?)',
-            (email, display_name, avatar_url)
-        )
-        user_id = cursor.lastrowid
-    conn.commit()
-    cursor.execute('SELECT * FROM users WHERE id = ?', (user_id,))
-    user = dict(cursor.fetchone())
-    conn.close()
-    return user
+    """Find or create a user in Supabase. Returns dict with id (UUID str), email, display_name, avatar_url."""
+    client = _sb()
+
+    # Try to find existing profile by email
+    res = client.from_('user_profiles').select('id, username, email, display_name, avatar_url').eq('email', email).limit(1).execute()
+    if res.data:
+        user_id = res.data[0]['id']
+        # Update display_name / avatar in case they changed
+        client.from_('user_profiles').update({
+            'display_name': display_name,
+            'avatar_url':   avatar_url,
+        }).eq('id', user_id).execute()
+        return {'id': user_id, 'email': email, 'display_name': display_name, 'avatar_url': avatar_url}
+
+    # Create new Supabase auth user
+    try:
+        auth_res = client.auth.admin.create_user({
+            'email':        email,
+            'email_confirm': True,
+            'user_metadata': {'display_name': display_name, 'avatar_url': avatar_url},
+        })
+        user_id = auth_res.user.id
+    except Exception as ex:
+        # User already exists in auth.users but not in user_profiles
+        # Try listing to find them (fallback)
+        print(f'create_user fallback: {ex}')
+        raise
+
+    # Generate unique username from display_name / email
+    base = re.sub(r'[^a-z0-9_]', '', display_name.lower().replace(' ', '_'))[:18] or email.split('@')[0][:18]
+    username = base
+    i = 1
+    while True:
+        check = client.from_('user_profiles').select('id').eq('username', username).limit(1).execute()
+        if not check.data:
+            break
+        username = f'{base}{i}'
+        i += 1
+
+    client.from_('user_profiles').insert({
+        'id':           user_id,
+        'username':     username,
+        'email':        email,
+        'display_name': display_name,
+        'avatar_url':   avatar_url,
+    }).execute()
+
+    return {'id': user_id, 'email': email, 'display_name': display_name, 'avatar_url': avatar_url}
 
 def get_user_by_id(user_id):
-    """Return user dict by ID, or None."""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM users WHERE id = ?', (user_id,))
-    row = cursor.fetchone()
-    conn.close()
-    return dict(row) if row else None
-
-def save_event_rating(event_id, event_name, hype_rating, fotn_prediction=None, review_text=None, user_id=None, display_name=None):
-    """Save an event rating to the database"""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute('''
-        INSERT INTO event_ratings (event_id, event_name, hype_rating, fotn_prediction, review_text, user_id, display_name)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    ''', (event_id, event_name, hype_rating, fotn_prediction, review_text, user_id, display_name))
-    conn.commit()
-    rating_id = cursor.lastrowid
-    conn.close()
-    return rating_id
-
-def update_event_rating(rating_id, hype_rating, review_text=None):
-    """Update an existing event rating"""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute('''
-        UPDATE event_ratings SET hype_rating = ?, review_text = ? WHERE id = ?
-    ''', (hype_rating, review_text, rating_id))
-    conn.commit()
-    conn.close()
-
-def get_user_rating_for_event(user_id, event_id):
-    """Return the user's own rating for an event, or None."""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    cursor.execute('''
-        SELECT id, hype_rating, review_text FROM event_ratings
-        WHERE user_id = ? AND event_id = ?
-        ORDER BY created_at DESC LIMIT 1
-    ''', (user_id, event_id))
-    row = cursor.fetchone()
-    conn.close()
-    return dict(row) if row else None
-
-def get_event_ratings(event_id):
-    """Get all ratings for a specific event"""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    cursor.execute('''
-        SELECT * FROM event_ratings WHERE event_id = ? ORDER BY created_at DESC
-    ''', (event_id,))
-    rows = cursor.fetchall()
-    conn.close()
-    ratings = []
-    for row in rows:
-        ratings.append({
-            'id': row['id'],
-            'event_id': row['event_id'],
-            'event_name': row['event_name'],
-            'hype_rating': row['hype_rating'],
-            'fotn_prediction': row['fotn_prediction'],
-            'review_text': row['review_text'] if 'review_text' in row.keys() else None,
-            'created_at': row['created_at']
-        })
-    return ratings
-
-def get_event_reviews(event_id):
-    """Get all fan reviews for a specific event, newest first"""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    cursor.execute('''
-        SELECT er.id, er.hype_rating, er.review_text, er.display_name, er.created_at, er.user_id,
-               (SELECT COUNT(*) FROM review_replies rr WHERE rr.review_id = er.id) AS reply_count
-        FROM event_ratings er
-        WHERE er.event_id = ?
-        ORDER BY er.created_at DESC
-    ''', (event_id,))
-    rows = cursor.fetchall()
-    conn.close()
-    return [{
-        'id':           row['id'],
-        'hype_rating':  row['hype_rating'],
-        'review_text':  row['review_text'],
-        'display_name': row['display_name'] or 'Anonymous',
-        'created_at':   row['created_at'],
-        'user_id':      row['user_id'],
-        'reply_count':  row['reply_count']
-    } for row in rows]
-
-def get_event_avg_rating(event_id):
-    """Get the average hype rating and FOTN predictions for an event"""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    cursor.execute('''
-        SELECT 
-            COUNT(*) as total_ratings,
-            AVG(hype_rating) as avg_hype,
-            fotn_prediction,
-            COUNT(fotn_prediction) as fotn_votes
-        FROM event_ratings
-        WHERE event_id = ?
-        GROUP BY fotn_prediction
-        ORDER BY fotn_votes DESC
-    ''', (event_id,))
-    rows = cursor.fetchall()
-    conn.close()
-    if not rows:
-        return {'total_ratings': 0, 'avg_hype': None, 'top_fotn': None}
-    # First row has the top FOTN pick
-    return {
-        'total_ratings': rows[0]['total_ratings'],
-        'avg_hype': round(rows[0]['avg_hype'], 1) if rows[0]['avg_hype'] else None,
-        'top_fotn': rows[0]['fotn_prediction']
-    }
+    """Return user dict by UUID string, or None."""
+    try:
+        res = _sb().from_('user_profiles').select('id, username, email, display_name, avatar_url').eq('id', user_id).limit(1).execute()
+        if res.data:
+            row = res.data[0]
+            return {
+                'id':           row['id'],
+                'email':        row.get('email', ''),
+                'display_name': row.get('display_name') or row.get('username', ''),
+                'avatar_url':   row.get('avatar_url', ''),
+            }
+        return None
+    except Exception as ex:
+        print(f'get_user_by_id error: {ex}')
+        return None
 
 # ==============================================
-# REVIEW SOCIAL: LIKES + REPLIES
+# RATINGS / REVIEWS (Supabase)
+# ==============================================
+
+def save_event_rating(event_id, event_name, hype_rating, fotn_prediction=None, review_text=None, user_id=None, display_name=None):
+    try:
+        res = _sb().from_('ratings').insert({
+            'event_id':       event_id,
+            'event_name':     event_name,
+            'hype_rating':    hype_rating,
+            'fotn_prediction': fotn_prediction,
+            'review_text':    review_text,
+            'user_id':        user_id,
+            'display_name':   display_name,
+        }).execute()
+        return res.data[0]['id'] if res.data else None
+    except Exception as ex:
+        print(f'save_event_rating error: {ex}')
+        raise
+
+def update_event_rating(rating_id, hype_rating, review_text=None):
+    try:
+        _sb().from_('ratings').update({
+            'hype_rating':  hype_rating,
+            'review_text':  review_text,
+        }).eq('id', rating_id).execute()
+    except Exception as ex:
+        print(f'update_event_rating error: {ex}')
+        raise
+
+def get_user_rating_for_event(user_id, event_id):
+    try:
+        res = _sb().from_('ratings').select('id, hype_rating, review_text').eq('user_id', user_id).eq('event_id', event_id).order('created_at', desc=True).limit(1).execute()
+        return res.data[0] if res.data else None
+    except Exception as ex:
+        print(f'get_user_rating_for_event error: {ex}')
+        return None
+
+def get_event_ratings(event_id):
+    try:
+        res = _sb().from_('ratings').select('*').eq('event_id', event_id).order('created_at', desc=True).execute()
+        return [{
+            'id':              r['id'],
+            'event_id':        r['event_id'],
+            'event_name':      r['event_name'],
+            'hype_rating':     r['hype_rating'],
+            'fotn_prediction': r['fotn_prediction'],
+            'review_text':     r.get('review_text'),
+            'created_at':      r['created_at'],
+        } for r in (res.data or [])]
+    except Exception as ex:
+        print(f'get_event_ratings error: {ex}')
+        return []
+
+def get_event_reviews(event_id):
+    try:
+        res = _sb().from_('ratings').select('id, hype_rating, review_text, display_name, created_at, user_id').eq('event_id', event_id).order('created_at', desc=True).execute()
+        rows = res.data or []
+        # Fetch reply counts in one call
+        rating_ids = [r['id'] for r in rows]
+        reply_counts = {}
+        if rating_ids:
+            rc_res = _sb().from_('review_replies').select('review_id').in_('review_id', rating_ids).execute()
+            for rc in (rc_res.data or []):
+                reply_counts[rc['review_id']] = reply_counts.get(rc['review_id'], 0) + 1
+        return [{
+            'id':           r['id'],
+            'hype_rating':  r['hype_rating'],
+            'review_text':  r['review_text'],
+            'display_name': r.get('display_name') or 'Anonymous',
+            'created_at':   r['created_at'],
+            'user_id':      r.get('user_id'),
+            'reply_count':  reply_counts.get(r['id'], 0),
+        } for r in rows]
+    except Exception as ex:
+        print(f'get_event_reviews error: {ex}')
+        return []
+
+def get_event_avg_rating(event_id):
+    try:
+        res = _sb().from_('ratings').select('hype_rating, fotn_prediction').eq('event_id', event_id).execute()
+        rows = res.data or []
+        if not rows:
+            return {'total_ratings': 0, 'avg_hype': None, 'top_fotn': None}
+        total = len(rows)
+        avg   = round(sum(r['hype_rating'] for r in rows) / total, 1)
+        fotn_votes = {}
+        for r in rows:
+            fp = r.get('fotn_prediction')
+            if fp:
+                fotn_votes[fp] = fotn_votes.get(fp, 0) + 1
+        top_fotn = max(fotn_votes, key=fotn_votes.get) if fotn_votes else None
+        return {'total_ratings': total, 'avg_hype': avg, 'top_fotn': top_fotn}
+    except Exception as ex:
+        print(f'get_event_avg_rating error: {ex}')
+        return {'total_ratings': 0, 'avg_hype': None, 'top_fotn': None}
+
+# ==============================================
+# REVIEW SOCIAL: LIKES + REPLIES (Supabase)
 # ==============================================
 
 def toggle_review_like(review_id, user_id):
-    """Toggle like on a review. Returns (liked: bool, count: int)."""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute('SELECT id FROM review_likes WHERE review_id=? AND user_id=?', (review_id, user_id))
-    if cursor.fetchone():
-        cursor.execute('DELETE FROM review_likes WHERE review_id=? AND user_id=?', (review_id, user_id))
+    client = _sb()
+    check = client.from_('review_likes').select('id').eq('review_id', review_id).eq('user_id', user_id).limit(1).execute()
+    if check.data:
+        client.from_('review_likes').delete().eq('review_id', review_id).eq('user_id', user_id).execute()
         liked = False
     else:
-        cursor.execute('INSERT INTO review_likes (review_id, user_id) VALUES (?,?)', (review_id, user_id))
+        client.from_('review_likes').insert({'review_id': review_id, 'user_id': user_id}).execute()
         liked = True
-    conn.commit()
-    cursor.execute('SELECT COUNT(*) FROM review_likes WHERE review_id=?', (review_id,))
-    count = cursor.fetchone()[0]
-    conn.close()
+    count_res = client.from_('review_likes').select('id', count='exact').eq('review_id', review_id).execute()
+    count = count_res.count or 0
     return liked, count
 
 def get_review_likes(review_ids, user_id=None):
-    """Returns {review_id: {count, user_liked}} for a list of review IDs."""
     if not review_ids:
         return {}
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    ph = ','.join('?' * len(review_ids))
-    cursor.execute(f'SELECT review_id, COUNT(*) FROM review_likes WHERE review_id IN ({ph}) GROUP BY review_id', review_ids)
-    counts = {row[0]: row[1] for row in cursor.fetchall()}
+    client = _sb()
+    res = client.from_('review_likes').select('review_id, user_id').in_('review_id', list(review_ids)).execute()
+    counts = {}
     liked_set = set()
-    if user_id:
-        cursor.execute(f'SELECT review_id FROM review_likes WHERE review_id IN ({ph}) AND user_id=?',
-                       list(review_ids) + [user_id])
-        liked_set = {row[0] for row in cursor.fetchall()}
-    conn.close()
+    for row in (res.data or []):
+        rid = row['review_id']
+        counts[rid] = counts.get(rid, 0) + 1
+        if user_id and row['user_id'] == user_id:
+            liked_set.add(rid)
     return {rid: {'count': counts.get(rid, 0), 'user_liked': rid in liked_set} for rid in review_ids}
 
 def add_review_reply(review_id, user_id, display_name, reply_text):
-    """Insert a reply. Returns reply_id."""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute(
-        'INSERT INTO review_replies (review_id, user_id, display_name, reply_text) VALUES (?,?,?,?)',
-        (review_id, user_id, display_name, reply_text)
-    )
-    conn.commit()
-    reply_id = cursor.lastrowid
-    conn.close()
-    return reply_id
+    res = _sb().from_('review_replies').insert({
+        'review_id':    review_id,
+        'user_id':      user_id,
+        'display_name': display_name,
+        'reply_text':   reply_text,
+    }).execute()
+    return res.data[0]['id'] if res.data else None
 
 def get_review_replies(review_id, user_id=None):
-    """Get all replies for a review with like counts."""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    cursor.execute(
-        'SELECT id, user_id, display_name, reply_text, created_at FROM review_replies WHERE review_id=? ORDER BY created_at ASC',
-        (review_id,)
-    )
-    rows = cursor.fetchall()
+    client = _sb()
+    res = client.from_('review_replies').select('id, user_id, display_name, reply_text, created_at').eq('review_id', review_id).order('created_at', desc=False).execute()
+    rows = res.data or []
     reply_ids = [r['id'] for r in rows]
-    # Batch fetch like counts
     liked_set = set()
     counts = {}
     if reply_ids:
-        ph = ','.join('?' * len(reply_ids))
-        cursor.execute(f'SELECT reply_id, COUNT(*) FROM reply_likes WHERE reply_id IN ({ph}) GROUP BY reply_id', reply_ids)
-        counts = {row[0]: row[1] for row in cursor.fetchall()}
-        if user_id:
-            cursor.execute(f'SELECT reply_id FROM reply_likes WHERE reply_id IN ({ph}) AND user_id=?',
-                           reply_ids + [user_id])
-            liked_set = {row[0] for row in cursor.fetchall()}
-    conn.close()
+        like_res = client.from_('reply_likes').select('reply_id, user_id').in_('reply_id', reply_ids).execute()
+        for row in (like_res.data or []):
+            rid = row['reply_id']
+            counts[rid] = counts.get(rid, 0) + 1
+            if user_id and row['user_id'] == user_id:
+                liked_set.add(rid)
     return [{
         'id':           r['id'],
         'user_id':      r['user_id'],
@@ -607,23 +477,31 @@ def get_review_replies(review_id, user_id=None):
     } for r in rows]
 
 def toggle_reply_like(reply_id, user_id):
-    """Toggle like on a reply. Returns (liked: bool, count: int)."""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute('SELECT id FROM reply_likes WHERE reply_id=? AND user_id=?', (reply_id, user_id))
-    if cursor.fetchone():
-        cursor.execute('DELETE FROM reply_likes WHERE reply_id=? AND user_id=?', (reply_id, user_id))
+    client = _sb()
+    check = client.from_('reply_likes').select('id').eq('reply_id', reply_id).eq('user_id', user_id).limit(1).execute()
+    if check.data:
+        client.from_('reply_likes').delete().eq('reply_id', reply_id).eq('user_id', user_id).execute()
         liked = False
     else:
-        cursor.execute('INSERT INTO reply_likes (reply_id, user_id) VALUES (?,?)', (reply_id, user_id))
+        client.from_('reply_likes').insert({'reply_id': reply_id, 'user_id': user_id}).execute()
         liked = True
-    conn.commit()
-    cursor.execute('SELECT COUNT(*) FROM reply_likes WHERE reply_id=?', (reply_id,))
-    count = cursor.fetchone()[0]
-    conn.close()
+    count_res = client.from_('reply_likes').select('id', count='exact').eq('reply_id', reply_id).execute()
+    count = count_res.count or 0
     return liked, count
 
+# ==============================================
+# INIT
+# ==============================================
 
-# Run this when script is executed directly
+def init_database():
+    print('=' * 50)
+    print('INITIALIZING DATABASE')
+    print('=' * 50)
+    create_tables()
+    import_fighters_from_json()
+    print('=' * 50)
+    print('DATABASE READY')
+    print('=' * 50)
+
 if __name__ == '__main__':
     init_database()

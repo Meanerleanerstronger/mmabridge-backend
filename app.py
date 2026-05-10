@@ -369,7 +369,7 @@ def google_callback():
 @app.route('/api/auth/me')
 @jwt_required()
 def auth_me():
-    user_id = int(get_jwt_identity())
+    user_id = get_jwt_identity()
     user    = get_user_by_id(user_id)
     if not user:
         return jsonify({'error': 'User not found'}), 404
@@ -588,7 +588,7 @@ def submit_rating():
         verify_jwt_in_request(optional=True)
         uid = get_jwt_identity()
         if uid:
-            user = get_user_by_id(int(uid))
+            user = get_user_by_id(uid)
             if user:
                 user_id      = user['id']
                 display_name = user['display_name']
@@ -615,7 +615,7 @@ def get_ratings(event_id):
         return jsonify({'error': 'Failed to fetch ratings'}), 500
 
 
-@app.route('/api/ratings/<int:rating_id>', methods=['PUT'])
+@app.route('/api/ratings/<rating_id>', methods=['PUT'])
 def edit_rating(rating_id):
     """Update an existing rating."""
     if not request.is_json:
@@ -647,7 +647,7 @@ def get_my_rating(event_id):
     if not isinstance(event_id, str) or len(event_id) > 100:
         return jsonify({'error': 'Invalid event ID'}), 400
     try:
-        user_id = int(get_jwt_identity())
+        user_id = get_jwt_identity()
         row = get_user_rating_for_event(user_id, event_id)
         if not row:
             return jsonify({'error': 'Not found'}), 404
@@ -672,7 +672,7 @@ def get_reviews(event_id):
             verify_jwt_in_request(optional=True)
             uid = get_jwt_identity()
             if uid:
-                current_user_id = int(uid)
+                current_user_id = uid
         except Exception:
             pass
         review_ids = [r['id'] for r in reviews]
@@ -687,12 +687,12 @@ def get_reviews(event_id):
         return jsonify([]), 500
 
 
-@app.route('/api/reviews/<int:review_id>/like', methods=['POST', 'DELETE'])
+@app.route('/api/reviews/<review_id>/like', methods=['POST', 'DELETE'])
 @jwt_required()
 @limiter.limit("60 per minute")
 def manage_review_like(review_id):
     try:
-        user_id = int(get_jwt_identity())
+        user_id = get_jwt_identity()
         liked, count = toggle_review_like(review_id, user_id)
         return jsonify({'liked': liked, 'like_count': count})
     except Exception as e:
@@ -700,7 +700,7 @@ def manage_review_like(review_id):
         return jsonify({'error': 'Failed to toggle like'}), 500
 
 
-@app.route('/api/reviews/<int:review_id>/reply', methods=['POST'])
+@app.route('/api/reviews/<review_id>/reply', methods=['POST'])
 @jwt_required()
 @limiter.limit("20 per minute")
 def post_reply(review_id):
@@ -715,7 +715,7 @@ def post_reply(review_id):
         return jsonify({'error': 'reply_text required'}), 400
 
     try:
-        user_id = int(get_jwt_identity())
+        user_id = get_jwt_identity()
         user = get_user_by_id(user_id)
         if not user:
             return jsonify({'error': 'User not found'}), 404
@@ -732,7 +732,7 @@ def post_reply(review_id):
         return jsonify({'error': 'Failed to post reply'}), 500
 
 
-@app.route('/api/reviews/<int:review_id>/replies', methods=['GET'])
+@app.route('/api/reviews/<review_id>/replies', methods=['GET'])
 def fetch_replies(review_id):
     try:
         current_user_id = None
@@ -740,7 +740,7 @@ def fetch_replies(review_id):
             verify_jwt_in_request(optional=True)
             uid = get_jwt_identity()
             if uid:
-                current_user_id = int(uid)
+                current_user_id = uid
         except Exception:
             pass
         replies = get_review_replies(review_id, current_user_id)
@@ -750,12 +750,12 @@ def fetch_replies(review_id):
         return jsonify([]), 500
 
 
-@app.route('/api/replies/<int:reply_id>/like', methods=['POST', 'DELETE'])
+@app.route('/api/replies/<reply_id>/like', methods=['POST', 'DELETE'])
 @jwt_required()
 @limiter.limit("60 per minute")
 def manage_reply_like(reply_id):
     try:
-        user_id = int(get_jwt_identity())
+        user_id = get_jwt_identity()
         liked, count = toggle_reply_like(reply_id, user_id)
         return jsonify({'liked': liked, 'like_count': count})
     except Exception as e:
