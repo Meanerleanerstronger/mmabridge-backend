@@ -244,16 +244,20 @@ def get_fighter(fighter_id):
 
 @app.route('/api/events')
 def get_events():
+    # Supabase is source of truth — scraper is fallback only
+    try:
+        events = get_all_events()
+        if events:
+            return jsonify(events)
+    except Exception as e:
+        print(f"Supabase error: {e}")
     try:
         if SCRAPER_AVAILABLE:
             events = get_events_for_api()
             if events:
                 return jsonify(events)
-        events = get_all_events()
-        if events:
-            return jsonify(events)
     except Exception as e:
-        print(f"DB error: {e}")
+        print(f"Scraper error: {e}")
     events = load_json('events.json')
     if events is None:
         return jsonify({'error': 'Events data not found'}), 404
@@ -262,6 +266,12 @@ def get_events():
 @app.route('/api/events/upcoming')
 def get_upcoming_events_route():
     try:
+        events = get_upcoming_events()
+        if events:
+            return jsonify(events)
+    except Exception as e:
+        print(f"Supabase error: {e}")
+    try:
         if SCRAPER_AVAILABLE:
             from datetime import date
             all_events = get_events_for_api()
@@ -269,11 +279,8 @@ def get_upcoming_events_route():
             upcoming = [e for e in all_events if (e.get('isoDate') or '9999') >= today]
             if upcoming:
                 return jsonify(upcoming)
-        events = get_upcoming_events()
-        if events:
-            return jsonify(events)
     except Exception as e:
-        print(f"DB error: {e}")
+        print(f"Scraper error: {e}")
     events = load_json('events.json')
     if events is None:
         return jsonify({'error': 'Events data not found'}), 404
@@ -283,11 +290,8 @@ def get_upcoming_events_route():
 def get_past_events_route():
     try:
         from datetime import date
-        if SCRAPER_AVAILABLE:
-            all_events = get_events_for_api()
-        else:
-            all_events = get_all_events()
         today = date.today().isoformat()
+        all_events = get_all_events()
         past = [e for e in all_events if (e.get('isoDate') or '9999') < today]
         return jsonify(past)
     except Exception as e:
