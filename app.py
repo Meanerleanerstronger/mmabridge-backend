@@ -122,6 +122,14 @@ except Exception as _oauth_err:
 # Ensure DB tables exist on every startup
 create_tables()
 
+# ── Push notification module ─────────────────
+from push_notifications import start_scheduler, check_starred_events, announce_fighters
+from database import sb as _supabase_client
+if _supabase_client:
+    start_scheduler(_supabase_client)
+else:
+    print('[Push] Supabase not configured — push scheduler skipped')
+
 # ==============================================
 # INPUT SANITIZATION HELPERS
 # ==============================================
@@ -765,6 +773,79 @@ def manage_reply_like(reply_id):
     except Exception as e:
         print(f"Reply like error: {e}")
         return jsonify({'error': 'Failed to toggle like'}), 500
+
+
+# ==============================================
+# PUSH NOTIFICATION ROUTES
+# ==============================================
+
+@app.route('/api/push/announce-fighters', methods=['POST'])
+def push_announce_fighters():
+    """
+    Call this when you add a new event to notify fav-fighter subscribers.
+    Body: { "fighters": ["Jon Jones", "Stipe Miocic"], "eventName": "UFC 309", "eventId": "ufc-309" }
+    """
+    try:
+        data        = request.get_json(force=True) or {}
+        fighters    = data.get('fighters') or []
+        event_name  = data.get('eventName') or data.get('event_name') or ''
+        event_id    = data.get('eventId')   or data.get('event_id')   or ''
+        if not fighters or not event_id:
+            return jsonify({'error': 'fighters and eventId required'}), 400
+        announce_fighters(_supabase_client, fighters, event_name, event_id)
+        return jsonify({'ok': True, 'notified_for': fighters})
+    except Exception as e:
+        print(f'[Push] announce-fighters error: {e}')
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/push/test', methods=['POST'])
+def push_test():
+    """
+    Send a test push to a specific browser. Body: { "browser_id": "..." }
+    Find your browser_id in DevTools → Application → Local Storage → mma_browser_id
+    """
+    try:
+        data       = request.get_json(force=True) or {}
+        browser_id = data.get('browser_id', '').strip()
+        if not browser_id:
+            return jsonify({'error': 'browser_id required'}), 400
+
+        row = (
+            _supabase_client.table('push_subscriptions')
+            .select('endpoint, p256dh, auth')
+            .eq('browser_id', browser_id)
+            .single()
+            .execute()
+        )
+        if not row.data:
+            return jsonify({'error': 'Subscription not found — star an event first'}), 404
+
+        sub    = row.data
+        result = __import__('push_notifications').send_push(
+            endpoint=sub['endpoint'],
+            p256dh=sub['p256dh'],
+            auth_key=sub['auth'],
+            payload={
+                'title': 'MMA Bridge — push works!',
+                'body':  'You\'ll now get 1-week and day-before alerts for starred events.',
+                'url':   '/events.html',
+            },
+        )
+        return jsonify({'result': result})
+    except Exception as e:
+        print(f'[Push] test error: {e}')
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/push/trigger-check', methods=['POST'])
+def push_trigger_check():
+    """Manual trigger for the daily starred-events check (for testing)."""
+    try:
+        check_starred_events(_supabase_client)
+        return jsonify({'ok': True})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 # ==============================================

@@ -47,3 +47,11 @@ Thumbs.db
 
 # Logs
 *.log
+
+# VAPID private key — never commit this
+vapid_private.pem
+
+# Node (leftover from push notification setup attempt)
+node_modules/
+package-lock.json
+package.json
