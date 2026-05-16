@@ -15,19 +15,37 @@ from pywebpush import webpush, WebPushException
 logger = logging.getLogger(__name__)
 
 # ── VAPID config ──────────────────────────────
-# Private key stored as a PEM file next to this module
-_HERE = Path(__file__).parent
-VAPID_PRIVATE_KEY_PATH = str(_HERE / 'vapid_private.pem')
-VAPID_PUBLIC_KEY       = 'BMCcRUYcboxYuMQd4peCA_etuBlfgeN8C9o26rVxfpUUxov_1ICWJOm5AiLHmmqJlNjNtoQSsVj0rPayM35H-7c'
-VAPID_EMAIL            = os.getenv('VAPID_EMAIL', 'mailto:admin@mmabridge.com')
+VAPID_PUBLIC_KEY = 'BMCcRUYcboxYuMQd4peCA_etuBlfgeN8C9o26rVxfpUUxov_1ICWJOm5AiLHmmqJlNjNtoQSsVj0rPayM35H-7c'
+VAPID_EMAIL      = os.getenv('VAPID_EMAIL', 'mailto:admin@mmabridge.com')
+
+# Private key: prefer env var (Render), fall back to local PEM file (dev)
+_HERE            = Path(__file__).parent
+_LOCAL_PEM       = _HERE / 'vapid_private.pem'
+_pem_from_env    = os.getenv('VAPID_PRIVATE_PEM', '').replace('\\n', '\n').strip()
+
+if _pem_from_env:
+    # Write env var contents to a temp file so pywebpush can read it
+    import tempfile
+    _tmp = tempfile.NamedTemporaryFile(delete=False, suffix='.pem', mode='w')
+    _tmp.write(_pem_from_env)
+    _tmp.close()
+    VAPID_PRIVATE_KEY_PATH = _tmp.name
+elif _LOCAL_PEM.exists():
+    VAPID_PRIVATE_KEY_PATH = str(_LOCAL_PEM)
+else:
+    VAPID_PRIVATE_KEY_PATH = None
+    logger.warning('[Push] No VAPID private key found — push notifications disabled')
 
 
 # ── Core send function ────────────────────────
 def send_push(endpoint: str, p256dh: str, auth_key: str, payload: dict) -> str:
     """
     Send a single push notification.
-    Returns: 'ok' | 'expired' | 'error'
+    Returns: 'ok' | 'expired' | 'error' | 'disabled'
     """
+    if not VAPID_PRIVATE_KEY_PATH:
+        logger.warning('[Push] send_push called but no VAPID key configured')
+        return 'disabled'
     try:
         webpush(
             subscription_info={
