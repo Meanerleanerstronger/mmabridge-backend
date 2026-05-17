@@ -351,8 +351,16 @@ def get_visitors():
 # AUTH ROUTES
 # ==============================================
 
-REDIRECT_URI  = os.getenv('GOOGLE_REDIRECT_URI',  'https://mmabridge-backend.onrender.com/api/auth/google/callback')
-FRONTEND_URL  = os.getenv('FRONTEND_URL',          'https://mmabridge.com')
+REDIRECT_URI     = os.getenv('GOOGLE_REDIRECT_URI',  'https://mmabridge-backend.onrender.com/api/auth/google/callback')
+FRONTEND_URL     = os.getenv('FRONTEND_URL',          'https://mmabridge.com')
+INTERNAL_SECRET  = os.getenv('INTERNAL_SECRET', '')
+
+def _require_internal(req):
+    """Returns None if authorized, or a JSON error response tuple."""
+    secret = req.headers.get('X-Internal-Secret', '').strip()
+    if not INTERNAL_SECRET or secret != INTERNAL_SECRET:
+        return jsonify({'error': 'Unauthorized'}), 401
+    return None
 
 @app.route('/api/auth/google')
 def google_login():
@@ -373,7 +381,7 @@ def google_callback():
             avatar_url   = userinfo.get('picture', '')
         )
         jwt_token = create_access_token(identity=str(user['id']))
-        return redirect(f"{FRONTEND_URL}/auth.html?token={jwt_token}")
+        return redirect(f"{FRONTEND_URL}/auth.html#token={jwt_token}")
     except Exception as e:
         print(f"OAuth callback error: {e}")
         return redirect(f"{FRONTEND_URL}/auth.html?error=auth_failed")
@@ -628,8 +636,11 @@ def get_ratings(event_id):
 
 
 @app.route('/api/ratings/<rating_id>', methods=['PUT'])
+@jwt_required()
 def edit_rating(rating_id):
     """Update an existing rating."""
+    user_id = get_jwt_identity()
+
     if not request.is_json:
         return jsonify({'error': 'Content-Type must be application/json'}), 400
 
@@ -646,6 +657,10 @@ def edit_rating(rating_id):
         return jsonify({'error': err}), 400
 
     try:
+        # Verify ownership before updating
+        existing = _supabase_client.table('event_ratings').select('user_id').eq('id', rating_id).execute()
+        if not existing.data or existing.data[0].get('user_id') != user_id:
+            return jsonify({'error': 'Not authorized to edit this rating'}), 403
         update_event_rating(rating_id, hype_rating, review_text)
         return jsonify({'success': True})
     except Exception as e:
@@ -785,6 +800,8 @@ def push_announce_fighters():
     Call this when you add a new event to notify fav-fighter subscribers.
     Body: { "fighters": ["Jon Jones", "Stipe Miocic"], "eventName": "UFC 309", "eventId": "ufc-309" }
     """
+    err = _require_internal(request)
+    if err: return err
     try:
         data        = request.get_json(force=True) or {}
         fighters    = data.get('fighters') or []
@@ -805,6 +822,8 @@ def push_test():
     Send a test push to a specific browser. Body: { "browser_id": "..." }
     Find your browser_id in DevTools → Application → Local Storage → mma_browser_id
     """
+    err = _require_internal(request)
+    if err: return err
     try:
         data       = request.get_json(force=True) or {}
         browser_id = data.get('browser_id', '').strip()
@@ -841,6 +860,8 @@ def push_test():
 @app.route('/api/push/trigger-check', methods=['POST'])
 def push_trigger_check():
     """Manual trigger for the daily starred-events check (for testing)."""
+    err = _require_internal(request)
+    if err: return err
     try:
         check_starred_events(_supabase_client)
         return jsonify({'ok': True})
