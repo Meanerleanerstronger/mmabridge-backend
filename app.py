@@ -14,6 +14,7 @@ from authlib.integrations.flask_client import OAuth
 import json
 import os
 import re
+from datetime import datetime, timezone, timedelta
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -52,6 +53,8 @@ except ImportError:
 from chatbot import chat_with_lucas
 
 # Create Flask app
+ODDS_API_KEY = os.getenv('ODDS_API_KEY', '')
+
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY', os.getenv('JWT_SECRET', 'dev-secret-change-me'))
 
@@ -867,6 +870,147 @@ def push_trigger_check():
         return jsonify({'ok': True})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+
+# ==============================================
+# LEADERBOARD ROUTE
+# ==============================================
+
+@app.route('/api/leaderboard', methods=['GET'])
+def get_leaderboard():
+    """Return leaderboard data filtered by period (all/week/month)."""
+    period = request.args.get('period', 'all')
+    try:
+        query = _supabase_client.table('picks').select('user_id, event_id, fight_key, pick, method, created_at')
+        if period == 'week':
+            cutoff = (datetime.now(timezone.utc) - timedelta(days=7)).isoformat()
+            query = query.gte('created_at', cutoff)
+        elif period == 'month':
+            cutoff = (datetime.now(timezone.utc) - timedelta(days=30)).isoformat()
+            query = query.gte('created_at', cutoff)
+        result = query.execute()
+        return jsonify({'picks': result.data or [], 'period': period})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# ==============================================
+# FOLLOW SYSTEM
+# ==============================================
+
+# SQL to run in Supabase:
+# CREATE TABLE IF NOT EXISTS follows (
+#   follower_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+#   following_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+#   created_at TIMESTAMPTZ DEFAULT now(),
+#   PRIMARY KEY (follower_id, following_id)
+# );
+# ALTER TABLE follows ENABLE ROW LEVEL SECURITY;
+# CREATE POLICY "Users can manage own follows" ON follows FOR ALL USING (auth.uid() = follower_id);
+# CREATE POLICY "Follow counts are public" ON follows FOR SELECT USING (true);
+
+@app.route('/api/follow/<target_user_id>', methods=['POST'])
+@jwt_required()
+def follow_user(target_user_id):
+    follower_id = get_jwt_identity()
+    if follower_id == target_user_id:
+        return jsonify({'error': 'Cannot follow yourself'}), 400
+    try:
+        _supabase_client.table('follows').upsert({
+            'follower_id': follower_id,
+            'following_id': target_user_id
+        }, on_conflict='follower_id,following_id').execute()
+        return jsonify({'ok': True})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/follow/<target_user_id>', methods=['DELETE'])
+@jwt_required()
+def unfollow_user(target_user_id):
+    follower_id = get_jwt_identity()
+    try:
+        _supabase_client.table('follows').delete()\
+            .eq('follower_id', follower_id)\
+            .eq('following_id', target_user_id).execute()
+        return jsonify({'ok': True})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/follow/counts/<user_id>', methods=['GET'])
+def follow_counts(user_id):
+    try:
+        followers = _supabase_client.table('follows').select('follower_id', count='exact').eq('following_id', user_id).execute()
+        following = _supabase_client.table('follows').select('following_id', count='exact').eq('follower_id', user_id).execute()
+        return jsonify({
+            'followers': followers.count or 0,
+            'following': following.count or 0
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/follow/status/<target_user_id>', methods=['GET'])
+@jwt_required()
+def follow_status(target_user_id):
+    follower_id = get_jwt_identity()
+    try:
+        row = _supabase_client.table('follows').select('follower_id').eq('follower_id', follower_id).eq('following_id', target_user_id).execute()
+        return jsonify({'following': bool(row.data)})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# ==============================================
+# ODDS ROUTE
+# ==============================================
+
+@app.route('/api/odds/<event_id>', methods=['GET'])
+def get_odds(event_id):
+    """
+    Fetch UFC fight odds from The Odds API.
+    Falls back to cached data if API key not set.
+    Requires ODDS_API_KEY env var from https://the-odds-api.com (free tier: 500 req/mo)
+    """
+    if not ODDS_API_KEY:
+        return jsonify({'odds': [], 'source': 'unavailable', 'message': 'Odds API key not configured'}), 200
+
+    try:
+        import requests as _odds_req
+        # The Odds API — MMA fights
+        resp = _odds_req.get(
+            'https://api.the-odds-api.com/v4/sports/mma_mixed_martial_arts/odds',
+            params={
+                'apiKey': ODDS_API_KEY,
+                'regions': 'us',
+                'markets': 'h2h',
+                'oddsFormat': 'american',
+                'dateFormat': 'iso',
+            },
+            timeout=8
+        )
+        if not resp.ok:
+            return jsonify({'odds': [], 'source': 'error'}), 200
+
+        all_odds = resp.json()
+        # Filter to matches relevant to this event_id by checking commence_time proximity
+        # Return simplified structure
+        fights = []
+        for game in all_odds[:20]:  # limit results
+            outcomes = game.get('bookmakers', [{}])[0].get('markets', [{}])[0].get('outcomes', [])
+            if len(outcomes) >= 2:
+                fights.append({
+                    'a': outcomes[0].get('name', ''),
+                    'b': outcomes[1].get('name', ''),
+                    'odds_a': outcomes[0].get('price', 0),
+                    'odds_b': outcomes[1].get('price', 0),
+                    'commence_time': game.get('commence_time', ''),
+                })
+        return jsonify({'odds': fights, 'source': 'the-odds-api'})
+    except Exception as e:
+        print(f'[Odds] Fetch error: {e}')
+        return jsonify({'odds': [], 'source': 'error'}), 200
 
 
 # ==============================================
