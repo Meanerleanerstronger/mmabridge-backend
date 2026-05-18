@@ -206,6 +206,19 @@ def start_scheduler(sb):
             replace_existing=True,
         )
 
+        # Weekly Monday at 09:00 UTC — email digest
+        try:
+            from email_digest import send_weekly_digest
+            scheduler.add_job(
+                func=lambda: send_weekly_digest(sb),
+                trigger=CronTrigger(day_of_week='mon', hour=9, minute=0),
+                id='weekly_email_digest',
+                replace_existing=True,
+            )
+            logger.info('[Push] Weekly email digest scheduled — Mondays 09:00 UTC')
+        except Exception as _digest_err:
+            logger.warning('[Push] Email digest job not loaded: %s', _digest_err)
+
         scheduler.start()
         logger.info('[Push] Scheduler started — daily check at 08:00 UTC')
         return scheduler
