@@ -7,6 +7,8 @@
 import os
 import json
 import logging
+import hmac
+import hashlib
 import requests
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -16,6 +18,17 @@ logger = logging.getLogger(__name__)
 RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '')
 FROM_EMAIL     = 'MMA Bridge <digest@mmabridge.com>'
 SITE_URL       = 'https://mmabridge.com'
+BACKEND_URL    = 'https://mmabridge.onrender.com'
+
+
+def _unsub_token(user_id: str) -> str:
+    secret = os.environ.get('RESEND_API_KEY', 'unsub-secret')
+    return hmac.new(secret.encode(), user_id.encode(), hashlib.sha256).hexdigest()[:32]
+
+
+def _unsub_url(user_id: str) -> str:
+    token = _unsub_token(user_id)
+    return f'{BACKEND_URL}/api/unsubscribe?uid={user_id}&token={token}'
 
 # ── Load events from local JSON ───────────────
 def _load_events():
@@ -77,7 +90,7 @@ def _get_user_stats(sb, user_id):
 
 
 # ── Build HTML email ──────────────────────────
-def _build_html(display_name, upcoming_events, stats):
+def _build_html(display_name, upcoming_events, stats, user_id=''):
     name = display_name or 'Fighter'
 
     upcoming_html = ''
@@ -157,7 +170,7 @@ def _build_html(display_name, upcoming_events, stats):
     <!-- Footer -->
     <tr><td style="padding:32px 0 0;text-align:center;font-size:0.65rem;color:rgba(255,255,255,0.2);line-height:1.7;">
       MMA Bridge &nbsp;·&nbsp; <a href="{SITE_URL}" style="color:rgba(255,255,255,0.2);text-decoration:none;">mmabridge.com</a><br>
-      <a href="{SITE_URL}/profile.html" style="color:rgba(255,255,255,0.2);text-decoration:none;">Manage notification preferences</a>
+      <a href="{_unsub_url(user_id) if user_id else (SITE_URL + '/profile.html')}" style="color:rgba(255,255,255,0.2);text-decoration:none;">Unsubscribe from digest</a>
     </td></tr>
 
   </table>
@@ -246,13 +259,23 @@ def send_weekly_digest(sb):
                 email = u.get('email', '')
                 if not email:
                     continue
-                uid          = u.get('id', '')
+                uid = u.get('id', '')
+
+                # Check opt-out in profiles table
+                try:
+                    opt_res = sb.table('profiles').select('email_opt_out').eq('id', uid).single().execute()
+                    if (opt_res.data or {}).get('email_opt_out'):
+                        logger.debug('[Digest] Skipping opted-out user %s', uid)
+                        continue
+                except Exception:
+                    pass  # if no profile row, send anyway
+
                 display_name = (u.get('user_metadata') or {}).get('display_name') or email.split('@')[0]
                 stats        = _get_user_stats(sb, uid)
 
-                week = datetime.now(timezone.utc).strftime('%b %d')
+                week    = datetime.now(timezone.utc).strftime('%b %d')
                 subject = f'MMA Bridge — Your weekly update ({week})'
-                html    = _build_html(display_name, upcoming, stats)
+                html    = _build_html(display_name, upcoming, stats, user_id=uid)
 
                 if _send_email(email, subject, html):
                     sent += 1

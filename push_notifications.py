@@ -186,6 +186,102 @@ def announce_fighters(sb, fighter_names: list, event_name: str, event_id: str):
             sb.table('push_subscriptions').delete().eq('browser_id', sub['browser_id']).execute()
 
 
+# ── Post-event results push ───────────────────
+def push_post_event_results(sb):
+    """
+    Runs every 2 hours. For any event that ended 3-9 hours ago and
+    hasn't been notified yet, send a push to all subscribers.
+    """
+    import json as _json
+    from pathlib import Path as _Path
+
+    # Load events.json from frontend (dev) or same dir (prod)
+    here = _Path(__file__).parent
+    for candidate in [
+        here.parent / 'MMA Bridge_FRONTEND' / 'events.json',
+        here / 'events.json',
+    ]:
+        if candidate.exists():
+            try:
+                with open(candidate) as f:
+                    events = _json.load(f)
+                break
+            except Exception:
+                continue
+    else:
+        return
+
+    now = datetime.now(timezone.utc)
+    window_start = now - timedelta(hours=9)
+    window_end   = now - timedelta(hours=3)
+
+    for ev in events:
+        iso = ev.get('isoDate', '')
+        if not iso:
+            continue
+        try:
+            ev_dt = datetime.fromisoformat(iso.replace('Z', '+00:00'))
+        except Exception:
+            continue
+        if not (window_start <= ev_dt <= window_end):
+            continue
+
+        ev_id = ev.get('id', '')
+        if not ev_id:
+            continue
+
+        # Check if already notified
+        try:
+            existing = sb.table('push_event_notified').select('event_id').eq('event_id', ev_id).execute()
+            if existing.data:
+                continue
+        except Exception:
+            continue
+
+        # Get all push subscriptions
+        try:
+            subs_res = sb.table('push_subscriptions').select('endpoint, p256dh, auth').execute()
+            subs = subs_res.data or []
+        except Exception as e:
+            logger.error('[Push] Failed to get subs for post-event: %s', e)
+            continue
+
+        expired_ids = []
+        for sub in subs:
+            result = send_push(
+                endpoint=sub['endpoint'],
+                p256dh=sub['p256dh'],
+                auth_key=sub['auth'],
+                payload={
+                    'title': f'Results are in — {ev.get("name", "UFC Event")}',
+                    'body':  'See how your picks did! Check your score now.',
+                    'url':   f'/picks.html?id={ev_id}',
+                    'tag':   f'results-{ev_id}',
+                    'requireInteraction': False,
+                },
+            )
+            if result == 'expired':
+                expired_ids.append(sub['endpoint'])
+
+        # Remove expired subscriptions
+        for ep in expired_ids:
+            try:
+                sb.table('push_subscriptions').delete().eq('endpoint', ep).execute()
+            except Exception:
+                pass
+
+        # Mark as notified
+        try:
+            sb.table('push_event_notified').upsert(
+                {'event_id': ev_id, 'notified_at': now.isoformat()},
+                on_conflict='event_id',
+            ).execute()
+        except Exception as e:
+            logger.warning('[Push] Could not mark event notified: %s', e)
+
+        logger.info('[Push] Post-event push sent for %s to %d subscribers', ev_id, len(subs))
+
+
 # ── APScheduler setup ─────────────────────────
 def start_scheduler(sb):
     """
@@ -218,6 +314,14 @@ def start_scheduler(sb):
             logger.info('[Push] Weekly email digest scheduled — Mondays 09:00 UTC')
         except Exception as _digest_err:
             logger.warning('[Push] Email digest job not loaded: %s', _digest_err)
+
+        # Every 2 hours — post-event results push
+        scheduler.add_job(
+            func=lambda: push_post_event_results(sb),
+            trigger=CronTrigger(hour='*/2', minute=30),
+            id='post_event_results',
+            replace_existing=True,
+        )
 
         scheduler.start()
         logger.info('[Push] Scheduler started — daily check at 08:00 UTC')

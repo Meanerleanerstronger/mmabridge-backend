@@ -1014,6 +1014,186 @@ def get_odds(event_id):
 
 
 # ==============================================
+# ADMIN PANEL ENDPOINTS
+# Set ADMIN_PASSWORD env var in Render dashboard.
+# ==============================================
+
+import hmac as _hmac
+import hashlib as _hashlib
+import secrets as _secrets
+
+_ADMIN_TOKENS = set()  # in-memory; resets on dyno restart (fine for solo admin)
+
+def _make_admin_token(password: str) -> str:
+    secret = os.environ.get('ADMIN_PASSWORD', '')
+    sig = _hmac.new(secret.encode(), password.encode(), _hashlib.sha256).hexdigest()
+    tok = _secrets.token_hex(16) + sig[:8]
+    _ADMIN_TOKENS.add(tok)
+    return tok
+
+def _verify_admin_token(tok: str) -> bool:
+    return tok in _ADMIN_TOKENS
+
+
+@app.route('/api/admin/auth', methods=['POST'])
+def admin_auth():
+    data = request.get_json(silent=True) or {}
+    pw   = (data.get('password') or '').strip()
+    expected = os.environ.get('ADMIN_PASSWORD', '')
+    if not expected:
+        return jsonify({'error': 'Admin not configured'}), 503
+    if not pw or not _hmac.compare_digest(pw, expected):
+        return jsonify({'error': 'Invalid password'}), 401
+    return jsonify({'token': _make_admin_token(pw)})
+
+
+@app.route('/api/admin/results', methods=['GET'])
+def admin_get_results():
+    tok = request.args.get('token', '')
+    if not _verify_admin_token(tok):
+        return jsonify({'error': 'Unauthorized'}), 401
+    event_id = request.args.get('event_id', '')
+    try:
+        q = _supabase_client.table('fight_results').select('*')
+        if event_id:
+            q = q.eq('event_id', event_id)
+        res = q.execute()
+        return jsonify({'results': res.data or []})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/admin/set-result', methods=['POST'])
+def admin_set_result():
+    data = request.get_json(silent=True) or {}
+    tok  = (data.get('token') or '').strip()
+    if not _verify_admin_token(tok):
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    event_id  = (data.get('event_id')  or '').strip()
+    fight_key = (data.get('fight_key') or '').strip()
+    winner    = (data.get('winner')    or '').strip().lower()
+    method    = (data.get('method')    or '').strip()
+    fotn      = (data.get('fotn')      or '').strip().lower()
+
+    if not event_id or not fight_key:
+        return jsonify({'error': 'event_id and fight_key required'}), 400
+
+    try:
+        _supabase_client.table('fight_results').upsert(
+            {
+                'event_id':   event_id,
+                'fight_key':  fight_key,
+                'winner':     winner or None,
+                'method':     method or None,
+                'fotn':       fotn   or None,
+                'updated_at': datetime.now(timezone.utc).isoformat(),
+            },
+            on_conflict='event_id,fight_key',
+        ).execute()
+        return jsonify({'ok': True})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# ==============================================
+# EMAIL UNSUBSCRIBE
+# ==============================================
+
+import hashlib as _hl
+
+def _unsub_token(user_id: str) -> str:
+    secret = os.environ.get('RESEND_API_KEY', 'unsub-secret')
+    return _hmac.new(secret.encode(), user_id.encode(), _hl.sha256).hexdigest()[:32]
+
+
+@app.route('/api/unsubscribe', methods=['GET'])
+def unsubscribe():
+    uid   = request.args.get('uid', '')
+    token = request.args.get('token', '')
+    if not uid or not token:
+        return 'Missing parameters.', 400
+    if not _hmac.compare_digest(token, _unsub_token(uid)):
+        return 'Invalid unsubscribe link.', 400
+    try:
+        _supabase_client.table('profiles') \
+            .update({'email_opt_out': True}) \
+            .eq('id', uid) \
+            .execute()
+    except Exception as e:
+        return f'Error updating preference: {e}', 500
+    return '''<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Unsubscribed</title>
+    <style>body{font-family:Inter,sans-serif;background:#0d0d10;color:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;}
+    .box{text-align:center;max-width:380px;padding:40px 20px;}h2{font-family:Montserrat,sans-serif;color:#c8960c;}p{color:rgba(255,255,255,0.55);font-size:0.9rem;}
+    a{color:rgba(0,229,255,0.7);text-decoration:none;}</style></head>
+    <body><div class="box"><h2>Unsubscribed</h2>
+    <p>You've been removed from the MMA Bridge weekly digest. No more emails.</p>
+    <p style="margin-top:28px"><a href="https://mmabridge.com">Back to MMA Bridge</a></p></div></body></html>'''
+
+
+# ==============================================
+# FIGHTER NEWS FEED (RSS)
+# ==============================================
+
+import time as _time
+_news_cache = {}   # name_slug → (timestamp, articles_list)
+_NEWS_TTL   = 3600  # 1-hour cache
+
+def _fetch_fighter_news(name: str) -> list:
+    from xml.etree import ElementTree as ET
+    feeds = [
+        'https://www.mmafighting.com/rss/current',
+        'https://mmajunkie.usatoday.com/feed',
+    ]
+    name_lower = name.lower()
+    name_parts = [p for p in name_lower.split() if len(p) > 2]
+    articles = []
+
+    for feed_url in feeds:
+        try:
+            r = requests.get(feed_url, timeout=8, headers={'User-Agent': 'MMABridge/1.0'})
+            if not r.ok:
+                continue
+            root = ET.fromstring(r.content)
+            ns = {}
+            for item in root.iter('item'):
+                title = (item.findtext('title') or '').strip()
+                link  = (item.findtext('link')  or '').strip()
+                pub   = (item.findtext('pubDate') or '').strip()
+                desc  = (item.findtext('description') or '')
+                # Remove HTML tags from desc
+                desc = re.sub(r'<[^>]+>', '', desc).strip()[:200]
+
+                combined = (title + ' ' + desc).lower()
+                if any(part in combined for part in name_parts):
+                    articles.append({'title': title, 'url': link, 'date': pub, 'source': feed_url.split('/')[2]})
+                    if len(articles) >= 8:
+                        break
+        except Exception:
+            continue
+        if len(articles) >= 8:
+            break
+
+    return articles[:8]
+
+
+@app.route('/api/news/fighter', methods=['GET'])
+def get_fighter_news():
+    name = (request.args.get('name') or '').strip()
+    if not name or len(name) < 3:
+        return jsonify({'articles': []})
+
+    slug = re.sub(r'[^a-z0-9]', '-', name.lower())
+    cached = _news_cache.get(slug)
+    if cached and (_time.time() - cached[0]) < _NEWS_TTL:
+        return jsonify({'articles': cached[1]})
+
+    articles = _fetch_fighter_news(name)
+    _news_cache[slug] = (_time.time(), articles)
+    return jsonify({'articles': articles})
+
+
+# ==============================================
 # ERROR HANDLERS
 # ==============================================
 
