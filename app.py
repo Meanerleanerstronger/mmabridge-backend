@@ -1141,40 +1141,51 @@ _NEWS_TTL   = 3600  # 1-hour cache
 
 def _fetch_fighter_news(name: str) -> list:
     from xml.etree import ElementTree as ET
-    feeds = [
-        'https://www.mmafighting.com/rss/current',
-        'https://mmajunkie.usatoday.com/feed',
-    ]
-    name_lower = name.lower()
-    name_parts = [p for p in name_lower.split() if len(p) > 2]
+    import urllib.parse
+
+    # Google News RSS — no API key, reliable, fighter-specific query
+    query     = urllib.parse.quote_plus(f'{name} UFC MMA')
+    feed_url  = f'https://news.google.com/rss/search?q={query}&hl=en-US&gl=US&ceid=US:en'
+
     articles = []
+    try:
+        r = requests.get(
+            feed_url,
+            timeout=10,
+            headers={
+                'User-Agent': 'Mozilla/5.0 (compatible; MMABridge/1.0)',
+                'Accept': 'application/rss+xml, application/xml, text/xml',
+            },
+        )
+        if not r.ok:
+            return []
 
-    for feed_url in feeds:
-        try:
-            r = requests.get(feed_url, timeout=8, headers={'User-Agent': 'MMABridge/1.0'})
-            if not r.ok:
+        root = ET.fromstring(r.content)
+        for item in root.iter('item'):
+            title  = (item.findtext('title')   or '').strip()
+            link   = (item.findtext('link')    or '').strip()
+            pub    = (item.findtext('pubDate') or '').strip()
+            source = ''
+            # Google News wraps source in <source> tag
+            src_el = item.find('source')
+            if src_el is not None:
+                source = (src_el.text or '').strip()
+
+            if not title or not link:
                 continue
-            root = ET.fromstring(r.content)
-            ns = {}
-            for item in root.iter('item'):
-                title = (item.findtext('title') or '').strip()
-                link  = (item.findtext('link')  or '').strip()
-                pub   = (item.findtext('pubDate') or '').strip()
-                desc  = (item.findtext('description') or '')
-                # Remove HTML tags from desc
-                desc = re.sub(r'<[^>]+>', '', desc).strip()[:200]
 
-                combined = (title + ' ' + desc).lower()
-                if any(part in combined for part in name_parts):
-                    articles.append({'title': title, 'url': link, 'date': pub, 'source': feed_url.split('/')[2]})
-                    if len(articles) >= 8:
-                        break
-        except Exception:
-            continue
-        if len(articles) >= 8:
-            break
+            articles.append({
+                'title':  title,
+                'url':    link,
+                'date':   pub,
+                'source': source,
+            })
+            if len(articles) >= 8:
+                break
+    except Exception as e:
+        print(f'[News] fetch error for "{name}": {e}')
 
-    return articles[:8]
+    return articles
 
 
 @app.route('/api/news/fighter', methods=['GET'])
