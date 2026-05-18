@@ -1132,6 +1132,46 @@ def unsubscribe():
 
 
 # ==============================================
+# ACCOUNT DELETION (GDPR / CCPA)
+# ==============================================
+
+@app.route('/api/account/delete', methods=['POST'])
+def delete_account():
+    auth_header = request.headers.get('Authorization', '')
+    if not auth_header.startswith('Bearer '):
+        return jsonify({'error': 'Unauthorized'}), 401
+    token = auth_header[7:]
+
+    try:
+        user_resp = _supabase_client.auth.get_user(token)
+        user_id = user_resp.user.id if user_resp.user else None
+    except Exception:
+        user_id = None
+
+    if not user_id:
+        return jsonify({'error': 'Invalid or expired session'}), 401
+
+    try:
+        for table in ['picks', 'ratings', 'event_ratings', 'push_subscriptions', 'follows']:
+            try:
+                _supabase_client.table(table).delete().eq('user_id', user_id).execute()
+            except Exception:
+                pass
+        try:
+            _supabase_client.table('follows').delete().eq('follower_id', user_id).execute()
+        except Exception:
+            pass
+        try:
+            _supabase_client.table('profiles').delete().eq('id', user_id).execute()
+        except Exception:
+            pass
+        _supabase_client.auth.admin.delete_user(user_id)
+        return jsonify({'ok': True})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# ==============================================
 # FIGHTER NEWS FEED (RSS)
 # ==============================================
 
