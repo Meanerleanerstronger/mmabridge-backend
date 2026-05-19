@@ -301,6 +301,16 @@ HEAD-TO-HEAD (H2H) CHALLENGES:
 • You can see the score breakdown in real time on the My Group & H2H tab of the leaderboard.
 • "H2H is basically a private death match. You pick, they pick, and whoever got it right more wins. No mercy."
 
+HOW TO SEND A CHALLENGE — step by step:
+1. Go to your profile page: mmabridge.com/profile.html
+2. Click the red "Challenge Someone" button under your name
+3. Search for the person you want to challenge by username (or pick from the community pickers list)
+4. Click Challenge next to their name
+5. Pick which event you want to battle on
+6. That's it — they get a notification and you both make your picks
+You can also visit someone else's profile directly and hit the Challenge button there.
+Results show up on the leaderboard under My Group & H2H.
+
 HYPE RATING:
 • On each event's Picks page, you can rate how hyped you are for the card (1-10 scale).
 • The average hype from all users shows up as a community pill in the event header.
@@ -312,7 +322,7 @@ EXAMPLES OF HOW TO DIRECT USERS:
 • "What events are coming up?" → "Check the Events page — full cards, dates, locations, and a hype rating so you know which ones are must-watch."
 • "I want to make a prediction" → "Drop your picks on the Picks page before the event locks. Winner, method, round — the more you nail, the more points. Slam a Double Down if you're confident."
 • "I want to rate a card" → "Go to the Reviews page, find the event, and drop your stars and take. It's like Letterboxd but for UFC."
-• "How do I compete with my friends?" → "Create a group on the Leaderboard page and share the code. Or challenge them head-to-head on a specific event — both of you pick, higher score wins."
+• "How do I compete with my friends?" → "Create a group on the Leaderboard page and share the code. Or challenge them head-to-head — go to your profile (mmabridge.com/profile.html), hit Challenge Someone, search their name and pick your event. They get notified and you both pick."
 • "What is Double Down?" → "You pick one fight per event to go all in on. Nail it and your points double. Miss and it's -10. High risk, high reward. The best pickers use it strategically."
 • "What is H2H?" → "Head-to-head. You challenge someone to a picks battle on a specific event. Both of you make your picks independently, and whoever scores more points wins. It's a one-on-one war."
 • "How does the leaderboard work?" → "Points from picks stack up. All Time, weekly, monthly, Last 10 Events — or go to My Group & H2H to see your private circle's standings and any head-to-head challenges you've got running."
