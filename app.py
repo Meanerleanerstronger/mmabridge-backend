@@ -1118,27 +1118,27 @@ def admin_marketing_generate():
         return jsonify({'error': 'platforms must be a non-empty list'}), 400
 
     PLATFORM_RULES = {
-        'twitter':   'Twitter/X: max 280 characters, punchy, use 2-3 relevant hashtags like #UFC #MMA #mmabets, no filler words. Write 1 tweet.',
-        'instagram': 'Instagram: engaging caption up to 2200 chars, conversational, use line breaks for readability, end with 5-10 hashtags on a new line.',
-        'reddit':    'Reddit (r/MMA or r/ufc): write a Reddit post title (max 100 chars) + body (markdown, conversational, no self-promotion language, feels organic). Format: TITLE: ...\n\nBODY: ...',
-        'tiktok':    'TikTok: write a video caption/hook (first line must grab attention in under 5 words) + 3-5 hashtags. Max 150 chars total.',
-        'email':     'Email: write Subject line + Body. Subject: punchy <60 chars. Body: 150-250 words, personal tone, clear CTA button text at the end. Format: SUBJECT: ...\n\nBODY: ...',
+        'twitter':   'Twitter/X: max 260 characters. Write like a real MMA fan, not a brand account. Max 1 emoji total (or zero). 1-2 hashtags max (#UFC or #MMA only if they fit naturally). No exclamation spam. No "Let\'s go!" or "Don\'t miss it!" filler. End with mmabridge.com. Write exactly 1 tweet.',
+        'instagram': 'Instagram: caption up to 2200 chars, conversational and opinionated like a knowledgeable fan. Use line breaks. Max 2 emojis in body. End with 6-8 tight hashtags on a new line.',
+        'reddit':    'Reddit (r/MMA or r/ufc): write a Reddit post title (max 100 chars) + body. Body must sound organic — no hype language, no self-promotion tone, reads like a genuine fan post. Format: TITLE: ...\n\nBODY: ...',
+        'tiktok':    'TikTok: hook line (5 words max, no emoji) + 1-2 sentence body + 3-4 hashtags. Max 150 chars total.',
+        'email':     'Email: Subject line + Body. Subject: direct and specific, under 55 chars. Body: 150-200 words, written like a friend who follows MMA closely, clear CTA at the end. Format: SUBJECT: ...\n\nBODY: ...',
     }
 
     CONTENT_TYPE_CONTEXT = {
-        'event_promo':    'You are hyping an upcoming UFC/MMA event to drive engagement on MMA Bridge (mmabridge.com), the fan picks & predictions platform.',
-        'fight_highlight': 'You are sharing a fight result or highlight to generate discussion on MMA Bridge.',
-        'pick_prediction': 'You are teasing a fight pick/prediction to bring fans to the picks page on MMA Bridge.',
-        'weekly_recap':   'You are writing a weekly recap of results and leaderboard activity on MMA Bridge.',
-        'platform_cta':   'You are promoting MMA Bridge (mmabridge.com) as a platform — fan picks, leaderboard, fight reviews, Lucas AI bot.',
+        'event_promo':    'Promote an upcoming UFC/MMA event and drive fans to make their picks on MMA Bridge (mmabridge.com).',
+        'fight_highlight': 'Share a fight result or moment to spark discussion. Drive fans to leave a review on MMA Bridge.',
+        'pick_prediction': 'Tease a fight pick or prediction. Drive fans to the picks page on MMA Bridge.',
+        'weekly_recap':   'Recap recent results and leaderboard movement on MMA Bridge. Mention top pickers if relevant.',
+        'platform_cta':   'Promote MMA Bridge (mmabridge.com) — fan picks, leaderboard, fight reviews, Lucas AI chatbot.',
     }
 
     system = (
-        "You are a social media content writer for MMA Bridge (mmabridge.com), "
-        "an MMA fan platform for fight picks, leaderboards, event reviews, and the Lucas AI chatbot. "
-        "The brand voice is energetic, knowledgeable, authentic MMA fan — not corporate. "
-        "Always include a link to mmabridge.com or a relevant subpage when it fits naturally. "
-        f"Context: {CONTENT_TYPE_CONTEXT.get(content_type, '')}"
+        "You write social media posts for MMA Bridge (mmabridge.com), an MMA fan platform for fight picks, leaderboards, event reviews, and the Lucas AI chatbot. "
+        "Voice: sounds like a knowledgeable MMA fan who knows the sport deeply — direct, specific, zero corporate fluff. "
+        "NEVER use: excessive emojis, exclamation spam, phrases like 'Don't miss it', 'Get ready', 'Let's go', 'Fire', 'Epic', 'Amazing'. "
+        "ALWAYS be specific about the fighters/event mentioned. Include mmabridge.com naturally. "
+        f"Task context: {CONTENT_TYPE_CONTEXT.get(content_type, '')}"
     )
 
     results = {}
