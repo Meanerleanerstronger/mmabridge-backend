@@ -1227,6 +1227,62 @@ def admin_analytics():
 
 
 # ==============================================
+# ADMIN — SOCIAL POSTING
+# ==============================================
+
+from marketing_poster import post_reddit, post_twitter, post_instagram, platform_status
+
+
+@app.route('/api/admin/marketing/status', methods=['GET'])
+def admin_marketing_status():
+    tok = request.args.get('token', '')
+    if not _verify_admin_token(tok):
+        return jsonify({'error': 'Unauthorized'}), 401
+    return jsonify(platform_status())
+
+
+@app.route('/api/admin/marketing/post', methods=['POST'])
+@limiter.limit("10 per minute")
+def admin_marketing_post():
+    data = request.get_json(silent=True) or {}
+    tok  = (data.get('token') or '').strip()
+    if not _verify_admin_token(tok):
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    platform  = (data.get('platform') or '').strip().lower()
+    content   = (data.get('content') or '').strip()
+    image_url = (data.get('image_url') or '').strip()
+
+    if not platform or not content:
+        return jsonify({'error': 'platform and content required'}), 400
+
+    if platform == 'reddit':
+        # Expect content formatted as "TITLE: ...\n\nBODY: ..."
+        title, body = content, ''
+        if 'TITLE:' in content and 'BODY:' in content:
+            try:
+                parts = content.split('BODY:', 1)
+                title = parts[0].replace('TITLE:', '').strip()
+                body  = parts[1].strip()
+            except Exception:
+                pass
+        subreddit = (data.get('subreddit') or 'test').strip()
+        result = post_reddit(title, body, subreddit)
+
+    elif platform == 'twitter':
+        result = post_twitter(content)
+
+    elif platform == 'instagram':
+        result = post_instagram(content, image_url)
+
+    else:
+        return jsonify({'error': f'Unknown platform: {platform}'}), 400
+
+    status_code = 200 if result.get('ok') else 502
+    return jsonify(result), status_code
+
+
+# ==============================================
 # EMAIL UNSUBSCRIBE
 # ==============================================
 
