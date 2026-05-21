@@ -1097,6 +1097,136 @@ def admin_set_result():
 
 
 # ==============================================
+# ADMIN — MARKETING CONTENT GENERATION
+# ==============================================
+
+@app.route('/api/admin/marketing/generate', methods=['POST'])
+@limiter.limit("30 per minute")
+def admin_marketing_generate():
+    data = request.get_json(silent=True) or {}
+    tok  = (data.get('token') or '').strip()
+    if not _verify_admin_token(tok):
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    platforms    = data.get('platforms', ['twitter'])
+    content_type = (data.get('content_type') or 'event_promo').strip()
+    context      = (data.get('context') or '').strip()[:800]
+
+    if not context:
+        return jsonify({'error': 'context is required'}), 400
+    if not isinstance(platforms, list) or not platforms:
+        return jsonify({'error': 'platforms must be a non-empty list'}), 400
+
+    PLATFORM_RULES = {
+        'twitter':   'Twitter/X: max 280 characters, punchy, use 2-3 relevant hashtags like #UFC #MMA #mmabets, no filler words. Write 1 tweet.',
+        'instagram': 'Instagram: engaging caption up to 2200 chars, conversational, use line breaks for readability, end with 5-10 hashtags on a new line.',
+        'reddit':    'Reddit (r/MMA or r/ufc): write a Reddit post title (max 100 chars) + body (markdown, conversational, no self-promotion language, feels organic). Format: TITLE: ...\n\nBODY: ...',
+        'tiktok':    'TikTok: write a video caption/hook (first line must grab attention in under 5 words) + 3-5 hashtags. Max 150 chars total.',
+        'email':     'Email: write Subject line + Body. Subject: punchy <60 chars. Body: 150-250 words, personal tone, clear CTA button text at the end. Format: SUBJECT: ...\n\nBODY: ...',
+    }
+
+    CONTENT_TYPE_CONTEXT = {
+        'event_promo':    'You are hyping an upcoming UFC/MMA event to drive engagement on MMA Bridge (mmabridge.com), the fan picks & predictions platform.',
+        'fight_highlight': 'You are sharing a fight result or highlight to generate discussion on MMA Bridge.',
+        'pick_prediction': 'You are teasing a fight pick/prediction to bring fans to the picks page on MMA Bridge.',
+        'weekly_recap':   'You are writing a weekly recap of results and leaderboard activity on MMA Bridge.',
+        'platform_cta':   'You are promoting MMA Bridge (mmabridge.com) as a platform — fan picks, leaderboard, fight reviews, Lucas AI bot.',
+    }
+
+    system = (
+        "You are a social media content writer for MMA Bridge (mmabridge.com), "
+        "an MMA fan platform for fight picks, leaderboards, event reviews, and the Lucas AI chatbot. "
+        "The brand voice is energetic, knowledgeable, authentic MMA fan — not corporate. "
+        "Always include a link to mmabridge.com or a relevant subpage when it fits naturally. "
+        f"Context: {CONTENT_TYPE_CONTEXT.get(content_type, '')}"
+    )
+
+    results = {}
+    try:
+        from chatbot import client as _openai_client
+        for platform in platforms:
+            rule = PLATFORM_RULES.get(platform)
+            if not rule:
+                continue
+            prompt = f"{rule}\n\nWrite content about: {context}"
+            resp = _openai_client.chat.completions.create(
+                model='gpt-4o-mini',
+                messages=[
+                    {'role': 'system', 'content': system},
+                    {'role': 'user',   'content': prompt},
+                ],
+                max_tokens=600,
+                temperature=0.85,
+            )
+            results[platform] = resp.choices[0].message.content.strip()
+        return jsonify({'results': results})
+    except Exception as e:
+        print(f'[Marketing] generate error: {e}')
+        return jsonify({'error': str(e)}), 500
+
+
+# ==============================================
+# ADMIN — ANALYTICS
+# ==============================================
+
+@app.route('/api/admin/analytics', methods=['GET'])
+def admin_analytics():
+    tok = request.args.get('token', '')
+    if not _verify_admin_token(tok):
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    try:
+        sb = _supabase_client
+
+        # Total users
+        users_res   = sb.table('profiles').select('id, username, created_at', count='exact').execute()
+        total_users = users_res.count or len(users_res.data or [])
+
+        # Total picks (exclude fotn and dd specials)
+        picks_res   = sb.table('picks').select('user_id, fight_key, created_at', count='exact').neq('fight_key', '__dd__').neq('fight_key', 'fotn').execute()
+        total_picks = picks_res.count or len(picks_res.data or [])
+
+        # Total reviews
+        reviews_res   = sb.table('event_ratings').select('id', count='exact').execute()
+        total_reviews = reviews_res.count or len(reviews_res.data or [])
+
+        # Active users this week (picks in last 7 days)
+        cutoff = (datetime.now(timezone.utc) - timedelta(days=7)).isoformat()
+        active_res = sb.table('picks').select('user_id').gte('created_at', cutoff).execute()
+        active_ids = set(r['user_id'] for r in (active_res.data or []))
+        active_week = len(active_ids)
+
+        # Recent signups (last 5)
+        recent_users = sorted(
+            (users_res.data or []),
+            key=lambda x: x.get('created_at', ''),
+            reverse=True
+        )[:5]
+
+        # Top pickers (most picks)
+        from collections import Counter
+        pick_counts = Counter(r['user_id'] for r in (picks_res.data or []))
+        top_picker_ids = [uid for uid, _ in pick_counts.most_common(5)]
+        top_pickers = []
+        for uid in top_picker_ids:
+            profile = next((u for u in (users_res.data or []) if u.get('id') == uid), None)
+            name = (profile or {}).get('username') or uid[:8]
+            top_pickers.append({'name': name, 'picks': pick_counts[uid]})
+
+        return jsonify({
+            'total_users':   total_users,
+            'total_picks':   total_picks,
+            'total_reviews': total_reviews,
+            'active_week':   active_week,
+            'recent_users':  recent_users,
+            'top_pickers':   top_pickers,
+        })
+    except Exception as e:
+        print(f'[Analytics] error: {e}')
+        return jsonify({'error': str(e)}), 500
+
+
+# ==============================================
 # EMAIL UNSUBSCRIBE
 # ==============================================
 
