@@ -160,12 +160,32 @@ def validate_str(val, name, max_len, required=True):
     return cleaned, None
 
 # ==============================================
-# IN-MEMORY VISITOR RING BUFFER (last 10)
+# VISITOR LOG — persisted to file, last 50
 # ==============================================
 
 import threading, time as _time
 _visitors_lock = threading.Lock()
 _visitors = []
+_VISITORS_FILE = os.path.join(os.path.dirname(__file__), 'data', 'visitors.json')
+
+def _load_visitors():
+    global _visitors
+    try:
+        if os.path.exists(_VISITORS_FILE):
+            with open(_VISITORS_FILE, 'r') as f:
+                _visitors = json.load(f)
+    except Exception:
+        _visitors = []
+
+def _save_visitors():
+    try:
+        os.makedirs(os.path.dirname(_VISITORS_FILE), exist_ok=True)
+        with open(_VISITORS_FILE, 'w') as f:
+            json.dump(_visitors, f)
+    except Exception:
+        pass
+
+_load_visitors()
 
 def _country_flag(code):
     if not code or len(code) != 2:
@@ -195,7 +215,8 @@ def _record_visitor(ip, fallback=False):
                   and v['city'] == city and v['country'] == country]
         if not recent:
             _visitors.insert(0, entry)
-            del _visitors[10:]
+            del _visitors[50:]
+            _save_visitors()
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 
