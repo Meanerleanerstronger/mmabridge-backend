@@ -1091,6 +1091,9 @@ def admin_set_result():
     if not _verify_admin_token(tok):
         return jsonify({'error': 'Unauthorized'}), 401
 
+    if _supabase_client is None:
+        return jsonify({'error': 'Supabase not connected — check SUPABASE_URL and SUPABASE_SERVICE_KEY env vars on Render'}), 503
+
     event_id  = (data.get('event_id')  or '').strip()
     fight_key = (data.get('fight_key') or '').strip()
     winner    = (data.get('winner')    or '').strip().lower()
