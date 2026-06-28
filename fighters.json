@@ -1,0 +1,1322 @@
+{
+  "islam-makhachev": {
+    "name": "Islam Makhachev",
+    "nickname": "",
+    "country": "Russia",
+    "flag": "🇷🇺",
+    "record": "28-1",
+    "division": "Lightweight",
+    "stance": "Southpaw",
+    "height": "5'10\"",
+    "reach": "70.5\"",
+    "age": "34",
+    "champion": true,
+    "last5": [
+      {"opponent":"Jack Della Maddalena","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 322"},
+      {"opponent":"Renato Moicano","result":"W","method":"D'Arce Choke","round":"1","time":"4:05","event":"UFC 311"},
+      {"opponent":"Dustin Poirier","result":"W","method":"D'Arce Choke","round":"5","time":"2:42","event":"UFC 302"},
+      {"opponent":"Alexander Volkanovski","result":"W","method":"KO","round":"1","time":"3:06","event":"UFC 294"},
+      {"opponent":"Alexander Volkanovski","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 284"}
+    ]
+  },
+  "ilia-topuria": {
+    "name": "Ilia Topuria",
+    "nickname": "El Matador",
+    "country": "Georgia/Spain",
+    "flag": "🇬🇪",
+    "record": "17-0",
+    "division": "Lightweight",
+    "stance": "Orthodox",
+    "height": "5'7\"",
+    "reach": "69\"",
+    "age": "28",
+    "champion": true,
+    "last5": [
+      {"opponent":"Charles Oliveira","result":"W","method":"KO","round":"1","time":"2:27","event":"UFC 317"},
+      {"opponent":"Max Holloway","result":"W","method":"KO","round":"3","time":"1:34","event":"UFC 308"},
+      {"opponent":"Alexander Volkanovski","result":"W","method":"KO","round":"2","time":"3:32","event":"UFC 298"},
+      {"opponent":"Josh Emmett","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC on ABC"},
+      {"opponent":"Bryce Mitchell","result":"W","method":"Sub (Arm Triangle)","round":"2","time":"3:10","event":"UFC 282"}
+    ]
+  },
+  "khamzat-chimaev": {
+    "name": "Khamzat Chimaev",
+    "nickname": "Borz",
+    "country": "Sweden",
+    "flag": "🇸🇪",
+    "record": "15-0",
+    "division": "Middleweight",
+    "stance": "Orthodox",
+    "height": "6'2\"",
+    "reach": "78\"",
+    "age": "31",
+    "champion": true,
+    "last5": [
+      {"opponent":"Dricus Du Plessis","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 319"},
+      {"opponent":"Robert Whittaker","result":"W","method":"Sub (Face Crank)","round":"1","time":"3:34","event":"UFC 308"},
+      {"opponent":"Kamaru Usman","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 294"},
+      {"opponent":"Kevin Holland","result":"W","method":"D'Arce Choke","round":"1","time":"2:13","event":"UFC 279"},
+      {"opponent":"Gilbert Burns","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 273"}
+    ]
+  },
+  "alex-pereira": {
+    "name": "Alex Pereira",
+    "nickname": "Poatan",
+    "country": "Brazil",
+    "flag": "🇧🇷",
+    "record": "12-2",
+    "division": "Heavyweight",
+    "stance": "Orthodox",
+    "height": "6'4\"",
+    "reach": "79\"",
+    "age": "37",
+    "champion": true,
+    "last5": [
+      {"opponent":"Ciryl Gane","result":"W","method":"KO","round":"2","time":"3:00","event":"UFC 313"},
+      {"opponent":"Magomed Ankalaev","result":"W","method":"KO","round":"1","time":"1:56","event":"UFC 307"},
+      {"opponent":"Jiri Prochazka","result":"W","method":"KO","round":"5","time":"4:13","event":"UFC 303"},
+      {"opponent":"Jiri Prochazka","result":"W","method":"KO","round":"2","time":"3:18","event":"UFC 300"},
+      {"opponent":"Jiri Prochazka","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 295"}
+    ]
+  },
+  "alexander-volkanovski": {
+    "name": "Alexander Volkanovski",
+    "nickname": "The Great",
+    "country": "Australia",
+    "flag": "🇦🇺",
+    "record": "27-4",
+    "division": "Featherweight",
+    "stance": "Orthodox",
+    "height": "5'6\"",
+    "reach": "71.5\"",
+    "age": "36",
+    "champion": false,
+    "last5": [
+      {"opponent":"Ilia Topuria","result":"L","method":"KO","round":"2","time":"3:32","event":"UFC 298"},
+      {"opponent":"Islam Makhachev","result":"L","method":"KO","round":"1","time":"3:06","event":"UFC 294"},
+      {"opponent":"Yair Rodriguez","result":"W","method":"TKO","round":"3","time":"4:55","event":"UFC 290"},
+      {"opponent":"Islam Makhachev","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 284"},
+      {"opponent":"Max Holloway","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 276"}
+    ]
+  },
+  "sean-strickland": {
+    "name": "Sean Strickland",
+    "nickname": "Tarzan",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "30-6",
+    "division": "Middleweight",
+    "stance": "Orthodox",
+    "height": "6'1\"",
+    "reach": "76\"",
+    "age": "34",
+    "champion": false,
+    "last5": [
+      {"opponent":"Khamzat Chimaev","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 319"},
+      {"opponent":"Dricus Du Plessis","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 297"},
+      {"opponent":"Alex Pereira","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 293"},
+      {"opponent":"Adesanya","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 293"},
+      {"opponent":"Jared Cannonier","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 292"}
+    ]
+  },
+  "dricus-du-plessis": {
+    "name": "Dricus Du Plessis",
+    "nickname": "Stillknocks",
+    "country": "South Africa",
+    "flag": "🇿🇦",
+    "record": "22-3",
+    "division": "Middleweight",
+    "stance": "Orthodox",
+    "height": "6'1\"",
+    "reach": "76\"",
+    "age": "31",
+    "champion": false,
+    "last5": [
+      {"opponent":"Khamzat Chimaev","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 319"},
+      {"opponent":"Sean Strickland","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 297"},
+      {"opponent":"Robert Whittaker","result":"W","method":"TKO","round":"4","time":"1:16","event":"UFC 290"},
+      {"opponent":"Israel Adesanya","result":"W","method":"Sub","round":"4","time":"2:56","event":"UFC 305"},
+      {"opponent":"Jared Cannonier","result":"W","method":"TKO","round":"2","time":"2:03","event":"UFC 286"}
+    ]
+  },
+  "tom-aspinall": {
+    "name": "Tom Aspinall",
+    "nickname": "The Terminator",
+    "country": "UK",
+    "flag": "🇬🇧",
+    "record": "15-3",
+    "division": "Heavyweight",
+    "stance": "Orthodox",
+    "height": "6'5\"",
+    "reach": "78\"",
+    "age": "31",
+    "champion": true,
+    "last5": [
+      {"opponent":"Jon Jones","result":"W","method":"TKO","round":"1","time":"1:22","event":"UFC 309"},
+      {"opponent":"Sergei Pavlovich","result":"W","method":"TKO","round":"1","time":"0:35","event":"UFC 295"},
+      {"opponent":"Marcin Tybura","result":"W","method":"Sub","round":"1","time":"1:35","event":"UFC 295"},
+      {"opponent":"Alexander Volkov","result":"L","method":"Sub","round":"1","time":"0:24","event":"UFC London"},
+      {"opponent":"Sergei Pavlovich","result":"W","method":"TKO","round":"1","time":"2:37","event":"UFC London"}
+    ]
+  },
+  "merab-dvalishvili": {
+    "name": "Merab Dvalishvili",
+    "nickname": "The Machine",
+    "country": "Georgia",
+    "flag": "🇬🇪",
+    "record": "20-4",
+    "division": "Bantamweight",
+    "stance": "Orthodox",
+    "height": "5'7\"",
+    "reach": "67\"",
+    "age": "33",
+    "champion": true,
+    "last5": [
+      {"opponent":"Sean O'Malley","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 306"},
+      {"opponent":"Henry Cejudo","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 298"},
+      {"opponent":"Marlon Vera","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 288"},
+      {"opponent":"Jose Aldo","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 278"},
+      {"opponent":"Song Yadong","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 282"}
+    ]
+  },
+  "alexandre-pantoja": {
+    "name": "Alexandre Pantoja",
+    "nickname": "The Cannibal",
+    "country": "Brazil",
+    "flag": "🇧🇷",
+    "record": "28-5",
+    "division": "Flyweight",
+    "stance": "Orthodox",
+    "height": "5'6\"",
+    "reach": "66\"",
+    "age": "34",
+    "champion": true,
+    "last5": [
+      {"opponent":"Steve Erceg","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 303"},
+      {"opponent":"Brandon Royval","result":"W","method":"Sub","round":"3","time":"3:56","event":"UFC 296"},
+      {"opponent":"Brandon Moreno","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 290"},
+      {"opponent":"Amir Albazi","result":"W","method":"TKO","round":"4","time":"4:46","event":"UFC 301"},
+      {"opponent":"Brandon Moreno","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 277"}
+    ]
+  },
+  "max-holloway": {
+    "name": "Max Holloway",
+    "nickname": "Blessed",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "26-8",
+    "division": "Featherweight",
+    "stance": "Orthodox",
+    "height": "5'11\"",
+    "reach": "69\"",
+    "age": "33",
+    "champion": false,
+    "last5": [
+      {"opponent":"Ilia Topuria","result":"L","method":"KO","round":"3","time":"1:34","event":"UFC 308"},
+      {"opponent":"Justin Gaethje","result":"W","method":"KO","round":"5","time":"4:46","event":"UFC 300"},
+      {"opponent":"Arnold Allen","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC on ESPN"},
+      {"opponent":"Yair Rodriguez","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 290"},
+      {"opponent":"Alexander Volkanovski","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 276"}
+    ]
+  },
+  "charles-oliveira": {
+    "name": "Charles Oliveira",
+    "nickname": "Do Bronx",
+    "country": "Brazil",
+    "flag": "🇧🇷",
+    "record": "35-10",
+    "division": "Lightweight",
+    "stance": "Orthodox",
+    "height": "5'10\"",
+    "reach": "74\"",
+    "age": "35",
+    "champion": false,
+    "last5": [
+      {"opponent":"Ilia Topuria","result":"L","method":"KO","round":"1","time":"2:27","event":"UFC 317"},
+      {"opponent":"Arman Tsarukyan","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 300"},
+      {"opponent":"Islam Makhachev","result":"L","method":"Sub","round":"2","time":"4:05","event":"UFC 280"},
+      {"opponent":"Beneil Dariush","result":"W","method":"KO","round":"3","time":"0:41","event":"UFC 289"},
+      {"opponent":"Dustin Poirier","result":"W","method":"Sub","round":"3","time":"0:38","event":"UFC 269"}
+    ]
+  },
+  "dustin-poirier": {
+    "name": "Dustin Poirier",
+    "nickname": "The Diamond",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "31-9",
+    "division": "Lightweight",
+    "stance": "Southpaw",
+    "height": "5'9\"",
+    "reach": "72\"",
+    "age": "35",
+    "champion": false,
+    "last5": [
+      {"opponent":"Islam Makhachev","result":"L","method":"D'Arce Choke","round":"5","time":"2:42","event":"UFC 302"},
+      {"opponent":"Justin Gaethje","result":"W","method":"TKO","round":"3","time":"2:16","event":"UFC 291"},
+      {"opponent":"Michael Chandler","result":"NC","method":"NC","round":"3","time":"2:16","event":"TUF 31"},
+      {"opponent":"Islam Makhachev","result":"L","method":"Sub","round":"2","time":"4:05","event":"UFC 302"},
+      {"opponent":"Conor McGregor","result":"W","method":"TKO","round":"2","time":"2:32","event":"UFC 264"}
+    ]
+  },
+  "arman-tsarukyan": {
+    "name": "Arman Tsarukyan",
+    "nickname": "Ahalkalakets",
+    "country": "Armenia",
+    "flag": "🇦🇲",
+    "record": "22-3",
+    "division": "Lightweight",
+    "stance": "Southpaw",
+    "height": "5'9\"",
+    "reach": "70\"",
+    "age": "28",
+    "champion": false,
+    "last5": [
+      {"opponent":"Justin Gaethje","result":"W","method":"KO","round":"1","time":"3:10","event":"UFC 311"},
+      {"opponent":"Charles Oliveira","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 300"},
+      {"opponent":"Beneil Dariush","result":"W","method":"KO","round":"2","time":"1:48","event":"UFC 296"},
+      {"opponent":"Islam Makhachev","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 276"},
+      {"opponent":"Mateusz Gamrot","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 268"}
+    ]
+  },
+  "justin-gaethje": {
+    "name": "Justin Gaethje",
+    "nickname": "The Highlight",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "25-5",
+    "division": "Lightweight",
+    "stance": "Orthodox",
+    "height": "5'11\"",
+    "reach": "70\"",
+    "age": "36",
+    "champion": false,
+    "last5": [
+      {"opponent":"Arman Tsarukyan","result":"L","method":"KO","round":"1","time":"3:10","event":"UFC 311"},
+      {"opponent":"Max Holloway","result":"L","method":"KO","round":"5","time":"4:46","event":"UFC 300"},
+      {"opponent":"Dustin Poirier","result":"L","method":"TKO","round":"3","time":"2:16","event":"UFC 291"},
+      {"opponent":"Rafael Fiziev","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 268"},
+      {"opponent":"Cameron","result":"W","method":"TKO","round":"3","time":"2:31","event":"UFC on ESPN"}
+    ]
+  },
+  "paddy-pimblett": {
+    "name": "Paddy Pimblett",
+    "nickname": "The Baddy",
+    "country": "UK",
+    "flag": "🇬🇧",
+    "record": "22-3",
+    "division": "Lightweight",
+    "stance": "Orthodox",
+    "height": "5'10\"",
+    "reach": "73\"",
+    "age": "30",
+    "champion": false,
+    "last5": [
+      {"opponent":"Michael Chandler","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 303"},
+      {"opponent":"Tony Ferguson","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC 296"},
+      {"opponent":"Jared Gordon","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC on ESPN"},
+      {"opponent":"Jordan Leavitt","result":"W","method":"Sub","round":"2","time":"2:56","event":"UFC London"},
+      {"opponent":"Rodrigo Vargas","result":"W","method":"Sub","round":"1","time":"1:56","event":"UFC London"}
+    ]
+  },
+  "jack-della-maddalena": {
+    "name": "Jack Della Maddalena",
+    "nickname": "JDM",
+    "country": "Australia",
+    "flag": "🇦🇺",
+    "record": "18-2",
+    "division": "Welterweight",
+    "stance": "Orthodox",
+    "height": "6'1\"",
+    "reach": "76\"",
+    "age": "28",
+    "champion": false,
+    "last5": [
+      {"opponent":"Islam Makhachev","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 322"},
+      {"opponent":"Michael Page","result":"W","method":"KO","round":"1","time":"2:10","event":"UFC 299"},
+      {"opponent":"Gilbert Burns","result":"W","method":"KO","round":"1","time":"1:30","event":"UFC 298"},
+      {"opponent":"Randy Brown","result":"W","method":"KO","round":"2","time":"3:44","event":"UFC 296"},
+      {"opponent":"Kevin Holland","result":"W","method":"KO","round":"3","time":"4:55","event":"UFC 291"}
+    ]
+  },
+  "magomed-ankalaev": {
+    "name": "Magomed Ankalaev",
+    "nickname": "",
+    "country": "Russia",
+    "flag": "🇷🇺",
+    "record": "20-2",
+    "division": "Light Heavyweight",
+    "stance": "Southpaw",
+    "height": "6'3\"",
+    "reach": "77\"",
+    "age": "32",
+    "champion": false,
+    "last5": [
+      {"opponent":"Alex Pereira","result":"L","method":"KO","round":"1","time":"1:56","event":"UFC 307"},
+      {"opponent":"Johnny Walker","result":"W","method":"KO","round":"1","time":"3:15","event":"UFC 294"},
+      {"opponent":"Aleksandar Rakic","result":"W","method":"TKO","round":"3","time":"2:44","event":"UFC Fight Night"},
+      {"opponent":"Jan Blachowicz","result":"NC","method":"NC","round":"3","time":"5:00","event":"UFC 282"},
+      {"opponent":"Volkan Oezdemir","result":"W","method":"KO","round":"2","time":"3:27","event":"UFC Fight Night"}
+    ]
+  },
+  "petr-yan": {
+    "name": "Petr Yan",
+    "nickname": "No Mercy",
+    "country": "Russia",
+    "flag": "🇷🇺",
+    "record": "17-5",
+    "division": "Bantamweight",
+    "stance": "Orthodox",
+    "height": "5'7\"",
+    "reach": "67\"",
+    "age": "32",
+    "champion": false,
+    "last5": [
+      {"opponent":"Deiveson Figueiredo","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Song Yadong","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 299"},
+      {"opponent":"Merab Dvalishvili","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 235"},
+      {"opponent":"Aljamain Sterling","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 273"},
+      {"opponent":"Sean O'Malley","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 280"}
+    ]
+  },
+  "sean-omalley": {
+    "name": "Sean O'Malley",
+    "nickname": "Sugar",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "18-2",
+    "division": "Bantamweight",
+    "stance": "Southpaw",
+    "height": "5'11\"",
+    "reach": "72\"",
+    "age": "30",
+    "champion": false,
+    "last5": [
+      {"opponent":"Merab Dvalishvili","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 306"},
+      {"opponent":"Marlon Vera","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 299"},
+      {"opponent":"Aljamain Sterling","result":"W","method":"KO","round":"2","time":"3:55","event":"UFC 292"},
+      {"opponent":"Petr Yan","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 280"},
+      {"opponent":"Pedro Munhoz","result":"NC","method":"NC","round":"2","time":"3:11","event":"UFC 276"}
+    ]
+  },
+  "mauricio-ruffy": {
+    "name": "Mauricio Ruffy",
+    "nickname": "The Brazilian Gangster",
+    "country": "Brazil",
+    "flag": "🇧🇷",
+    "record": "9-1",
+    "division": "Lightweight",
+    "stance": "Orthodox",
+    "height": "5'11\"",
+    "reach": "72\"",
+    "age": "26",
+    "champion": false,
+    "last5": [
+      {"opponent":"Michael Chandler","result":"W","method":"KO","round":"1","time":"1:38","event":"UFC Freedom 250"},
+      {"opponent":"Jack Jenkins","result":"W","method":"KO","round":"1","time":"0:52","event":"UFC 311"},
+      {"opponent":"James Llontop","result":"W","method":"KO","round":"1","time":"0:45","event":"UFC 305"},
+      {"opponent":"Charles Johnson","result":"W","method":"KO","round":"1","time":"1:02","event":"UFC on ESPN"},
+      {"opponent":"Esteban Ribovics","result":"W","method":"KO","round":"1","time":"0:38","event":"UFC 290"}
+    ]
+  },
+  "jena-silva": {
+    "name": "Jena Silva",
+    "nickname": "",
+    "country": "Brazil",
+    "flag": "🇧🇷",
+    "record": "14-1",
+    "division": "Atomweight/Strawweight",
+    "stance": "Orthodox",
+    "height": "5'2\"",
+    "reach": "62\"",
+    "age": "28",
+    "champion": false,
+    "last5": [
+      {"opponent":"Alyse Anderson","result":"W","method":"Sub","round":"1","time":"2:14","event":"UFC Fight Night"},
+      {"opponent":"Denise Gomes","result":"W","method":"TKO","round":"2","time":"4:55","event":"UFC Fight Night"},
+      {"opponent":"Ariane Lipski","result":"W","method":"KO","round":"1","time":"2:30","event":"UFC Fight Night"},
+      {"opponent":"Liang Na","result":"W","method":"KO","round":"1","time":"1:58","event":"UFC Fight Night"},
+      {"opponent":"Jinh Yu Frey","result":"W","method":"UD","round":"3","time":"5:00","event":"LFA"}
+    ]
+  },
+  "israel-adesanya": {
+    "name": "Israel Adesanya",
+    "nickname": "The Last Stylebender",
+    "country": "Nigeria/New Zealand",
+    "flag": "🇳🇿",
+    "record": "24-4",
+    "division": "Middleweight",
+    "stance": "Orthodox",
+    "height": "6'4\"",
+    "reach": "80\"",
+    "age": "35",
+    "champion": false,
+    "last5": [
+      {"opponent":"Dricus Du Plessis","result":"L","method":"Sub","round":"4","time":"2:56","event":"UFC 305"},
+      {"opponent":"Sean Strickland","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 293"},
+      {"opponent":"Alex Pereira","result":"L","method":"TKO","round":"6","time":"1:29","event":"UFC 287"},
+      {"opponent":"Alex Pereira","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 281"},
+      {"opponent":"Robert Whittaker","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 271"}
+    ]
+  },
+  "robert-whittaker": {
+    "name": "Robert Whittaker",
+    "nickname": "The Reaper",
+    "country": "Australia",
+    "flag": "🇦🇺",
+    "record": "25-8",
+    "division": "Middleweight",
+    "stance": "Orthodox",
+    "height": "6'0\"",
+    "reach": "74.5\"",
+    "age": "34",
+    "champion": false,
+    "last5": [
+      {"opponent":"Khamzat Chimaev","result":"L","method":"Sub","round":"1","time":"3:34","event":"UFC 308"},
+      {"opponent":"Paulo Costa","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 298"},
+      {"opponent":"Dricus Du Plessis","result":"L","method":"TKO","round":"4","time":"1:16","event":"UFC 290"},
+      {"opponent":"Paulo Costa","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Jared Cannonier","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 298"}
+    ]
+  },
+  "conor-mcgregor": {
+    "name": "Conor McGregor",
+    "nickname": "The Notorious",
+    "country": "Ireland",
+    "flag": "🇮🇪",
+    "record": "22-6",
+    "division": "Lightweight",
+    "stance": "Southpaw",
+    "height": "5'9\"",
+    "reach": "74\"",
+    "age": "36",
+    "champion": false,
+    "last5": [
+      {"opponent":"Michael Chandler","result":"NC","method":"NC","round":"3","time":"2:16","event":"TUF 31"},
+      {"opponent":"Dustin Poirier","result":"L","method":"TKO","round":"2","time":"2:32","event":"UFC 264"},
+      {"opponent":"Dustin Poirier","result":"L","method":"KO","round":"2","time":"2:17","event":"UFC 257"},
+      {"opponent":"Donald Cerrone","result":"W","method":"TKO","round":"1","time":"0:40","event":"UFC 246"},
+      {"opponent":"Khabib Nurmagomedov","result":"L","method":"Sub","round":"4","time":"3:03","event":"UFC 229"}
+    ]
+  },
+  "khabib-nurmagomedov": {
+    "name": "Khabib Nurmagomedov",
+    "nickname": "The Eagle",
+    "country": "Russia",
+    "flag": "🇷🇺",
+    "record": "29-0",
+    "division": "Lightweight",
+    "stance": "Orthodox",
+    "height": "5'10\"",
+    "reach": "70\"",
+    "age": "36",
+    "champion": false,
+    "last5": [
+      {"opponent":"Justin Gaethje","result":"W","method":"Sub","round":"2","time":"1:34","event":"UFC 254"},
+      {"opponent":"Dustin Poirier","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 242"},
+      {"opponent":"Conor McGregor","result":"W","method":"Sub","round":"4","time":"3:03","event":"UFC 229"},
+      {"opponent":"Al Iaquinta","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 223"},
+      {"opponent":"Edson Barboza","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"}
+    ]
+  },
+  "jon-jones": {
+    "name": "Jon Jones",
+    "nickname": "Bones",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "27-1",
+    "division": "Heavyweight",
+    "stance": "Orthodox",
+    "height": "6'4\"",
+    "reach": "84.5\"",
+    "age": "37",
+    "champion": false,
+    "last5": [
+      {"opponent":"Tom Aspinall","result":"L","method":"TKO","round":"1","time":"1:22","event":"UFC 309"},
+      {"opponent":"Stipe Miocic","result":"W","method":"Sub","round":"3","time":"2:18","event":"UFC 309"},
+      {"opponent":"Ciryl Gane","result":"W","method":"Sub","round":"1","time":"2:04","event":"UFC 285"},
+      {"opponent":"Dominick Reyes","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 247"},
+      {"opponent":"Thiago Santos","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 239"}
+    ]
+  },
+  "stipe-miocic": {
+    "name": "Stipe Miocic",
+    "nickname": "Stone Cold",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "20-5",
+    "division": "Heavyweight",
+    "stance": "Orthodox",
+    "height": "6'4\"",
+    "reach": "80\"",
+    "age": "42",
+    "champion": false,
+    "last5": [
+      {"opponent":"Jon Jones","result":"L","method":"Sub","round":"3","time":"2:18","event":"UFC 309"},
+      {"opponent":"Francis Ngannou","result":"L","method":"KO","round":"2","time":"0:52","event":"UFC 260"},
+      {"opponent":"Francis Ngannou","result":"W","method":"TKO","round":"2","time":"4:14","event":"UFC 241"},
+      {"opponent":"Daniel Cormier","result":"W","method":"TKO","round":"4","time":"1:21","event":"UFC 241"},
+      {"opponent":"Daniel Cormier","result":"L","method":"KO","round":"1","time":"4:49","event":"UFC 226"}
+    ]
+  },
+  "ciryl-gane": {
+    "name": "Ciryl Gane",
+    "nickname": "Bon Gamin",
+    "country": "France",
+    "flag": "🇫🇷",
+    "record": "13-3",
+    "division": "Heavyweight",
+    "stance": "Orthodox",
+    "height": "6'6\"",
+    "reach": "81\"",
+    "age": "35",
+    "champion": false,
+    "last5": [
+      {"opponent":"Alex Pereira","result":"L","method":"KO","round":"2","time":"3:00","event":"UFC 313"},
+      {"opponent":"Serghei Spivac","result":"W","method":"TKO","round":"3","time":"0:55","event":"UFC Fight Night"},
+      {"opponent":"Jon Jones","result":"L","method":"Sub","round":"1","time":"2:04","event":"UFC 285"},
+      {"opponent":"Tai Tuivasa","result":"W","method":"TKO","round":"3","time":"0:55","event":"UFC 270"},
+      {"opponent":"Francis Ngannou","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 270"}
+    ]
+  },
+  "bo-nickal": {
+    "name": "Bo Nickal",
+    "nickname": "",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "8-0",
+    "division": "Middleweight",
+    "stance": "Orthodox",
+    "height": "6'2\"",
+    "reach": "76\"",
+    "age": "28",
+    "champion": false,
+    "last5": [
+      {"opponent":"Cody Brundage","result":"W","method":"Sub","round":"1","time":"2:14","event":"UFC 300"},
+      {"opponent":"Paul Craig","result":"W","method":"Sub","round":"3","time":"4:55","event":"UFC 296"},
+      {"opponent":"Zak Smith","result":"W","method":"Sub","round":"1","time":"0:38","event":"The Ultimate Fighter"},
+      {"opponent":"Pickston","result":"W","method":"TKO","round":"1","time":"0:37","event":"UFC 290"},
+      {"opponent":"Davis","result":"W","method":"Sub","round":"1","time":"1:30","event":"UFC Fight Night"}
+    ]
+  },
+  "carlos-ulberg": {
+    "name": "Carlos Ulberg",
+    "nickname": "Black Jag",
+    "country": "New Zealand",
+    "flag": "🇳🇿",
+    "record": "11-1",
+    "division": "Light Heavyweight",
+    "stance": "Southpaw",
+    "height": "6'3\"",
+    "reach": "78\"",
+    "age": "31",
+    "champion": false,
+    "last5": [
+      {"opponent":"Bogdan Grad","result":"W","method":"KO","round":"1","time":"1:43","event":"UFC 310"},
+      {"opponent":"Dominick Reyes","result":"W","method":"TKO","round":"1","time":"1:45","event":"UFC Fight Night"},
+      {"opponent":"Alonzo Menifield","result":"W","method":"KO","round":"1","time":"2:05","event":"UFC 293"},
+      {"opponent":"Jun Yong Park","result":"W","method":"KO","round":"1","time":"0:39","event":"UFC Fight Night"},
+      {"opponent":"Kennedy Nzechukwu","result":"W","method":"KO","round":"1","time":"2:09","event":"UFC 290"}
+    ]
+  },
+  "jiri-prochazka": {
+    "name": "Jiri Prochazka",
+    "nickname": "Denisa",
+    "country": "Czech Republic",
+    "flag": "🇨🇿",
+    "record": "30-5",
+    "division": "Light Heavyweight",
+    "stance": "Orthodox",
+    "height": "6'4\"",
+    "reach": "80\"",
+    "age": "32",
+    "champion": false,
+    "last5": [
+      {"opponent":"Alex Pereira","result":"L","method":"KO","round":"2","time":"3:18","event":"UFC 300"},
+      {"opponent":"Alex Pereira","result":"L","method":"KO","round":"5","time":"4:13","event":"UFC 303"},
+      {"opponent":"Jamahal Hill","result":"W","method":"Sub","round":"2","time":"4:58","event":"UFC 300"},
+      {"opponent":"Aleksandar Rakic","result":"W","method":"KO","round":"2","time":"2:38","event":"UFC Fight Night"},
+      {"opponent":"Glover Teixeira","result":"W","method":"Sub","round":"5","time":"2:28","event":"UFC 275"}
+    ]
+  },
+  "joshua-van": {
+    "name": "Joshua Van",
+    "nickname": "The Tarantula",
+    "country": "Australia",
+    "flag": "🇦🇺",
+    "record": "15-3",
+    "division": "Flyweight",
+    "stance": "Orthodox",
+    "height": "5'6\"",
+    "reach": "67\"",
+    "age": "28",
+    "champion": true,
+    "last5": [
+      {"opponent":"Tatsuro Taira","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 328"},
+      {"opponent":"Matheus Nicolau","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Muhammad Mokaev","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Steve Erceg","result":"W","method":"KO","round":"3","time":"1:22","event":"UFC 305"},
+      {"opponent":"Brandon Royval","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"}
+    ]
+  },
+  "tatsuro-taira": {
+    "name": "Tatsuro Taira",
+    "nickname": "",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "record": "16-2",
+    "division": "Flyweight",
+    "stance": "Orthodox",
+    "height": "5'5\"",
+    "reach": "66\"",
+    "age": "25",
+    "champion": false,
+    "last5": [
+      {"opponent":"Joshua Van","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 328"},
+      {"opponent":"Amir Albazi","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 311"},
+      {"opponent":"Manel Kape","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Cody Durden","result":"W","method":"Sub","round":"2","time":"3:45","event":"UFC Fight Night"},
+      {"opponent":"Carlos Candelario","result":"W","method":"Sub","round":"1","time":"3:10","event":"UFC Fight Night"}
+    ]
+  },
+  "brendan-allen": {
+    "name": "Brendan Allen",
+    "nickname": "All In",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "25-5",
+    "division": "Middleweight",
+    "stance": "Orthodox",
+    "height": "6'1\"",
+    "reach": "76\"",
+    "age": "30",
+    "champion": false,
+    "last5": [
+      {"opponent":"Paul Craig","result":"W","method":"Sub","round":"2","time":"3:10","event":"UFC Fight Night"},
+      {"opponent":"Chris Curtis","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Karl Roberson","result":"W","method":"Sub","round":"1","time":"2:14","event":"UFC 304"},
+      {"opponent":"Joe Pyfer","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 302"},
+      {"opponent":"Bruno Silva","result":"W","method":"Sub","round":"3","time":"4:03","event":"UFC Fight Night"}
+    ]
+  },
+  "michael-chandler": {
+    "name": "Michael Chandler",
+    "nickname": "Iron",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "23-9",
+    "division": "Lightweight",
+    "stance": "Orthodox",
+    "height": "5'8\"",
+    "reach": "69\"",
+    "age": "38",
+    "champion": false,
+    "last5": [
+      {"opponent":"Mauricio Ruffy","result":"L","method":"KO","round":"1","time":"1:38","event":"UFC Freedom 250"},
+      {"opponent":"Paddy Pimblett","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 303"},
+      {"opponent":"Conor McGregor","result":"NC","method":"NC","round":"3","time":"2:16","event":"TUF 31"},
+      {"opponent":"Dustin Poirier","result":"L","method":"TKO","round":"3","time":"4:21","event":"UFC 281"},
+      {"opponent":"Tony Ferguson","result":"W","method":"KO","round":"2","time":"0:18","event":"UFC 274"}
+    ]
+  },
+  "nate-diaz": {
+    "name": "Nate Diaz",
+    "nickname": "The Stockton Slugger",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "21-14",
+    "division": "Welterweight",
+    "stance": "Southpaw",
+    "height": "6'0\"",
+    "reach": "76\"",
+    "age": "40",
+    "champion": false,
+    "last5": [
+      {"opponent":"Jake Paul","result":"L","method":"UD","round":"10","time":"3:00","event":"Most Valuable Promotions"},
+      {"opponent":"Tony Ferguson","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 279"},
+      {"opponent":"Leon Edwards","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 263"},
+      {"opponent":"Jorge Masvidal","result":"L","method":"TKO","round":"3","time":"0:13","event":"UFC 244"},
+      {"opponent":"Anthony Pettis","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC 241"}
+    ]
+  },
+  "gilbert-burns": {
+    "name": "Gilbert Burns",
+    "nickname": "Durinho",
+    "country": "Brazil",
+    "flag": "🇧🇷",
+    "record": "23-7",
+    "division": "Welterweight",
+    "stance": "Orthodox",
+    "height": "5'10\"",
+    "reach": "71\"",
+    "age": "38",
+    "champion": false,
+    "last5": [
+      {"opponent":"Jack Della Maddalena","result":"L","method":"KO","round":"1","time":"1:30","event":"UFC 298"},
+      {"opponent":"Joaquin Buckley","result":"L","method":"KO","round":"2","time":"2:55","event":"UFC Fight Night"},
+      {"opponent":"Jorge Masvidal","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 287"},
+      {"opponent":"Khamzat Chimaev","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 273"},
+      {"opponent":"Stephen Thompson","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 264"}
+    ]
+  },
+  "sean-brady": {
+    "name": "Sean Brady",
+    "nickname": "",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "17-1",
+    "division": "Welterweight",
+    "stance": "Orthodox",
+    "height": "5'11\"",
+    "reach": "73.5\"",
+    "age": "32",
+    "champion": false,
+    "last5": [
+      {"opponent":"Joaquin Buckley","result":"W","method":"TKO","round":"4","time":"3:22","event":"UFC 328"},
+      {"opponent":"Ian Machado Garry","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 310"},
+      {"opponent":"Belal Muhammad","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 280"},
+      {"opponent":"Michel Pereira","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Kelvin Gastelum","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC 268"}
+    ]
+  },
+  "ian-garry": {
+    "name": "Ian Machado Garry",
+    "nickname": "The Future",
+    "country": "Ireland",
+    "flag": "🇮🇪",
+    "record": "16-0",
+    "division": "Welterweight",
+    "stance": "Southpaw",
+    "height": "6'3\"",
+    "reach": "76\"",
+    "age": "27",
+    "champion": false,
+    "last5": [
+      {"opponent":"Sean Brady","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 310"},
+      {"opponent":"Michael Page","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 303"},
+      {"opponent":"Geoff Neal","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 298"},
+      {"opponent":"Neil Magny","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 292"},
+      {"opponent":"Song Kenan","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC 279"}
+    ]
+  },
+  "kamaru-usman": {
+    "name": "Kamaru Usman",
+    "nickname": "The Nigerian Nightmare",
+    "country": "Nigeria/USA",
+    "flag": "🇳🇬",
+    "record": "20-4",
+    "division": "Welterweight",
+    "stance": "Orthodox",
+    "height": "6'0\"",
+    "reach": "76\"",
+    "age": "37",
+    "champion": false,
+    "last5": [
+      {"opponent":"Khamzat Chimaev","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 294"},
+      {"opponent":"Leon Edwards","result":"L","method":"TKO","round":"2","time":"4:04","event":"UFC 286"},
+      {"opponent":"Leon Edwards","result":"L","method":"KO","round":"5","time":"4:31","event":"UFC 278"},
+      {"opponent":"Leon Edwards","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 261"},
+      {"opponent":"Jorge Masvidal","result":"W","method":"KO","round":"2","time":"1:02","event":"UFC 261"}
+    ]
+  },
+  "colby-covington": {
+    "name": "Colby Covington",
+    "nickname": "Chaos",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "17-5",
+    "division": "Welterweight",
+    "stance": "Orthodox",
+    "height": "5'11\"",
+    "reach": "72\"",
+    "age": "37",
+    "champion": false,
+    "last5": [
+      {"opponent":"Joaquin Buckley","result":"L","method":"KO","round":"4","time":"4:02","event":"UFC 305"},
+      {"opponent":"Leon Edwards","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 296"},
+      {"opponent":"Kamaru Usman","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 268"},
+      {"opponent":"Jorge Masvidal","result":"W","method":"TKO","round":"3","time":"2:09","event":"UFC 272"},
+      {"opponent":"Tyron Woodley","result":"W","method":"TKO","round":"5","time":"4:00","event":"UFC Fight Night"}
+    ]
+  },
+  "leon-edwards": {
+    "name": "Leon Edwards",
+    "nickname": "Rocky",
+    "country": "UK",
+    "flag": "🇬🇧",
+    "record": "22-4",
+    "division": "Welterweight",
+    "stance": "Southpaw",
+    "height": "6'0\"",
+    "reach": "74\"",
+    "age": "33",
+    "champion": false,
+    "last5": [
+      {"opponent":"Belal Muhammad","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 304"},
+      {"opponent":"Colby Covington","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 296"},
+      {"opponent":"Kamaru Usman","result":"W","method":"TKO","round":"2","time":"4:04","event":"UFC 286"},
+      {"opponent":"Kamaru Usman","result":"W","method":"KO","round":"5","time":"4:31","event":"UFC 278"},
+      {"opponent":"Kamaru Usman","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 261"}
+    ]
+  },
+  "belal-muhammad": {
+    "name": "Belal Muhammad",
+    "nickname": "Remember The Name",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "24-3",
+    "division": "Welterweight",
+    "stance": "Orthodox",
+    "height": "5'11\"",
+    "reach": "75\"",
+    "age": "37",
+    "champion": false,
+    "last5": [
+      {"opponent":"Jack Della Maddalena","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 322"},
+      {"opponent":"Leon Edwards","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 304"},
+      {"opponent":"Gilbert Burns","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 288"},
+      {"opponent":"Vicente Luque","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 280"},
+      {"opponent":"Sean Brady","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 280"}
+    ]
+  },
+  "joaquin-buckley": {
+    "name": "Joaquin Buckley",
+    "nickname": "New Mansa",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "21-6",
+    "division": "Welterweight",
+    "stance": "Orthodox",
+    "height": "6'1\"",
+    "reach": "75\"",
+    "age": "30",
+    "champion": false,
+    "last5": [
+      {"opponent":"Sean Brady","result":"L","method":"TKO","round":"4","time":"3:22","event":"UFC 328"},
+      {"opponent":"Colby Covington","result":"W","method":"KO","round":"4","time":"4:02","event":"UFC 305"},
+      {"opponent":"Gilbert Burns","result":"W","method":"KO","round":"2","time":"2:55","event":"UFC Fight Night"},
+      {"opponent":"Nursulton Ruziboev","result":"W","method":"KO","round":"1","time":"1:24","event":"UFC 286"},
+      {"opponent":"Alex Morono","result":"W","method":"KO","round":"2","time":"4:34","event":"UFC 278"}
+    ]
+  },
+  "marlon-vera": {
+    "name": "Marlon Vera",
+    "nickname": "Chito",
+    "country": "Ecuador",
+    "flag": "🇪🇨",
+    "record": "23-9",
+    "division": "Bantamweight",
+    "stance": "Orthodox",
+    "height": "5'8\"",
+    "reach": "70\"",
+    "age": "32",
+    "champion": false,
+    "last5": [
+      {"opponent":"Deiveson Figueiredo","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Sean O'Malley","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 299"},
+      {"opponent":"Merab Dvalishvili","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 288"},
+      {"opponent":"Cory Sandhagen","result":"W","method":"KO","round":"1","time":"4:38","event":"UFC 292"},
+      {"opponent":"Dominick Cruz","result":"W","method":"KO","round":"5","time":"1:43","event":"UFC 299"}
+    ]
+  },
+  "cory-sandhagen": {
+    "name": "Cory Sandhagen",
+    "nickname": "The Sandman",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "17-5",
+    "division": "Bantamweight",
+    "stance": "Southpaw",
+    "height": "5'11\"",
+    "reach": "71\"",
+    "age": "33",
+    "champion": false,
+    "last5": [
+      {"opponent":"Petr Yan","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Marlon Vera","result":"L","method":"KO","round":"1","time":"4:38","event":"UFC 292"},
+      {"opponent":"Song Yadong","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Rob Font","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"T.J. Dillashaw","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 280"}
+    ]
+  },
+  "deiveson-figueiredo": {
+    "name": "Deiveson Figueiredo",
+    "nickname": "Deus da Guerra",
+    "country": "Brazil",
+    "flag": "🇧🇷",
+    "record": "22-4",
+    "division": "Flyweight",
+    "stance": "Orthodox",
+    "height": "5'5\"",
+    "reach": "67\"",
+    "age": "37",
+    "champion": false,
+    "last5": [
+      {"opponent":"Marlon Vera","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Petr Yan","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Brandon Moreno","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 283"},
+      {"opponent":"Brandon Moreno","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 277"},
+      {"opponent":"Brandon Moreno","result":"D","method":"MD","round":"5","time":"5:00","event":"UFC 256"}
+    ]
+  },
+  "yair-rodriguez": {
+    "name": "Yair Rodriguez",
+    "nickname": "Pantera",
+    "country": "Mexico",
+    "flag": "🇲🇽",
+    "record": "16-4",
+    "division": "Featherweight",
+    "stance": "Orthodox",
+    "height": "5'11\"",
+    "reach": "72\"",
+    "age": "32",
+    "champion": false,
+    "last5": [
+      {"opponent":"Alexander Volkanovski","result":"L","method":"TKO","round":"3","time":"4:55","event":"UFC 290"},
+      {"opponent":"Josh Emmett","result":"W","method":"TKO","round":"5","time":"3:06","event":"UFC on ABC"},
+      {"opponent":"Max Holloway","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 290"},
+      {"opponent":"Brian Ortega","result":"W","method":"TKO","round":"5","time":"3:29","event":"UFC Fight Night"},
+      {"opponent":"Jeremy Stephens","result":"W","method":"NC","round":"2","time":"2:11","event":"UFC Mexico City"}
+    ]
+  },
+  "arnold-allen": {
+    "name": "Arnold Allen",
+    "nickname": "Almighty",
+    "country": "UK",
+    "flag": "🇬🇧",
+    "record": "18-3",
+    "division": "Featherweight",
+    "stance": "Orthodox",
+    "height": "5'9\"",
+    "reach": "71\"",
+    "age": "30",
+    "champion": false,
+    "last5": [
+      {"opponent":"Max Holloway","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC on ESPN"},
+      {"opponent":"Calvin Kattar","result":"W","method":"KO","round":"1","time":"3:29","event":"UFC 304"},
+      {"opponent":"Giga Chikadze","result":"W","method":"TKO","round":"5","time":"2:52","event":"UFC Fight Night"},
+      {"opponent":"Sodiq Yusuff","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Dan Hooker","result":"W","method":"KO","round":"1","time":"2:29","event":"UFC 302"}
+    ]
+  },
+  "adesanya-israel": {
+    "name": "Israel Adesanya",
+    "nickname": "Last Stylebender",
+    "country": "Nigeria/NZ",
+    "flag": "🇳🇿",
+    "record": "24-4",
+    "division": "Middleweight",
+    "stance": "Orthodox",
+    "height": "6'4\"",
+    "reach": "80\"",
+    "age": "35",
+    "champion": false,
+    "last5": [
+      {"opponent":"Dricus Du Plessis","result":"L","method":"Sub","round":"4","time":"2:56","event":"UFC 305"},
+      {"opponent":"Sean Strickland","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 293"},
+      {"opponent":"Alex Pereira","result":"L","method":"TKO","round":"6","time":"1:29","event":"UFC 287"},
+      {"opponent":"Alex Pereira","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 281"},
+      {"opponent":"Robert Whittaker","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 271"}
+    ]
+  },
+  "paulo-costa": {
+    "name": "Paulo Costa",
+    "nickname": "Borrachinha",
+    "country": "Brazil",
+    "flag": "🇧🇷",
+    "record": "14-4",
+    "division": "Middleweight",
+    "stance": "Orthodox",
+    "height": "6'1\"",
+    "reach": "74\"",
+    "age": "33",
+    "champion": false,
+    "last5": [
+      {"opponent":"Robert Whittaker","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 298"},
+      {"opponent":"Robert Whittaker","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Luke Rockhold","result":"W","method":"TKO","round":"2","time":"2:21","event":"UFC 278"},
+      {"opponent":"Marvin Vettori","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 263"},
+      {"opponent":"Jared Cannonier","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 253"}
+    ]
+  },
+  "brandon-moreno": {
+    "name": "Brandon Moreno",
+    "nickname": "The Assassin Baby",
+    "country": "Mexico",
+    "flag": "🇲🇽",
+    "record": "22-7-2",
+    "division": "Flyweight",
+    "stance": "Southpaw",
+    "height": "5'7\"",
+    "reach": "68\"",
+    "age": "31",
+    "champion": false,
+    "last5": [
+      {"opponent":"Alexandre Pantoja","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 290"},
+      {"opponent":"Deiveson Figueiredo","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 283"},
+      {"opponent":"Deiveson Figueiredo","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 277"},
+      {"opponent":"Kai Kara-France","result":"W","method":"TKO","round":"3","time":"3:19","event":"UFC 277"},
+      {"opponent":"Deiveson Figueiredo","result":"D","method":"MD","round":"5","time":"5:00","event":"UFC 256"}
+    ]
+  },
+  "renato-moicano": {
+    "name": "Renato Moicano",
+    "nickname": "Daddy",
+    "country": "Brazil",
+    "flag": "🇧🇷",
+    "record": "20-6-1",
+    "division": "Lightweight",
+    "stance": "Orthodox",
+    "height": "5'11\"",
+    "reach": "73\"",
+    "age": "35",
+    "champion": false,
+    "last5": [
+      {"opponent":"Islam Makhachev","result":"L","method":"D'Arce Choke","round":"1","time":"4:05","event":"UFC 311"},
+      {"opponent":"Jalin Turner","result":"W","method":"Sub","round":"1","time":"2:30","event":"UFC 300"},
+      {"opponent":"Drew Dober","result":"W","method":"Sub","round":"1","time":"2:44","event":"UFC Fight Night"},
+      {"opponent":"Brad Riddell","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Rafael Fiziev","result":"L","method":"TKO","round":"2","time":"1:55","event":"UFC Fight Night"}
+    ]
+  },
+  "song-yadong": {
+    "name": "Song Yadong",
+    "nickname": "",
+    "country": "China",
+    "flag": "🇨🇳",
+    "record": "22-7-1",
+    "division": "Bantamweight",
+    "stance": "Orthodox",
+    "height": "5'8\"",
+    "reach": "70\"",
+    "age": "27",
+    "champion": false,
+    "last5": [
+      {"opponent":"Petr Yan","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 299"},
+      {"opponent":"Cory Sandhagen","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Ricky Simon","result":"W","method":"KO","round":"1","time":"2:22","event":"UFC Fight Night"},
+      {"opponent":"Chris Gutierrez","result":"D","method":"MD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Kyler Phillips","result":"L","method":"UD","round":"3","time":"5:00","event":"UFC 296"}
+    ]
+  },
+  "alex-volkov": {
+    "name": "Alexander Volkov",
+    "nickname": "Drago",
+    "country": "Russia",
+    "flag": "🇷🇺",
+    "record": "40-10",
+    "division": "Heavyweight",
+    "stance": "Orthodox",
+    "height": "6'7\"",
+    "reach": "80\"",
+    "age": "36",
+    "champion": false,
+    "last5": [
+      {"opponent":"Waldo Cortes-Acosta","result":"L","method":"TKO","round":"2","time":"1:14","event":"UFC 328"},
+      {"opponent":"Serghei Spivac","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Alexander Romanov","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Tai Tuivasa","result":"W","method":"TKO","round":"2","time":"3:55","event":"UFC Fight Night"},
+      {"opponent":"Tom Aspinall","result":"W","method":"Sub","round":"1","time":"0:24","event":"UFC London"}
+    ]
+  },
+  "mma-king-green": {
+    "name": "King Green",
+    "nickname": "King Green",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "30-14-1",
+    "division": "Lightweight",
+    "stance": "Orthodox",
+    "height": "5'10\"",
+    "reach": "70\"",
+    "age": "37",
+    "champion": false,
+    "last5": [
+      {"opponent":"Jeremy Stephens","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC 328"},
+      {"opponent":"Drakkar Klose","result":"L","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Clay Guida","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Grant Dawson","result":"L","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Jalin Turner","result":"L","method":"TKO","round":"2","time":"3:25","event":"UFC Fight Night"}
+    ]
+  },
+  "manel-kape": {
+    "name": "Manel Kape",
+    "nickname": "Starboy",
+    "country": "Angola/Portugal",
+    "flag": "🇦🇴",
+    "record": "18-6",
+    "division": "Flyweight",
+    "stance": "Orthodox",
+    "height": "5'7\"",
+    "reach": "69\"",
+    "age": "29",
+    "champion": false,
+    "last5": [
+      {"opponent":"Tatsuro Taira","result":"L","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Alessandro Costa","result":"W","method":"KO","round":"1","time":"0:51","event":"UFC Fight Night"},
+      {"opponent":"David Dvorak","result":"W","method":"KO","round":"1","time":"1:47","event":"UFC Fight Night"},
+      {"opponent":"Matheus Nicolau","result":"W","method":"KO","round":"1","time":"1:11","event":"UFC 301"},
+      {"opponent":"Alexandre Pantoja","result":"L","method":"TKO","round":"4","time":"4:46","event":"UFC 301"}
+    ]
+  },
+  "roman-dolidze": {
+    "name": "Roman Dolidze",
+    "nickname": "The Caucasian",
+    "country": "Georgia",
+    "flag": "🇬🇪",
+    "record": "12-2",
+    "division": "Light Heavyweight",
+    "stance": "Orthodox",
+    "height": "6'2\"",
+    "reach": "76\"",
+    "age": "35",
+    "champion": false,
+    "last5": [
+      {"opponent":"Brendan Allen","result":"L","method":"Sub","round":"2","time":"3:10","event":"UFC Fight Night"},
+      {"opponent":"Anthony Smith","result":"W","method":"KO","round":"3","time":"1:58","event":"UFC 293"},
+      {"opponent":"Phil Hawes","result":"W","method":"TKO","round":"2","time":"3:31","event":"UFC Fight Night"},
+      {"opponent":"Marvin Vettori","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Jack Herman","result":"W","method":"TKO","round":"2","time":"4:15","event":"UFC Fight Night"}
+    ]
+  },
+  "abus-magomedov": {
+    "name": "Abus Magomedov",
+    "nickname": "",
+    "country": "Russia",
+    "flag": "🇷🇺",
+    "record": "31-7",
+    "division": "Middleweight",
+    "stance": "Orthodox",
+    "height": "6'1\"",
+    "reach": "77\"",
+    "age": "35",
+    "champion": false,
+    "last5": [
+      {"opponent":"Gasan Umalatov","result":"W","method":"KO","round":"1","time":"2:14","event":"UFC Fight Night"},
+      {"opponent":"Alex Pereira","result":"L","method":"KO","round":"1","time":"0:23","event":"UFC 313"},
+      {"opponent":"Nassourdine Imavov","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC 310"},
+      {"opponent":"Marvin Vettori","result":"W","method":"TKO","round":"3","time":"1:08","event":"UFC Fight Night"},
+      {"opponent":"Roman Dolidze","result":"W","method":"KO","round":"2","time":"1:58","event":"UFC Fight Night"}
+    ]
+  },
+  "johnny-walker": {
+    "name": "Johnny Walker",
+    "nickname": "Walker",
+    "country": "Brazil",
+    "flag": "🇧🇷",
+    "record": "20-8",
+    "division": "Light Heavyweight",
+    "stance": "Orthodox",
+    "height": "6'4\"",
+    "reach": "79\"",
+    "age": "32",
+    "champion": false,
+    "last5": [
+      {"opponent":"Magomed Ankalaev","result":"L","method":"KO","round":"1","time":"3:15","event":"UFC 294"},
+      {"opponent":"Alonzo Menifield","result":"W","method":"KO","round":"1","time":"0:25","event":"UFC Fight Night"},
+      {"opponent":"Jamahal Hill","result":"L","method":"TKO","round":"1","time":"1:44","event":"UFC Fight Night"},
+      {"opponent":"Ryan Spann","result":"W","method":"KO","round":"2","time":"3:43","event":"UFC Fight Night"},
+      {"opponent":"Jamahal Hill","result":"L","method":"TKO","round":"4","time":"4:23","event":"UFC Fight Night"}
+    ]
+  },
+  "nassourdine-imavov": {
+    "name": "Nassourdine Imavov",
+    "nickname": "The Russian",
+    "country": "Russia/France",
+    "flag": "🇫🇷",
+    "record": "15-4",
+    "division": "Middleweight",
+    "stance": "Orthodox",
+    "height": "6'3\"",
+    "reach": "79\"",
+    "age": "30",
+    "champion": false,
+    "last5": [
+      {"opponent":"Abus Magomedov","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC 310"},
+      {"opponent":"Roman Dolidze","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Sean Strickland","result":"L","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Phil Hawes","result":"W","method":"TKO","round":"2","time":"3:00","event":"UFC Fight Night"},
+      {"opponent":"Chris Curtis","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC 279"}
+    ]
+  },
+  "tai-tuivasa": {
+    "name": "Tai Tuivasa",
+    "nickname": "Bam Bam",
+    "country": "Australia",
+    "flag": "🇦🇺",
+    "record": "15-8",
+    "division": "Heavyweight",
+    "stance": "Orthodox",
+    "height": "6'3\"",
+    "reach": "77\"",
+    "age": "31",
+    "champion": false,
+    "last5": [
+      {"opponent":"Alexander Volkov","result":"L","method":"TKO","round":"2","time":"3:55","event":"UFC Fight Night"},
+      {"opponent":"Ciryl Gane","result":"L","method":"TKO","round":"3","time":"0:55","event":"UFC 270"},
+      {"opponent":"Sergei Pavlovich","result":"L","method":"KO","round":"1","time":"0:34","event":"UFC 295"},
+      {"opponent":"Derrick Lewis","result":"W","method":"KO","round":"2","time":"4:40","event":"UFC 271"},
+      {"opponent":"Augusto Sakai","result":"W","method":"KO","round":"4","time":"0:38","event":"UFC Fight Night"}
+    ]
+  },
+  "khalil-rountree": {
+    "name": "Khalil Rountree",
+    "nickname": "The War Horse",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "record": "14-5",
+    "division": "Light Heavyweight",
+    "stance": "Southpaw",
+    "height": "6'2\"",
+    "reach": "76.5\"",
+    "age": "34",
+    "champion": false,
+    "last5": [
+      {"opponent":"Alex Pereira","result":"L","method":"TKO","round":"3","time":"3:18","event":"UFC 307"},
+      {"opponent":"Justin Tafa","result":"W","method":"KO","round":"1","time":"0:24","event":"UFC 305"},
+      {"opponent":"Modestas Bukauskas","result":"W","method":"KO","round":"1","time":"0:43","event":"UFC Fight Night"},
+      {"opponent":"Marcin Prachnio","result":"W","method":"KO","round":"2","time":"2:01","event":"UFC Fight Night"},
+      {"opponent":"Anthony Smith","result":"L","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"}
+    ]
+  },
+  "umar-nurmagomedov": {
+    "name": "Umar Nurmagomedov",
+    "nickname": "",
+    "country": "Russia",
+    "flag": "🇷🇺",
+    "record": "18-0",
+    "division": "Bantamweight",
+    "stance": "Orthodox",
+    "height": "5'9\"",
+    "reach": "72\"",
+    "age": "27",
+    "champion": false,
+    "last5": [
+      {"opponent":"Cory Sandhagen","result":"W","method":"UD","round":"5","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Bekzod Nurmamatov","result":"W","method":"Sub","round":"1","time":"3:03","event":"UFC 311"},
+      {"opponent":"Raoni Barcelos","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC 302"},
+      {"opponent":"Nate Maness","result":"W","method":"TKO","round":"2","time":"2:01","event":"UFC Fight Night"},
+      {"opponent":"Nathaniel Wood","result":"W","method":"TKO","round":"3","time":"4:55","event":"UFC London"}
+    ]
+  },
+  "movsar-evloev": {
+    "name": "Movsar Evloev",
+    "nickname": "The White Wolf",
+    "country": "Russia",
+    "flag": "🇷🇺",
+    "record": "18-0",
+    "division": "Featherweight",
+    "stance": "Orthodox",
+    "height": "6'0\"",
+    "reach": "73\"",
+    "age": "30",
+    "champion": false,
+    "last5": [
+      {"opponent":"Giga Chikadze","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Leandro Silva","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Dan Ige","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"},
+      {"opponent":"Arnold Allen","result":"L","method":"UD","round":"3","time":"5:00","event":"UFC 304"},
+      {"opponent":"Pat Sabatini","result":"W","method":"UD","round":"3","time":"5:00","event":"UFC Fight Night"}
+    ]
+  }
+}
