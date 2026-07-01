@@ -409,7 +409,13 @@ def build_system_prompt(page_context='general', live_events=None, live_fighters=
         'leaderboard': "User is on the Leaderboard page. Talk about accuracy, pick points system, groups, H2H challenges, how tiers work.",
         'picks':       "User is on the Picks page. Focus on their picks, predictions, strategy for earning bonus points, Double Down advice.",
         'review':      "User is on an event review page. Focus on results, FOTN, standout moments, upsets, how the card played out.",
-    }.get(page_context, "General MMA chat — anything goes.")
+    }.get(page_context) or (
+        f"User is viewing the Head-to-Head matchup page for {page_context.split('matchup:')[1]}. "
+        f"You KNOW who is fighting — DO NOT ask for names. "
+        f"If the user says 'who wins', 'who do you think', or similar without naming fighters, "
+        f"answer about the specific fight shown on screen. Give a sharp take: pick a winner and explain in 2-3 lines."
+        if page_context.startswith('matchup:') else "General MMA chat — anything goes."
+    )
 
     return f"""You are Lucas — the official ambassador and AI of MMA Bridge (mmabridge.com).
 
