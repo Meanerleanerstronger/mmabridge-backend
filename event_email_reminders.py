@@ -148,32 +148,26 @@ def _mark_sent(sb, user_id, event_id, reminder_type):
         logger.warning('[EventReminders] Could not record sent reminder: %s', e)
 
 
-def _wrap_html(title, body_html, cta_text, cta_url):
+def _wrap_html(title, paragraphs, cta_text, cta_url):
+    """Plain, simple, classic layout — no branding lockup, no gradient
+    button, no color beyond a single muted link. Reads like a normal email
+    from a person, not a marketing template."""
+    body = ''.join(f'<p style="margin:0 0 14px;">{p}</p>' for p in paragraphs)
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0"><title>{title}</title></head>
-<body style="margin:0;padding:0;background:#0d0d10;font-family:Inter,Helvetica,Arial,sans-serif;color:#fff;">
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#0d0d10;padding:40px 16px;">
-  <tr><td align="center">
-  <table width="100%" style="max-width:560px;" cellpadding="0" cellspacing="0">
-    <tr><td style="padding:0 0 28px;">
-      <div style="font-family:Montserrat,sans-serif;font-size:1.35rem;font-weight:900;letter-spacing:0.12em;text-transform:uppercase;color:#fff;">
-        MMA<span style="color:#d97b3f;">BRIDGE</span>
-      </div>
+<body style="margin:0;padding:0;background:#ffffff;font-family:Arial,Helvetica,sans-serif;color:#222222;">
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:36px 16px;">
+  <table width="100%" style="max-width:480px;" cellpadding="0" cellspacing="0">
+    <tr><td style="font-size:15px;line-height:1.6;">
+      {body}
+      <p style="margin:20px 0 0;"><a href="{cta_url}" style="color:#b8611e;">{cta_text}</a></p>
     </td></tr>
-    <tr><td style="padding:0 0 24px;font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.6;">
-      {body_html}
-    </td></tr>
-    <tr><td style="padding:4px 0 0;">
-      <a href="{cta_url}" style="display:inline-block;padding:12px 28px;background:linear-gradient(135deg,#d97b3f,#b8611e);color:#0d0d10;font-family:Montserrat,sans-serif;font-size:0.75rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:7px;">{cta_text}</a>
-    </td></tr>
-    <tr><td style="padding:32px 0 0;font-size:0.65rem;color:rgba(255,255,255,0.2);line-height:1.7;">
-      MMA Bridge &nbsp;·&nbsp; <a href="{SITE_URL}" style="color:rgba(255,255,255,0.2);text-decoration:none;">mmabridge.com</a><br>
-      <a href="{SITE_URL}/profile.html" style="color:rgba(255,255,255,0.2);text-decoration:none;">Manage email preferences</a>
+    <tr><td style="padding-top:36px;font-size:12px;color:#999999;">
+      MMA Bridge — <a href="{SITE_URL}/profile.html" style="color:#999999;">manage email preferences</a>
     </td></tr>
   </table>
-  </td></tr>
-</table>
+</td></tr></table>
 </body></html>'''
 
 
@@ -231,12 +225,14 @@ def send_pick_reminder_emails(sb):
             picks_link = f"{SITE_URL}/picks.html?id={ev_id}"
             html = _wrap_html(
                 'Make your picks',
-                f'''Hey {user["display_name"]},<br><br>
-                <strong style="color:#fff;">{ev.get("name","")}</strong> locks in about a day —
-                you haven't made your picks yet. Don't miss out on the points.''',
-                'Make Your Picks →', picks_link,
+                [
+                    f'Hi {user["display_name"]},',
+                    f'{ev.get("name","")} is coming up soon and picks lock in about a day. '
+                    f'Looks like you haven\'t made yours yet.',
+                ],
+                'Make your picks', picks_link,
             )
-            if _send_email(user['email'], f'Don’t forget to pick — {ev.get("name","")}', html):
+            if _send_email(user['email'], f'Make your picks — {ev.get("name","")}', html):
                 _mark_sent(sb, user['id'], ev_id, 'pick_reminder')
                 sent += 1
             else:
@@ -301,12 +297,14 @@ def send_review_reminder_emails(sb):
             review_link = f"{SITE_URL}/event-review.html?id={ev_id}"
             html = _wrap_html(
                 'Review the card',
-                f'''Hey {user["display_name"]},<br><br>
-                <strong style="color:#fff;">{ev.get("name","")}</strong> is over — see how your picks did
-                and rate the card while it's fresh.''',
-                'Review the Card →', review_link,
+                [
+                    f'Hi {user["display_name"]},',
+                    f'{ev.get("name","")} wrapped up. See how your picks did and rate the card '
+                    f'if you get a chance.',
+                ],
+                'Review the card', review_link,
             )
-            if _send_email(user['email'], f'How did you do? — {ev.get("name","")}', html):
+            if _send_email(user['email'], f'How did your picks do? — {ev.get("name","")}', html):
                 _mark_sent(sb, user['id'], ev_id, 'review_reminder')
                 sent += 1
             else:
