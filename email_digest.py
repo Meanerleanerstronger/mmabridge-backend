@@ -223,8 +223,12 @@ def send_weekly_digest(sb):
     upcoming = _get_upcoming_events(events, limit=3)
 
     # Fetch all users via Supabase Admin API (requires service role key)
+    # NOTE: was reading SUPABASE_KEY here, which doesn't exist as an env var
+    # anywhere in this project (database.py, the actual client init, uses
+    # SUPABASE_SERVICE_KEY) — so this always hit the "credentials missing"
+    # branch below and silently skipped every single weekly run.
     supabase_url    = os.environ.get('SUPABASE_URL', '')
-    supabase_key    = os.environ.get('SUPABASE_KEY', '')  # service role key
+    supabase_key    = os.environ.get('SUPABASE_SERVICE_KEY', '')  # service role key
 
     if not supabase_url or not supabase_key:
         logger.warning('[Digest] Supabase credentials missing — digest skipped')

@@ -315,6 +315,25 @@ def start_scheduler(sb):
         except Exception as _digest_err:
             logger.warning('[Push] Email digest job not loaded: %s', _digest_err)
 
+        # Every 4 hours — "don't forget to make picks" + "review the card" emails
+        try:
+            from event_email_reminders import send_pick_reminder_emails, send_review_reminder_emails
+            scheduler.add_job(
+                func=lambda: send_pick_reminder_emails(sb),
+                trigger=CronTrigger(hour='*/4'),
+                id='pick_reminder_emails',
+                replace_existing=True,
+            )
+            scheduler.add_job(
+                func=lambda: send_review_reminder_emails(sb),
+                trigger=CronTrigger(hour='*/4', minute=15),
+                id='review_reminder_emails',
+                replace_existing=True,
+            )
+            logger.info('[Push] Pick/review reminder emails scheduled — every 4h')
+        except Exception as _reminder_err:
+            logger.warning('[Push] Event email reminders not loaded: %s', _reminder_err)
+
         # Every 2 hours — post-event results push
         scheduler.add_job(
             func=lambda: push_post_event_results(sb),
