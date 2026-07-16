@@ -90,6 +90,9 @@ def _get_user_stats(sb, user_id):
 
 
 # ── Build HTML email ──────────────────────────
+# Plain style — matches event_email_reminders.py's _wrap_html: white
+# background, Arial, one muted brand-color link, no gradient buttons or
+# logo lockup. Signed off with a plain-text signature, not a graphic.
 def _build_html(display_name, upcoming_events, stats, user_id=''):
     name = display_name or 'Fighter'
 
@@ -104,78 +107,62 @@ def _build_html(display_name, upcoming_events, stats, user_id=''):
         meta = ' · '.join(meta_parts)
         upcoming_html += f'''
         <tr>
-          <td style="padding:12px 0;border-bottom:1px solid #1e1e26;">
-            <div style="font-family:Montserrat,sans-serif;font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:3px;">{ev.get("name","")}</div>
-            <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-bottom:8px;">{meta}</div>
-            <a href="{picks_link}" style="display:inline-block;padding:6px 14px;background:rgba(200,150,12,0.15);border:1px solid rgba(200,150,12,0.4);color:#c8960c;font-family:Montserrat,sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:5px;">Make Your Picks</a>
+          <td style="padding:10px 0;border-bottom:1px solid #eeeeee;">
+            <div style="font-size:14px;font-weight:bold;color:#222222;">{ev.get("name","")}</div>
+            <div style="font-size:12px;color:#888888;margin:2px 0 4px;">{meta}</div>
+            <a href="{picks_link}" style="color:#b8611e;font-size:13px;">Make your picks</a>
           </td>
         </tr>'''
 
     if not upcoming_html:
-        upcoming_html = '<tr><td style="padding:12px 0;color:rgba(255,255,255,0.4);font-size:0.8rem;">No upcoming events right now — check back soon.</td></tr>'
+        upcoming_html = '<tr><td style="padding:10px 0;color:#888888;font-size:13px;">No upcoming events right now — check back soon.</td></tr>'
 
-    picks_line = ''
+    stats_lines = []
     if stats['picks_total'] > 0:
-        picks_line = f'<div style="margin-top:6px;font-size:0.78rem;color:rgba(255,255,255,0.55);">You made <strong style="color:#c8960c;">{stats["picks_total"]}</strong> picks this month.</div>'
-
-    ratings_line = ''
+        stats_lines.append(f'You made {stats["picks_total"]} picks this month.')
     if stats['ratings_count'] > 0:
-        ratings_line = f'<div style="margin-top:4px;font-size:0.78rem;color:rgba(255,255,255,0.55);">You rated <strong style="color:#c8960c;">{stats["ratings_count"]}</strong> event(s) this month.</div>'
+        stats_lines.append(f'You rated {stats["ratings_count"]} event(s) this month.')
+    stats_html = ''.join(f'<p style="margin:0 0 6px;font-size:13px;color:#555555;">{line}</p>' for line in stats_lines)
 
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Your MMA Bridge Weekly Digest</title>
+<title>Your MMA Bridge weekly update</title>
 </head>
-<body style="margin:0;padding:0;background:#0d0d10;font-family:Inter,Helvetica,Arial,sans-serif;color:#fff;">
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#0d0d10;padding:40px 16px;">
-  <tr><td align="center">
-  <table width="100%" style="max-width:560px;" cellpadding="0" cellspacing="0">
+<body style="margin:0;padding:0;background:#ffffff;font-family:Arial,Helvetica,sans-serif;color:#222222;">
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:36px 16px;">
+  <table width="100%" style="max-width:480px;" cellpadding="0" cellspacing="0">
 
-    <!-- Header -->
-    <tr><td style="padding:0 0 32px;">
-      <div style="font-family:Montserrat,sans-serif;font-size:1.35rem;font-weight:900;letter-spacing:0.12em;text-transform:uppercase;color:#fff;">
-        MMA<span style="color:#c8960c;">BRIDGE</span>
-      </div>
-      <div style="font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:3px;">Weekly Digest</div>
+    <tr><td style="font-size:15px;line-height:1.6;">
+      <p style="margin:0 0 14px;">Hi {name},</p>
+      <p style="margin:0 0 18px;">Here's what's coming up on MMA Bridge this week.</p>
     </td></tr>
 
-    <!-- Greeting -->
-    <tr><td style="padding:0 0 24px;">
-      <div style="font-family:Montserrat,sans-serif;font-size:1.1rem;font-weight:700;">Hey {name},</div>
-      <div style="font-size:0.82rem;color:rgba(255,255,255,0.6);margin-top:8px;line-height:1.6;">Here's your weekly MMA Bridge update — upcoming events, your stats, and more.</div>
-    </td></tr>
+    {f'<tr><td style="padding:0 0 18px;">{stats_html}</td></tr>' if stats_lines else ''}
 
-    <!-- Stats (only if any activity) -->
-    {f"""<tr><td style="background:#13131a;border:1px solid #1e1e26;border-radius:10px;padding:18px 20px;margin-bottom:24px;">
-      <div style="font-family:Montserrat,sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:8px;">Your Activity (last 30 days)</div>
-      {picks_line}{ratings_line}
-    </td></tr><tr><td style="padding:16px 0 0;"></td></tr>""" if (stats["picks_total"] or stats["ratings_count"]) else ""}
-
-    <!-- Upcoming Events -->
-    <tr><td style="background:#13131a;border:1px solid #1e1e26;border-radius:10px;padding:18px 20px;">
-      <div style="font-family:Montserrat,sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:4px;">Upcoming Events</div>
+    <tr><td style="padding:0 0 8px;font-size:13px;font-weight:bold;color:#222222;">Upcoming events</td></tr>
+    <tr><td>
       <table width="100%" cellpadding="0" cellspacing="0">
         {upcoming_html}
       </table>
     </td></tr>
 
-    <!-- CTA -->
-    <tr><td style="padding:28px 0 0;text-align:center;">
-      <a href="{SITE_URL}/events.html" style="display:inline-block;padding:12px 28px;background:linear-gradient(135deg,#c8960c,#a87800);color:#0d0d10;font-family:Montserrat,sans-serif;font-size:0.75rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:7px;">View All Events</a>
+    <tr><td style="padding:20px 0 0;font-size:15px;">
+      <a href="{SITE_URL}/events.html" style="color:#b8611e;">View all events</a>
     </td></tr>
 
-    <!-- Footer -->
-    <tr><td style="padding:32px 0 0;text-align:center;font-size:0.65rem;color:rgba(255,255,255,0.2);line-height:1.7;">
-      MMA Bridge &nbsp;·&nbsp; <a href="{SITE_URL}" style="color:rgba(255,255,255,0.2);text-decoration:none;">mmabridge.com</a><br>
-      <a href="{_unsub_url(user_id) if user_id else (SITE_URL + '/profile.html')}" style="color:rgba(255,255,255,0.2);text-decoration:none;">Unsubscribe from digest</a>
+    <tr><td style="padding-top:28px;font-size:15px;color:#222222;">
+      — MMA Bridge
+    </td></tr>
+
+    <tr><td style="padding-top:28px;font-size:12px;color:#999999;">
+      <a href="{_unsub_url(user_id) if user_id else (SITE_URL + '/profile.html')}" style="color:#999999;">Unsubscribe from this weekly email</a>
     </td></tr>
 
   </table>
-  </td></tr>
-</table>
+</td></tr></table>
 </body>
 </html>'''
 

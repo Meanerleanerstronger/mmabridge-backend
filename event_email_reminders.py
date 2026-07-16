@@ -163,8 +163,11 @@ def _wrap_html(title, paragraphs, cta_text, cta_url):
       {body}
       <p style="margin:20px 0 0;"><a href="{cta_url}" style="color:#b8611e;">{cta_text}</a></p>
     </td></tr>
-    <tr><td style="padding-top:36px;font-size:12px;color:#999999;">
-      MMA Bridge — <a href="{SITE_URL}/profile.html" style="color:#999999;">manage email preferences</a>
+    <tr><td style="padding-top:28px;font-size:15px;color:#222222;">
+      — MMA Bridge
+    </td></tr>
+    <tr><td style="padding-top:28px;font-size:12px;color:#999999;">
+      <a href="{SITE_URL}/profile.html" style="color:#999999;">manage email preferences</a>
     </td></tr>
   </table>
 </td></tr></table>
