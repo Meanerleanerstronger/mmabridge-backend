@@ -457,20 +457,34 @@ def get_news():
             r = req.get(url, timeout=8)
             if r.status_code == 200:
                 data = r.json()
-                articles = [
-                    {
-                        'title':       a.get('title', ''),
-                        'description': a.get('description', ''),
+                seen_titles = set()
+                articles = []
+                for a in data.get('articles', []):
+                    title = a.get('title', '')
+                    desc  = a.get('description', '')
+                    if not title:
+                        continue
+                    if any(c in (title + desc) for c in ['«','»','¿','¡','ó','é','á','í','ú','ñ']):
+                        continue
+                    # GNews's "MMA" term alone false-positives on unrelated
+                    # stories that just happen to contain that acronym —
+                    # require an actual UFC/MMA-relevant word somewhere.
+                    haystack = (title + ' ' + desc).lower()
+                    if not any(w in haystack for w in
+                               ('ufc', 'mma', 'bellator', 'octagon', 'mixed martial arts')):
+                        continue
+                    norm = re.sub(r'[^a-z0-9]+', '', title.lower())
+                    if norm in seen_titles:
+                        continue
+                    seen_titles.add(norm)
+                    articles.append({
+                        'title':       title,
+                        'description': desc,
                         'url':         a.get('url', ''),
                         'imageUrl':    a.get('image') or '',
                         'source':      a.get('source', {}).get('name', ''),
                         'publishedAt': a.get('publishedAt', ''),
-                    }
-                    for a in data.get('articles', [])
-                    if a.get('title')
-                    and not any(c in (a.get('title','') + a.get('description',''))
-                               for c in ['«','»','¿','¡','ó','é','á','í','ú','ñ'])
-                ]
+                    })
                 if articles:
                     news_data = {'trending': articles, 'updatedAt': 'fresh'}
                     os.makedirs(DATA_DIR, exist_ok=True)
@@ -1415,7 +1429,7 @@ def _fetch_fighter_news(name: str) -> list:
 
         root = ET.fromstring(r.content)
         articles = []
-        for item in root.findall('.//item')[:8]:
+        for item in root.findall('.//item')[:3]:
             title_el  = item.find('title')
             link_el   = item.find('link')
             date_el   = item.find('pubDate')
@@ -1428,11 +1442,24 @@ def _fetch_fighter_news(name: str) -> list:
             source = (source_el.text or '').strip() if source_el is not None else ''
             if source and title.endswith(f' - {source}'):
                 title = title[:-(len(source) + 3)]
+            # RSS doesn't carry a real per-article photo (the <link> is an
+            # obfuscated Google redirect that only resolves client-side, so
+            # there's no reliable way to scrape the actual og:image without
+            # fragile reverse-engineering of Google's token format). The
+            # <source url="..."> attribute gives the real publisher domain
+            # though, so use that outlet's favicon as a stable, always-on
+            # thumbnail instead of leaving the card blank.
+            source_domain = (source_el.get('url') or '') if source_el is not None else ''
+            thumb = (
+                f"https://www.google.com/s2/favicons?domain={req.utils.quote(source_domain)}&sz=128"
+                if source_domain else ''
+            )
             articles.append({
                 'title':  title,
                 'url':    (link_el.text or '').strip() if link_el is not None else '',
                 'date':   (date_el.text or '').strip() if date_el is not None else '',
                 'source': source,
+                'thumb':  thumb,
             })
         return articles
     except Exception as e:
