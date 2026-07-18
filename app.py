@@ -1456,7 +1456,11 @@ def get_fighter_news():
         return jsonify({'articles': cached[1]})
 
     articles = _fetch_fighter_news(name)
-    _news_cache[slug] = (_time.time(), articles)
+    # Only cache real results — a transient GNews failure/rate-limit would
+    # otherwise cache [] for a full hour and keep serving "no news" even
+    # once GNews is working again.
+    if articles:
+        _news_cache[slug] = (_time.time(), articles)
     return jsonify({'articles': articles})
 
 
