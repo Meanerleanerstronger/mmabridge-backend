@@ -1390,58 +1390,54 @@ _news_cache = {}   # name_slug → (timestamp, articles_list)
 _NEWS_TTL   = 3600  # 1-hour cache
 
 def _fetch_fighter_news(name: str) -> list:
-    # Was Google News RSS scraping, and it called requests.get(...) directly
-    # with no import anywhere in this function or at module level (every
-    # other use of `requests` in this file does its own local import —
-    # this one just never did). That's a NameError on every single call,
-    # silently swallowed by the bare except below and returned as [] — the
-    # real reason "no recent news found" showed for every fighter,
-    # including current headline names, confirmed by testing the RSS feed
-    # directly (it works fine) vs the live endpoint (always empty).
-    # Switched to the same GNews API + key-rotation already proven working
-    # in get_news() below for the homepage trending feed, scoped to one
-    # fighter's name instead of the generic "UFC OR MMA OR Bellator" query.
+    # Deliberately NOT using GNews here — the free-tier key is shared with
+    # get_news() (the homepage trending feed), and per-fighter lookups on
+    # every profile-page visit would burn through that quota fast. Google
+    # News RSS has no API key and no shared quota, so it's used here instead
+    # and GNews is reserved for the homepage feed only. (An earlier version
+    # of this function also used RSS but called requests.get() with no
+    # `requests` import anywhere in scope — a silent NameError swallowed by
+    # a bare except, always returning [] — confirmed by testing the RSS feed
+    # directly, which worked fine, against the live endpoint, which didn't.
+    # This rewrite fixes that import and parses the feed properly.)
     import requests as req
+    import xml.etree.ElementTree as ET
 
-    GNEWS_KEYS = [
-        k for k in [
-            os.getenv('GNEWS_API_KEY'),
-            os.getenv('GNEWS_API_KEY_BACKUP_1'),
-            os.getenv('GNEWS_API_KEY_BACKUP_2'),
-        ] if k
-    ]
+    try:
+        url = (
+            "https://news.google.com/rss/search"
+            f"?q=%22{req.utils.quote(name)}%22+UFC&hl=en-US&gl=US&ceid=US:en"
+        )
+        r = req.get(url, timeout=8, headers={'User-Agent': 'Mozilla/5.0'})
+        if r.status_code != 200:
+            print(f'[FighterNews] RSS error for "{name}": HTTP {r.status_code}')
+            return []
 
-    for key in GNEWS_KEYS:
-        try:
-            url = (
-                f"https://gnews.io/api/v4/search"
-                f"?q=%22{req.utils.quote(name)}%22+UFC"
-                f"&lang=en&country=us&max=8&sortby=publishedAt"
-                f"&apikey={key}"
-            )
-            r = req.get(url, timeout=8)
-            if r.status_code == 200:
-                data = r.json()
-                articles = [
-                    {
-                        'title':  a.get('title', ''),
-                        'url':    a.get('url', ''),
-                        'date':   a.get('publishedAt', ''),
-                        'source': a.get('source', {}).get('name', ''),
-                    }
-                    for a in data.get('articles', [])
-                    if a.get('title')
-                ]
-                if articles:
-                    return articles
-            elif r.status_code in (429, 403):
-                print(f'[FighterNews] GNews key exhausted for "{name}", trying backup...')
+        root = ET.fromstring(r.content)
+        articles = []
+        for item in root.findall('.//item')[:8]:
+            title_el  = item.find('title')
+            link_el   = item.find('link')
+            date_el   = item.find('pubDate')
+            source_el = item.find('source')
+            title = (title_el.text or '').strip() if title_el is not None else ''
+            if not title:
                 continue
-        except Exception as e:
-            print(f'[FighterNews] GNews error for "{name}": {e}')
-            continue
-
-    return []
+            # RSS titles are "Headline - Publisher"; publisher is also in
+            # <source>, so strip the suffix to avoid showing it twice.
+            source = (source_el.text or '').strip() if source_el is not None else ''
+            if source and title.endswith(f' - {source}'):
+                title = title[:-(len(source) + 3)]
+            articles.append({
+                'title':  title,
+                'url':    (link_el.text or '').strip() if link_el is not None else '',
+                'date':   (date_el.text or '').strip() if date_el is not None else '',
+                'source': source,
+            })
+        return articles
+    except Exception as e:
+        print(f'[FighterNews] RSS error for "{name}": {e}')
+        return []
 
 
 @app.route('/api/news/fighter', methods=['GET'])
