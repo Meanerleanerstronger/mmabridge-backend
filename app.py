@@ -1390,52 +1390,58 @@ _news_cache = {}   # name_slug → (timestamp, articles_list)
 _NEWS_TTL   = 3600  # 1-hour cache
 
 def _fetch_fighter_news(name: str) -> list:
-    from xml.etree import ElementTree as ET
-    import urllib.parse
+    # Was Google News RSS scraping, and it called requests.get(...) directly
+    # with no import anywhere in this function or at module level (every
+    # other use of `requests` in this file does its own local import —
+    # this one just never did). That's a NameError on every single call,
+    # silently swallowed by the bare except below and returned as [] — the
+    # real reason "no recent news found" showed for every fighter,
+    # including current headline names, confirmed by testing the RSS feed
+    # directly (it works fine) vs the live endpoint (always empty).
+    # Switched to the same GNews API + key-rotation already proven working
+    # in get_news() below for the homepage trending feed, scoped to one
+    # fighter's name instead of the generic "UFC OR MMA OR Bellator" query.
+    import requests as req
 
-    # Google News RSS — no API key, reliable, fighter-specific query
-    query     = urllib.parse.quote_plus(f'{name} UFC MMA')
-    feed_url  = f'https://news.google.com/rss/search?q={query}&hl=en-US&gl=US&ceid=US:en'
+    GNEWS_KEYS = [
+        k for k in [
+            os.getenv('GNEWS_API_KEY'),
+            os.getenv('GNEWS_API_KEY_BACKUP_1'),
+            os.getenv('GNEWS_API_KEY_BACKUP_2'),
+        ] if k
+    ]
 
-    articles = []
-    try:
-        r = requests.get(
-            feed_url,
-            timeout=10,
-            headers={
-                'User-Agent': 'Mozilla/5.0 (compatible; MMABridge/1.0)',
-                'Accept': 'application/rss+xml, application/xml, text/xml',
-            },
-        )
-        if not r.ok:
-            return []
-
-        root = ET.fromstring(r.content)
-        for item in root.iter('item'):
-            title  = (item.findtext('title')   or '').strip()
-            link   = (item.findtext('link')    or '').strip()
-            pub    = (item.findtext('pubDate') or '').strip()
-            source = ''
-            # Google News wraps source in <source> tag
-            src_el = item.find('source')
-            if src_el is not None:
-                source = (src_el.text or '').strip()
-
-            if not title or not link:
+    for key in GNEWS_KEYS:
+        try:
+            url = (
+                f"https://gnews.io/api/v4/search"
+                f"?q=%22{req.utils.quote(name)}%22+UFC"
+                f"&lang=en&country=us&max=8&sortby=publishedAt"
+                f"&apikey={key}"
+            )
+            r = req.get(url, timeout=8)
+            if r.status_code == 200:
+                data = r.json()
+                articles = [
+                    {
+                        'title':  a.get('title', ''),
+                        'url':    a.get('url', ''),
+                        'date':   a.get('publishedAt', ''),
+                        'source': a.get('source', {}).get('name', ''),
+                    }
+                    for a in data.get('articles', [])
+                    if a.get('title')
+                ]
+                if articles:
+                    return articles
+            elif r.status_code in (429, 403):
+                print(f'[FighterNews] GNews key exhausted for "{name}", trying backup...')
                 continue
+        except Exception as e:
+            print(f'[FighterNews] GNews error for "{name}": {e}')
+            continue
 
-            articles.append({
-                'title':  title,
-                'url':    link,
-                'date':   pub,
-                'source': source,
-            })
-            if len(articles) >= 8:
-                break
-    except Exception as e:
-        print(f'[News] fetch error for "{name}": {e}')
-
-    return articles
+    return []
 
 
 @app.route('/api/news/fighter', methods=['GET'])
