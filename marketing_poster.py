@@ -106,10 +106,15 @@ def post_twitter(text: str, image_url: str = "") -> dict:
     image is downloaded and uploaded via X's v1.1 media endpoint first, then
     attached to the tweet — X still requires the older media/upload.json
     endpoint even for v2 tweet creation, there's no v2 equivalent."""
-    api_key    = os.getenv("TWITTER_API_KEY", "")
-    api_secret = os.getenv("TWITTER_API_SECRET", "")
-    acc_token  = os.getenv("TWITTER_ACCESS_TOKEN", "")
-    acc_secret = os.getenv("TWITTER_ACCESS_SECRET", "")
+    # .strip() guards against a stray leading/trailing space or newline
+    # sneaking in from a copy-paste into Render's env var fields — X's
+    # OAuth1 signing is byte-exact, so an invisible extra character there
+    # produces exactly this "Bad Authentication data" error with no other
+    # symptom.
+    api_key    = os.getenv("TWITTER_API_KEY", "").strip()
+    api_secret = os.getenv("TWITTER_API_SECRET", "").strip()
+    acc_token  = os.getenv("TWITTER_ACCESS_TOKEN", "").strip()
+    acc_secret = os.getenv("TWITTER_ACCESS_SECRET", "").strip()
     if not all([api_key, api_secret, acc_token, acc_secret]):
         return {"ok": False, "error": "Twitter credentials not configured"}
     try:
