@@ -1055,19 +1055,22 @@ def get_odds(event_id):
 
 import hmac as _hmac
 import hashlib as _hashlib
-import secrets as _secrets
 
-_ADMIN_TOKENS = set()  # in-memory; resets on dyno restart (fine for solo admin)
-
-def _make_admin_token(password: str) -> str:
+# Stateless by design: the token is just an HMAC of ADMIN_PASSWORD, not a
+# randomly-issued value tracked in memory. It used to be the latter, which
+# meant every backend restart/redeploy (common — this repo redeploys often)
+# silently logged out anyone already using the admin panel, mid-session,
+# with a generic "Unauthorized" that looked like a real auth bug. Since
+# ADMIN_PASSWORD is already the actual secret here (solo admin, no per-user
+# sessions or revocation needed), deriving the token from it deterministically
+# means it stays valid across restarts for as long as the password itself
+# doesn't change — no server-side state to lose.
+def _make_admin_token() -> str:
     secret = os.environ.get('ADMIN_PASSWORD', '')
-    sig = _hmac.new(secret.encode(), password.encode(), _hashlib.sha256).hexdigest()
-    tok = _secrets.token_hex(16) + sig[:8]
-    _ADMIN_TOKENS.add(tok)
-    return tok
+    return _hmac.new(secret.encode(), b'mma-bridge-admin-session', _hashlib.sha256).hexdigest()
 
 def _verify_admin_token(tok: str) -> bool:
-    return tok in _ADMIN_TOKENS
+    return bool(tok) and _hmac.compare_digest(tok, _make_admin_token())
 
 
 @app.route('/api/admin/auth', methods=['POST'])
@@ -1079,7 +1082,7 @@ def admin_auth():
         return jsonify({'error': 'Admin not configured'}), 503
     if not pw or not _hmac.compare_digest(pw, expected):
         return jsonify({'error': 'Invalid password'}), 401
-    return jsonify({'token': _make_admin_token(pw)})
+    return jsonify({'token': _make_admin_token()})
 
 
 @app.route('/api/admin/results', methods=['GET'])
