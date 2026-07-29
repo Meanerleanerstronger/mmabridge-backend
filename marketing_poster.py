@@ -2,6 +2,8 @@
 MMA Bridge — Social Media Poster
 Handles posting to Reddit and Twitter/X.
 Instagram posting is done via Meta Graph API (requires a business account).
+Twitter/X and Instagram both accept an optional image_url — Twitter downloads
+and re-uploads it via the v1.1 media endpoint, Instagram fetches it directly.
 All functions return {"ok": True} or {"ok": False, "error": "..."}.
 Credentials are read from environment variables — add them in Render dashboard.
 """
@@ -70,8 +72,35 @@ def post_reddit(title: str, body: str, subreddit: str = "test") -> dict:
 
 # ── Twitter / X ─────────────────────────────────────────────────────────────
 
-def post_twitter(text: str) -> dict:
-    """Post a tweet via X API v2 using OAuth 1.0a."""
+def _twitter_upload_media(auth, image_url: str):
+    """Downloads image_url and uploads it to X's v1.1 media endpoint.
+    Returns (media_id_string, None) or (None, error_message)."""
+    try:
+        img = _req.get(image_url, timeout=15)
+        img.raise_for_status()
+    except Exception as e:
+        return None, f"Could not fetch image_url: {e}"
+    try:
+        r = _req.post(
+            "https://upload.twitter.com/1.1/media/upload.json",
+            auth=auth,
+            files={"media": img.content},
+            timeout=30,
+        )
+        r.raise_for_status()
+        media_id = r.json().get("media_id_string")
+        if not media_id:
+            return None, "No media_id_string returned from upload"
+        return media_id, None
+    except Exception as e:
+        return None, str(e)
+
+
+def post_twitter(text: str, image_url: str = "") -> dict:
+    """Post a tweet via X API v2 using OAuth 1.0a. If image_url is given, the
+    image is downloaded and uploaded via X's v1.1 media endpoint first, then
+    attached to the tweet — X still requires the older media/upload.json
+    endpoint even for v2 tweet creation, there's no v2 equivalent."""
     api_key    = os.getenv("TWITTER_API_KEY", "")
     api_secret = os.getenv("TWITTER_API_SECRET", "")
     acc_token  = os.getenv("TWITTER_ACCESS_TOKEN", "")
@@ -82,9 +111,20 @@ def post_twitter(text: str) -> dict:
         # OAuth 1.0a via requests-oauthlib (installed as part of authlib deps)
         from requests_oauthlib import OAuth1
         auth = OAuth1(api_key, api_secret, acc_token, acc_secret)
+
+        media_id = None
+        if image_url:
+            media_id, media_err = _twitter_upload_media(auth, image_url)
+            if media_err:
+                return {"ok": False, "error": f"Media upload failed: {media_err}"}
+
+        payload = {"text": text[:280]}
+        if media_id:
+            payload["media"] = {"media_ids": [media_id]}
+
         r = _req.post(
             "https://api.twitter.com/2/tweets",
-            json={"text": text[:280]},
+            json=payload,
             auth=auth,
             timeout=15,
         )

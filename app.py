@@ -1308,7 +1308,7 @@ def admin_marketing_post():
         result = post_reddit(title, body, subreddit)
 
     elif platform == 'twitter':
-        result = post_twitter(content)
+        result = post_twitter(content, image_url)
 
     elif platform == 'instagram':
         result = post_instagram(content, image_url)
