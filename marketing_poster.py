@@ -87,10 +87,14 @@ def _twitter_upload_media(auth, image_url: str):
             files={"media": img.content},
             timeout=30,
         )
-        r.raise_for_status()
+        if not r.ok:
+            # raise_for_status() alone discards X's actual error body — which
+            # is where the useful detail is (e.g. which permission/field is
+            # wrong). Surface it instead of a bare "400 Bad Request".
+            return None, f"HTTP {r.status_code} from media/upload.json: {r.text[:500]}"
         media_id = r.json().get("media_id_string")
         if not media_id:
-            return None, "No media_id_string returned from upload"
+            return None, f"No media_id_string returned from upload: {r.text[:300]}"
         return media_id, None
     except Exception as e:
         return None, str(e)
