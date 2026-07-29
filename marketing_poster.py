@@ -180,10 +180,15 @@ def post_instagram(caption: str, image_url: str = "") -> dict:
             },
             timeout=15,
         )
-        r1.raise_for_status()
+        if not r1.ok:
+            # raise_for_status() alone discards Meta's actual error body —
+            # same mistake fixed on the Twitter media upload earlier, and
+            # the fix is the same: surface it instead of a bare "400 Bad
+            # Request for url: ...".
+            return {"ok": False, "error": f"HTTP {r1.status_code} creating media container: {r1.text[:500]}"}
         container_id = r1.json().get("id")
         if not container_id:
-            return {"ok": False, "error": "No container ID returned"}
+            return {"ok": False, "error": f"No container ID returned: {r1.text[:300]}"}
 
         # Step 2: publish
         r2 = _req.post(
@@ -191,7 +196,8 @@ def post_instagram(caption: str, image_url: str = "") -> dict:
             params={"creation_id": container_id, "access_token": token},
             timeout=15,
         )
-        r2.raise_for_status()
+        if not r2.ok:
+            return {"ok": False, "error": f"HTTP {r2.status_code} publishing media: {r2.text[:500]}"}
         media_id = r2.json().get("id", "")
         return {"ok": True, "media_id": media_id}
     except Exception as e:
