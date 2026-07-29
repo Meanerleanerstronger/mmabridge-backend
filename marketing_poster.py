@@ -16,10 +16,11 @@ import requests as _req
 # ── Reddit ──────────────────────────────────────────────────────────────────
 
 def _reddit_token():
-    cid  = os.getenv("REDDIT_CLIENT_ID", "")
-    csec = os.getenv("REDDIT_CLIENT_SECRET", "")
-    user = os.getenv("REDDIT_USERNAME", "")
-    pw   = os.getenv("REDDIT_PASSWORD", "")
+    # Same stray-whitespace guard as Twitter/Instagram below.
+    cid  = os.getenv("REDDIT_CLIENT_ID", "").strip()
+    csec = os.getenv("REDDIT_CLIENT_SECRET", "").strip()
+    user = os.getenv("REDDIT_USERNAME", "").strip()
+    pw   = os.getenv("REDDIT_PASSWORD", "").strip()
     if not all([cid, csec, user, pw]):
         return None, "Reddit credentials not configured"
     try:
@@ -157,8 +158,13 @@ def post_instagram(caption: str, image_url: str = "") -> dict:
     Requires an image URL (Instagram doesn't allow text-only posts).
     If no image_url is provided, returns an error.
     """
-    token      = os.getenv("INSTAGRAM_ACCESS_TOKEN", "")
-    account_id = os.getenv("INSTAGRAM_ACCOUNT_ID", "")
+    # .strip() guards against a stray trailing newline/space from copying
+    # the value into Render's env var field — same issue hit with the
+    # Twitter credentials, and it produces the same kind of symptom here:
+    # a malformed request URL (the newline shows up as a literal %0A stuck
+    # in the middle of it) rather than an auth error.
+    token      = os.getenv("INSTAGRAM_ACCESS_TOKEN", "").strip()
+    account_id = os.getenv("INSTAGRAM_ACCOUNT_ID", "").strip()
     if not all([token, account_id]):
         return {"ok": False, "error": "Instagram credentials not configured"}
     if not image_url:
