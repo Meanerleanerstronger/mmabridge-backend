@@ -154,30 +154,34 @@ def post_twitter(text: str, image_url: str = "") -> dict:
 
 def post_instagram(caption: str, image_url: str = "") -> dict:
     """
-    Post to Instagram via Meta Graph API.
+    Post to Instagram via the "Instagram API with Instagram Login" flow
+    (tokens issued this way start with IGAA, not to be confused with the
+    older Facebook-Login-linked flow's tokens). This flow uses a different
+    host, request format, and auth style than the classic Facebook Graph
+    API — mixing them up produces a misleading "cannot parse access
+    token" error that looks like a bad credential when the token is
+    actually fine:
+      - host is graph.instagram.com, not graph.facebook.com
+      - body is JSON, not URL query params
+      - token goes in an Authorization: Bearer header, not an access_token param
     Requires an image URL (Instagram doesn't allow text-only posts).
-    If no image_url is provided, returns an error.
     """
     # .strip() guards against a stray trailing newline/space from copying
     # the value into Render's env var field — same issue hit with the
-    # Twitter credentials, and it produces the same kind of symptom here:
-    # a malformed request URL (the newline shows up as a literal %0A stuck
-    # in the middle of it) rather than an auth error.
+    # Twitter credentials.
     token      = os.getenv("INSTAGRAM_ACCESS_TOKEN", "").strip()
     account_id = os.getenv("INSTAGRAM_ACCOUNT_ID", "").strip()
     if not all([token, account_id]):
         return {"ok": False, "error": "Instagram credentials not configured"}
     if not image_url:
         return {"ok": False, "error": "Instagram requires an image URL"}
+    headers = {"Authorization": f"Bearer {token}"}
     try:
         # Step 1: create media container
         r1 = _req.post(
-            f"https://graph.facebook.com/v19.0/{account_id}/media",
-            params={
-                "image_url": image_url,
-                "caption": caption[:2200],
-                "access_token": token,
-            },
+            f"https://graph.instagram.com/v19.0/{account_id}/media",
+            headers=headers,
+            json={"image_url": image_url, "caption": caption[:2200]},
             timeout=15,
         )
         if not r1.ok:
@@ -192,8 +196,9 @@ def post_instagram(caption: str, image_url: str = "") -> dict:
 
         # Step 2: publish
         r2 = _req.post(
-            f"https://graph.facebook.com/v19.0/{account_id}/media_publish",
-            params={"creation_id": container_id, "access_token": token},
+            f"https://graph.instagram.com/v19.0/{account_id}/media_publish",
+            headers=headers,
+            json={"creation_id": container_id},
             timeout=15,
         )
         if not r2.ok:
