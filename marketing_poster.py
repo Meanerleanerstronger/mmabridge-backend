@@ -10,6 +10,7 @@ Credentials are read from environment variables — add them in Render dashboard
 
 import os
 import json
+import time as _time
 import requests as _req
 
 
@@ -193,6 +194,32 @@ def post_instagram(caption: str, image_url: str = "") -> dict:
         container_id = r1.json().get("id")
         if not container_id:
             return {"ok": False, "error": f"No container ID returned: {r1.text[:300]}"}
+
+        # Instagram processes the image asynchronously after the container
+        # is created — publishing immediately can hit "Media ID is not
+        # available" (error 9007) because it isn't done yet. Poll the
+        # container's own status instead of guessing a fixed delay, since
+        # processing time varies with image size/server load.
+        # Kept short (12s max) so this whole request can't run into
+        # gunicorn's default 30s worker timeout (no --timeout override in
+        # the Procfile) once the other network round-trips are counted —
+        # photo processing (as opposed to video) is normally done in a
+        # couple seconds anyway.
+        for _ in range(8):
+            status_res = _req.get(
+                f"https://graph.instagram.com/v19.0/{container_id}",
+                headers=headers,
+                params={"fields": "status_code"},
+                timeout=10,
+            )
+            status = status_res.json().get("status_code") if status_res.ok else None
+            if status == "FINISHED":
+                break
+            if status == "ERROR":
+                return {"ok": False, "error": f"Instagram failed to process the image: {status_res.text[:300]}"}
+            _time.sleep(1.5)
+        else:
+            return {"ok": False, "error": "Instagram never finished processing the image in time — try again"}
 
         # Step 2: publish
         r2 = _req.post(
