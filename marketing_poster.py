@@ -81,10 +81,11 @@ def _twitter_upload_media(auth, image_url: str):
     except Exception as e:
         return None, f"Could not fetch image_url: {e}"
     try:
+        content_type = img.headers.get('Content-Type', 'image/png')
         r = _req.post(
             "https://upload.twitter.com/1.1/media/upload.json",
             auth=auth,
-            files={"media": img.content},
+            files={"media": ("poster.png", img.content, content_type)},
             timeout=30,
         )
         if not r.ok:
