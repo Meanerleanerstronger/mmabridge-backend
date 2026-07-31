@@ -139,3 +139,30 @@ generated posts). There's also a server-side `.replace('—', ', ')`
 strip on the response as a backstop, since LLMs reach for em dashes
 regardless of being told not to. If this rule ever needs loosening,
 both the prompt and the strip need updating together.
+
+## Dream H2H poster generation (`/api/admin/marketing/generate-h2h-poster`)
+
+Admin.html's "Dream H2H Poster" generator has a "Generate for Instagram"
+button — this backend has no headless browser of its own, so it can't
+render the poster itself. Instead this endpoint triggers the frontend
+repo's `generate-h2h-poster.yml` GitHub Action (`workflow_dispatch`),
+which does the actual Puppeteer render and commits the result to
+`social/manual-queue.json`. admin.html polls that file for the specific
+`request_id` this endpoint hands back.
+
+Needs two Render env vars that don't exist yet anywhere else in this
+project:
+- `GITHUB_TOKEN` — a GitHub Personal Access Token (fine-grained,
+  scoped to just the frontend repo) with **Actions: read and write**
+  and **Contents: read and write** permissions. Contents write is
+  needed because the action's own commit-and-push step uses this same
+  repo's default `GITHUB_TOKEN` inside the Action, not this one — this
+  one only needs to trigger the workflow, i.e. Actions write is the
+  permission that actually matters here; Contents access is a
+  reasonable minimum alongside it in case dispatch scoping requires it.
+- `GITHUB_REPO` — `"Meanerleanerstronger/mma-bridge"` (owner/repo, no
+  URL, no `.git`).
+
+If this ever starts returning `502` with "GitHub dispatch failed",
+check that token hasn't expired (fine-grained PATs default to a 90-day
+or shorter expiry) before assuming the code broke.

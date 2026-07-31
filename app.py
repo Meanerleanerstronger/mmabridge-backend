@@ -1328,6 +1328,75 @@ def admin_marketing_post():
     return jsonify(result), status_code
 
 
+# ── Dream H2H poster generation (admin.html) ─────────────────────────────
+# Triggers the frontend repo's generate-h2h-poster.yml GitHub Action, which
+# actually renders the poster with Puppeteer (this backend has no headless
+# browser) and commits the image + a social/manual-queue.json entry.
+# GITHUB_TOKEN needs a PAT with the "repo" and "workflow" scopes on the
+# frontend repo, set as a Render env var — see MARKETING_SETUP.md.
+import secrets as _secrets
+
+@app.route('/api/admin/marketing/generate-h2h-poster', methods=['POST'])
+@limiter.limit("10 per minute")
+def admin_generate_h2h_poster():
+    data = request.get_json(silent=True) or {}
+    tok  = (data.get('token') or '').strip()
+    if not _verify_admin_token(tok):
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    fighter_a = (data.get('fighterA') or '').strip()
+    fighter_b = (data.get('fighterB') or '').strip()
+    if not fighter_a or not fighter_b:
+        return jsonify({'error': 'fighterA and fighterB required'}), 400
+
+    style = (data.get('style') or 'poster').strip().lower()
+    if style not in ('poster', 'classic'):
+        style = 'poster'
+    theme = (data.get('theme') or 'dark').strip().lower()
+    if theme not in ('dark', 'light'):
+        theme = 'dark'
+
+    github_token = os.environ.get('GITHUB_TOKEN', '').strip()
+    github_repo  = os.environ.get('GITHUB_REPO', '').strip()  # e.g. "Meanerleanerstronger/mma-bridge"
+    if not github_token or not github_repo:
+        return jsonify({'error': 'GITHUB_TOKEN/GITHUB_REPO not configured on the backend'}), 500
+
+    request_id = _secrets.token_hex(6)
+    try:
+        import requests as _gh_req
+        r = _gh_req.post(
+            f'https://api.github.com/repos/{github_repo}/actions/workflows/generate-h2h-poster.yml/dispatches',
+            headers={
+                'Authorization': f'Bearer {github_token}',
+                'Accept': 'application/vnd.github+json',
+            },
+            json={
+                'ref': 'main',
+                'inputs': {
+                    'fighter_a': fighter_a,
+                    'fighter_b': fighter_b,
+                    'weight': (data.get('weight') or '').strip(),
+                    'event_name': (data.get('eventName') or '').strip(),
+                    'location': (data.get('location') or '').strip(),
+                    'style': style,
+                    'theme': theme,
+                    'caption': (data.get('caption') or '').strip(),
+                    'request_id': request_id,
+                },
+            },
+            timeout=15,
+        )
+        if not r.ok:
+            # GitHub's dispatch endpoint returns 204 with no body on success and
+            # a JSON error body on failure (bad ref, bad inputs, bad token) — surface
+            # it instead of a bare "500 Internal Server Error" if this ever misfires.
+            return jsonify({'error': f'GitHub dispatch failed: HTTP {r.status_code} {r.text[:300]}'}), 502
+    except Exception as e:
+        return jsonify({'error': str(e)}), 502
+
+    return jsonify({'ok': True, 'request_id': request_id})
+
+
 # ==============================================
 # EMAIL UNSUBSCRIBE
 # ==============================================
