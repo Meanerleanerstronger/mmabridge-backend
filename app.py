@@ -2,7 +2,7 @@
 # MMA BRIDGE - FLASK BACKEND (WITH DATABASE)
 # ==============================================
 
-from flask import Flask, jsonify, request, redirect
+from flask import Flask, jsonify, request, redirect, Response
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -1395,6 +1395,36 @@ def admin_generate_h2h_poster():
         return jsonify({'error': str(e)}), 502
 
     return jsonify({'ok': True, 'request_id': request_id})
+
+
+# ── Image proxy (for client-side "Download Poster") ──────────────────────
+# Fighter photos come from UFC's CDN, which doesn't send an
+# Access-Control-Allow-Origin header — drawing them straight into a <canvas>
+# on matchup.html/fightcard.html taints it (SecurityError on toBlob/
+# toDataURL), which is what was blocking a real one-click download button.
+# Re-fetching through this same-origin endpoint first sidesteps that. Locked
+# to an explicit host allowlist so this can't be used as an open image
+# proxy for arbitrary URLs.
+_IMAGE_PROXY_ALLOWED_HOSTS = {'dmxg5wxfqgb4u.cloudfront.net'}
+
+@app.route('/api/image-proxy', methods=['GET'])
+@limiter.limit("60 per minute")
+def image_proxy():
+    from urllib.parse import urlparse
+    url = request.args.get('url', '')
+    parsed = urlparse(url)
+    if parsed.scheme != 'https' or parsed.netloc not in _IMAGE_PROXY_ALLOWED_HOSTS:
+        return jsonify({'error': 'host not allowed'}), 403
+    try:
+        import requests as _img_req
+        r = _img_req.get(url, timeout=10)
+        r.raise_for_status()
+    except Exception as e:
+        return jsonify({'error': str(e)}), 502
+    resp = Response(r.content, content_type=r.headers.get('Content-Type', 'image/png'))
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.headers['Cache-Control'] = 'public, max-age=86400'
+    return resp
 
 
 # ==============================================
