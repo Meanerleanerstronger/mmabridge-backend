@@ -1116,6 +1116,7 @@ def admin_set_result():
     winner    = (data.get('winner')    or '').strip().lower()
     method    = (data.get('method')    or '').strip()
     fotn      = (data.get('fotn')      or '').strip().lower()
+    round_    = data.get('round', None)
 
     if not event_id or not fight_key:
         return jsonify({'error': 'event_id and fight_key required'}), 400
@@ -1127,6 +1128,7 @@ def admin_set_result():
                 'fight_key':  fight_key,
                 'winner':     winner or None,
                 'method':     method or None,
+                'round':      round_ if isinstance(round_, int) else None,
                 'fotn':       fotn   or None,
                 'updated_at': datetime.now(timezone.utc).isoformat(),
             },
