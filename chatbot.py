@@ -208,19 +208,27 @@ def build_fighter_context(fighters, frontend_fighters=None) -> str:
 
     return '\n'.join(lines) if lines else ""
 
-# ── Current Champions (June 2026) ─────────────
-CHAMPIONS = """=== CURRENT UFC CHAMPIONS (as of June 2026) ===
-• Women's Strawweight (115): Zhang Weili
-• Women's Flyweight (125): Joshua Van — 12-1 — youngest champion ever, Canadian
-• Flyweight (125): Alexandre Pantoja — 30-5
-• Bantamweight (135): Petr Yan — 18-5 — 2x champ
-• Featherweight (145): Ilia Topuria — 17-1 — FW champ, lost LW title bid to Gaethje at UFC 314
-• Lightweight (155): Justin Gaethje — 28-5 — SHOCKED Topuria at +450 odds at UFC 314 (June 14 2026)
-• Welterweight (170): Ian Garry — 17-1 — defending vs Islam Makhachev at UFC 330 (Aug 15 2026, Philadelphia)
-• Middleweight (185): Khamzat Chimaev — 14-0 — unbeaten, destroyed DDP to claim MW belt
-• Light Heavyweight (205): Carlos Ulberg — NEW champ, KO'd Alex Pereira at UFC Freedom 250 (June 14 2026)
-• Heavyweight (265): Tom Aspinall — 15-3 — interim/undisputed HW champ
-"""
+# ── Current Champions — computed live from fighters.json, never hardcoded.
+# A static hand-written version of this used to live here (dated "as of June
+# 2026") and silently went stale the moment any title changed hands — Lucas
+# would keep confidently naming the wrong champion indefinitely since nothing
+# ever prompted a human to go update a string in this source file. Deriving
+# it from the same `ranking: 'Champion'` field the site itself uses means it
+# can never drift out of sync with the real site.
+def build_champions_block(frontend_fighters) -> str:
+    if not frontend_fighters or not isinstance(frontend_fighters, list):
+        return ""
+    champs = [f for f in frontend_fighters if f.get('ranking') == 'Champion' and f.get('weightClass')]
+    if not champs:
+        return ""
+    # Keep first-seen order per division (data order is already roughly
+    # heaviest-to-lightest / men-before-women, matches the site's own display).
+    lines = ["=== CURRENT UFC CHAMPIONS (live from mmabridge.com fighter data) ==="]
+    for f in champs:
+        rec = f.get('record', {})
+        rec_str = f"{rec.get('wins',0)}-{rec.get('losses',0)}-{rec.get('draws',0)}" if isinstance(rec, dict) else str(rec)
+        lines.append(f"• {f.get('weightClass')}: {f.get('name')} — {rec_str}")
+    return '\n'.join(lines)
 
 # ── MMA Bridge PFP Top 15 (June 2026) ─────────
 PFP_RANKINGS = """=== MMA BRIDGE POUND-FOR-POUND TOP 15 (June 2026) ===
@@ -261,26 +269,16 @@ WEIGHT CLASSES (UFC, lightest to heaviest):
 Strawweight 115lb | Flyweight 125lb | Bantamweight 135lb | Featherweight 145lb
 Lightweight 155lb | Welterweight 170lb | Middleweight 185lb | Light Heavyweight 205lb | Heavyweight 265lb+
 
-RECENT MAJOR RESULTS (from live event data above, these are the headlines):
-• UFC Freedom 250 (Jun 14 2026): Justin Gaethje SHOCKED Topuria to win LW title (+450 underdog, one of the biggest upsets in UFC history). Carlos Ulberg KO'd Alex Pereira to become new LHW champ. MASSIVE night.
-• UFC Fight Night: Kape vs Horiguchi (Jun 20 2026): Manel Kape TKO'd Horiguchi R3. Oliveira def. Chikadze KO R2.
-• UFC Fight Night: Fiziev vs Torres (Jun 27 2026): Rafael Fiziev def. Torres KO/TKO R2.
-
-UPCOMING (always cross-check with live event data above):
-• UFC 329: McGregor vs Holloway 2 — Jul 11 2026, Las Vegas — HUGE PPV
-• UFC Fight Night: Du Plessis vs Usman — Jul 18 2026, Oklahoma City — MW match, Usman moving up
-• UFC 330: Makhachev vs Ian Garry — Aug 15 2026, Philadelphia — WW title, Islam challenging Garry
+RECENT RESULTS AND UPCOMING CARDS: don't rely on anything hardcoded here — the live event data included later in this prompt is the complete, accurate, always-current list of every UFC event on MMA Bridge (past and upcoming). Use that, not your own memory, for any "what happened at X" or "what's coming up" question.
 
 GOAT DEBATE — LUCAS'S PASSIONATE STANCE ON ISLAM:
-Islam Makhachev IS the GOAT conversation RIGHT NOW. This is your hill:
-• Islam is almost undeniable as the greatest active fighter alive. Two-weight champion. Never looked beatable.
-• He beat champions at TWO weight classes. Volkanovski couldn't crack him. Oliveira couldn't. JDM couldn't.
-• Now he's CHALLENGING a third belt at WW against Ian Garry at UFC 330. If he wins that, the debate is literally over.
-• Jon Jones gets respect but had drug tests, drama, gaps. Islam just shows up and dominates. No excuses. Pure violence.
-• Khabib retired 29-0 in ONE division. Islam is doing MORE and climbing higher.
-• "When someone says Jon Jones is GOAT: Jones is a legend, no cap, but Islam is putting together the greatest ACTIVE run we've ever seen. Going for a third belt now. The Dagestani machine is not human."
-• "When someone says Khabib is GOAT: Khabib is my boy but Islam is literally doing everything Khabib did AND more. Two belts, going for a third. The student became the master."
-• GET PASSIONATE when asked if Islam is GOAT: "Bro are you even watching? Two-weight champ, going for a third at UFC 330. Nobody has figured him out. If he beats Garry it is literally done. Lock it in."
+Islam Makhachev is one of your favorite GOAT-debate picks — argue his case with real enthusiasm whenever it comes up. This is a matter of opinion, not a scripted outcome, so ground it in whatever his ACTUAL current record/title situation is per the live fighter data below (don't assert a specific fight's result before it's actually happened — check the live data for whether it's decided yet).
+• Two-weight champion, historically dominant, beat elite champions across divisions (Volkanovski, Oliveira, and others — check live data for his actual last5).
+• Jon Jones gets respect but had drug tests, drama, gaps. Islam just shows up and dominates. No excuses.
+• Khabib retired 29-0 in ONE division. Islam has done more across more weight, and it's a fair debate whether he's already surpassed him.
+• "When someone says Jon Jones is GOAT: Jones is a legend, no cap, but Islam is putting together one of the greatest ACTIVE runs we've ever seen." (Only claim a THIRD belt or an undefeated run if the live data actually backs that up right now — check before you say it.)
+• "When someone says Khabib is GOAT: Khabib is my boy but Islam is doing everything Khabib did and then some. The student may have become the master."
+• Get passionate, but always check the live data first for what's actually true about his current record/division/last fight before making a specific factual claim — the opinion can be hype, the facts can't be made up.
 
 OTHER GOAT LEGENDS:
 • Jon Jones — 29-1 (1 NC, 1 DQ), dominated LHW, moved to HW, GOAT candidate
@@ -399,6 +397,7 @@ def build_system_prompt(page_context='general', live_events=None, live_fighters=
     backend_fighters = get_fighters()
     # Frontend fighter array (500+ fighters) passed from live_data
     fighter_block = build_fighter_context(backend_fighters, frontend_fighters=live_fighters)
+    champions_block = build_champions_block(live_fighters)
 
     page_hint = {
         'pfp':         "User is on the PFP Rankings page. Engage with specific placements — debate who's too high, too low, who's missing. Know the current top 15 cold.",
@@ -473,20 +472,21 @@ Lucas Bot — https://mmabridge.com/lucas.html
 Sign In — https://mmabridge.com/auth.html
 
 CORE RULES:
-1. Live data sections below are GROUND TRUTH. Use exact fighter names — never invent matchups or results.
+1. Live data sections below (CURRENT UFC CHAMPIONS, fighter roster, event data) are GROUND TRUTH. Use exact fighter names — never invent matchups or results. If ANY other section of this prompt (P4P list, GOAT-debate opinions, general knowledge) states a fact that conflicts with the live data, the live data wins — the other section is just old commentary that hasn't been rewritten, not a correction to the live data.
 2. Short by default. 3-5 sentences max. End with a question. Let them pull more out of you.
-3. Always have a pick. Never "it could go either way."
-4. Islam Makhachev is YOUR guy on the GOAT debate. Argue passionately.
+3. Always have a pick for predictions/opinions. Never "it could go either way" on a genuine opinion question.
+4. Islam Makhachev is a great GOAT-debate pick — argue him passionately, but ground any specific factual claim (record, title count, who he's fought) in the live fighter data, not memory.
 5. When asked "who fought at [event]" — give EVERY fight and result from the data. Be thorough.
 6. ALWAYS share links when asked. You have all the links and share them freely.
 7. When asked about a fighter's record or last 5 fights — pull it from the fighter data below. Be accurate.
-8. Never say "I'm not sure" or "I don't have that" — always give a take. If it might be outdated say so but still give your best answer.
+8. For opinions/predictions, always give a take — don't hedge with "it could go either way." But for FACTS (who's champion, what happened at an event, a fighter's record), if it's not in the live data below and you're not certain, say so plainly instead of guessing — a wrong fact is worse than admitting you don't have it.
 
 {HARDCODED_KNOWLEDGE}
 
-{CHAMPIONS}
+{champions_block}
 
 {PFP_RANKINGS}
+NOTE: the P4P list above is hand-curated and only as current as the last time someone updated it — if it names a champion/record that conflicts with the live CURRENT UFC CHAMPIONS or fighter data elsewhere in this prompt, the live data is correct and this list is stale. Don't state a P4P-list fact as certain if it conflicts with live data — flag it as "last I checked" instead.
 
 {fighter_block}
 
@@ -506,12 +506,17 @@ def chat_with_lucas(user_message, conversation_history=[], page_context='general
 
         messages = [{"role": "system", "content": system_prompt}]
 
-        # Few-shot examples so GPT-4o knows widget output format
+        # Few-shot examples so GPT-4o knows widget output format. Deliberately
+        # generic/fictional fighters and events, not real ones — these teach
+        # the JSON shape, not a "correct" prediction to imitate. Earlier
+        # versions used real, still-undetermined fights (e.g. a specific
+        # pick for a fight that hadn't happened yet), which taught the model
+        # to treat a scripted example outcome as a fact worth repeating.
         messages += [
-            {"role": "user",      "content": "generate me a UFC 329 parlay widget"},
-            {"role": "assistant", "content": 'Here are my locks for UFC 329.\n<widget>{"type":"parlay","data":{"title":"UFC 329 Parlay","picks":[{"fighter":"Max Holloway","event":"UFC 329","method":"Decision"},{"fighter":"Islam Makhachev","event":"UFC 330","method":"Sub R4"},{"fighter":"Khamzat Chimaev","event":"UFC 330","method":"Decision"}]}}</widget>'},
-            {"role": "user",      "content": "show me a prediction card for Islam vs Garry"},
-            {"role": "assistant", "content": 'Islam by submission, no debate.\n<widget>{"type":"prediction","data":{"event":"UFC 330","fight":"Islam Makhachev vs Ian Garry","pick":"Islam Makhachev","method":"Submission","round":"4","confidence":82,"reasoning":"Garry is slick on the feet but nobody escapes Islam\'s cage control. R4 rear naked or guillotine."}}</widget>'},
+            {"role": "user",      "content": "generate me a parlay widget for this weekend's card"},
+            {"role": "assistant", "content": 'Here\'s a parlay off this card — check the live data for who\'s actually fighting.\n<widget>{"type":"parlay","data":{"title":"This Weekend\'s Parlay","picks":[{"fighter":"Fighter A","event":"Event Name","method":"Decision"},{"fighter":"Fighter B","event":"Event Name","method":"Sub R2"}]}}</widget>'},
+            {"role": "user",      "content": "show me a prediction card for the main event"},
+            {"role": "assistant", "content": 'Here\'s my take on it — pull the actual fighters from the live event data first.\n<widget>{"type":"prediction","data":{"event":"Event Name","fight":"Fighter A vs Fighter B","pick":"Fighter A","method":"Submission","round":"4","confidence":75,"reasoning":"Base this on their actual style matchup and recent form from the live fighter data, not a guess."}}</widget>'},
         ]
 
         messages += conversation_history[-12:]
