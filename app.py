@@ -128,8 +128,9 @@ create_tables()
 # ── Push notification module ─────────────────
 from push_notifications import start_scheduler, check_starred_events, announce_fighters
 from database import sb as _supabase_client
+_scheduler = None
 if _supabase_client:
-    start_scheduler(_supabase_client)
+    _scheduler = start_scheduler(_supabase_client)
 else:
     print('[Push] Supabase not configured — push scheduler skipped')
 
@@ -385,6 +386,20 @@ def _require_internal(req):
     if not INTERNAL_SECRET or secret != INTERNAL_SECRET:
         return jsonify({'error': 'Unauthorized'}), 401
     return None
+
+@app.route('/api/admin/wake-live-poll', methods=['POST'])
+def wake_live_poll():
+    """Called by scripts/ufc-sync.js whenever it detects a live-today
+    event — starts (or no-ops if already running) a tight ~60s ESPN poll
+    that pushes results into fight_results as they happen. See live_poll.py."""
+    err = _require_internal(request)
+    if err:
+        return err
+    if _supabase_client is None:
+        return jsonify({'error': 'Supabase not connected'}), 503
+    from live_poll import start_live_poll
+    started = start_live_poll(_scheduler, _supabase_client)
+    return jsonify({'ok': bool(started)})
 
 @app.route('/api/auth/google')
 def google_login():
