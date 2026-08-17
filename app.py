@@ -1229,6 +1229,61 @@ def admin_marketing_generate():
 
 
 # ==============================================
+# GROUP — LUCAS WEEKLY RECAP
+# ==============================================
+
+@app.route('/api/group/weekly-recap', methods=['POST'])
+@limiter.limit("10 per minute")
+def group_weekly_recap():
+    """Public — a short Lucas-voiced blurb for a group's Group Wall.
+    Client caches the result (keyed by group + most-recent-completed-event)
+    so this only actually gets called once per group per finished event,
+    not on every page load."""
+    data = request.get_json(silent=True) or {}
+    group_name = (data.get('group_name') or 'This group').strip()[:60]
+    event_name = (data.get('event_name') or '').strip()[:120]
+    standings  = data.get('standings') or []
+
+    if not isinstance(standings, list) or not standings:
+        return jsonify({'error': 'standings is required'}), 400
+
+    lines = []
+    for s in standings[:5]:
+        name = str(s.get('name') or '').strip()[:40]
+        pts  = s.get('points')
+        acc  = s.get('accuracy')
+        if name:
+            lines.append(f"{name}: {pts} pts, {acc}% accuracy")
+    context = f"Group: {group_name}\nMost recent event: {event_name or 'season so far'}\nStandings:\n" + "\n".join(lines)
+
+    system = (
+        "You are Lucas, the MMA Bridge AI. Write ONE short, punchy recap sentence (max 2 sentences) "
+        "for a pick'em group's activity feed, summarizing who's leading and any close race. "
+        "Voice: knowledgeable MMA fan, direct, a little playful, zero corporate fluff. "
+        "NEVER use em dashes, emojis, or phrases like 'Let's go'/'Don't miss it'. "
+        "Mention the actual leader's name and their edge over 2nd place if there is one."
+    )
+
+    try:
+        from chatbot import client as _openai_client
+        resp = _openai_client.chat.completions.create(
+            model='gpt-4o-mini',
+            messages=[
+                {'role': 'system', 'content': system},
+                {'role': 'user',   'content': context},
+            ],
+            max_tokens=120,
+            temperature=0.85,
+        )
+        text = resp.choices[0].message.content.strip()
+        text = text.replace('—', ', ').replace('–', '-')
+        return jsonify({'recap': text})
+    except Exception as e:
+        print(f'[GroupRecap] generate error: {e}')
+        return jsonify({'error': str(e)}), 500
+
+
+# ==============================================
 # ADMIN — ANALYTICS
 # ==============================================
 
