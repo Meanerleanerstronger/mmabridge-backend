@@ -395,10 +395,10 @@ def wake_live_poll():
     err = _require_internal(request)
     if err:
         return err
-    if _supabase_client is None:
+    if get_sb() is None:
         return jsonify({'error': 'Supabase not connected'}), 503
     from live_poll import start_live_poll
-    started = start_live_poll(_scheduler, _supabase_client)
+    started = start_live_poll(_scheduler, get_sb())
     return jsonify({'ok': bool(started)})
 
 @app.route('/api/auth/google')
@@ -711,7 +711,7 @@ def edit_rating(rating_id):
 
     try:
         # Verify ownership before updating
-        existing = _supabase_client.table('event_ratings').select('user_id').eq('id', rating_id).execute()
+        existing = get_sb().table('event_ratings').select('user_id').eq('id', rating_id).execute()
         if not existing.data or existing.data[0].get('user_id') != user_id:
             return jsonify({'error': 'Not authorized to edit this rating'}), 403
         update_event_rating(rating_id, hype_rating, review_text)
@@ -862,7 +862,7 @@ def push_announce_fighters():
         event_id    = data.get('eventId')   or data.get('event_id')   or ''
         if not fighters or not event_id:
             return jsonify({'error': 'fighters and eventId required'}), 400
-        announce_fighters(_supabase_client, fighters, event_name, event_id)
+        announce_fighters(get_sb(), fighters, event_name, event_id)
         return jsonify({'ok': True, 'notified_for': fighters})
     except Exception as e:
         print(f'[Push] announce-fighters error: {e}')
@@ -884,7 +884,7 @@ def push_test():
             return jsonify({'error': 'browser_id required'}), 400
 
         row = (
-            _supabase_client.table('push_subscriptions')
+            get_sb().table('push_subscriptions')
             .select('endpoint, p256dh, auth')
             .eq('browser_id', browser_id)
             .single()
@@ -916,7 +916,7 @@ def push_trigger_check():
     err = _require_internal(request)
     if err: return err
     try:
-        check_starred_events(_supabase_client)
+        check_starred_events(get_sb())
         return jsonify({'ok': True})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -931,7 +931,7 @@ def get_leaderboard():
     """Return leaderboard data filtered by period (all/week/month)."""
     period = request.args.get('period', 'all')
     try:
-        query = _supabase_client.table('picks').select('user_id, event_id, fight_key, pick, method, created_at')
+        query = get_sb().table('picks').select('user_id, event_id, fight_key, pick, method, created_at')
         if period == 'week':
             cutoff = (datetime.now(timezone.utc) - timedelta(days=7)).isoformat()
             query = query.gte('created_at', cutoff)
@@ -966,7 +966,7 @@ def follow_user(target_user_id):
     if follower_id == target_user_id:
         return jsonify({'error': 'Cannot follow yourself'}), 400
     try:
-        _supabase_client.table('follows').upsert({
+        get_sb().table('follows').upsert({
             'follower_id': follower_id,
             'following_id': target_user_id
         }, on_conflict='follower_id,following_id').execute()
@@ -980,7 +980,7 @@ def follow_user(target_user_id):
 def unfollow_user(target_user_id):
     follower_id = get_jwt_identity()
     try:
-        _supabase_client.table('follows').delete()\
+        get_sb().table('follows').delete()\
             .eq('follower_id', follower_id)\
             .eq('following_id', target_user_id).execute()
         return jsonify({'ok': True})
@@ -991,8 +991,8 @@ def unfollow_user(target_user_id):
 @app.route('/api/follow/counts/<user_id>', methods=['GET'])
 def follow_counts(user_id):
     try:
-        followers = _supabase_client.table('follows').select('follower_id', count='exact').eq('following_id', user_id).execute()
-        following = _supabase_client.table('follows').select('following_id', count='exact').eq('follower_id', user_id).execute()
+        followers = get_sb().table('follows').select('follower_id', count='exact').eq('following_id', user_id).execute()
+        following = get_sb().table('follows').select('following_id', count='exact').eq('follower_id', user_id).execute()
         return jsonify({
             'followers': followers.count or 0,
             'following': following.count or 0
@@ -1006,7 +1006,7 @@ def follow_counts(user_id):
 def follow_status(target_user_id):
     follower_id = get_jwt_identity()
     try:
-        row = _supabase_client.table('follows').select('follower_id').eq('follower_id', follower_id).eq('following_id', target_user_id).execute()
+        row = get_sb().table('follows').select('follower_id').eq('follower_id', follower_id).eq('following_id', target_user_id).execute()
         return jsonify({'following': bool(row.data)})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -1107,7 +1107,7 @@ def admin_get_results():
         return jsonify({'error': 'Unauthorized'}), 401
     event_id = request.args.get('event_id', '')
     try:
-        q = _supabase_client.table('fight_results').select('*')
+        q = get_sb().table('fight_results').select('*')
         if event_id:
             q = q.eq('event_id', event_id)
         res = q.execute()
@@ -1295,7 +1295,7 @@ def admin_analytics():
         return jsonify({'error': 'Unauthorized'}), 401
 
     try:
-        sb = _supabase_client
+        sb = get_sb()
 
         # Total users
         users_res   = sb.table('profiles').select('id, username, created_at', count='exact').execute()
@@ -1520,7 +1520,7 @@ def unsubscribe():
     if not _hmac.compare_digest(token, _unsub_token(uid)):
         return 'Invalid unsubscribe link.', 400
     try:
-        _supabase_client.table('profiles') \
+        get_sb().table('profiles') \
             .update({'email_opt_out': True}) \
             .eq('id', uid) \
             .execute()
@@ -1547,7 +1547,7 @@ def delete_account():
     token = auth_header[7:]
 
     try:
-        user_resp = _supabase_client.auth.get_user(token)
+        user_resp = get_sb().auth.get_user(token)
         user_id = user_resp.user.id if user_resp.user else None
     except Exception:
         user_id = None
@@ -1558,18 +1558,18 @@ def delete_account():
     try:
         for table in ['picks', 'ratings', 'event_ratings', 'push_subscriptions', 'follows']:
             try:
-                _supabase_client.table(table).delete().eq('user_id', user_id).execute()
+                get_sb().table(table).delete().eq('user_id', user_id).execute()
             except Exception:
                 pass
         try:
-            _supabase_client.table('follows').delete().eq('follower_id', user_id).execute()
+            get_sb().table('follows').delete().eq('follower_id', user_id).execute()
         except Exception:
             pass
         try:
-            _supabase_client.table('profiles').delete().eq('id', user_id).execute()
+            get_sb().table('profiles').delete().eq('id', user_id).execute()
         except Exception:
             pass
-        _supabase_client.auth.admin.delete_user(user_id)
+        get_sb().auth.admin.delete_user(user_id)
         return jsonify({'ok': True})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
