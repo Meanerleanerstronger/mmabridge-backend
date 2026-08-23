@@ -32,6 +32,25 @@ def _sb():
         raise RuntimeError('Supabase not configured')
     return sb
 
+def get_sb():
+    """Lazily (re)connect if the module-level client never came up (or died)
+    at import time — e.g. a transient network hiccup during a Render
+    redeploy. `sb` above is otherwise a singleton set once at import, so a
+    worker that started with a bad connection stayed broken for its entire
+    lifetime with no way to self-heal; every call site using it directly
+    (like /api/admin/set-result) would then 503 forever until manually
+    restarted, even though env vars were fine and other workers were healthy.
+    Call this instead of referencing `sb` directly where staying broken
+    would silently drop data (result grading, admin writes)."""
+    global sb
+    if sb is None and SUPABASE_URL and SUPABASE_SERVICE_KEY:
+        try:
+            sb = create_client(SUPABASE_URL, SUPABASE_SERVICE_KEY)
+            print('Supabase reconnected OK')
+        except Exception as _sb_err:
+            print(f'Supabase reconnect failed: {_sb_err}')
+    return sb
+
 # ── SQLite (fighters only) ────────────────────────────────────────────────────
 DB_PATH = os.path.join(os.path.dirname(__file__), 'mma_bridge.db')
 

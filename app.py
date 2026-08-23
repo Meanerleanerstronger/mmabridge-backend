@@ -127,7 +127,7 @@ create_tables()
 
 # ── Push notification module ─────────────────
 from push_notifications import start_scheduler, check_starred_events, announce_fighters
-from database import sb as _supabase_client
+from database import sb as _supabase_client, get_sb
 _scheduler = None
 if _supabase_client:
     _scheduler = start_scheduler(_supabase_client)
@@ -1123,7 +1123,8 @@ def admin_set_result():
     if not _verify_admin_token(tok):
         return jsonify({'error': 'Unauthorized'}), 401
 
-    if _supabase_client is None:
+    sb_client = get_sb()
+    if sb_client is None:
         return jsonify({'error': 'Supabase not connected — check SUPABASE_URL and SUPABASE_SERVICE_KEY env vars on Render'}), 503
 
     event_id  = (data.get('event_id')  or '').strip()
@@ -1137,7 +1138,7 @@ def admin_set_result():
         return jsonify({'error': 'event_id and fight_key required'}), 400
 
     try:
-        _supabase_client.table('fight_results').upsert(
+        sb_client.table('fight_results').upsert(
             {
                 'event_id':   event_id,
                 'fight_key':  fight_key,
