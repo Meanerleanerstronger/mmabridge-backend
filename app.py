@@ -1016,6 +1016,29 @@ def follow_status(target_user_id):
 # ODDS ROUTE
 # ==============================================
 
+def _find_event_start(event_id):
+    """Look up this event's own start_time (falling back to isoDate at a
+    nominal 20:00 UTC) from events.json, the same source every other odds/
+    schedule feature on the site already trusts."""
+    events = load_json('events.json') or []
+    for ev in events:
+        if ev.get('id') != event_id:
+            continue
+        st = ev.get('start_time')
+        if st:
+            try:
+                return datetime.fromisoformat(st.replace('Z', '+00:00'))
+            except Exception:
+                pass
+        iso = ev.get('isoDate')
+        if iso:
+            try:
+                return datetime.fromisoformat(iso + 'T20:00:00+00:00')
+            except Exception:
+                pass
+    return None
+
+
 @app.route('/api/odds/<event_id>', methods=['GET'])
 def get_odds(event_id):
     """
@@ -1044,10 +1067,27 @@ def get_odds(event_id):
             return jsonify({'odds': [], 'source': 'error'}), 200
 
         all_odds = resp.json()
-        # Filter to matches relevant to this event_id by checking commence_time proximity
-        # Return simplified structure
+
+        # The endpoint accepted event_id but never actually used it — every
+        # request for every event returned the same unfiltered top-20 games
+        # from the sport-wide feed (which spans every MMA promotion posting
+        # odds that day, not just this card). Filter to games whose
+        # commence_time falls within 36h of this event's own start_time
+        # (start_time already means "first fight of the night" — see the
+        # earlier countdown fix — so a wide-ish window still safely covers
+        # early prelims through the main event without pulling in an
+        # unrelated card from a different promotion/date).
+        event_start = _find_event_start(event_id)
         fights = []
-        for game in all_odds[:20]:  # limit results
+        for game in all_odds:
+            if event_start:
+                ct = game.get('commence_time', '')
+                try:
+                    game_time = datetime.fromisoformat(ct.replace('Z', '+00:00'))
+                except Exception:
+                    continue
+                if abs((game_time - event_start).total_seconds()) > 36 * 3600:
+                    continue
             outcomes = game.get('bookmakers', [{}])[0].get('markets', [{}])[0].get('outcomes', [])
             if len(outcomes) >= 2:
                 fights.append({
