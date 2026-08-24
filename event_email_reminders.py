@@ -164,7 +164,7 @@ def _wrap_html(title, paragraphs, cta_text, cta_url):
       <p style="margin:20px 0 0;"><a href="{cta_url}" style="color:#b8611e;">{cta_text}</a></p>
     </td></tr>
     <tr><td style="padding-top:28px;font-size:15px;color:#222222;">
-      — MMA Bridge
+      MMA Bridge
     </td></tr>
     <tr><td style="padding-top:28px;font-size:12px;color:#999999;">
       <a href="{SITE_URL}/profile.html" style="color:#999999;">manage email preferences</a>
@@ -235,7 +235,7 @@ def send_pick_reminder_emails(sb):
                 ],
                 'Make your picks', picks_link,
             )
-            if _send_email(user['email'], f'Make your picks — {ev.get("name","")}', html):
+            if _send_email(user['email'], f'Don\'t forget to make your picks for {ev.get("name","")}', html):
                 _mark_sent(sb, user['id'], ev_id, 'pick_reminder')
                 sent += 1
             else:
@@ -307,7 +307,7 @@ def send_review_reminder_emails(sb):
                 ],
                 'Review the card', review_link,
             )
-            if _send_email(user['email'], f'How did your picks do? — {ev.get("name","")}', html):
+            if _send_email(user['email'], f'Don\'t forget to review the {ev.get("name","")} card', html):
                 _mark_sent(sb, user['id'], ev_id, 'review_reminder')
                 sent += 1
             else:

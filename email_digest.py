@@ -115,7 +115,7 @@ def _build_html(display_name, upcoming_events, stats, user_id=''):
         </tr>'''
 
     if not upcoming_html:
-        upcoming_html = '<tr><td style="padding:10px 0;color:#888888;font-size:13px;">No upcoming events right now — check back soon.</td></tr>'
+        upcoming_html = '<tr><td style="padding:10px 0;color:#888888;font-size:13px;">No upcoming events right now. Check back soon.</td></tr>'
 
     stats_lines = []
     if stats['picks_total'] > 0:
@@ -154,7 +154,7 @@ def _build_html(display_name, upcoming_events, stats, user_id=''):
     </td></tr>
 
     <tr><td style="padding-top:28px;font-size:15px;color:#222222;">
-      — MMA Bridge
+      MMA Bridge
     </td></tr>
 
     <tr><td style="padding-top:28px;font-size:12px;color:#999999;">
@@ -265,7 +265,7 @@ def send_weekly_digest(sb):
                 stats        = _get_user_stats(sb, uid)
 
                 week    = datetime.now(timezone.utc).strftime('%b %d')
-                subject = f'MMA Bridge — Your weekly update ({week})'
+                subject = f'Your weekly MMA Bridge update ({week})'
                 html    = _build_html(display_name, upcoming, stats, user_id=uid)
 
                 if _send_email(email, subject, html):

@@ -1155,6 +1155,45 @@ def admin_set_result():
         return jsonify({'error': str(e)}), 500
 
 
+@app.route('/api/admin/test-email', methods=['POST'])
+def admin_test_email():
+    """Manually fire one real email through Resend right now, instead of
+    waiting up to 4h for the next scheduled reminder run — the only way to
+    actually confirm RESEND_API_KEY is valid and delivering rather than
+    trusting the cron logs the next time it happens to fire."""
+    data = request.get_json(silent=True) or {}
+    tok  = (data.get('token') or '').strip()
+    if not _verify_admin_token(tok):
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    to = (data.get('to') or '').strip()
+    if not to:
+        return jsonify({'error': 'to (email address) required'}), 400
+
+    import requests as _email_req
+    resend_key = os.environ.get('RESEND_API_KEY', '')
+    if not resend_key:
+        return jsonify({'error': 'RESEND_API_KEY not configured on this service'}), 503
+
+    try:
+        resp = _email_req.post(
+            'https://api.resend.com/emails',
+            headers={'Authorization': f'Bearer {resend_key}', 'Content-Type': 'application/json'},
+            json={
+                'from': 'MMA Bridge <reminders@mmabridge.com>',
+                'to': [to],
+                'subject': 'MMA Bridge test email',
+                'html': '<p>This is a test email confirming the MMA Bridge email service is configured correctly.</p>',
+            },
+            timeout=10,
+        )
+        if resp.status_code in (200, 201):
+            return jsonify({'ok': True, 'resend_id': resp.json().get('id')})
+        return jsonify({'error': f'Resend returned {resp.status_code}', 'detail': resp.text[:300]}), 502
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
 # ==============================================
 # ADMIN — MARKETING CONTENT GENERATION
 # ==============================================
