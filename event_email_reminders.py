@@ -22,8 +22,20 @@ SITE_URL       = 'https://mmabridge.com'
 # scheduler that's down for a while, or a run that fires late) — without
 # this, an event whose lock time passed 3 days ago would still generate
 # "don't forget to pick" emails forever every time the job runs.
-PICK_REMINDER_WINDOW_HOURS   = (20, 30)   # send once lock time is 20-30h away
-REVIEW_REMINDER_WINDOW_HOURS = (6, 30)    # send once event is 6-30h in the past
+PICK_REMINDER_WINDOW_HOURS = (20, 30)   # send once lock time is 20-30h away — "a day before"
+
+# Review reminder used to gate purely on hours-since-start-time (6-30h),
+# which meant "right after the event ends" could fire anywhere from 6 to 30
+# hours late relative to when the card actually finished, since a live card
+# runs several hours past its start time either way. Now gated on the
+# event's own status flipping to 'completed' instead — ufc-sync.js grades
+# every fight and flips that within minutes of the last result landing (it
+# runs every 5 min), so "completed" is a genuinely accurate "the event just
+# ended" signal, not a guess. This window is just a safety bound so a
+# years-old completed event can't retroactively start emailing people if
+# this logic ever runs against stale data — the real gate is the status
+# check in send_review_reminder_emails below.
+REVIEW_REMINDER_MAX_AGE_HOURS = 72
 
 
 def _load_events():
@@ -177,10 +189,10 @@ def _wrap_html(title, paragraphs, cta_text, cta_url):
 # ── "Don't forget to make picks" ──────────────
 def send_pick_reminder_emails(sb):
     """
-    For every upcoming event whose lock time is 20-30h away, email every
-    user who has NOT yet submitted any picks for it. Run this a few times
-    a day (e.g. every 4h) — the wide window plus the sent-tracking table
-    means it's safe to run often without double-sending.
+    For every upcoming event whose lock time is 20-30h away ("a day
+    before"), email every user who has NOT yet submitted any picks for it.
+    Runs every 30 min — the wide window plus the sent-tracking table means
+    it's safe to run this often without double-sending.
     """
     if not RESEND_API_KEY:
         logger.warning('[EventReminders] RESEND_API_KEY not configured — pick reminders skipped')
@@ -247,8 +259,11 @@ def send_pick_reminder_emails(sb):
 # ── "Don't forget to review the card" ─────────
 def send_review_reminder_emails(sb):
     """
-    For every event that ended 6-30h ago, email every user who made at
-    least one pick for it but hasn't left a rating/review yet.
+    For every event ufc-sync.js has actually marked 'completed' (every
+    fight graded — happens within minutes of the last result, not a fixed
+    guess), email every user who made at least one pick for it but hasn't
+    left a rating/review yet. The sent-tracking table means this only ever
+    fires once per user per event regardless of how often the job runs.
     """
     if not RESEND_API_KEY:
         logger.warning('[EventReminders] RESEND_API_KEY not configured — review reminders skipped')
@@ -256,15 +271,16 @@ def send_review_reminder_emails(sb):
 
     events = _load_events()
     now = datetime.now(timezone.utc)
-    lo, hi = REVIEW_REMINDER_WINDOW_HOURS
 
     targets = []
     for ev in events:
+        if ev.get('status') != 'completed':
+            continue
         lock = _event_lock_time(ev)
         if not lock:
             continue
         hrs_since = (now - lock).total_seconds() / 3600
-        if lo <= hrs_since <= hi:
+        if 0 <= hrs_since <= REVIEW_REMINDER_MAX_AGE_HOURS:
             targets.append(ev)
 
     if not targets:

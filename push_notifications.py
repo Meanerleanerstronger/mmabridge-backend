@@ -315,22 +315,27 @@ def start_scheduler(sb):
         except Exception as _digest_err:
             logger.warning('[Push] Email digest job not loaded: %s', _digest_err)
 
-        # Every 4 hours — "don't forget to make picks" + "review the card" emails
+        # Every 30 min — "don't forget to make picks" + "review the card" emails.
+        # Was every 4h, which meant "right after the event ends" could
+        # actually lag by up to 4 hours before the job even checked. The
+        # sent-tracking table (_already_sent/_mark_sent) makes running this
+        # often perfectly safe — each user gets each reminder exactly once
+        # no matter how many times the job fires.
         try:
             from event_email_reminders import send_pick_reminder_emails, send_review_reminder_emails
             scheduler.add_job(
                 func=lambda: send_pick_reminder_emails(sb),
-                trigger=CronTrigger(hour='*/4'),
+                trigger=CronTrigger(minute='*/30'),
                 id='pick_reminder_emails',
                 replace_existing=True,
             )
             scheduler.add_job(
                 func=lambda: send_review_reminder_emails(sb),
-                trigger=CronTrigger(hour='*/4', minute=15),
+                trigger=CronTrigger(minute='15,45'),
                 id='review_reminder_emails',
                 replace_existing=True,
             )
-            logger.info('[Push] Pick/review reminder emails scheduled — every 4h')
+            logger.info('[Push] Pick/review reminder emails scheduled — every 30min')
         except Exception as _reminder_err:
             logger.warning('[Push] Event email reminders not loaded: %s', _reminder_err)
 
