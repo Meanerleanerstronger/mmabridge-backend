@@ -160,27 +160,53 @@ def _mark_sent(sb, user_id, event_id, reminder_type):
         logger.warning('[EventReminders] Could not record sent reminder: %s', e)
 
 
-def _wrap_html(title, paragraphs, cta_text, cta_url):
-    """Plain, simple, classic layout — no branding lockup, no gradient
-    button, no color beyond a single muted link. Reads like a normal email
-    from a person, not a marketing template."""
-    body = ''.join(f'<p style="margin:0 0 14px;">{p}</p>' for p in paragraphs)
+def _wrap_html(title, paragraphs, cta_text, cta_url, secondary_label=None, secondary_url=None):
+    """Bulletproof table-based layout (button as a colored <td>, not
+    border-radius/CSS-background tricks that Outlook/Windows Mail strip) —
+    dark header band with the wordmark, a real button CTA instead of a bare
+    text link, and an optional secondary short link (mmabridge.com/events,
+    mmabridge.com/review) directly under it so there's always a second,
+    obviously-clickable way in even if the button itself doesn't render.
+    """
+    body = ''.join(f'<p style="margin:0 0 16px;">{p}</p>' for p in paragraphs)
+    secondary_html = ''
+    if secondary_label and secondary_url:
+        secondary_html = f'''
+      <p style="margin:14px 0 0;font-size:13px;">
+        <a href="{secondary_url}" style="color:#b8611e;text-decoration:none;">{secondary_label}</a>
+      </p>'''
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0"><title>{title}</title></head>
-<body style="margin:0;padding:0;background:#ffffff;font-family:Arial,Helvetica,sans-serif;color:#222222;">
-<table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:36px 16px;">
-  <table width="100%" style="max-width:480px;" cellpadding="0" cellspacing="0">
-    <tr><td style="font-size:15px;line-height:1.6;">
-      {body}
-      <p style="margin:20px 0 0;"><a href="{cta_url}" style="color:#b8611e;">{cta_text}</a></p>
+<body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;"><tr><td align="center" style="padding:28px 16px;">
+  <table width="100%" style="max-width:480px;background:#ffffff;border-radius:10px;overflow:hidden;" cellpadding="0" cellspacing="0">
+
+    <tr><td style="background:#0a0a0a;padding:22px 28px;border-top:3px solid #ff8a3d;">
+      <span style="font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:17px;letter-spacing:2px;color:#ffffff;text-transform:uppercase;">MMA BRIDGE</span>
     </td></tr>
-    <tr><td style="padding-top:28px;font-size:15px;color:#222222;">
+
+    <tr><td style="padding:32px 28px 8px;font-size:15px;line-height:1.65;color:#1a1a1a;">
+      {body}
+    </td></tr>
+
+    <tr><td style="padding:8px 28px 4px;">
+      <table cellpadding="0" cellspacing="0"><tr>
+        <td style="background:#ff8a3d;border-radius:6px;">
+          <a href="{cta_url}" style="display:inline-block;padding:14px 30px;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:14px;letter-spacing:1px;text-transform:uppercase;color:#0a0a0a;text-decoration:none;">{cta_text}</a>
+        </td>
+      </tr></table>
+      {secondary_html}
+    </td></tr>
+
+    <tr><td style="padding:32px 28px 6px;font-size:14px;font-weight:bold;letter-spacing:0.5px;color:#1a1a1a;">
       MMA Bridge
     </td></tr>
-    <tr><td style="padding-top:28px;font-size:12px;color:#999999;">
-      <a href="{SITE_URL}/profile.html" style="color:#999999;">manage email preferences</a>
+
+    <tr><td style="padding:16px 28px 28px;font-size:11px;color:#999999;border-top:1px solid #eeeeee;margin-top:8px;">
+      <div style="padding-top:16px;"><a href="{SITE_URL}/profile.html" style="color:#999999;">manage email preferences</a></div>
     </td></tr>
+
   </table>
 </td></tr></table>
 </body></html>'''
@@ -242,10 +268,11 @@ def send_pick_reminder_emails(sb):
                 'Make your picks',
                 [
                     f'Hi {user["display_name"]},',
-                    f'{ev.get("name","")} is coming up soon and picks lock in about a day. '
-                    f'Looks like you haven\'t made yours yet.',
+                    f'{ev.get("name","")} locks in about a day. You haven\'t made your picks yet '
+                    f'and the board closes the moment the first fight starts. Get your picks in now.',
                 ],
-                'Make your picks', picks_link,
+                'Make Your Picks', picks_link,
+                'mmabridge.com/events', f'{SITE_URL}/events.html',
             )
             if _send_email(user['email'], f'Don\'t forget to make your picks for {ev.get("name","")}', html):
                 _mark_sent(sb, user['id'], ev_id, 'pick_reminder')
@@ -318,10 +345,11 @@ def send_review_reminder_emails(sb):
                 'Review the card',
                 [
                     f'Hi {user["display_name"]},',
-                    f'{ev.get("name","")} wrapped up. See how your picks did and rate the card '
-                    f'if you get a chance.',
+                    f'{ev.get("name","")} is in the books. See exactly how your picks scored '
+                    f'and rate the card while it\'s still fresh.',
                 ],
-                'Review the card', review_link,
+                'Review The Card', review_link,
+                'mmabridge.com/review', f'{SITE_URL}/review',
             )
             if _send_email(user['email'], f'Don\'t forget to review the {ev.get("name","")} card', html):
                 _mark_sent(sb, user['id'], ev_id, 'review_reminder')
