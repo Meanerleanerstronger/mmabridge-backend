@@ -339,6 +339,22 @@ def start_scheduler(sb):
         except Exception as _reminder_err:
             logger.warning('[Push] Event email reminders not loaded: %s', _reminder_err)
 
+        # Weekly Monday at 09:30 UTC — "rankings just moved" email. 30min
+        # after the rankings-sync GitHub Action (06:00 UTC) and the weekly
+        # digest (09:00 UTC), so the freshest data/rankings.json is in and
+        # this doesn't collide with the digest send.
+        try:
+            from rankings_email import send_rankings_update_emails
+            scheduler.add_job(
+                func=lambda: send_rankings_update_emails(sb),
+                trigger=CronTrigger(day_of_week='mon', hour=9, minute=30),
+                id='rankings_update_emails',
+                replace_existing=True,
+            )
+            logger.info('[Push] Rankings update email scheduled — Mondays 09:30 UTC')
+        except Exception as _rankings_err:
+            logger.warning('[Push] Rankings update email not loaded: %s', _rankings_err)
+
         # Every 2 hours — post-event results push
         scheduler.add_job(
             func=lambda: push_post_event_results(sb),
