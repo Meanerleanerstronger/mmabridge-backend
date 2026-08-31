@@ -1419,7 +1419,7 @@ def admin_analytics():
         sb = get_sb()
 
         # Total users
-        users_res   = sb.table('profiles').select('id, username, created_at', count='exact').execute()
+        users_res   = sb.table('profiles').select('id, display_name, created_at', count='exact').execute()
         total_users = users_res.count or len(users_res.data or [])
 
         # Total picks (exclude fotn and dd specials)
@@ -1450,7 +1450,7 @@ def admin_analytics():
         top_pickers = []
         for uid in top_picker_ids:
             profile = next((u for u in (users_res.data or []) if u.get('id') == uid), None)
-            name = (profile or {}).get('username') or uid[:8]
+            name = (profile or {}).get('display_name') or uid[:8]
             top_pickers.append({'name': name, 'picks': pick_counts[uid]})
 
         return jsonify({
