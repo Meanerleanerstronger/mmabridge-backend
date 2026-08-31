@@ -288,9 +288,13 @@ def send_review_reminder_emails(sb):
     """
     For every event ufc-sync.js has actually marked 'completed' (every
     fight graded — happens within minutes of the last result, not a fixed
-    guess), email every user who made at least one pick for it but hasn't
-    left a rating/review yet. The sent-tracking table means this only ever
-    fires once per user per event regardless of how often the job runs.
+    guess), email every non-opted-out user who hasn't left a rating/review
+    yet — NOT just users who made picks. Reviewing a card and picking
+    winners on it are separate actions; gating the invite to review on
+    having picked meant anyone who just watched without picking (or forgot
+    to pick before lock) never got asked. The sent-tracking table means
+    this only ever fires once per user per event regardless of how often
+    the job runs.
     """
     if not RESEND_API_KEY:
         logger.warning('[EventReminders] RESEND_API_KEY not configured — review reminders skipped')
@@ -328,26 +332,26 @@ def send_review_reminder_emails(sb):
             logger.error('[EventReminders] Failed to load picks/ratings for %s: %s', ev_id, e)
             continue
 
-        pending = picked_user_ids - rated_user_ids
-        if not pending:
-            continue
-
         for user in _list_all_users(sb):
-            if user['id'] not in pending:
-                continue
+            if user['id'] in rated_user_ids:
+                continue  # already reviewed this card
             if _is_opted_out(sb, user['id']):
                 continue
             if _already_sent(sb, user['id'], ev_id, 'review_reminder'):
                 continue
 
             review_link = f"{SITE_URL}/event-review.html?id={ev_id}"
+            made_picks  = user['id'] in picked_user_ids
+            blurb = (
+                f'{ev.get("name","")} is in the books. See exactly how your picks scored '
+                f'and rate the card while it\'s still fresh.'
+                if made_picks else
+                f'{ev.get("name","")} is in the books. Rate the card and let everyone know '
+                f'what you thought while it\'s still fresh.'
+            )
             html = _wrap_html(
                 'Review the card',
-                [
-                    f'Hi {user["display_name"]},',
-                    f'{ev.get("name","")} is in the books. See exactly how your picks scored '
-                    f'and rate the card while it\'s still fresh.',
-                ],
+                [f'Hi {user["display_name"]},', blurb],
                 'Review The Card', review_link,
                 'mmabridge.com/review', f'{SITE_URL}/review',
             )
