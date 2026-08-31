@@ -863,6 +863,11 @@ def push_announce_fighters():
         if not fighters or not event_id:
             return jsonify({'error': 'fighters and eventId required'}), 400
         announce_fighters(get_sb(), fighters, event_name, event_id)
+        try:
+            from fav_fighter_email import send_favorite_fighter_emails
+            send_favorite_fighter_emails(get_sb(), fighters, event_name, event_id)
+        except Exception as _fav_email_err:
+            print(f'[FavFighterEmail] error: {_fav_email_err}')
         return jsonify({'ok': True, 'notified_for': fighters})
     except Exception as e:
         print(f'[Push] announce-fighters error: {e}')
@@ -1232,6 +1237,42 @@ def admin_test_email():
         return jsonify({'error': f'Resend returned {resp.status_code}', 'detail': resp.text[:300]}), 502
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/admin/run-email-job', methods=['POST'])
+def admin_run_email_job():
+    """Manually run one of the scheduled email jobs right now, instead of
+    waiting for its next cron tick — the fastest way to actually confirm a
+    job works end to end (and see how many sent/errored) rather than
+    guessing from cron timing and inbox-checking alone."""
+    data = request.get_json(silent=True) or {}
+    tok  = (data.get('token') or '').strip()
+    if not _verify_admin_token(tok):
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    job = (data.get('job') or '').strip()
+    jobs = {
+        'pick_reminder':   lambda: __import__('event_email_reminders').send_pick_reminder_emails(get_sb()),
+        'review_reminder': lambda: __import__('event_email_reminders').send_review_reminder_emails(get_sb()),
+        'rankings_update': lambda: __import__('rankings_email').send_rankings_update_emails(get_sb()),
+    }
+    if job not in jobs:
+        return jsonify({'error': f'job must be one of {list(jobs.keys())}'}), 400
+
+    import io, logging as _logging
+    buf = io.StringIO()
+    handler = _logging.StreamHandler(buf)
+    handler.setLevel(_logging.INFO)
+    root_logger = _logging.getLogger()
+    root_logger.addHandler(handler)
+    try:
+        jobs[job]()
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    finally:
+        root_logger.removeHandler(handler)
+
+    return jsonify({'ok': True, 'log': buf.getvalue().strip().splitlines()[-10:]})
 
 
 # ==============================================
