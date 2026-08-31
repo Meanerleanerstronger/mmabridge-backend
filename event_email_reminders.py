@@ -173,7 +173,7 @@ def _wrap_html(title, paragraphs, cta_text, cta_url, secondary_label=None, secon
     if secondary_label and secondary_url:
         secondary_html = f'''
       <p style="margin:14px 0 0;font-size:13px;">
-        <a href="{secondary_url}" style="color:#b8611e;text-decoration:none;">{secondary_label}</a>
+        <a href="{secondary_url}" style="color:#c24a08;text-decoration:none;">{secondary_label}</a>
       </p>'''
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
@@ -182,7 +182,7 @@ def _wrap_html(title, paragraphs, cta_text, cta_url, secondary_label=None, secon
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;"><tr><td align="center" style="padding:28px 16px;">
   <table width="100%" style="max-width:480px;background:#ffffff;border-radius:10px;overflow:hidden;" cellpadding="0" cellspacing="0">
 
-    <tr><td style="background:#0a0a0a;padding:22px 28px;border-top:3px solid #ff8a3d;">
+    <tr><td style="background:#0a0a0a;padding:22px 28px;border-top:3px solid #f2600f;">
       <span style="font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:17px;letter-spacing:2px;color:#ffffff;text-transform:uppercase;">MMA BRIDGE</span>
     </td></tr>
 
@@ -192,7 +192,7 @@ def _wrap_html(title, paragraphs, cta_text, cta_url, secondary_label=None, secon
 
     <tr><td style="padding:8px 28px 4px;">
       <table cellpadding="0" cellspacing="0"><tr>
-        <td style="background:#ff8a3d;border-radius:6px;">
+        <td style="background:#f2600f;border-radius:6px;">
           <a href="{cta_url}" style="display:inline-block;padding:14px 30px;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:14px;letter-spacing:1px;text-transform:uppercase;color:#0a0a0a;text-decoration:none;">{cta_text}</a>
         </td>
       </tr></table>

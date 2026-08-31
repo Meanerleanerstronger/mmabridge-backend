@@ -48,12 +48,24 @@ def _load_events():
 
 
 def _get_upcoming_events(events, limit=3):
+    """
+    Was silently returning nothing every single run: isoDate in events.json
+    is a bare date ("2026-09-12", no time/offset), so fromisoformat() gave
+    back a naive datetime, and comparing that against now(timezone.utc)
+    (aware) raises TypeError — caught by the blanket except below, which
+    quietly skipped every event, every time. Naive parses now get UTC
+    attached explicitly before comparing.
+    """
     now = datetime.now(timezone.utc)
     upcoming = []
     for ev in events:
+        if ev.get('status') == 'completed':
+            continue
         iso = ev.get('isoDate') or ev.get('date') or ''
         try:
             ev_dt = datetime.fromisoformat(iso.replace('Z', '+00:00'))
+            if ev_dt.tzinfo is None:
+                ev_dt = ev_dt.replace(tzinfo=timezone.utc)
             if ev_dt > now:
                 upcoming.append(ev)
         except Exception:
@@ -90,32 +102,49 @@ def _get_user_stats(sb, user_id):
 
 
 # ── Build HTML email ──────────────────────────
-# Plain style — matches event_email_reminders.py's _wrap_html: white
-# background, Arial, one muted brand-color link, no gradient buttons or
-# logo lockup. Signed off with a plain-text signature, not a graphic.
+# Branded to match event_email_reminders.py's _wrap_html now — dark header
+# band with the wordmark, real button CTAs (table-cell background, not
+# CSS border-radius tricks Outlook strips), event cards with poster art
+# and the actual main-event matchup instead of a bare date/link.
 def _build_html(display_name, upcoming_events, stats, user_id=''):
     name = display_name or 'Fighter'
 
-    upcoming_html = ''
+    event_cards = ''
     for ev in upcoming_events:
-        date_str = ev.get('date', '')
-        loc  = ev.get('location', '')
-        venue = ev.get('venue', '')
         ev_id = ev.get('id', '')
         picks_link = f'{SITE_URL}/picks.html?id={ev_id}' if ev_id else f'{SITE_URL}/events.html'
-        meta_parts = [p for p in [date_str, loc, venue] if p]
-        meta = ' · '.join(meta_parts)
-        upcoming_html += f'''
-        <tr>
-          <td style="padding:10px 0;border-bottom:1px solid #eeeeee;">
-            <div style="font-size:14px;font-weight:bold;color:#222222;">{ev.get("name","")}</div>
-            <div style="font-size:12px;color:#888888;margin:2px 0 4px;">{meta}</div>
-            <a href="{picks_link}" style="color:#b8611e;font-size:13px;">Make your picks</a>
-          </td>
-        </tr>'''
+        meta = ' · '.join(p for p in [ev.get('date', ''), ev.get('venue', ''), ev.get('location', '')] if p)
 
-    if not upcoming_html:
-        upcoming_html = '<tr><td style="padding:10px 0;color:#888888;font-size:13px;">No upcoming events right now. Check back soon.</td></tr>'
+        main = (ev.get('mainCard') or [{}])[0]
+        matchup = f'{main.get("a", "")} vs. {main.get("b", "")}' if main.get('a') and main.get('b') else ''
+        weight = main.get('weight', '')
+
+        poster = ev.get('poster', '')
+        poster_html = (
+            f'<img src="{poster}" width="424" alt="{ev.get("name","")}" '
+            f'style="width:100%;max-width:424px;height:auto;display:block;border-radius:8px 8px 0 0;">'
+            if poster else ''
+        )
+
+        event_cards += f'''
+        <tr><td style="padding:0 0 18px;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9f9f9;border-radius:8px;overflow:hidden;border:1px solid #eeeeee;">
+            {f'<tr><td>{poster_html}</td></tr>' if poster_html else ''}
+            <tr><td style="padding:16px 18px;">
+              <div style="font-size:15px;font-weight:bold;color:#1a1a1a;margin-bottom:3px;">{ev.get("name","")}</div>
+              <div style="font-size:12px;color:#888888;margin-bottom:8px;">{meta}</div>
+              {f'<div style="font-size:13px;color:#c24a08;font-weight:bold;margin-bottom:12px;">{matchup}{" · " + weight if weight else ""}</div>' if matchup else ''}
+              <table cellpadding="0" cellspacing="0"><tr>
+                <td style="background:#f2600f;border-radius:6px;">
+                  <a href="{picks_link}" style="display:inline-block;padding:10px 20px;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:12px;letter-spacing:0.5px;text-transform:uppercase;color:#0a0a0a;text-decoration:none;">Make Your Picks</a>
+                </td>
+              </tr></table>
+            </td></tr>
+          </table>
+        </td></tr>'''
+
+    if not event_cards:
+        event_cards = '<tr><td style="padding:0 0 18px;color:#888888;font-size:13px;">No upcoming events right now. Check back soon.</td></tr>'
 
     stats_lines = []
     if stats['picks_total'] > 0:
@@ -131,34 +160,41 @@ def _build_html(display_name, upcoming_events, stats, user_id=''):
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Your MMA Bridge weekly update</title>
 </head>
-<body style="margin:0;padding:0;background:#ffffff;font-family:Arial,Helvetica,sans-serif;color:#222222;">
-<table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:36px 16px;">
-  <table width="100%" style="max-width:480px;" cellpadding="0" cellspacing="0">
+<body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;"><tr><td align="center" style="padding:28px 16px;">
+  <table width="100%" style="max-width:480px;background:#ffffff;border-radius:10px;overflow:hidden;" cellpadding="0" cellspacing="0">
 
-    <tr><td style="font-size:15px;line-height:1.6;">
-      <p style="margin:0 0 14px;">Hi {name},</p>
-      <p style="margin:0 0 18px;">Here's what's coming up on MMA Bridge this week.</p>
+    <tr><td style="background:#0a0a0a;padding:22px 28px;border-top:3px solid #f2600f;">
+      <span style="font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:17px;letter-spacing:2px;color:#ffffff;text-transform:uppercase;">MMA BRIDGE</span>
     </td></tr>
 
-    {f'<tr><td style="padding:0 0 18px;">{stats_html}</td></tr>' if stats_lines else ''}
+    <tr><td style="padding:28px 28px 4px;font-size:15px;line-height:1.65;color:#1a1a1a;">
+      <p style="margin:0 0 4px;">Hi {name},</p>
+      <p style="margin:0 0 18px;">Here's what's coming up this week.</p>
+    </td></tr>
 
-    <tr><td style="padding:0 0 8px;font-size:13px;font-weight:bold;color:#222222;">Upcoming events</td></tr>
-    <tr><td>
+    {f'<tr><td style="padding:0 28px 18px;">{stats_html}</td></tr>' if stats_lines else ''}
+
+    <tr><td style="padding:0 28px 4px;">
       <table width="100%" cellpadding="0" cellspacing="0">
-        {upcoming_html}
+        {event_cards}
       </table>
     </td></tr>
 
-    <tr><td style="padding:20px 0 0;font-size:15px;">
-      <a href="{SITE_URL}/events.html" style="color:#b8611e;">View all events</a>
+    <tr><td style="padding:4px 28px 4px;">
+      <table cellpadding="0" cellspacing="0"><tr>
+        <td style="background:#f2600f;border-radius:6px;">
+          <a href="{SITE_URL}/events.html" style="display:inline-block;padding:14px 30px;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:14px;letter-spacing:1px;text-transform:uppercase;color:#0a0a0a;text-decoration:none;">View All Events</a>
+        </td>
+      </tr></table>
     </td></tr>
 
-    <tr><td style="padding-top:28px;font-size:15px;color:#222222;">
+    <tr><td style="padding:32px 28px 6px;font-size:14px;font-weight:bold;letter-spacing:0.5px;color:#1a1a1a;">
       MMA Bridge
     </td></tr>
 
-    <tr><td style="padding-top:28px;font-size:12px;color:#999999;">
-      <a href="{_unsub_url(user_id) if user_id else (SITE_URL + '/profile.html')}" style="color:#999999;">Unsubscribe from this weekly email</a>
+    <tr><td style="padding:16px 28px 28px;font-size:11px;color:#999999;border-top:1px solid #eeeeee;margin-top:8px;">
+      <div style="padding-top:16px;"><a href="{_unsub_url(user_id) if user_id else (SITE_URL + '/profile.html')}" style="color:#999999;">Unsubscribe from this weekly email</a></div>
     </td></tr>
 
   </table>
