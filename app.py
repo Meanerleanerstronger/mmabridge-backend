@@ -1255,6 +1255,7 @@ def admin_run_email_job():
         'pick_reminder':   lambda: __import__('event_email_reminders').send_pick_reminder_emails(get_sb()),
         'review_reminder': lambda: __import__('event_email_reminders').send_review_reminder_emails(get_sb()),
         'rankings_update': lambda: __import__('rankings_email').send_rankings_update_emails(get_sb()),
+        'walkout_song':    lambda: __import__('walkout_song_email').send_walkout_song_invite_emails(get_sb()),
     }
     if job not in jobs:
         return jsonify({'error': f'job must be one of {list(jobs.keys())}'}), 400

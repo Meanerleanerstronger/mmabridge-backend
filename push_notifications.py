@@ -355,6 +355,22 @@ def start_scheduler(sb):
         except Exception as _rankings_err:
             logger.warning('[Push] Rankings update email not loaded: %s', _rankings_err)
 
+        # Daily at 10:00 UTC — one-time "pick your walkout song" invite.
+        # Low frequency is fine: it's a one-shot per user (deduped via the
+        # same sent-tracking table), just needs to catch new signups within
+        # a day, not fire often.
+        try:
+            from walkout_song_email import send_walkout_song_invite_emails
+            scheduler.add_job(
+                func=lambda: send_walkout_song_invite_emails(sb),
+                trigger=CronTrigger(hour=10, minute=0),
+                id='walkout_song_invite_emails',
+                replace_existing=True,
+            )
+            logger.info('[Push] Walkout song invite email scheduled — daily 10:00 UTC')
+        except Exception as _walkout_err:
+            logger.warning('[Push] Walkout song invite email not loaded: %s', _walkout_err)
+
         # Every 2 hours — post-event results push
         scheduler.add_job(
             func=lambda: push_post_event_results(sb),
