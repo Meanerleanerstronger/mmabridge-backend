@@ -1470,7 +1470,7 @@ def admin_analytics():
 # ADMIN — SOCIAL POSTING
 # ==============================================
 
-from marketing_poster import post_reddit, post_twitter, post_instagram, platform_status
+from marketing_poster import post_reddit, post_twitter, post_instagram, platform_status, refresh_instagram_token
 
 
 @app.route('/api/admin/marketing/status', methods=['GET'])
@@ -1479,6 +1479,17 @@ def admin_marketing_status():
     if not _verify_admin_token(tok):
         return jsonify({'error': 'Unauthorized'}), 401
     return jsonify(platform_status())
+
+
+@app.route('/api/admin/marketing/refresh-instagram-token', methods=['POST'])
+def admin_refresh_instagram_token():
+    # Called weekly by the frontend repo's instagram-token-refresh.yml so the
+    # 60-day Instagram token never lapses (see marketing_poster.py).
+    data = request.get_json(silent=True) or {}
+    if not _verify_admin_token((data.get('token') or '').strip()):
+        return jsonify({'error': 'Unauthorized'}), 401
+    result = refresh_instagram_token()
+    return jsonify(result), (200 if result.get('ok') else 502)
 
 
 @app.route('/api/admin/marketing/post', methods=['POST'])

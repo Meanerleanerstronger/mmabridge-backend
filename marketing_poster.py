@@ -153,6 +153,75 @@ def post_twitter(text: str, image_url: str = "") -> dict:
 
 # ── Instagram ───────────────────────────────────────────────────────────────
 
+# Instagram long-lived tokens expire after 60 days unless refreshed, and a
+# refreshed token is a NEW string. Render env vars can't be rewritten from
+# the app, so refreshed tokens live in the Supabase `app_config` table
+# (service-role only: RLS on, no policies):
+#
+#   CREATE TABLE IF NOT EXISTS app_config (
+#     key TEXT PRIMARY KEY, value TEXT, env_hash TEXT,
+#     updated_at TIMESTAMPTZ DEFAULT now());
+#   ALTER TABLE app_config ENABLE ROW LEVEL SECURITY;
+#
+# The stored token is only used while INSTAGRAM_ACCESS_TOKEN on Render is
+# still the one it was refreshed from (env_hash), so pasting a brand-new
+# token into Render takes over immediately with no DB cleanup.
+# Refreshed weekly by the frontend repo's instagram-token-refresh.yml.
+
+_IG_TOKEN_KEY = "instagram_access_token"
+
+
+def _env_hash(token: str) -> str:
+    import hashlib
+    return hashlib.sha256(token.encode()).hexdigest()
+
+
+def _ig_token() -> str:
+    env_token = os.getenv("INSTAGRAM_ACCESS_TOKEN", "").strip()
+    try:
+        from database import get_sb
+        sb = get_sb()
+        if sb is not None:
+            r = sb.table("app_config").select("value, env_hash").eq("key", _IG_TOKEN_KEY).limit(1).execute()
+            row = (r.data or [None])[0]
+            if row and row.get("value") and row.get("env_hash") == _env_hash(env_token):
+                return row["value"].strip()
+    except Exception:
+        pass  # table missing / DB down: fall back to the env var
+    return env_token
+
+
+def refresh_instagram_token() -> dict:
+    """Exchange the current long-lived token for a fresh 60-day one and store it."""
+    token = _ig_token()
+    if not token:
+        return {"ok": False, "error": "Instagram credentials not configured"}
+    try:
+        r = _req.get(
+            "https://graph.instagram.com/refresh_access_token",
+            params={"grant_type": "ig_refresh_token", "access_token": token},
+            timeout=15,
+        )
+        if not r.ok:
+            return {"ok": False, "error": f"HTTP {r.status_code} refreshing token: {r.text[:500]}"}
+        body = r.json()
+        new_token = body.get("access_token")
+        if not new_token:
+            return {"ok": False, "error": "No token in refresh response"}
+        from database import get_sb
+        sb = get_sb()
+        if sb is None:
+            return {"ok": False, "error": "Refreshed, but Supabase is not connected so the new token was not saved"}
+        env_token = os.getenv("INSTAGRAM_ACCESS_TOKEN", "").strip()
+        sb.table("app_config").upsert({
+            "key": _IG_TOKEN_KEY, "value": new_token, "env_hash": _env_hash(env_token),
+            "updated_at": _time.strftime("%Y-%m-%dT%H:%M:%SZ", _time.gmtime()),
+        }).execute()
+        return {"ok": True, "expires_in_days": round((body.get("expires_in") or 0) / 86400)}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
 def post_instagram(caption: str, image_url: str = "") -> dict:
     """
     Post to Instagram via the "Instagram API with Instagram Login" flow
@@ -170,7 +239,7 @@ def post_instagram(caption: str, image_url: str = "") -> dict:
     # .strip() guards against a stray trailing newline/space from copying
     # the value into Render's env var field — same issue hit with the
     # Twitter credentials.
-    token      = os.getenv("INSTAGRAM_ACCESS_TOKEN", "").strip()
+    token      = _ig_token()
     account_id = os.getenv("INSTAGRAM_ACCOUNT_ID", "").strip()
     if not all([token, account_id]):
         return {"ok": False, "error": "Instagram credentials not configured"}
@@ -243,5 +312,5 @@ def platform_status() -> dict:
     return {
         "reddit":    all([os.getenv("REDDIT_CLIENT_ID"), os.getenv("REDDIT_USERNAME")]),
         "twitter":   all([os.getenv("TWITTER_API_KEY"), os.getenv("TWITTER_ACCESS_TOKEN")]),
-        "instagram": all([os.getenv("INSTAGRAM_ACCESS_TOKEN"), os.getenv("INSTAGRAM_ACCOUNT_ID")]),
+        "instagram": all([_ig_token(), os.getenv("INSTAGRAM_ACCOUNT_ID")]),
     }
