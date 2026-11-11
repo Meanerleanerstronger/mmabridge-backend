@@ -864,8 +864,10 @@ def push_announce_fighters():
             return jsonify({'error': 'fighters and eventId required'}), 400
         announce_fighters(get_sb(), fighters, event_name, event_id)
         try:
+            from push_notifications import emails_on
             from fav_fighter_email import send_favorite_fighter_emails
-            send_favorite_fighter_emails(get_sb(), fighters, event_name, event_id)
+            if emails_on():  # paused unless MMA_BRIDGE_EMAILS=on
+                send_favorite_fighter_emails(get_sb(), fighters, event_name, event_id)
         except Exception as _fav_email_err:
             print(f'[FavFighterEmail] error: {_fav_email_err}')
         return jsonify({'ok': True, 'notified_for': fighters})

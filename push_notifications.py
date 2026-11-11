@@ -283,6 +283,11 @@ def push_post_event_results(sb):
 
 
 # ── APScheduler setup ─────────────────────────
+def emails_on():
+    """MMA Bridge's emails only go out when MMA_BRIDGE_EMAILS=on (see start_scheduler)."""
+    return os.getenv('MMA_BRIDGE_EMAILS', 'off').strip().lower() == 'on'
+
+
 def start_scheduler(sb):
     """
     Start background daily cron jobs.
@@ -378,6 +383,19 @@ def start_scheduler(sb):
             id='post_event_results',
             replace_existing=True,
         )
+
+        # 2026-11-11: MMA Bridge's emails are paused so the Resend free
+        # allowance (100 a day, shared by the whole account) goes to Flare.
+        # Push notifications keep running. To turn the emails back on, set
+        # MMA_BRIDGE_EMAILS=on in Render -> Environment and redeploy.
+        if not emails_on():
+            for job_id in ('weekly_email_digest', 'pick_reminder_emails', 'review_reminder_emails',
+                           'rankings_update_emails', 'walkout_song_invite_emails'):
+                try:
+                    scheduler.remove_job(job_id)
+                except Exception:
+                    pass
+            logger.info('[Push] Emails paused (MMA_BRIDGE_EMAILS is not "on")')
 
         scheduler.start()
         logger.info('[Push] Scheduler started — daily check at 08:00 UTC')
